@@ -29,6 +29,7 @@ class Radar extends Component {
 
 	//Need to do the same with subjects and view and do it in a cleaner way
 	componentWillReceiveProps(nextProps){
+		console.log(nextProps)
 		let state = this.state;
         if(nextProps !== this.props){
         	this.propsToState(nextProps,state);
@@ -46,12 +47,12 @@ class Radar extends Component {
 
 	verifyAndDefaultDates(state,props) {
 		if(!state.dates) state.dates = {};
-		if(!state.dates.today) state.dates.today = moment();
-		if(!state.dates.end) {
+		if(!state.dates.startDate) state.dates.startDate = moment();
+		if(!state.dates.endDate) {
 			if(props.view && props.view.ringsWidth)
-				state.dates.end = moment(state.dates.today).add(props.view.ringsWidth,'ms');
+				state.dates.endDate = moment(state.dates.startDate).add(props.view.ringsWidth,'ms');
 			else
-				state.dates.end = moment(state.dates.today).add(7,'days');
+				state.dates.endDate = moment(state.dates.startDate).add(7,'days');
 		}
 	}
 
@@ -64,12 +65,12 @@ class Radar extends Component {
 			state.view.y = 0;
 		if(!state.view.width)
 			state.view.width = 250;
-		if(!state.view.height)
-			state.view.height = 250;
+		if(!state.view.width)
+			state.view.height = state.view.width;
 		if(!state.view.dotRadiusPercent)
 			state.view.dotRadiusPercent = .07;
 		if(!state.view.strokeWidth)
-			state.view.strokeWidth = 4;
+			state.view.strokeWidth = 3;
 		if(!state.view.ringsWidth)
 			state.view.ringsWidth = moment().add(7,'days') - moment();
 		if(!state.view.colors)
@@ -179,8 +180,8 @@ class Radar extends Component {
 	}
 
 	scaleTimeToPercent(date) {
-		let zero = this.state.dates.today.valueOf();
-		let one = this.state.dates.end.valueOf();
+		let zero = this.state.dates.startDate.valueOf();
+		let one = this.state.dates.endDate.valueOf();
 		let middle = date.valueOf();
 		return (middle - zero) / (one - zero)
 	}
@@ -222,7 +223,7 @@ class Radar extends Component {
 		if(angle === 360) angle -= .01;
 
 		if(numSlices === 0)
-			sliceComponents = <circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.radar.radius}/>;
+			sliceComponents = <circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.radar.radius} fill={'none'}/>;
 		for(let i = 0; i < this.state.subjects.length; i++) {
 			if(this.state.subjects.length > 1) {
 				sliceComponents.push(<path d={this.describeSlice(this.view.radar.center.x,this.view.radar.center.y,this.view.radar.radius,offset+i*angle,offset+(i+1)*angle)} fill={this.state.subjects[i].color} key={this.state.subjects[i].name}/>)
@@ -237,7 +238,7 @@ class Radar extends Component {
 
 	fillRings() {
 		let rings = [];
-		let step = this.scaleTimeToPercent(moment(this.state.dates.today).add(this.state.view.ringsWidth))
+		let step = this.scaleTimeToPercent(moment(this.state.dates.startDate).add(this.state.view.ringsWidth))
 
 		for(let percent = step; percent < 1; percent+=step) {
 			let radius = percent*this.view.radar.radius; 
@@ -263,7 +264,7 @@ class Radar extends Component {
 
 
     return (
-    	<svg width={this.state.windowWidth} height={this.state.windowHeight}>
+    	<svg width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}>
 	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 		  		{this.state.sliceComponents}
 		  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>

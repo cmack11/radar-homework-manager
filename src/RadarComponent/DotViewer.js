@@ -22,6 +22,8 @@ class DotViewer extends Component {
 			x = this.props.dot.x - this.props.width/2;
 			y = this.props.dot.y - this.props.height/2;
 
+			let parent = document.getElementById('dotsGroup');
+
 			if(x+this.props.width > window.innerWidth)
 				x = Math.max(window.innerWidth - this.props.width, this.props.dot.x - this.props.width);
 			if(x < 0)

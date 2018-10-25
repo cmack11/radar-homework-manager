@@ -213,6 +213,7 @@ class Dots extends Component {
 	}
 
 	onMouseDownDot(e) {
+		console.log('down');
 		this.closeDotViewer();
 		this.draggedDot = {
 			dot:e.target, 
@@ -232,9 +233,12 @@ class Dots extends Component {
 		this.draggedDot.moved = true;
 		let dotsGroup = document.getElementById('dotsGroup');
 		dotsGroup.insertBefore(this.draggedDot.dot,null);
-
-		this.draggedDot.dot.setAttribute('cx',e.offsetX)
-		this.draggedDot.dot.setAttribute('cy',e.offsetY)
+		let offsetY = dotsGroup.getBoundingClientRect().top;
+		let offsetX = dotsGroup.getBoundingClientRect().left;
+		
+		//onScroll change the dotsGroup x,y to the current ViewPorts X and Y on the Page
+		this.draggedDot.dot.setAttribute('cx',e.clientX-offsetX)
+		this.draggedDot.dot.setAttribute('cy',e.clientY-offsetY)
 		this.draggedDot.dot.setAttribute('r',this.view.dots.radius*1.5);
 	}
 
@@ -285,9 +289,8 @@ class Dots extends Component {
 				this.dotsElems.push(this.makeDot(this.dotsObjs[i][j]));
 		}
 
-
 		return (
-			<svg width={this.state.width} height={this.state.height} id="dotsGroup" stroke="black" strokeWidth="2">
+			<svg x={0} y={0} width={this.state.width} height={this.state.height} id="dotsGroup" stroke="black" strokeWidth="2">
 				{this.dotsElems}
 				<DotViewer width={this.props.dims.dotViewer.width} height={this.props.dims.dotViewer.height} dot={this.state.clickedDot} closeDotViewer={this.closeDotViewer.bind(this)}/>
 			</svg>
