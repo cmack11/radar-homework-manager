@@ -13,6 +13,7 @@ class RadarScreen extends Component {
 		super();
 
 		let state = {
+			show:props.show,
 			dates:{
 				startDate:moment(),
 				endDate:moment().add(7,'days')
@@ -76,6 +77,7 @@ class RadarScreen extends Component {
 	
 
 	render() {
+	if(!this.props.show) return null;
 
     return (
     	<div className='radarScreen'>

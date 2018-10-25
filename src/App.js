@@ -45,7 +45,10 @@ class App extends Component {
     this.state = {
       sidebarOpen: false,
       startDate: moment(new Date()),
-      endDate: moment(new Date()).add(7,'days')
+      endDate: moment(new Date()).add(7,'days'),
+      screens:{
+        home:{show:true}
+      }
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.props.initializeUser();
@@ -53,7 +56,22 @@ class App extends Component {
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
+    console.log(this.state);
   }
+
+  onSideBarItemClicked(s) {
+    let screens = this.state.screens;
+    if(!screens[s])
+      screens[s] = {show:true};
+    for(var key in screens) {
+        if(screens.hasOwnProperty(key)) 
+            screens[key].show = (key === s)
+    }
+
+    this.setState({screens:screens})
+    this.onSetSidebarOpen(false);
+  }
+
   onFocusChanged = () => {
 
   }
@@ -68,13 +86,13 @@ class App extends Component {
                 <p>{`${this.props.name}'s`}</p>
                 <h2 className="menu-header">Radar Homework Manager</h2>
                 <Divider />
-                <div className="menu-item" onClick={() => this.onSetSidebarOpen(false)}>
+                <div className="menu-item" onClick={() => this.onSideBarItemClicked('home')}>
                   <IconContext.Provider value={{size:20, style: { padding: 17 }}}>
                     <MdHome />
                   </IconContext.Provider>
                   <p>Home</p>
                 </div>
-                <div className="menu-item">
+                <div className="menu-item" onClick={() => this.onSideBarItemClicked('accountsettings')}>
                   <IconContext.Provider value={{size:20, style: { padding: 17 }}}>
                     <MdAccountCircle />
                   </IconContext.Provider>
@@ -109,7 +127,7 @@ class App extends Component {
             <MdMenu onClick={() => this.onSetSidebarOpen(true)}/>
             </IconContext.Provider>
           </div>
-          <RadarScreen subjects={[{color:'navy',assignments:[{type:'Assignment', dueDate:moment().add(3,'days')}]},{color:'maroon',assignments:[{type:'Assignment', dueDate:moment().add(1,'days')}]}]} dates={{today:this.state.startDate, end:this.state.endDate}} view={{x:100,y:100,height:window.innerHeight,width:window.innerWidth}}/>
+          <RadarScreen show={this.state.screens.home.show} subjects={[{color:'navy',assignments:[{type:'Assignment', dueDate:moment().add(3,'days')}]},{color:'maroon',assignments:[{type:'Assignment', dueDate:moment().add(1,'days')}]}]} dates={{today:this.state.startDate, end:this.state.endDate}} view={{x:100,y:100,height:window.innerHeight,width:window.innerWidth}}/>
 
           </Sidebar>
         </div>

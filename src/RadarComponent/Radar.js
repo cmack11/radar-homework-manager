@@ -29,7 +29,6 @@ class Radar extends Component {
 
 	//Need to do the same with subjects and view and do it in a cleaner way
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps)
 		let state = this.state;
         if(nextProps !== this.props){
         	this.propsToState(nextProps,state);
