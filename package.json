@@ -1,12 +1,19 @@
 {
-  "name": "radar-homework-manager",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.22.2",
     "react": "^16.5.2",
+    "react-dates": "^18.1.1",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5",
-    "react-test-renderer": "^16.5.2"
+    "react-icons": "^3.2.1",
+    "react-redux": "^5.0.7",
+    "react-scripts": "2.0.3",
+    "react-sidebar": "^3.0.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.82.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,5 +29,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "css-loader": "^1.0.0"
+  }
 }

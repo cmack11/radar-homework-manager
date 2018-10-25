@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,50 @@
   color: #61dafb;
 }
 
+.top-right {
+  position:absolute;
+  top:0;
+  left:0;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.menu-header {
+  margin-right: 20px;
+  margin-left: 20px;
+  border-bottom: #d6d6d6 1px solid;
+  padding-bottom: 30px;
+}
+
+.menu-container {
+  flex: 1;
+}
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.icon-align {
+  top: 5;
+  left: 5;
+  position: relative;
+}
+
+.date-picker {
+    position:relative;
+     margin:0 auto;
+     clear:left;
+     height:auto;
+     z-index: 0;
+     text-align:center;
+ }​
+
+
+.top-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
