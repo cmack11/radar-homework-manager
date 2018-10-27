@@ -66,6 +66,12 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.radar-screen {
+  margin-top: 15px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

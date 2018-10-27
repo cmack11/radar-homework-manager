@@ -6,8 +6,9 @@ import {Button, Header, Icon, Segment, Divider} from 'semantic-ui-react';
 import Sidebar from "react-sidebar";
 import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
+import './_datepicker.css';
 import moment from 'moment';
+import { Router, Route, Switch } from 'react-router'
 
 import { IconContext } from 'react-icons';
 import logo from './logo.svg';
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
       counter: state.sample.counter,
       id : state.user.id,
       name : state.user.name,
-      email : state.user.email
+      email : state.user.email,
+      usertype : state.user.usertype
     }
   }
 
@@ -64,7 +66,7 @@ class App extends Component {
     if(!screens[s])
       screens[s] = {show:true};
     for(var key in screens) {
-        if(screens.hasOwnProperty(key)) 
+        if(screens.hasOwnProperty(key))
             screens[key].show = (key === s)
     }
 
@@ -73,7 +75,7 @@ class App extends Component {
   }
 
   onFocusChanged = () => {
-
+    /* to be added */
   }
   render() {
 
@@ -122,13 +124,20 @@ class App extends Component {
             onSetOpen={this.onSetSidebarOpen}
             styles={{ sidebar: { background: "white", display: 'flex'} }}
           >
-          <div className="top-right">
-            <IconContext.Provider value={{size:40 }}>
-            <MdMenu onClick={() => this.onSetSidebarOpen(true)}/>
-            </IconContext.Provider>
-          </div>
-          <RadarScreen show={this.state.screens.home.show} subjects={[{color:'navy',assignments:[{type:'Assignment', dueDate:moment().add(3,'days')}]},{color:'maroon',assignments:[{type:'Assignment', dueDate:moment().add(1,'days')}]}]} dates={{today:this.state.startDate, end:this.state.endDate}} view={{x:100,y:100,height:window.innerHeight,width:window.innerWidth}}/>
-
+            <div className="top-right">
+              <IconContext.Provider value={{size:40 }}>
+                <MdMenu onClick={() => this.onSetSidebarOpen(true)}/>
+              </IconContext.Provider>
+            </div>
+            <div className="radar-screen">
+              <RadarScreen show={this.state.screens.home.show}
+                subjects={[{color:'navy',
+                  assignments:[{type:'Assignment', dueDate:moment().add(3,'days')}]},
+                  {color:'maroon',assignments:[{type:'Assignment',
+                    dueDate:moment().add(1,'days')}]}]}
+                    dates={{today:this.state.startDate, end:this.state.endDate}}
+                    view={{x:100,y:100,height:window.innerHeight,width:window.innerWidth}}/>
+            </div>
           </Sidebar>
         </div>
       </div>
