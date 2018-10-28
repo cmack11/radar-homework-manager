@@ -19,7 +19,7 @@ class RadarScreen extends Component {
 				endDate:moment().add(7,'days')
 			},
 			datePicker:{
-				focus:'startDate'
+				focus:''
 			},
 			view:{
 				x:props.view.x,
@@ -36,7 +36,8 @@ class RadarScreen extends Component {
 				dotsView:{
 					width:props.view.width,
 					height:props.view.height
-				}
+				},
+				colors:props.view.colors
 			}
 		}
 
@@ -60,7 +61,7 @@ class RadarScreen extends Component {
 	}
 
 	setRadarDimensions(state) {
-		let rWidth = .75 * Math.min(state.view.width,state.view.height);
+		let rWidth = .85 * Math.min(state.view.width,state.view.height);
 		state.radarView = {
 			x:(state.view.width-rWidth) / 2,
 			y:(state.view.height-rWidth) / 2,
@@ -69,7 +70,8 @@ class RadarScreen extends Component {
 			dotsView:{
 				width:state.view.width,
 				height:state.view.height
-			}
+			},
+			colors:state.radarView.colors
 		}
 		this.setState(state);
 	}
@@ -80,7 +82,7 @@ class RadarScreen extends Component {
 	if(!this.props.show) return null;
 
     return (
-    	<div className='radarScreen'>
+    	<div className='radar-screen'>
     		<DateRangePicker
     		  startDate={this.state.dates.startDate}
     		  startDateId="StartDate"
@@ -88,9 +90,15 @@ class RadarScreen extends Component {
     		  endDateId="EndDate"
     		  onDatesChange={({ startDate, endDate }) => {
     		  	let state = this.state;
-    		  	state.dates.startDate = startDate;
-    		  	state.dates.endDate = endDate;
-    		  	this.setState(state);
+    		  	if(startDate.isSame(moment(),'day')) {
+    		  		startDate = moment();
+    		  		//set interval to update startDate every X seconds, remove if start date is changed to not be today
+    		  	}
+    		  	if(!state.dates.startDate.isSame(startDate,'day') || !state.dates.endDate.isSame(endDate,'day')) {
+	    		  	state.dates.startDate = startDate;
+	    		  	state.dates.endDate = endDate;
+	    		  	this.setState(state);
+	    		  }
     		  }}
     		  focusedInput= {this.state.datePicker.focus}
     		  onFocusChange={(focusedInput) => {
@@ -110,7 +118,6 @@ class RadarScreen extends Component {
 export default RadarScreen;  
 
 /* known issues
-* on single slice circle, dots will not be placed near top because of (.1,.9) boundry
 * right now: on variable dividing, the rows get cut off at 20% of radius
 * future: 
 	* should figure out how many dots are in view

@@ -19,12 +19,14 @@ class SpinLine extends Component {
 			state.angle = this.state.angle + step;
 			if(this.state.angle > 360)
 				state.angle = 0;
+			this.props.setLineAngle(state.angle);
 			this.setState(state);
 		},interval)
 	}
 
 	
 	render() {
+		if(!this.props.show) return null;
 
 		let edge = util.polarToCartesian(this.props.center.x, this.props.center.y, this.props.radius, this.state.angle)
 		return (

@@ -20,6 +20,7 @@ import { MdExitToApp } from 'react-icons/md';
 import { MdHelp} from 'react-icons/md';
 
 import RadarScreen from './RadarScreen.js'
+import fakeData from './fakeData.js'
 
 import './App.css';
 
@@ -129,15 +130,10 @@ class App extends Component {
                 <MdMenu onClick={() => this.onSetSidebarOpen(true)}/>
               </IconContext.Provider>
             </div>
-            <div className="radar-screen">
-              <RadarScreen show={this.state.screens.home.show}
-                subjects={[{color:'navy',
-                  assignments:[{type:'Assignment', dueDate:moment().add(3,'days')}]},
-                  {color:'maroon',assignments:[{type:'Assignment',
-                    dueDate:moment().add(1,'days')}]}]}
-                    dates={{today:this.state.startDate, end:this.state.endDate}}
-                    view={{x:100,y:100,height:window.innerHeight,width:window.innerWidth}}/>
-            </div>
+            <RadarScreen show={this.state.screens.home.show} 
+            subjects={fakeData.subjects} 
+            dates={{today:this.state.startDate, end:this.state.endDate}} 
+            view={{height:window.innerHeight,width:window.innerWidth, colors:fakeData.colors}}/>
           </Sidebar>
         </div>
       </div>

@@ -45,10 +45,12 @@ class Dots extends Component {
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
 		if(!dot.r) dot.r = this.view.dots.radius;
 		
-		return <Dot center={point} radius={dot.r} fill={dot.color} 
+		return <Dot id={point.x+'///'+point.y} center={point} radius={dot.r} fill={dot.color} 
 		onMouseDown={this.onMouseDownDot.bind(this)} 
 		dot={dot}
 		setRestartOpacityFunction={this.setRestartOpacityFunction.bind(this)}
+		intersectsLine={this.props.intersectsLine}
+		animateFades={false}
 		/>
 	}
 
@@ -68,7 +70,7 @@ class Dots extends Component {
 				let assignment = subjects[i].assignments[j];
 				let distanceFromCenter = this.props.getDistanceFromCenter(assignment);
 				if(distanceFromCenter <= -1) continue;
-				if(distanceFromCenter < -1) continue;
+				if(distanceFromCenter < -2) continue;
 				let color = this.props.view.colors.typeColors[assignment.type.toLowerCase().replace(" ",'')];
 				if(!color)
 					color = 'white';
@@ -200,21 +202,20 @@ class Dots extends Component {
 	onClickDot(e) {
 		let dotsGroup = document.getElementById('dotsGroup');
 		dotsGroup.insertBefore(e.target,null);
-		//this.openDotViewer(e.target,dotViewer);
-		let dotViewer = document.getElementById('dotViewer');
-		dotsGroup.insertBefore(dotViewer,null);
-		let state = this.state;
-		state.clickedDot = {
+		//move dot viewer to radar so it can sit on top
+		//let dotViewer = document.getElementById('dotViewer');
+		//dotsGroup.insertBefore(dotViewer,null);
+		//let state = this.state;
+		this.props.setClickedDot({
 			x:e.target.getAttribute('cx'),
 			y:e.target.getAttribute('cy'),
 			fill:e.target.getAttribute('fill'),
-		}
-		this.setState(state);
+			id:e.target.id
+		})
+		//this.setState(state);
 	}
 
 	onMouseDownDot(e) {
-		console.log('down');
-		this.closeDotViewer();
 		this.draggedDot = {
 			dot:e.target, 
 			moved:false, 
@@ -229,6 +230,7 @@ class Dots extends Component {
 
 	}
 
+	//Give moved dot its on class and put it above like dotViewer. Will solve blinking problem too
 	onMouseMoveDot(e) {
 		this.draggedDot.moved = true;
 		let dotsGroup = document.getElementById('dotsGroup');
@@ -236,7 +238,8 @@ class Dots extends Component {
 		let offsetY = dotsGroup.getBoundingClientRect().top;
 		let offsetX = dotsGroup.getBoundingClientRect().left;
 		
-		//onScroll change the dotsGroup x,y to the current ViewPorts X and Y on the Page
+
+		console.log(e.clientY +'-'+ offsetY);
 		this.draggedDot.dot.setAttribute('cx',e.clientX-offsetX)
 		this.draggedDot.dot.setAttribute('cy',e.clientY-offsetY)
 		this.draggedDot.dot.setAttribute('r',this.view.dots.radius*1.5);
@@ -269,11 +272,11 @@ class Dots extends Component {
 		})
 	}
 
-	closeDotViewer() {
+	/*closeDotViewer() {
 		let state = this.state;
 		state.clickedDot = null;
 		this.setState(state);
-	}
+	}*/
 
 
 	render() {
@@ -290,9 +293,8 @@ class Dots extends Component {
 		}
 
 		return (
-			<svg x={0} y={0} width={this.state.width} height={this.state.height} id="dotsGroup" stroke="black" strokeWidth="2">
+			<svg id="dotsGroup" width={this.state.width} height={this.state.height} stroke="black" strokeWidth="2">
 				{this.dotsElems}
-				<DotViewer width={this.props.dims.dotViewer.width} height={this.props.dims.dotViewer.height} dot={this.state.clickedDot} closeDotViewer={this.closeDotViewer.bind(this)}/>
 			</svg>
 
 		)

@@ -4,6 +4,7 @@ import moment from 'moment'
 import Dots from './Dots.js'
 import util from './utils.js'
 import SpinLine from './SpinLine.js'
+import DotViewer from './DotViewer.js'
 
 
 
@@ -37,6 +38,8 @@ class Radar extends Component {
             this.fillRings();
             this.fillComponents();            
         }
+
+
     }
 
 	verifyAndDefaultSubjects(state,props) {
@@ -171,10 +174,8 @@ class Radar extends Component {
 		let percent = this.scaleTimeToPercent(date);
 		let minPercent = 1.8*this.state.view.dotRadiusPercent;
 		if(percent <= 0) return -1;
-		if(percent > 1) return this.view.radar.radius+1;
+		if(percent > 1) return -2;
 		let distance = (minPercent*this.view.radar.radius) + percent*(1-minPercent)*this.view.radar.radius;
-		if(distance < 0) return -1;
-		if(distance > this.view.radar.radius) return -2;
 		return distance;
 	}
 
@@ -248,7 +249,14 @@ class Radar extends Component {
 		this.setState(state);
 	}
 
-	
+	setLineAngle(angle) {this.lineAngle = angle}
+
+	intersectsLine(dot,id) {
+		let angle = dot.startAngle + dot.angle;
+		return Math.abs(this.lineAngle - angle) < 1;
+	}
+
+	setClickedDot(dot) {this.setState({clickedDot:dot})}
 
 	render() {
 		
@@ -263,7 +271,7 @@ class Radar extends Component {
 
 
     return (
-    	<svg width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}>
+    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}>
 	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 		  		{this.state.sliceComponents}
 		  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
@@ -273,10 +281,13 @@ class Radar extends Component {
 				getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
 				view={this.state.view} dims={this.view} //bad
 				intersectFunctions={intersectFuncs}
+				intersectsLine={this.intersectsLine.bind(this)}
+				setClickedDot={this.setClickedDot.bind(this)}
 				/>
-	      	{/*<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
-				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={3}/>
-			</svg>*/}
+	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
+				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
+			</svg>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 		</svg>
     )
   }
