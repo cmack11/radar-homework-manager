@@ -49,14 +49,22 @@ class RadarScreen extends Component {
     }
 
     componentDidMount() {
-    	this.setRadarDimensions(this.state);
+    	this.updateWindowDimensions();
 		window.addEventListener('resize', this.updateWindowDimensions.bind(this));
     }
 
     updateWindowDimensions() {
+    	let e = document.getElementById('dotsGroup');
+    	let yOffset = 0, xOffset = 0;
+
+    	if(e) {
+    		let rect = e.getBoundingClientRect();
+    		yOffset = rect.top;
+    		xOffset = rect.left;
+    	} 
 		let state = this.state;
-		state.view.width = window.innerWidth;
-		state.view.height = window.innerHeight;
+		state.view.width = window.innerWidth - xOffset;
+		state.view.height = window.innerHeight - yOffset;
 		this.setRadarDimensions(state);
 	}
 

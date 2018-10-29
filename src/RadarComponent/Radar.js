@@ -294,7 +294,7 @@ class Radar extends Component {
 				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 			</svg>
 			<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
-			<DraggedDot dot={this.state.draggedDot}/>
+			<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5}/>
 		</svg>
     )
   }

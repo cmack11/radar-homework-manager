@@ -46,10 +46,10 @@ class DraggedDot extends Component {
 
 	render() {
 
-		if(!this.props.dot || this.state.point.x < 0 || this.state.point.y < 0) return null;
+		if(!this.props.dot || this.state.point.x < 0 || this.state.point.y < 0 || this.props.radius < 0) return null;
 
 		return (
-			<Dot center={this.state.point} radius={40} fill={this.state.fill} 
+			<Dot center={this.state.point} radius={this.props.radius} fill={this.state.fill} 
 				animateFades={false} />
 		)
 	}

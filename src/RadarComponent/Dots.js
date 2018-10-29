@@ -50,7 +50,7 @@ class Dots extends Component {
 		dot={dot}
 		setRestartOpacityFunction={this.setRestartOpacityFunction.bind(this)}
 		intersectsLine={this.props.intersectsLine}
-		animateFades={false}
+		animateFades={true}
 		/>
 	}
 
