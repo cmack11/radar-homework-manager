@@ -84,7 +84,6 @@ class Dot extends Component {
 		if(!this.props.center || this.props.center.x < 0 || this.props.center.y < 0 || this.props.radius < 0)
 			return null;
 
-
 		return (
 			<circle id={this.getId()} cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
 				 draggable={true} opacity={this.state.opacity} 

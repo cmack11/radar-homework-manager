@@ -5,6 +5,7 @@ import Dots from './Dots.js'
 import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
+import DraggedDot from './DraggedDot.js'
 
 
 
@@ -258,6 +259,10 @@ class Radar extends Component {
 
 	setClickedDot(dot) {this.setState({clickedDot:dot})}
 
+	setDraggedDot(dot) {
+		this.setState({draggedDot:dot})
+	}
+
 	render() {
 		
 		let intersectFuncs = [{
@@ -271,7 +276,7 @@ class Radar extends Component {
 
 
     return (
-    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}>
+    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 		  		{this.state.sliceComponents}
 		  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
@@ -283,11 +288,13 @@ class Radar extends Component {
 				intersectFunctions={intersectFuncs}
 				intersectsLine={this.intersectsLine.bind(this)}
 				setClickedDot={this.setClickedDot.bind(this)}
+				setDraggedDot={this.setDraggedDot.bind(this)}
 				/>
 	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 			</svg>
 			<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
+			<DraggedDot dot={this.state.draggedDot}/>
 		</svg>
     )
   }

@@ -219,44 +219,39 @@ class Dots extends Component {
 		this.draggedDot = {
 			dot:e.target, 
 			moved:false, 
-			mousemove:this.onMouseMoveDot.bind(this), 
+			mousemove:this.onMouseMoveDot.bind(this),
 			mouseup:this.onMouseUpDot.bind(this),
 			onclick:this.onClickDot.bind(this),
 			original:{cx:e.target.getAttribute('cx'), cy:e.target.getAttribute('cy')}
 		};
-		window.addEventListener('mousemove', this.draggedDot.mousemove);
+		this.props.setDraggedDot(this.draggedDot)
 		window.addEventListener('mouseup',this.draggedDot.mouseup);
+		window.addEventListener('mousemove',this.draggedDot.mousemove);
 
 
 	}
 
-	//Give moved dot its on class and put it above like dotViewer. Will solve blinking problem too
 	onMouseMoveDot(e) {
 		this.draggedDot.moved = true;
-		let dotsGroup = document.getElementById('dotsGroup');
-		dotsGroup.insertBefore(this.draggedDot.dot,null);
-		let offsetY = dotsGroup.getBoundingClientRect().top;
-		let offsetX = dotsGroup.getBoundingClientRect().left;
-		
-
-		console.log(e.clientY +'-'+ offsetY);
-		this.draggedDot.dot.setAttribute('cx',e.clientX-offsetX)
-		this.draggedDot.dot.setAttribute('cy',e.clientY-offsetY)
-		this.draggedDot.dot.setAttribute('r',this.view.dots.radius*1.5);
+		this.draggedDot.dot.setAttribute('visibility','hidden');
+		window.removeEventListener('mousemove',this.draggedDot.mousemove)
 	}
 
 	onMouseUpDot(e) {
-		window.removeEventListener('mousemove',this.draggedDot.mousemove);
+		this.props.setDraggedDot(null)
+
 		window.removeEventListener('mouseup',this.draggedDot.mouseup);
-		this.draggedDot.dot.setAttribute('r',this.view.dots.radius);
+		//Doesn't work anymore, needs to be converted to work in DraggedDot component
 		if(this.draggedDot.moved) {
 			this.checkIntersectFunctions(this.draggedDot.dot.getAttribute('cx'),this.draggedDot.dot.getAttribute('cy'));
 		}
-		this.draggedDot.dot.setAttribute('cx',this.draggedDot.original.cx);
-		this.draggedDot.dot.setAttribute('cy',this.draggedDot.original.cy);
-		if(!this.draggedDot.moved) {
+
+		if(this.draggedDot.moved) {
+			this.draggedDot.dot.setAttribute('visibility','visible');
+		} else {
+			window.removeEventListener('mousemove',this.draggedDot.mousemove)
 			this.onClickDot(e);
-		} 
+		}
 		this.draggedDot = null;
 	}
 

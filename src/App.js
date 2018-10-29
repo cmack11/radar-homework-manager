@@ -131,9 +131,9 @@ class App extends Component {
               </IconContext.Provider>
             </div>
             <RadarScreen show={this.state.screens.home.show} 
-            subjects={fakeData.subjects} 
-            dates={{today:this.state.startDate, end:this.state.endDate}} 
-            view={{height:window.innerHeight,width:window.innerWidth, colors:fakeData.colors}}/>
+              subjects={fakeData.subjects} 
+              dates={{today:this.state.startDate, end:this.state.endDate}} 
+              view={{height:window.innerHeight,width:window.innerWidth, colors:fakeData.colors}}/>
           </Sidebar>
         </div>
       </div>
