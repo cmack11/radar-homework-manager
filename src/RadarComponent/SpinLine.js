@@ -14,7 +14,7 @@ class SpinLine extends Component {
 		let interval  = 50;
 		let rpm = this.props.rpm;
 		let step = rpm * (360 / (60000 / interval));
-		setInterval(() => {
+		this.spinInterval = setInterval(() => {
 			let state = this.state;
 			state.angle = this.state.angle + step;
 			if(this.state.angle > 360)
@@ -22,6 +22,10 @@ class SpinLine extends Component {
 			this.props.setLineAngle(state.angle);
 			this.setState(state);
 		},interval)
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.spinInterval);
 	}
 
 	

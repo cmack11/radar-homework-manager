@@ -19,7 +19,6 @@ class RadarScreen extends Component {
 				endDate:moment().add(7,'days')
 			},
 			datePicker:{
-				focus:''
 			},
 			view:{
 				x:props.view.x,
@@ -51,6 +50,12 @@ class RadarScreen extends Component {
     componentDidMount() {
     	this.updateWindowDimensions();
 		window.addEventListener('resize', this.updateWindowDimensions.bind(this));
+		this.startUpdateInterval();
+    }
+
+    componentWillUnmount() {
+    	if(this.dateUpdateInterval)
+    		clearInterval(this.dateUpdateInterval);
     }
 
     updateWindowDimensions() {
@@ -69,7 +74,7 @@ class RadarScreen extends Component {
 	}
 
 	setRadarDimensions(state) {
-		let rWidth = .85 * Math.min(state.view.width,state.view.height);
+		let rWidth = .9 * Math.min(state.view.width,state.view.height);
 		state.radarView = {
 			x:(state.view.width-rWidth) / 2,
 			y:(state.view.height-rWidth) / 2,
@@ -82,6 +87,23 @@ class RadarScreen extends Component {
 			colors:state.radarView.colors
 		}
 		this.setState(state);
+	}
+
+	startUpdateInterval() {
+		if(this.dateUpdateInterval) return;
+		this.dateUpdateInterval = setInterval(() => {
+			let difference = this.state.dates.endDate.valueOf() - this.state.dates.startDate.valueOf();
+			console.log(difference);
+			let state = this.state;
+			state.dates.startDate = moment();
+			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
+			this.setState(state);
+		},10000000)
+	}
+
+	endUpdateInterval() {
+		if(!this.dateUpdateInterval) return;
+		clearInterval(this.dateUpdateInterval);
 	}
 
 	
@@ -100,7 +122,9 @@ class RadarScreen extends Component {
     		  	let state = this.state;
     		  	if(startDate.isSame(moment(),'day')) {
     		  		startDate = moment();
-    		  		//set interval to update startDate every X seconds, remove if start date is changed to not be today
+    		  		this.startUpdateInterval();
+    		  	} else {
+    		  		this.endUpdateInterval();
     		  	}
     		  	if(!state.dates.startDate.isSame(startDate,'day') || !state.dates.endDate.isSame(endDate,'day')) {
 	    		  	state.dates.startDate = startDate;
