@@ -68,7 +68,7 @@ class Radar extends Component {
 			state.view.y = 0;
 		if(!state.view.width)
 			state.view.width = 250;
-		if(!state.view.width)
+		if(!state.view.height)
 			state.view.height = state.view.width;
 		if(!state.view.dotRadiusPercent)
 			state.view.dotRadiusPercent = .07;
@@ -122,18 +122,9 @@ class Radar extends Component {
 	}
 
 	componentDidMount() {
-		this.updateDimensions();
-		window.addEventListener('resize', this.updateDimensions.bind(this));
 		this.fillDimensions();
 		this.fillRings();
 		this.fillComponents();
-	}
-
-	updateDimensions() {
-		let state = this.state;
-		state.windowWidth = window.innerWidth;
-		state.windowHeight = window.innerHeight;
-		this.setState(state);
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {

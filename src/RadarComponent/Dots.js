@@ -10,7 +10,6 @@ class Dots extends Component {
 
 	constructor(props) {
 		super();
-
 		let state = {
 			width:window.innerWidth,
 			height:window.innerHeight,
@@ -21,9 +20,16 @@ class Dots extends Component {
 
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.view.dotsView.width != this.state.width)
+			this.setState({width:nextProps.view.dotsView.width})
+		
+		if(nextProps.view.dotsView.height != this.state.height)
+			this.setState({height:nextProps.view.dotsView.height})
+	}
+
 	componentDidMount() {
-		this.updateDimensions();
-		window.addEventListener('resize', this.updateDimensions.bind(this));
+		//window.addEventListener('resize', this.updateDimensions.bind(this));
 		/*setInterval(() => {
 			for(let i = 0; this.dotsObjs && i < this.dotsObjs.length; i++)
 				for(let j = 0; j < this.dotsObjs[i].length; j++)
@@ -31,12 +37,7 @@ class Dots extends Component {
 		},4000)	*/
 	}
 
-	updateDimensions() {
-		let state = this.state;
-		state.width = window.innerWidth;
-		state.height = window.innerHeight;
-		this.setState(state);
-	}
+	
 
 	//Make Dot Componenent so it can do its own opacity management
 	makeDot(dot) {

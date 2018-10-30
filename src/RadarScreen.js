@@ -59,16 +59,15 @@ class RadarScreen extends Component {
     }
 
     updateWindowDimensions() {
-    	let e = document.getElementById('dotsGroup');
-    	let yOffset = 0, xOffset = 0;
+    	let e = document.getElementById('radar');
+    	let yOffset = 0;
 
     	if(e) {
     		let rect = e.getBoundingClientRect();
     		yOffset = rect.top;
-    		xOffset = rect.left;
     	} 
 		let state = this.state;
-		state.view.width = window.innerWidth - xOffset;
+		state.view.width = window.innerWidth;
 		state.view.height = window.innerHeight - yOffset;
 		this.setRadarDimensions(state);
 	}
@@ -93,12 +92,11 @@ class RadarScreen extends Component {
 		if(this.dateUpdateInterval) return;
 		this.dateUpdateInterval = setInterval(() => {
 			let difference = this.state.dates.endDate.valueOf() - this.state.dates.startDate.valueOf();
-			console.log(difference);
 			let state = this.state;
 			state.dates.startDate = moment();
 			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
 			this.setState(state);
-		},10000000)
+		},10000)
 	}
 
 	endUpdateInterval() {
@@ -112,7 +110,7 @@ class RadarScreen extends Component {
 	if(!this.props.show) return null;
 
     return (
-    	<div className='radar-screen'>
+    	<div id= 'radarScreen' className='radar-screen'>
     		<DateRangePicker
     		  startDate={this.state.dates.startDate}
     		  startDateId="StartDate"

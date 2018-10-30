@@ -33,6 +33,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "css-loader": "^1.0.0"
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.1.1"
   }
 }
