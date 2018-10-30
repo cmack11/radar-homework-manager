@@ -4,6 +4,8 @@ import moment from 'moment'
 import Dots from './Dots.js'
 import util from './utils.js'
 import SpinLine from './SpinLine.js'
+import DotViewer from './DotViewer.js'
+import DraggedDot from './DraggedDot.js'
 
 
 
@@ -37,6 +39,8 @@ class Radar extends Component {
             this.fillRings();
             this.fillComponents();            
         }
+
+
     }
 
 	verifyAndDefaultSubjects(state,props) {
@@ -64,7 +68,7 @@ class Radar extends Component {
 			state.view.y = 0;
 		if(!state.view.width)
 			state.view.width = 250;
-		if(!state.view.width)
+		if(!state.view.height)
 			state.view.height = state.view.width;
 		if(!state.view.dotRadiusPercent)
 			state.view.dotRadiusPercent = .07;
@@ -118,18 +122,9 @@ class Radar extends Component {
 	}
 
 	componentDidMount() {
-		this.updateDimensions();
-		window.addEventListener('resize', this.updateDimensions.bind(this));
 		this.fillDimensions();
 		this.fillRings();
 		this.fillComponents();
-	}
-
-	updateDimensions() {
-		let state = this.state;
-		state.windowWidth = window.innerWidth;
-		state.windowHeight = window.innerHeight;
-		this.setState(state);
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {
@@ -171,10 +166,8 @@ class Radar extends Component {
 		let percent = this.scaleTimeToPercent(date);
 		let minPercent = 1.8*this.state.view.dotRadiusPercent;
 		if(percent <= 0) return -1;
-		if(percent > 1) return this.view.radar.radius+1;
+		if(percent > 1) return -2;
 		let distance = (minPercent*this.view.radar.radius) + percent*(1-minPercent)*this.view.radar.radius;
-		if(distance < 0) return -1;
-		if(distance > this.view.radar.radius) return -2;
 		return distance;
 	}
 
@@ -248,7 +241,18 @@ class Radar extends Component {
 		this.setState(state);
 	}
 
-	
+	setLineAngle(angle) {this.lineAngle = angle}
+
+	intersectsLine(dot,id) {
+		let angle = dot.startAngle + dot.angle;
+		return Math.abs(this.lineAngle - angle) < 1;
+	}
+
+	setClickedDot(dot) {this.setState({clickedDot:dot})}
+
+	setDraggedDot(dot) {
+		this.setState({draggedDot:dot})
+	}
 
 	render() {
 		
@@ -263,7 +267,7 @@ class Radar extends Component {
 
 
     return (
-    	<svg width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}>
+    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 		  		{this.state.sliceComponents}
 		  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
@@ -273,10 +277,15 @@ class Radar extends Component {
 				getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
 				view={this.state.view} dims={this.view} //bad
 				intersectFunctions={intersectFuncs}
+				intersectsLine={this.intersectsLine.bind(this)}
+				setClickedDot={this.setClickedDot.bind(this)}
+				setDraggedDot={this.setDraggedDot.bind(this)}
 				/>
-	      	{/*<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
-				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={3}/>
-			</svg>*/}
+	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
+				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
+			</svg>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
+			<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5}/>
 		</svg>
     )
   }

@@ -10,7 +10,6 @@ class Dots extends Component {
 
 	constructor(props) {
 		super();
-
 		let state = {
 			width:window.innerWidth,
 			height:window.innerHeight,
@@ -21,9 +20,16 @@ class Dots extends Component {
 
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.view.dotsView.width != this.state.width)
+			this.setState({width:nextProps.view.dotsView.width})
+		
+		if(nextProps.view.dotsView.height != this.state.height)
+			this.setState({height:nextProps.view.dotsView.height})
+	}
+
 	componentDidMount() {
-		this.updateDimensions();
-		window.addEventListener('resize', this.updateDimensions.bind(this));
+		//window.addEventListener('resize', this.updateDimensions.bind(this));
 		/*setInterval(() => {
 			for(let i = 0; this.dotsObjs && i < this.dotsObjs.length; i++)
 				for(let j = 0; j < this.dotsObjs[i].length; j++)
@@ -31,12 +37,7 @@ class Dots extends Component {
 		},4000)	*/
 	}
 
-	updateDimensions() {
-		let state = this.state;
-		state.width = window.innerWidth;
-		state.height = window.innerHeight;
-		this.setState(state);
-	}
+	
 
 	//Make Dot Componenent so it can do its own opacity management
 	makeDot(dot) {
@@ -45,10 +46,12 @@ class Dots extends Component {
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
 		if(!dot.r) dot.r = this.view.dots.radius;
 		
-		return <Dot center={point} radius={dot.r} fill={dot.color} 
+		return <Dot id={point.x+'///'+point.y} center={point} radius={dot.r} fill={dot.color} 
 		onMouseDown={this.onMouseDownDot.bind(this)} 
 		dot={dot}
 		setRestartOpacityFunction={this.setRestartOpacityFunction.bind(this)}
+		intersectsLine={this.props.intersectsLine}
+		animateFades={true}
 		/>
 	}
 
@@ -68,7 +71,7 @@ class Dots extends Component {
 				let assignment = subjects[i].assignments[j];
 				let distanceFromCenter = this.props.getDistanceFromCenter(assignment);
 				if(distanceFromCenter <= -1) continue;
-				if(distanceFromCenter < -1) continue;
+				if(distanceFromCenter < -2) continue;
 				let color = this.props.view.colors.typeColors[assignment.type.toLowerCase().replace(" ",'')];
 				if(!color)
 					color = 'white';
@@ -200,60 +203,56 @@ class Dots extends Component {
 	onClickDot(e) {
 		let dotsGroup = document.getElementById('dotsGroup');
 		dotsGroup.insertBefore(e.target,null);
-		//this.openDotViewer(e.target,dotViewer);
-		let dotViewer = document.getElementById('dotViewer');
-		dotsGroup.insertBefore(dotViewer,null);
-		let state = this.state;
-		state.clickedDot = {
+		//move dot viewer to radar so it can sit on top
+		//let dotViewer = document.getElementById('dotViewer');
+		//dotsGroup.insertBefore(dotViewer,null);
+		//let state = this.state;
+		this.props.setClickedDot({
 			x:e.target.getAttribute('cx'),
 			y:e.target.getAttribute('cy'),
 			fill:e.target.getAttribute('fill'),
-		}
-		this.setState(state);
+			id:e.target.id
+		})
+		//this.setState(state);
 	}
 
 	onMouseDownDot(e) {
-		console.log('down');
-		this.closeDotViewer();
 		this.draggedDot = {
 			dot:e.target, 
 			moved:false, 
-			mousemove:this.onMouseMoveDot.bind(this), 
+			mousemove:this.onMouseMoveDot.bind(this),
 			mouseup:this.onMouseUpDot.bind(this),
 			onclick:this.onClickDot.bind(this),
 			original:{cx:e.target.getAttribute('cx'), cy:e.target.getAttribute('cy')}
 		};
-		window.addEventListener('mousemove', this.draggedDot.mousemove);
+		this.props.setDraggedDot(this.draggedDot)
 		window.addEventListener('mouseup',this.draggedDot.mouseup);
+		window.addEventListener('mousemove',this.draggedDot.mousemove);
 
 
 	}
 
 	onMouseMoveDot(e) {
 		this.draggedDot.moved = true;
-		let dotsGroup = document.getElementById('dotsGroup');
-		dotsGroup.insertBefore(this.draggedDot.dot,null);
-		let offsetY = dotsGroup.getBoundingClientRect().top;
-		let offsetX = dotsGroup.getBoundingClientRect().left;
-		
-		//onScroll change the dotsGroup x,y to the current ViewPorts X and Y on the Page
-		this.draggedDot.dot.setAttribute('cx',e.clientX-offsetX)
-		this.draggedDot.dot.setAttribute('cy',e.clientY-offsetY)
-		this.draggedDot.dot.setAttribute('r',this.view.dots.radius*1.5);
+		this.draggedDot.dot.setAttribute('visibility','hidden');
+		window.removeEventListener('mousemove',this.draggedDot.mousemove)
 	}
 
 	onMouseUpDot(e) {
-		window.removeEventListener('mousemove',this.draggedDot.mousemove);
+		this.props.setDraggedDot(null)
+
 		window.removeEventListener('mouseup',this.draggedDot.mouseup);
-		this.draggedDot.dot.setAttribute('r',this.view.dots.radius);
+		//Doesn't work anymore, needs to be converted to work in DraggedDot component
 		if(this.draggedDot.moved) {
 			this.checkIntersectFunctions(this.draggedDot.dot.getAttribute('cx'),this.draggedDot.dot.getAttribute('cy'));
 		}
-		this.draggedDot.dot.setAttribute('cx',this.draggedDot.original.cx);
-		this.draggedDot.dot.setAttribute('cy',this.draggedDot.original.cy);
-		if(!this.draggedDot.moved) {
+
+		if(this.draggedDot.moved) {
+			this.draggedDot.dot.setAttribute('visibility','visible');
+		} else {
+			window.removeEventListener('mousemove',this.draggedDot.mousemove)
 			this.onClickDot(e);
-		} 
+		}
 		this.draggedDot = null;
 	}
 
@@ -269,11 +268,11 @@ class Dots extends Component {
 		})
 	}
 
-	closeDotViewer() {
+	/*closeDotViewer() {
 		let state = this.state;
 		state.clickedDot = null;
 		this.setState(state);
-	}
+	}*/
 
 
 	render() {
@@ -290,9 +289,8 @@ class Dots extends Component {
 		}
 
 		return (
-			<svg x={0} y={0} width={this.state.width} height={this.state.height} id="dotsGroup" stroke="black" strokeWidth="2">
+			<svg id="dotsGroup" width={this.state.width} height={this.state.height} stroke="black" strokeWidth="2">
 				{this.dotsElems}
-				<DotViewer width={this.props.dims.dotViewer.width} height={this.props.dims.dotViewer.height} dot={this.state.clickedDot} closeDotViewer={this.closeDotViewer.bind(this)}/>
 			</svg>
 
 		)

@@ -1,49 +1,91 @@
 import React, { Component } from 'react';
 //import moment from 'moment'
-import util from './utils.js'
-import DotViewer from './DotViewer.js'
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 class Dot extends Component {
 
 
 	constructor(props) {
 		super();
-
-		this.state = {opacity:1}
+		this.minOpacity = .1;
+		this.opacityStep = .03;
+		this.state = {opacity:this.minOpacity}
 		
 	}
 
-	startFading() {
-		let min = .2
-		let interval = setInterval(() => {
-			let state = this.state;
-			state.opacity = Math.max(min,state.opacity - .01);
-			this.setState(state);
-			if(state.opacity <= min)
-				clearInterval(interval);
-		},10)
+	startFadeOut() {
+		this.fadeOut();
+		this.fOut = setInterval(() => {
+			this.fadeOut();
+			if(this.state.opacity <= this.minOpacity) {
+				clearInterval(this.fOut);
+				this.fOut = null;
+			}
+
+		},400)
+ 	}
+
+	fadeOut() {
+		let opacity = Math.max(this.minOpacity,this.state.opacity - this.opacityStep);
+		this.setState({opacity:opacity});
 	}
 
 	componentDidMount() {
-		this.props.dot.restartFading = this.restartFading.bind(this);
+		if(this.props.dot)
+			this.props.dot.restartFadeOut = this.restartFadeOut.bind(this);
+		if(this.props.animateFades) {
+			this.checkIntersect = setInterval(() => {
+				if(this.props.intersectsLine(this.props.dot,this.getId()))
+					this.startFadeIn();
+			},50)
+		} else {
+			this.setState({opacity:1})
+		}
 	}
 
-	restartFading() {
-		let state = this.state;
-		state.opacity = 1;
-		this.setState(state);
-		this.startFading();
+	componentWillUnmount() {
+		if(this.checkIntersect)
+			clearInterval(this.checkIntersect);
+		if(this.fOut)
+			clearInterval(this.fOut);
+	}
+
+	getId() {
+		return this.props.center.x+'/'+this.props.center.y;
+	}
+
+	startFadeIn() {
+		if(this.fOut) {
+			clearInterval(this.fOut);
+			this.fOut = null;
+		}
+		this.fadeIn();
+		this.startFadeOut();
+		/*let fIn = setInterval(() => {
+			this.fadeIn();
+			if(this.state.opacity >= 1) {
+				this.fadeOut();
+				clearInterval(fIn);
+			}
+		},300)*/
+	}
+
+	fadeIn() {
+			let opacity = 1//Math.min(1,this.state.opacity + (this.opacityStep*50));
+			this.setState({opacity:opacity});
+	}
+
+	restartFadeOut() {
+		this.fadeOut();
 	}
 
 
 	render() {
-
-		
-
+		if(!this.props.center || this.props.center.x < 0 || this.props.center.y < 0 || this.props.radius < 0)
+			return null;
 
 		return (
-			<circle cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
+			<circle id={this.getId()} cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
 				 draggable={true} opacity={this.state.opacity} 
 				 onMouseDown={this.props.onMouseDown}
 				 />
