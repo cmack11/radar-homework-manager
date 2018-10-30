@@ -137,8 +137,14 @@ class RadarScreen extends Component {
     		  	this.setState(state);
     		  }}
     		/>
-
-    		<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView}/>
+    		<div>
+	    		{/*<div style={{position:'absolute',bottom:10,right:10}} id='button'>
+		    		<svg width={.15*Math.min(this.state.view.width,this.state.view.height)} height={.15*Math.min(this.state.view.width,this.state.view.height)}>
+		    			<circle cx={.15*Math.min(this.state.view.width,this.state.view.height)/2} cy={.15*Math.min(this.state.view.width,this.state.view.height)/2} r={.15*Math.min(this.state.view.width,this.state.view.height)/2} fill={'green'}/>
+		    		</svg>
+	    		</div>*/}
+    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView}/>
+    		</div>
     	</div>
     )
   }

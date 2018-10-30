@@ -267,26 +267,28 @@ class Radar extends Component {
 
 
     return (
-    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
-	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
-		  		{this.state.sliceComponents}
-		  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
-		  		{this.state.rings}
+    	<div id='radardiv' style={{position:'absolute'}}>
+	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
+		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
+			  		{this.state.sliceComponents}
+			  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
+			  		{this.state.rings}
+				</svg>
+				<Dots subjects={this.state.subjects} 
+					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
+					view={this.state.view} dims={this.view} //bad
+					intersectFunctions={intersectFuncs}
+					intersectsLine={this.intersectsLine.bind(this)}
+					setClickedDot={this.setClickedDot.bind(this)}
+					setDraggedDot={this.setDraggedDot.bind(this)}
+					/>
+		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
+					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
+				</svg>
+				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
+				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5}/>
 			</svg>
-			<Dots subjects={this.state.subjects} 
-				getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
-				view={this.state.view} dims={this.view} //bad
-				intersectFunctions={intersectFuncs}
-				intersectsLine={this.intersectsLine.bind(this)}
-				setClickedDot={this.setClickedDot.bind(this)}
-				setDraggedDot={this.setDraggedDot.bind(this)}
-				/>
-	      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
-				<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
-			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
-			<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5}/>
-		</svg>
+		</div>
     )
   }
 }
