@@ -1,10 +1,12 @@
 import React from 'react';
 import './index.css';
 
-class SubjectForm extends React.Component {
+class TaskForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {subjectName: '', subjectDesc: '', defaultTaskType: 'Assignment', };
+
+    this.props = {defaultTaskType: 'Assignment', subject: ''};
+    this.state = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +23,7 @@ class SubjectForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Subject was Submitted: ' + this.state.subjectName);
+    alert('The following Task was Submitted: ' + this.state.taskName);
     //TODO: This is where the code needs to hook into Redux
     event.preventDefault();
   }
@@ -30,23 +32,28 @@ class SubjectForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Subject Name:
-          <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
+          Task Name:
+          <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Subject Description:
-          <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
+          Task Description:
+          <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
         </label>
         <br />
         <label>
-          Default Task Type:
-          <select name="defaultTaskType" onChange={this.handleChange}>
+          Task Type:
+          <select name="taskType" onChange={this.handleChange}>
             <option value="Assignment">Assignment</option>
             <option value="Exam">Exam</option>
             <option value="ProblemSet">Problem Set</option>
             <option value="Reading">Reading</option>
           </select>
+        </label>
+        <br />
+        <label>
+          Task Due Date:
+          <input name="taskDueDate" type="text" placeholder = "MM/DD/YYYY" value={this.state.taskDueDate} onChange={this.handleChange} />
         </label>
         <br />
         <input type="submit" value="Submit" />
@@ -55,4 +62,4 @@ class SubjectForm extends React.Component {
   }
 }
 
-export default SubjectForm;
+export default TaskForm;
