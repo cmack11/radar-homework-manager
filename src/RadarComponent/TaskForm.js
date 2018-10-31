@@ -22,7 +22,7 @@ class TaskForm extends React.Component {
     super(props);
 
     this.props = {defaultTaskType: 'Assignment', subject: 'NEEDS SUBJECT'};
-    this.state = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, };
+    this.state = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, subject: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,6 +52,11 @@ class TaskForm extends React.Component {
         <label>
           Task Name:
           <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          Subject:
+          <input name="subject" type="text" value={this.state.subject} onChange={this.handleChange} />
         </label>
         <br />
         <label>

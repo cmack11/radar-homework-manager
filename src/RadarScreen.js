@@ -150,7 +150,7 @@ class RadarScreen extends Component {
 		    		</div>
 	    		</div>
 	    		<div style={{position:'absolute',bottom:170,right:20}} id='subjectButton'>
-		    		<svg width={320} height={135}>
+		    		<svg width={320} height={155}>
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
