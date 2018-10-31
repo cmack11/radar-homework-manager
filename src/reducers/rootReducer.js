@@ -2,8 +2,10 @@
 import { combineReducers } from 'redux';
 import sampleReducer from './sampleReducer';
 import userReducer from './userReducer';
+import assignmentReducer from './assignmentReducer';
 
 export default combineReducers({
  sample: sampleReducer,
- user : userReducer
+ user : userReducer,
+ assignment : assignmentReducer
 });

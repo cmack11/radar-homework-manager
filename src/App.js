@@ -25,7 +25,6 @@ import fakeData from './fakeData.js'
 
 import './App.css';
 
-/* usage : this.props.functionName*/
 const mapDispatchToProps = dispatch => ({
  sampleAction: () => dispatch(sampleAction()),
  initializeUser: () => dispatch(initializeUser()),

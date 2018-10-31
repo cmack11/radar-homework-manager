@@ -1,4 +1,20 @@
 import React from 'react';
+import { retrieveAssignments  } from './actions/assignmentAction.js';
+import { connect } from 'react-redux';
+
+const mapDispatchToProps = dispatch => ({
+ retrieveAssignments: () => dispatch(retrieveAssignments(data))
+})
+
+const mapStateToProps = state => {
+    console.log("Map :"+ JSON.stringify(state));
+    return {
+      payload: {
+        name: this.props.subject,
+        color:"", /* fix this */
+        assignments:[],
+    }
+  }
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -23,7 +39,7 @@ class TaskForm extends React.Component {
 
   handleSubmit(event) {
     alert('The following Task was submitted: ' + this.state.taskName);
-    //TODO: This is where the code needs to hook into Redux
+    this.props.retrieveAssignments(this.state.taskName);
     event.preventDefault();
   }
 
@@ -63,4 +79,4 @@ class TaskForm extends React.Component {
   }
 }
 
-export default TaskForm;
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
