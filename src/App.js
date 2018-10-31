@@ -8,7 +8,8 @@ import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import './_datepicker.css';
 import moment from 'moment';
-import { Router, Route, Switch } from 'react-router'
+import { Router, Route, Switch } from 'react-router';
+import {axios} from 'axios';
 
 import { IconContext } from 'react-icons';
 import logo from './logo.svg';
@@ -24,7 +25,7 @@ import fakeData from './fakeData.js'
 
 import './App.css';
 
-
+/* usage : this.props.functionName*/
 const mapDispatchToProps = dispatch => ({
  sampleAction: () => dispatch(sampleAction()),
  initializeUser: () => dispatch(initializeUser()),
@@ -78,6 +79,7 @@ class App extends Component {
   onFocusChanged = () => {
     /* to be added */
   }
+
   render() {
 
     return (
@@ -113,7 +115,7 @@ class App extends Component {
                   </IconContext.Provider>
                   <p>Help</p>
                 </div>
-                <div className="menu-item">
+                <div className="menu-item" onClick={() => this.props.resetUser()}>
                   <IconContext.Provider value={{size:20, style: { padding: 17 }}}>
                     <MdExitToApp />
                   </IconContext.Provider>
@@ -130,9 +132,9 @@ class App extends Component {
                 <MdMenu onClick={() => this.onSetSidebarOpen(true)}/>
               </IconContext.Provider>
             </div>
-            <RadarScreen show={this.state.screens.home.show} 
-              subjects={fakeData.subjects} 
-              dates={{today:this.state.startDate, end:this.state.endDate}} 
+            <RadarScreen show={this.state.screens.home.show}
+              subjects={fakeData.subjects}
+              dates={{today:this.state.startDate, end:this.state.endDate}}
               view={{height:window.innerHeight,width:window.innerWidth, colors:fakeData.colors}}/>
           </Sidebar>
         </div>
