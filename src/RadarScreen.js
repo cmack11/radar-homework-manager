@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment'
 import Radar from './RadarComponent/Radar.js'
 import { DateRangePicker } from 'react-dates';
+import SubjectForm from './RadarComponent/SubjectForm.js'
 
 
 
@@ -138,12 +139,15 @@ class RadarScreen extends Component {
     		  }}
     		/>
     		<div>
-	    		{/*<div style={{position:'absolute',bottom:10,right:10}} id='button'>
-		    		<svg width={.15*Math.min(this.state.view.width,this.state.view.height)} height={.15*Math.min(this.state.view.width,this.state.view.height)}>
-		    			<circle cx={.15*Math.min(this.state.view.width,this.state.view.height)/2} cy={.15*Math.min(this.state.view.width,this.state.view.height)/2} r={.15*Math.min(this.state.view.width,this.state.view.height)/2} fill={'green'}/>
-		    		</svg>
-	    		</div>*/}
     			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView}/>
+	    		{/*<div style={{position:'absolute',bottom:50,right:100}} id='button'>
+		    		<svg width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}>
+		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'green'}/>
+		    		</svg>
+		    		<div style={{position:'absolute',bottom:200,right:150}}>
+		    			<SubjectForm />
+		    		</div>
+	    		</div>*/}
     		</div>
     	</div>
     )
