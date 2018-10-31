@@ -22,7 +22,7 @@ class TaskForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Task was Submitted: ' + this.state.taskName);
+    alert('The following Task was submitted: ' + this.state.taskName);
     //TODO: This is where the code needs to hook into Redux
     event.preventDefault();
   }

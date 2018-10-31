@@ -20,7 +20,7 @@ class SubjectForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Subject was Submitted: ' + this.state.subjectName);
+    alert('The following Subject was submitted: ' + this.state.subjectName);
     //TODO: This is where the code needs to hook into Redux
     event.preventDefault();
   }
