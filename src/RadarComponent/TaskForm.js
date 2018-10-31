@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 
 class TaskForm extends React.Component {
   constructor(props) {
