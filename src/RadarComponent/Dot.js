@@ -35,8 +35,9 @@ class Dot extends Component {
 			this.props.dot.restartFadeOut = this.restartFadeOut.bind(this);
 		if(this.props.animateFades) {
 			this.checkIntersect = setInterval(() => {
-				if(this.props.intersectsLine(this.props.dot,this.getId()))
+				if(this.props.intersectsLine(this.props.dot,this.getId())){
 					this.startFadeIn();
+				}
 			},50)
 		} else {
 			this.setState({opacity:1})
