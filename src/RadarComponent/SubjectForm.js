@@ -1,4 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { retrieveAssignments } from '../actions/assignmentAction.js';
+
+const mapDispatchToProps = dispatch => ({
+ retrieveAssignments: () => dispatch(retrieveAssignments())
+})
+
+const mapStateToProps = state => {
+    console.log("Map :"+ JSON.stringify(state));
+    return {
+      /* map this later
+      name:"",
+      color:"",
+      assignments:[],
+      */
+    }
+  }
 
 class SubjectForm extends React.Component {
   constructor(props) {
@@ -21,7 +38,7 @@ class SubjectForm extends React.Component {
 
   handleSubmit(event) {
     alert('The following Subject was submitted: ' + this.state.subjectName);
-    //TODO: This is where the code needs to hook into Redux
+    this.state.retrieveAssignments(this.state.subjectName);
     event.preventDefault();
   }
 
@@ -56,4 +73,4 @@ class SubjectForm extends React.Component {
   }
 }
 
-export default SubjectForm;
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectForm);

@@ -14,15 +14,17 @@ export const initializeAssignments = () => dispatch => {
 }
 
 export const retrieveAssignments = (data) => {
+  /*
   return (dispatch) => {
-    return axios.post(,data)
+    return axios.post(url,data)
     .then( response => {
       dispatch(updateAssignments(data))
     })
     .catch(error => {
-      /* fix this */
+
     })
   }
+  */
 }
 
 export const updateAssignments = (data) => {
