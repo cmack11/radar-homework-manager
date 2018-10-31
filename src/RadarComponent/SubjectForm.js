@@ -28,6 +28,8 @@ class SubjectForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <b>Add New Subject</b>
+        <br/>
         <label>
           Subject Name:
           <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />

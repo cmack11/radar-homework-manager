@@ -142,19 +142,19 @@ class RadarScreen extends Component {
     		<div>
     			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView}/>
 	    		<div style={{position:'absolute',bottom:50,right:20}} id='subjectButton'>
-		    		<svg width={320} height={100}>
+		    		<svg width={320} height={110}>
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
 		    			<SubjectForm />
 		    		</div>
 	    		</div>
-	    		<div style={{position:'absolute',bottom:160,right:20}} id='subjectButton'>
-		    		<svg width={320} height={130}>
+	    		<div style={{position:'absolute',bottom:170,right:20}} id='subjectButton'>
+		    		<svg width={320} height={135}>
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
-		    			<TaskForm />
+		    			<TaskForm subject='NO_SUBJECT' />
 		    		</div>
 	    		</div>
     		</div>
