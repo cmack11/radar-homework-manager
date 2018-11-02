@@ -32,7 +32,7 @@ class DotViewer extends Component {
 				y = 0;
 		}
 		let show = visibility === 'visible';
-		let taskText = show ? "Task Name: TASK_NAME_HERE" : "";
+		let taskText = show ? "Task Name: "+this.props.dot.assignment.name : "";
 
 		return (
 			<g>
