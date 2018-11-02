@@ -23,14 +23,14 @@ export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {taskName: '', taskDesc: '', taskDueDate: '', subject: ''};
+    this.state = {taskName: '', taskDesc: '', taskDueDate: '', subject: 'Subject #1', taskType: 'Assignment'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   setDefaultFields() {
-    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', subject: ''};
+    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', subject: 'Subject #1'};
     this.setState(defaultState);
   }
 
