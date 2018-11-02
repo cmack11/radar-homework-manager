@@ -47,8 +47,8 @@ class App extends Component {
     super(props);
     this.state = {
       sidebarOpen: false,
-      startDate: moment(new Date()),
-      endDate: moment(new Date()).add(7,'days'),
+      startDate: moment(),
+      endDate: moment().add(7,'days'),
       screens:{
         home:{show:true}
       }

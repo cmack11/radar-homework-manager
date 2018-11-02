@@ -78,7 +78,7 @@ it('should called fadeOut when restartFadeOut is called', () => {
   expect(spy).toBeCalled();
 });
 
-it('the old fadeOut interval to be cleared', () => {
+it('should clear the old fadeOut interval', () => {
   const component = shallow(<Dot center={dot.center} radius={dot.radius} animateFades={true} />);
   component.instance().fOut = {};
 
@@ -87,7 +87,18 @@ it('the old fadeOut interval to be cleared', () => {
   expect(clearInterval).toBeCalled();
 });
 
-it('the fadeIn function to be called and the startFadeOut function to be called', () => {
+it('should call the fadeIn function and the startFadeOut function', () => {
+  const component = shallow(<Dot center={dot.center} radius={dot.radius} animateFades={true} />);
+  const spy1 = jest.spyOn(component.instance(),'fadeIn');
+  const spy2 = jest.spyOn(component.instance(),'startFadeOut');
+
+  component.instance().startFadeIn();
+  
+  expect(spy1).toBeCalled();
+  expect(spy2).toBeCalled();
+});
+
+it('should call fadeIn and then call startFadeOut', () => {
   const component = shallow(<Dot center={dot.center} radius={dot.radius} animateFades={true} />);
   const spy1 = jest.spyOn(component.instance(),'fadeIn');
   const spy2 = jest.spyOn(component.instance(),'startFadeOut');
