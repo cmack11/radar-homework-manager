@@ -203,8 +203,3 @@ export const colors1 = {
 		problemset:'magenta'
 	}
 }
-
-export default {
-    subjects: subjects1,
-    colors: colors1
-};

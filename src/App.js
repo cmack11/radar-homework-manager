@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sampleAction } from './actions/sampleAction';
 import { initializeUser, resetUser } from './actions/userAction.js';
+import { updateAssignments, initializeAssignments } from './actions/assignmentAction.js';
 import {Button, Header, Icon, Segment, Divider} from 'semantic-ui-react';
 import Sidebar from "react-sidebar";
 import 'react-dates/initialize';
@@ -21,14 +22,15 @@ import { MdExitToApp } from 'react-icons/md';
 import { MdHelp} from 'react-icons/md';
 
 import RadarScreen from './RadarScreen.js'
-import fakeData from './fakeData.js'
-
+import {colors1} from './fakeData.js';
 import './App.css';
 
 const mapDispatchToProps = dispatch => ({
  sampleAction: () => dispatch(sampleAction()),
  initializeUser: () => dispatch(initializeUser()),
- resetUser: () => dispatch(resetUser())
+ resetUser: () => dispatch(resetUser()),
+ updateAssignments : () => dispatch(updateAssignments()),
+ initializeAssignments : () => dispatch(initializeAssignments())
 })
 
 const mapStateToProps = state => {
@@ -38,7 +40,8 @@ const mapStateToProps = state => {
       id : state.user.id,
       name : state.user.name,
       email : state.user.email,
-      usertype : state.user.usertype
+      usertype : state.user.usertype,
+      assignmentData : state.assignment.subjects,
     }
   }
 
@@ -55,6 +58,7 @@ class App extends Component {
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.props.initializeUser();
+    this.props.initializeAssignments();
   }
 
   onSetSidebarOpen(open) {
@@ -132,9 +136,9 @@ class App extends Component {
               </IconContext.Provider>
             </div>
             <RadarScreen show={this.state.screens.home.show}
-              subjects={fakeData.subjects}
+              subjects={this.props.assignmentData}
               dates={{today:this.state.startDate, end:this.state.endDate}}
-              view={{height:window.innerHeight,width:window.innerWidth, colors:fakeData.colors}}/>
+              view={{height:window.innerHeight,width:window.innerWidth, colors:colors1}}/>
           </Sidebar>
         </div>
       </div>

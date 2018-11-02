@@ -1,16 +1,17 @@
 import * as types from './action_types.js';
 import {axios} from 'axios';
+import {subjects1} from '../fakeData.js';
 
-export const initializeAssignments = () => dispatch => {
- dispatch({
-  type: types.INITIALIZE_ASSIGNMENTS,
-  payload: {
-    name:"",
-    color:"",
-    assignments:[],
-    /* needs api here */
+export const initializeAssignments = () => {
+  return {
+    type: types.INITIALIZE_ASSIGNMENTS,
+    payload: {
+      subjects : subjects1,
+      /* needs api here */
+    }
   }
- })
+
+
 }
 
 export const retrieveAssignments = (data) => {
@@ -30,8 +31,17 @@ export const retrieveAssignments = (data) => {
 export const updateAssignments = (data) => {
     return {
       type : types.UPDATE_ASSIGNMENT,
-      payload: data.data,
-
-
+      payload: data
     }
+}
+
+export const addAssignment = (assignment, subject) => {
+  /* call api for update */
+  return {
+    type: types.ADD_ASSIGNMENT,
+    payload : {
+      subject : subject,
+      assignment : assignment,
+    }
+  }
 }
