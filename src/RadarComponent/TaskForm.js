@@ -30,6 +30,11 @@ class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  setDefaultFields() {
+    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, subject: ''};
+    this.setState(defaultState);
+  }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
@@ -45,7 +50,7 @@ class TaskForm extends React.Component {
     this.props.addAssignment(
       {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:moment(this.state.taskDueDate)},
       this.state.subject);
-    event.preventDefault();
+      this.setDefaultFields();
   }
 
   render() {
