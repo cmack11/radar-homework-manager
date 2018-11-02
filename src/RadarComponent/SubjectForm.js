@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 class SubjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {subjectName: '', subjectDesc: '', defaultTaskType: 'Assignment', };
+    this.state = this.getDefaultState();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,7 +46,12 @@ class SubjectForm extends React.Component {
 
     this.props.addSubject(
       {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
-    event.preventDefault();
+
+    this.setState(this.getDefaultState())
+  }
+
+  getDefaultState() {
+    return {subjectName:'', subjectDesc:'', defaultTaskType: 'Assignment'};
   }
 
   render() {
