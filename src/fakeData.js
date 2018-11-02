@@ -6,35 +6,35 @@ export const subjects1 =  [
   				color:"blue",
   				assignments:[
   					{
-  						name:"Assignment #1",
+  						name:"S1A1",
   						type:"Assignment",
   						dueDate:moment().add(3,'days'),
   					},{
-  						name:"Assignment #2",
+  						name:"S1PS2",
   						type:"Problem Set",
   						dueDate:moment().add(9,'days'),
   					},{
-  						name:"Assignment #3",
+  						name:"S1A3",
   						type:"Assignment",
   						dueDate:moment().add(5,'days'),
   					},{
-  						name:"Assignment #4",
+  						name:"S1PS4",
   						type:"Problem Set",
   						dueDate:moment().add(8,'days'),
   					},{
-  						name:"Assignment #5",
+  						name:"S1A5",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
   					},{
-  						name:"Assignment #6",
+  						name:"S1R6",
   						type:"Reading",
   						dueDate:moment().add(10,'days').add(5,'hours'),
   					},{
-  						name:"Assignment #7",
+  						name:"S1A7",
   						type:"Assignment",
   						dueDate:moment().add(13,'days').subtract(3,'hours'),
   					},{
-  						name:"Assignment #8",
+  						name:"S1A8",
   						type:"Assignment",
   						dueDate:moment().add(4,'days').subtract(1,'hours'),
   					}
@@ -44,23 +44,23 @@ export const subjects1 =  [
   				color:"violet",
   				assignments:[
   					{
-  						name:"Assignment #1",
+  						name:"S2A1",
   						type:"Assignment",
   						dueDate:moment().add(7,'days')
   					},{
-  						name:"Assignment #2",
+  						name:"S2E2",
   						type:"Exam",
   						dueDate:moment().add(4,'days')
   					},{
-  						name:"Assignment #3",
+  						name:"S2A3",
   						type:"Assignment",
   						dueDate:moment().add(13,'days').add(12,'hours')
   					},{
-  						name:"Assignment #4",
+  						name:"S2A4",
   						type:"Assignment",
   						dueDate:moment().add(3,'days').add(20,'hours')
   					},{
-  						name:"Assignment #5",
+  						name:"S2A5",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
   					}
@@ -70,27 +70,27 @@ export const subjects1 =  [
   				color:"orange",
   				assignments:[
   					{
-  						name:"Assignment #1",
+  						name:"S3A1",
   						type:"Assignment",
   						dueDate:moment().add(5,'days'),
   					},{
-  						name:"Assignment #2",
+  						name:"S3PS2",
   						type:"Problem Set",
   						dueDate:moment().add(4,'days')
   					},{
-  						name:"Assignment #3",
+  						name:"S3E3",
   						type:"Exam",
   						dueDate:moment().add(8,'days').add(12,'hours')
   					},{
-  						name:"Assignment #4",
+  						name:"S3A4",
   						type:"Assignment",
   						dueDate:moment().add(4,'days')
   					},{
-  						name:"Assignment #5",
+  						name:"S3A5",
   						type:"Assignment",
   						dueDate:moment().add(13,'days').add(12,'hours')
   					},{
-  						name:"Assignment #6",
+  						name:"S3A6",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
   					}
@@ -101,43 +101,43 @@ export const subjects1 =  [
   				color:"purple",
   				assignments:[
   					{
-  						name:"Assignment #1",
+  						name:"S4A1",
   						type:"Assignment",
   						dueDate:moment().add(6,'days'),
   					},{
-  						name:"Assignment #2",
+  						name:"S4R2",
   						type:"Reading",
   						dueDate:moment().add(9,'days'),
   					},{
-  						name:"Assignment #3",
+  						name:"S4A3",
   						type:"Assignment",
   						dueDate:moment().add(2,'days').subtract(1,'hours'),
   					},{
-  						name:"Assignment #4",
+  						name:"S4A4",
   						type:"Assignment",
   						dueDate:moment().add(1,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #5",
+  						name:"S4A5",
   						type:"Assignment",
   						dueDate:moment().add(12,'days').add(9,'hours'),
   					},{
-  						name:"Assignment #6",
+  						name:"S4A6",
   						type:"Assignment",
   						dueDate:moment().add(5,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #7",
+  						name:"S4A7",
   						type:"Assignment",
   						dueDate:moment().add(4,'days').add(9,'hours'),
   					},{
-  						name:"Assignment #8",
+  						name:"S4A8",
   						type:"Assignment",
   						dueDate:moment().add(11,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #9",
+  						name:"S4E9",
   						type:"Exam",
   						dueDate:moment().add(3,'days').add(9,'hours'),
   					},{
-  						name:"Assignment #10",
+  						name:"S4A10",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
   					}
@@ -147,47 +147,47 @@ export const subjects1 =  [
   				color:"darkgreen",
   				assignments:[
   					{
-  						name:"Assignment #1",
+  						name:"S5R1",
   						type:"Reading",
   						dueDate:moment().add(2,'days'),
   					},{
-  						name:"Assignment #2",
+  						name:"S5A2",
   						type:"Assignment",
   						dueDate:moment().add(8,'days'),
   					},{
-  						name:"Assignment #3",
-  						type:"Essay",
+  						name:"S5A3",
+  						type:"Assignment",
   						dueDate:moment().add(2,'days').subtract(1,'hours'),
   					},{
-  						name:"Assignment #4",
+  						name:"S5A4",
   						type:"Assignment",
   						dueDate:moment().add(11,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #5",
+  						name:"S5R5",
   						type:"Reading",
   						dueDate:moment().add(5,'days').add(3,'hours'),
   					},{
-  						name:"Assignment #6",
+  						name:"S5A6",
   						type:"Assignment",
   						dueDate:moment().add(10,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #7",
+  						name:"S5R7",
   						type:"Reading",
   						dueDate:moment().add(6,'days').add(9,'hours'),
   					},{
-  						name:"Assignment #8",
+  						name:"S5A8",
   						type:"Assignment",
   						dueDate:moment().add(12,'days').add(4,'hours'),
   					},{
-  						name:"Assignment #9",
+  						name:"S5E9",
   						type:"Exam",
   						dueDate:moment().add(6,'days').add(9,'hours'),
   					},{
-  						name:"Assignment #10",
+  						name:"S5A10",
   						type:"Assignment",
   						dueDate:moment().add(7,'days').subtract(30,'minutes'),
   					},{
-  						name:"Assignment #11",
+  						name:"S5A11",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
   					}
