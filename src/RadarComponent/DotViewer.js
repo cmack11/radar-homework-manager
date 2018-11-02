@@ -32,7 +32,7 @@ class DotViewer extends Component {
 				y = 0;
 		}
 		let show = visibility === 'visible';
-		let taskText = show ? "Task Name: " + this.props.dot.assignment.name : "";
+		let taskText = show ? this.props.dot.assignment.type + ": " + this.props.dot.assignment.name + " (" + this.props.dot.assignment.dueDate.format("MM/DD/YYYY") + ")" : "";
 
 		return (
 			<g>
