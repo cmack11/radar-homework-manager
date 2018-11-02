@@ -18,7 +18,7 @@ const mapStateToProps = state => {
     }
   }
 
-class SubjectForm extends React.Component {
+export class SubjectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState();
