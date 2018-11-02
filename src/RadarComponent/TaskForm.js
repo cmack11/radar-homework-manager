@@ -19,7 +19,7 @@ const mapStateToProps = state => {
     }
   }
 
-class TaskForm extends React.Component {
+export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
 
