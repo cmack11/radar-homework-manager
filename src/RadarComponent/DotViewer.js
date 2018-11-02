@@ -32,7 +32,7 @@ class DotViewer extends Component {
 				y = 0;
 		}
 		let show = visibility === 'visible';
-		let taskText = show ? "Task Name: "+this.props.dot.assignment.name : "";
+		let taskText = show ? "Task Name: " + this.props.dot.assignment.name : "";
 
 		return (
 			<g>
@@ -45,7 +45,7 @@ class DotViewer extends Component {
 					x={x} y={y}
 					visibility={visibility}
 					onClick={this.props.closeDotViewer}/>
-				<text x={x + 5} y={y + this.props.height / 2}>
+				<text stroke-width="1" font-size="14" x={x + 5} y={y + this.props.height / 2}>
 				{taskText}
 				</text>	
 			</g>
