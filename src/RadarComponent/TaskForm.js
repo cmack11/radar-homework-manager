@@ -41,7 +41,7 @@ class TaskForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Task was submitted: ' + this.state.taskName);
+    //alert('The following Task was submitted: ' + this.state.taskName);
     this.props.addAssignment(
       {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:moment(this.state.taskDueDate)},
       this.state.subject);

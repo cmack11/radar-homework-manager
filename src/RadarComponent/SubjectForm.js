@@ -38,9 +38,14 @@ class SubjectForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Subject was submitted: ' + this.state.subjectName);
+    //alert('The following Subject was submitted: ' + this.state.subjectName);
+    let colors = ['red','blue','green','orange','black','magenta','maroon','cyan'];
+    let index = Math.floor(Math.random() * colors.length);
+    let color = colors[index];
+
+
     this.props.addSubject(
-      {name:this.state.subjectName, color:'green', assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
+      {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
     event.preventDefault();
   }
 
