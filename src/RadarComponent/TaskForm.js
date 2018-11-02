@@ -77,7 +77,7 @@ class TaskForm extends React.Component {
         <br />
         <label>
           Subject:
-          <select name="subject" onChange={this.handleChange}>
+          <select name="subject" value={this.state.subject} onChange={this.handleChange}>
             {subjectOptions}
           </select>
         </label>
@@ -89,7 +89,7 @@ class TaskForm extends React.Component {
         <br />
         <label>
           Task Type:
-          <select name="taskType" onChange={this.handleChange}>
+          <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>

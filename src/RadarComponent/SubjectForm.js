@@ -79,7 +79,7 @@ class SubjectForm extends React.Component {
         <br />
         <label>
           Default Task Type:
-          <select name="defaultTaskType" onChange={this.handleChange}>
+          <select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>
