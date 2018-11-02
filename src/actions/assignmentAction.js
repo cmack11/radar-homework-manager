@@ -35,13 +35,26 @@ export const updateAssignments = (data) => {
     }
 }
 
-export const addAssignment = (assignment, subject) => {
+export const addAssignment = (assignment, subject, type) => {
   /* call api for update */
   return {
     type: types.ADD_ASSIGNMENT,
     payload : {
       subject : subject,
       assignment : assignment,
+      task_type : type,
+    }
+  }
+}
+
+export const addSubject = (subject, desc, type) => {
+  console.log("abc");
+  return {
+    type: types.ADD_SUBJECT,
+    payload : {
+      subject : subject,
+      description : desc,
+      default_type : type,
     }
   }
 }

@@ -1,5 +1,6 @@
 import * as types from '../actions/action_types.js';
 import {axios} from 'axios';
+import {subjects1} from '../fakeData.js';
 
 let initialState = {
   subjects : []
@@ -21,10 +22,9 @@ export default (state = initialState, action) => {
         if (el.id == action.payload.subject.id) el.assignment.append(action.payload.assignment);
         return el;
       })
-      return {
-        ...state,
-        subjects: newSubjectList
-      }
+    case types.ADD_SUBJECT :
+      state.subjects.append(action.payload.subject);
+
   default:
    return state
  }
