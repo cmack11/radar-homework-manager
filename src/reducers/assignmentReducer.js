@@ -18,12 +18,14 @@ export default (state = initialState, action) => {
       subjects : action.payload.subjects
     }
     case types.ADD_ASSIGNMENT :
-      let newSubjectList = state.subjects.map((el, index)=> {
-        if (el.id == action.payload.subject.id) el.assignment.append(action.payload.assignment);
+      state.subjects.map((el, index)=> {
+        if (el.id == action.payload.subject.id) el.assignments.push(action.payload.assignment);
         return el;
       })
+      return state;
     case types.ADD_SUBJECT :
-      state.subjects.append(action.payload.subject);
+      state.subjects.push(action.payload.subject);
+      return state;
 
   default:
    return state

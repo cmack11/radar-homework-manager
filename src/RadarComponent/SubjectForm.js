@@ -44,7 +44,7 @@ class SubjectForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form >
         <b>Add New Subject</b>
         <br/>
         <label>
@@ -67,7 +67,7 @@ class SubjectForm extends React.Component {
           </select>
         </label>
         <br />
-        <input type="submit" value="Submit" />
+        <button type="button" value="Submit" onClick={this.handleSubmit}>Submit</button>
       </form>
     );
   }
