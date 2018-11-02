@@ -55,9 +55,17 @@ class SubjectForm extends React.Component {
   }
 
   render() {
+
+    let taskTypeOptions = [];
+    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    {
+      const taskType = this.props.taskTypes[i];
+      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+    }
+
     return (
       <form >
-        <b>Add New Subject</b>
+        <b>Add Subject</b>
         <br/>
         <label>
           Subject Name:
@@ -72,10 +80,7 @@ class SubjectForm extends React.Component {
         <label>
           Default Task Type:
           <select name="defaultTaskType" onChange={this.handleChange}>
-            <option value="Assignment">Assignment</option>
-            <option value="Exam">Exam</option>
-            <option value="ProblemSet">Problem Set</option>
-            <option value="Reading">Reading</option>
+            {taskTypeOptions}
           </select>
         </label>
         <br />

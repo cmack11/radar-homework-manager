@@ -23,15 +23,14 @@ class TaskForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.props = {defaultTaskType: 'Assignment'};
-    this.state = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, subject: ''};
+    this.state = {taskName: '', taskDesc: '', taskDueDate: '', subject: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   setDefaultFields() {
-    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', taskType: this.props.defaultTaskType, subject: ''};
+    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', subject: ''};
     this.setState(defaultState);
   }
 
@@ -46,7 +45,6 @@ class TaskForm extends React.Component {
   }
 
   handleSubmit(event) {
-    //alert('The following Task was submitted: ' + this.state.taskName);
     this.props.addAssignment(
       {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:moment(this.state.taskDueDate)},
       this.state.subject);
@@ -54,6 +52,20 @@ class TaskForm extends React.Component {
   }
 
   render() {
+    let subjectOptions = [];
+    for (let i = 0; i < this.props.subjectNames.length; ++i)
+    {
+      const subject = this.props.subjectNames[i];
+      subjectOptions.push(<option value={subject}>{subject}</option>);
+    }
+
+    let taskTypeOptions = [];
+    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    {
+      const taskType = this.props.taskTypes[i];
+      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+    }
+
     return (
       <form>
         <b>Add Task</b>
@@ -65,7 +77,9 @@ class TaskForm extends React.Component {
         <br />
         <label>
           Subject:
-          <input name="subject" type="text" value={this.state.subject} onChange={this.handleChange} />
+          <select name="subject" onChange={this.handleChange}>
+            {subjectOptions}
+          </select>
         </label>
         <br />
         <label>
@@ -76,10 +90,7 @@ class TaskForm extends React.Component {
         <label>
           Task Type:
           <select name="taskType" onChange={this.handleChange}>
-            <option value="Assignment">Assignment</option>
-            <option value="Exam">Exam</option>
-            <option value="ProblemSet">Problem Set</option>
-            <option value="Reading">Reading</option>
+            {taskTypeOptions}
           </select>
         </label>
         <br />

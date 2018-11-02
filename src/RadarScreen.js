@@ -153,7 +153,7 @@ class RadarScreen extends Component {
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
-		    			<SubjectForm />
+		    			<SubjectForm taskTypes={taskTypes}/>
 		    		</div>
 	    		</div>
 	    		<div style={{position:'absolute',bottom:180,right:20}} id='subjectButton'>
