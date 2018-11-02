@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
- addAssignment: (subject,desc, type) => dispatch(addAssignment(subject,desc,type)),
+ addAssignment: (assignment, subject) => dispatch(addAssignment(assignment, subject)),
 })
 
 const mapStateToProps = state => {

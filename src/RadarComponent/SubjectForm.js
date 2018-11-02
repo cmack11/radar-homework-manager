@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments } from '../actions/assignmentAction.js';
+import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: () => dispatch(retrieveAssignments())
+ retrieveAssignments: () => dispatch(retrieveAssignments()),
+ addSubject: (subject) => dispatch(addSubject(subject))
 })
 
 const mapStateToProps = state => {
@@ -38,7 +39,8 @@ class SubjectForm extends React.Component {
 
   handleSubmit(event) {
     alert('The following Subject was submitted: ' + this.state.subjectName);
-    this.state.retrieveAssignments(this.state.subjectName);
+    this.props.addSubject(
+      {name:this.state.subjectName, color:'green', assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
     event.preventDefault();
   }
 

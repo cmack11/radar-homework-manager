@@ -46,14 +46,12 @@ export const addAssignment = (assignment, subject) => {
   }
 }
 
-export const addSubject = (subject, desc, type) => {
+export const addSubject = (subject) => {
   console.log("abc");
   return {
     type: types.ADD_SUBJECT,
     payload : {
       subject : subject,
-      description : desc,
-      default_type : type,
     }
   }
 }
