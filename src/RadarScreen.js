@@ -115,7 +115,9 @@ class RadarScreen extends Component {
 	this.props.subjects.map((obj)=>{
 		subjectNames.push(obj.name);
 	})
-	console.log(subjectNames);
+
+	let taskTypes = ["Assignment","Exam","Reading","Problem Set"];
+
     return (
     	<div id= 'radarScreen' className='radar-screen'>
     		<DateRangePicker
@@ -159,7 +161,7 @@ class RadarScreen extends Component {
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
-		    			<TaskForm subjectNames={subjectNames}/>
+		    			<TaskForm taskTypes={taskTypes} subjectNames={subjectNames}/>
 		    		</div>
 	    		</div>
     		</div>
