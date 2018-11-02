@@ -19,8 +19,9 @@ export default (state = initialState, action) => {
     }
     case types.ADD_ASSIGNMENT :
       state.subjects.map((el, index)=> {
-        if (el.id == action.payload.subject.id) el.assignments.push(action.payload.assignment);
-        return el;
+        if (el.name === action.payload.subject){
+          el.assignments.push(action.payload.assignment)
+        } 
       })
       return state;
     case types.ADD_SUBJECT :

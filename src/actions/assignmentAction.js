@@ -35,14 +35,13 @@ export const updateAssignments = (data) => {
     }
 }
 
-export const addAssignment = (assignment, subject, type) => {
+export const addAssignment = (assignment, subject) => {
   /* call api for update */
   return {
     type: types.ADD_ASSIGNMENT,
     payload : {
       subject : subject,
-      assignment : assignment,
-      task_type : type,
+      assignment : assignment
     }
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.js';
+import moment from 'moment';
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
@@ -41,7 +42,9 @@ class TaskForm extends React.Component {
 
   handleSubmit(event) {
     alert('The following Task was submitted: ' + this.state.taskName);
-    this.props.addAssignment(this.state.taskName, this.state.taskDesc, this.state.taskType);
+    this.props.addAssignment(
+      {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:moment(this.state.taskDueDate)},
+      this.state.subject);
     event.preventDefault();
   }
 
