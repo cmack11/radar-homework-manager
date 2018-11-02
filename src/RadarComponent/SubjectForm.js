@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 export class SubjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {subjectName: '', subjectDesc: '', defaultTaskType: 'Assignment', };
+    this.state = this.getDefaultState();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,16 +38,34 @@ export class SubjectForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('The following Subject was submitted: ' + this.state.subjectName);
+    //alert('The following Subject was submitted: ' + this.state.subjectName);
+    let colors = ['red','blue','green','orange','black','magenta','maroon','cyan'];
+    let index = Math.floor(Math.random() * colors.length);
+    let color = colors[index];
+
+
     this.props.addSubject(
-      {name:this.state.subjectName, color:'green', assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
-    event.preventDefault();
+      {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
+
+    this.setState(this.getDefaultState())
+  }
+
+  getDefaultState() {
+    return {subjectName:'', subjectDesc:'', defaultTaskType: 'Assignment'};
   }
 
   render() {
+
+    let taskTypeOptions = [];
+    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    {
+      const taskType = this.props.taskTypes[i];
+      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+    }
+
     return (
       <form >
-        <b>Add New Subject</b>
+        <b>Add Subject</b>
         <br/>
         <label>
           Subject Name:
@@ -62,10 +80,7 @@ export class SubjectForm extends React.Component {
         <label>
           Default Task Type:
           <select name="defaultTaskType" onChange={this.handleChange}>
-            <option value="Assignment">Assignment</option>
-            <option value="Exam">Exam</option>
-            <option value="ProblemSet">Problem Set</option>
-            <option value="Reading">Reading</option>
+            {taskTypeOptions}
           </select>
         </label>
         <br />

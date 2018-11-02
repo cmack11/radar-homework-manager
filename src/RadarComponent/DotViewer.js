@@ -14,7 +14,7 @@ class DotViewer extends Component {
 	
 	render() {
 
-		let x,y,fill,visibility = 'hidden';
+		let x=0,y=0,fill,visibility = 'hidden';
 		if(this.props.dot) {
 			visibility = 'visible';
 			fill = this.props.dot.fill;
@@ -31,18 +31,25 @@ class DotViewer extends Component {
 			if(y < 0)
 				y = 0;
 		}
+		let show = visibility === 'visible';
+		let taskText = show ? this.props.dot.assignment.type + ": " + this.props.dot.assignment.name + " (" + this.props.dot.assignment.dueDate.format("MM/DD/YYYY") + ")" : "";
 
 		return (
-			<rect id='dotViewer' 
-				width={this.props.width} 
-				height={this.props.height} 
-				rx={15} ry={15}
-				fill={fill}
-				stroke='black'
-				x={x} y={y}
-				visibility={visibility}
-				onClick={this.props.closeDotViewer}/>
-		)
+			<g>
+				<rect id='dotViewer' 
+					width={this.props.width} 
+					height={this.props.height} 
+					rx={15} ry={15}
+					fill={fill}
+					stroke='black'
+					x={x} y={y}
+					visibility={visibility}
+					onClick={this.props.closeDotViewer}/>
+				<text visible={visibility} stroke-width="1" font-size="14" x={x + 5} y={y + this.props.height / 2}>
+				{taskText}
+				</text>	
+			</g>
+		);
 	}
 }
 
