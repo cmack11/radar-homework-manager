@@ -1,0 +1,119 @@
+Store Procedures Needed
+
+Every store procedure will have a variable called ‘s’ that will store ‘success’ or ‘failed’ depending on the outcome of the procedure
+All parameters must be in order from top to bottom
+ 
+NEED TO IMPLEMENT:
+Get user id when given a subject id
+Get subject id when given a task id
+Get task id when given a subtask id
+Get username when given a user id
+Get subject name when given a subject id
+Delete user (which will then delete all the subject, task, and subtasks related to that user)
+Mysqldump data for the table ‘type’
+
+
+User_register
+User id(?)
+Full name VARCHAR(50)
+Email VARCHAR(150)
+Password VARCHAR(50)
+
+User_login
+Email VARCHAR(150)
+Password VARCHAR(50)
+
+Create_subject
+Email VARCHAR(150)
+Description VARCHAR(150)
+Primary type VARCH	AR(50)
+Subject name VARCHAR(50)
+Create_task
+Email VARCHAR(150)
+Subject name VARCHAR(50)
+Type VARCHAR(50)
+Due date DATETIME (YYYY-MM-DD HH:MM:SS format)
+Task name VARCHAR(50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MODEL TABLES
+
+PK = primary key
+FK = foreign key
+NN = not null
+AI = auto incriment
+UN = unsigned
+UQ = unique
+
+Same Color = linked
+
+USER
+User_id INT(11)
+PK, NN, AI
+Name VARCHAR(50)
+NN
+Email VARCHAR(150)
+NN, UQ
+Password VARCHAR(50)
+NN
+Create_time TIMESTAMP
+CURRENT_TIMESTAMP()
+
+SUBJECT
+Subject_id INT(10)
+PK, NN, UN, AI
+Name VARCHAR(50)
+NN
+Color VARCHAR(50)
+Description VARCHAR(150)
+Primary type VARCHAR(50)
+NN
+User_id INT(11)
+FK, NN
+
+TASK
+Task_id INT(11)
+PK, NN, UN, AI
+Name VARCHAR(50)
+NN
+Description VARCHAR(150)
+Type VARCHAR(50)
+NN
+Deadline DATETIME (YYYY-MM-DD HH:MM:SS format)
+NN
+Progress INT(11) 	#saved for future use
+Date_complete DATETIME 	#saved for future use
+Subject_id INT(10)
+NN, UN, FK
+
+SUBTASK
+Subtask_id INT(10)
+PK, NN, UN, AI
+Description VARCHAR(50)
+Completed VARCHAR(50)
+Task_id INT(10)
+NN, UN, FK
+
+
+
+
+
+
+
+
+
+
+
