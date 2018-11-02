@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments } from '../actions/assignmentAction.js';
+import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.js';
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: () => dispatch(retrieveAssignments())
+ retrieveAssignments: () => dispatch(retrieveAssignments()),
+ addAssignment: (subject,desc, type) => dispatch(addAssignment(subject,desc,type)),
 })
 
 const mapStateToProps = state => {
@@ -40,7 +41,7 @@ class TaskForm extends React.Component {
 
   handleSubmit(event) {
     alert('The following Task was submitted: ' + this.state.taskName);
-    this.props.retrieveAssignments(this.state.taskName);
+    this.props.addAssignment(this.state.taskName, this.state.taskDesc, this.state.taskType);
     event.preventDefault();
   }
 
