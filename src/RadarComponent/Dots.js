@@ -211,14 +211,16 @@ class Dots extends Component {
 			x:e.target.getAttribute('cx'),
 			y:e.target.getAttribute('cy'),
 			fill:e.target.getAttribute('fill'),
-			id:e.target.id
+			id:e.target.id,
+			assignment:this.draggedDot.assignment
 		})
 		//this.setState(state);
 	}
 
-	onMouseDownDot(e) {
+	onMouseDownDot(e,dotObj) {
 		this.draggedDot = {
-			dot:e.target, 
+			dot:e.target,
+			assignment:dotObj.assignment, 
 			moved:false, 
 			mousemove:this.onMouseMoveDot.bind(this),
 			mouseup:this.onMouseUpDot.bind(this),
