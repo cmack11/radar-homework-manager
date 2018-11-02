@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`creates a null component because of invalid radius prop 1`] = `
+exports[`the initialization of the component creates a null component because of invalid radius prop 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Dot
@@ -44,7 +44,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`creates a null component because of invalid x prop 1`] = `
+exports[`the initialization of the component creates a null component because of invalid x prop 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Dot
@@ -88,7 +88,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`creates a null component because of invalid y prop 1`] = `
+exports[`the initialization of the component creates a null component because of invalid y prop 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Dot
@@ -132,7 +132,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`creates an svg circle with the correct attributes 1`] = `
+exports[`the initialization of the component creates an svg circle with the correct attributes 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Dot
@@ -162,7 +162,7 @@ ShallowWrapper {
       "draggable": true,
       "fill": undefined,
       "id": "10/15",
-      "onMouseDown": undefined,
+      "onMouseDown": [Function],
       "opacity": 1,
       "r": 100,
     },
@@ -181,7 +181,7 @@ ShallowWrapper {
         "draggable": true,
         "fill": undefined,
         "id": "10/15",
-        "onMouseDown": undefined,
+        "onMouseDown": [Function],
         "opacity": 1,
         "r": 100,
       },
@@ -210,7 +210,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`initialize the dot to have the minimum opacity 1`] = `
+exports[`the initialization of the component initialize the dot to have the minimum opacity 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Dot
@@ -241,7 +241,7 @@ ShallowWrapper {
       "draggable": true,
       "fill": undefined,
       "id": "10/15",
-      "onMouseDown": undefined,
+      "onMouseDown": [Function],
       "opacity": 0.1,
       "r": 100,
     },
@@ -260,7 +260,7 @@ ShallowWrapper {
         "draggable": true,
         "fill": undefined,
         "id": "10/15",
-        "onMouseDown": undefined,
+        "onMouseDown": [Function],
         "opacity": 0.1,
         "r": 100,
       },
