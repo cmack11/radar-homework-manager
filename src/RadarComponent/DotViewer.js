@@ -31,18 +31,25 @@ class DotViewer extends Component {
 			if(y < 0)
 				y = 0;
 		}
+		let show = visibility === 'visible';
+		let taskText = show ? "Task Name: TASK_NAME_HERE" : "";
 
 		return (
-			<rect id='dotViewer' 
-				width={this.props.width} 
-				height={this.props.height} 
-				rx={15} ry={15}
-				fill={fill}
-				stroke='black'
-				x={x} y={y}
-				visibility={visibility}
-				onClick={this.props.closeDotViewer}/>
-		)
+			<g>
+				<rect id='dotViewer' 
+					width={this.props.width} 
+					height={this.props.height} 
+					rx={15} ry={15}
+					fill={fill}
+					stroke='black'
+					x={x} y={y}
+					visibility={visibility}
+					onClick={this.props.closeDotViewer}/>
+				<text x={x + 5} y={y + this.props.height / 2}>
+				{taskText}
+				</text>	
+			</g>
+		);
 	}
 }
 
