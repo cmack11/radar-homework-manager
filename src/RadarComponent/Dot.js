@@ -80,6 +80,10 @@ class Dot extends Component {
 		this.fadeOut();
 	}
 
+	onMouseDown(e) {
+		this.props.onMouseDown(e,this.props.dot);
+	}
+
 
 	render() {
 		if(!this.props.center || this.props.center.x < 0 || this.props.center.y < 0 || this.props.radius < 0)
@@ -88,7 +92,7 @@ class Dot extends Component {
 		return (
 			<circle id={this.getId()} cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
 				 draggable={true} opacity={this.state.opacity} 
-				 onMouseDown={this.props.onMouseDown}
+				 onMouseDown={this.onMouseDown.bind(this)}
 				 />
 
 		)
