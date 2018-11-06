@@ -6,6 +6,8 @@ import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
+import Buttons from './Buttons.js'
+import {Label} from 'semantic-ui-react';
 
 
 
@@ -144,7 +146,36 @@ class Radar extends Component {
 
 	}
 
-	
+	makeLabel(subject, x, y, radius, startAngle, endAngle) {
+		let fontSize, width,height;
+		if(window.innerWidth > 500) {
+			fontSize = 24;
+			width = subject.name.length*fontSize/2;
+			height = fontSize*0;
+		} else if(window.innerWidth < 250) {
+			fontSize = 12;
+			width = subject.name.length*fontSize;
+			height = fontSize;
+		} else {
+			fontSize = 18;
+			width = subject.name.length*fontSize;
+			height = fontSize;
+		}
+
+	    let angle = startAngle+(endAngle-startAngle)/2; 
+	    var point = util.polarToCartesian(x, y, radius, angle);
+
+	    if(Math.abs(point.x - this.view.dots.center.x) < .01)//On prime meridian
+	    	point.x = this.view.dots.center.x - width/2;
+	    else if(point.x < this.view.dots.center.x)//left hemisphere
+	    	point.x -= width;
+	    if(Math.abs(point.y - this.view.dots.center.y) < .1)//On equater
+	    	point.y = this.view.dots.center.y - height/2;
+	    else if(point.y < this.view.dots.center.y)//upper hemisphere
+	    	point.y -= height;
+
+		return <text x={point.x} y={point.y} font-size={fontSize} stroke={subject.color}>{subject.name}</text>
+	}
 
 	makeDot(dot) {
 		var distanceFromCenter = dot.distanceFromCenter;
@@ -209,21 +240,27 @@ class Radar extends Component {
 
 	fillComponents() {
 		var sliceComponents = [];
+		var sliceLabels = [];
 		let numSlices = this.state.subjects.length;
 		let offset = 0;
 		let angle = 360/numSlices;
 		if(angle === 360) angle -= .01;
 
-		if(numSlices === 0)
+		if(numSlices === 0) {
 			sliceComponents = <circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.radar.radius} fill={'none'}/>;
+		}
 		for(let i = 0; i < this.state.subjects.length; i++) {
 			if(this.state.subjects.length > 1) {
 				sliceComponents.push(<path d={this.describeSlice(this.view.radar.center.x,this.view.radar.center.y,this.view.radar.radius,offset+i*angle,offset+(i+1)*angle)} fill={this.state.subjects[i].color} key={this.state.subjects[i].name}/>)
+				sliceLabels.push(this.makeLabel(this.state.subjects[i],this.view.dots.center.x,this.view.dots.center.y,this.view.radar.radius*1.07,offset+i*angle,offset+(i+1)*angle))
 			} else if(this.state.subjects.length === 1) {
 				sliceComponents.push(<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.radar.radius} fill={this.state.subjects[i].color}/>)
+				sliceLabels.push(this.makeLabel(this.state.subjects[i],this.view.dots.center.x,this.view.dots.center.y,this.view.radar.radius*1.05,0,0))
+
 			}
 		}
 		let state = this.state;
+		state.sliceLabels = sliceLabels;
 		state.sliceComponents = sliceComponents;
 		this.setState(state);
 	}
@@ -256,14 +293,19 @@ class Radar extends Component {
 
 	render() {
 		
-		let intersectFuncs = [{
-			rect:{x:0, y:0, width:100, height:100},
-			func:function(){console.log('intersect!')}
-		},{
-			rect:{x:0, y:0, width:500, height:100},
-			func:function(){console.log('intersect!')}
-		}]
+		let intersectFuncs = [];
 
+		let buttons = [
+			{x:this.view.radar.radius*.2+ 20, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'blue',onClick:()=>{}, onIntersect:() => {console.log('woo')}},
+			{x:this.props.view.dotsView.width-20-this.view.radar.radius*.2, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'red',onClick:()=>{}, onIntersect:() => {console.log('woo')}}
+		];
+
+		buttons.map((button) => {
+			intersectFuncs.push({
+				rect:{x:button.x-button.radius, y:button.y-button.radius, width:button.radius*2, height:button.radius*2},
+				func:button.onIntersect
+			})
+		})
 
 
     return (
@@ -274,6 +316,7 @@ class Radar extends Component {
 			  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
 			  		{this.state.rings}
 				</svg>
+				{this.state.sliceLabels}
 				<Dots subjects={this.state.subjects} 
 					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
 					view={this.state.view} dims={this.view} //bad
@@ -285,8 +328,9 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
+				<Buttons buttons={buttons}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
-				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5}/>
+				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
 		</div>
     )

@@ -245,9 +245,6 @@ class Dots extends Component {
 
 		window.removeEventListener('mouseup',this.draggedDot.mouseup);
 		//Doesn't work anymore, needs to be converted to work in DraggedDot component
-		if(this.draggedDot.moved) {
-			this.checkIntersectFunctions(this.draggedDot.dot.getAttribute('cx'),this.draggedDot.dot.getAttribute('cy'));
-		}
 
 		if(this.draggedDot.moved) {
 			this.draggedDot.dot.setAttribute('visibility','visible');
@@ -258,17 +255,7 @@ class Dots extends Component {
 		this.draggedDot = null;
 	}
 
-	checkIntersectFunctions(x,y) {
-		if(!this.props.intersectFunctions) return;
-		
-		this.props.intersectFunctions.map((obj) => {
-			if(obj.rect && obj.func) {
-				if(x <= obj.rect.x+obj.rect.width && x >= obj.rect.x 
-					&& y <= obj.rect.y+obj.rect.height && y >= obj.rect.y)
-						obj.func();
-			}
-		})
-	}
+	
 
 	/*closeDotViewer() {
 		let state = this.state;

@@ -5,7 +5,6 @@ import Dot from './Dot.js'
 
 class DraggedDot extends Component {
 
-
 	constructor(props) {
 		super();
 		let state = {
@@ -13,11 +12,11 @@ class DraggedDot extends Component {
 		}
 		this.state = state; 
 		this.mouseMove = this.mouseMove.bind(this);
+		this.mouseUp = this.mouseUp.bind(this);
 	}
 
 
 	componentDidMount() {
-		
 	}
 
 	componentWillUnmount() {
@@ -28,10 +27,28 @@ class DraggedDot extends Component {
 		if(newProps.dot) {
 			this.setState({fill:newProps.dot.dot.getAttribute('fill')})
 			window.addEventListener('mousemove',this.mouseMove)
+			window.addEventListener('mouseup',this.mouseUp)
 		} else {
-			window.removeEventListener('mousemove',this.mouseMove)
-			this.setState({point:{x:-1,y:-1}})
+			
 		}
+	}
+
+	mouseUp(e) {
+		this.checkIntersectFunctions(this.state.point.x,this.state.point.y);
+		window.removeEventListener('mouseup',this.mouseUp)
+		window.removeEventListener('mousemove',this.mouseMove)
+		this.setState({point:{x:-1,y:-1}})
+	}
+
+	checkIntersectFunctions(x,y) {
+		if(!this.props.intersectFunctions) return;
+		this.props.intersectFunctions.map((obj) => {
+			if(obj.rect && obj.func) {
+				if(x <= obj.rect.x+obj.rect.width && x >= obj.rect.x 
+					&& y <= obj.rect.y+obj.rect.height && y >= obj.rect.y)
+						obj.func();
+			}
+		})
 	}
 
 	mouseMove(e) {

@@ -5,6 +5,7 @@ import Radar from './RadarComponent/Radar.js'
 import { DateRangePicker } from 'react-dates';
 import SubjectForm from './RadarComponent/SubjectForm.js'
 import TaskForm from './RadarComponent/TaskForm.js'
+import Buttons from './RadarComponent/Buttons.js'
 
 
 
@@ -156,14 +157,14 @@ class RadarScreen extends Component {
 		    			<SubjectForm taskTypes={taskTypes}/>
 		    		</div>
 	    		</div>
-	    		<div style={{position:'absolute',bottom:180,right:20}} id='subjectButton'>
+	    		{/*<div style={{position:'absolute',bottom:180,right:20}} id='subjectButton'>
 		    		<svg width={320} height={165}>
 		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
 		    		</svg>
 		    		<div style={{position:'absolute',bottom:10,right:10}}>
 		    			<TaskForm taskTypes={taskTypes} subjectNames={subjectNames}/>
 		    		</div>
-	    		</div>
+	    		</div>*/}
     		</div>
     	</div>
     )
