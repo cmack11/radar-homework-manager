@@ -64,28 +64,32 @@ export class SubjectForm extends React.Component {
     }
 
     return (
+    <div style={{position:'absolute',
+          backgroundColor:'grey',
+          width:this.props.width,
+          right:(window.innerWidth-this.props.width)/2,
+          bottom:(window.innerHeight-150)/2,
+          padding:20
+        }}>
       <form >
-        <b>Add Subject</b>
-        <br/>
-        <label>
+        <b onClick={this.props.switchForm}>Add Subject</b>
+        <label class='form-fields'>
           Subject Name:
           <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
         </label>
-        <br />
-        <label>
+        <label class='form-fields'>
           Subject Description:
           <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
         </label>
-        <br />
-        <label>
+        <label class='form-fields'>
           Default Task Type:
           <select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>
-        <br />
         <button type="button" value="Submit" onClick={this.handleSubmit}>Submit</button>
       </form>
+      </div>
     );
   }
 }

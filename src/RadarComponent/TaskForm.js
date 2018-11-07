@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.js';
 import moment from 'moment';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
@@ -23,15 +26,15 @@ export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {taskName: '', taskDesc: '', taskDueDate: '', subject: 'Subject #1', taskType: 'Assignment'};
+    this.state = this.getDefaultState();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  setDefaultFields() {
-    let defaultState = {taskName: '', taskDesc: '', taskDueDate: '', subject: 'Subject #1'};
-    this.setState(defaultState);
+  getDefaultState() {
+    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
+    return defaultState;
   }
 
   handleChange(event) {
@@ -46,9 +49,9 @@ export class TaskForm extends React.Component {
 
   handleSubmit(event) {
     this.props.addAssignment(
-      {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:moment(this.state.taskDueDate)},
+      {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
       this.state.subject);
-      this.setDefaultFields();
+      this.setState(this.getDefaultState());
   }
 
   render() {
@@ -67,40 +70,54 @@ export class TaskForm extends React.Component {
     }
 
     return (
-      <form>
-        <b>Add Task</b>
+      <div style={{position:'absolute',
+            backgroundColor:'grey',
+            width:this.props.width,
+            right:(window.innerWidth-this.props.width)/2,
+            bottom:(window.innerHeight-150)/2,
+            padding:20
+          }}>
+      <form >
+        <b onClick={this.props.switchForm}>Add Task</b>
         <br/>
-        <label>
-          Task Name:
+        <label class='form-fields'>
+          Name:
           <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </label>
-        <br />
-        <label>
+        <label class='form-fields'>
           Subject:
           <select name="subject" value={this.state.subject} onChange={this.handleChange}>
             {subjectOptions}
           </select>
         </label>
-        <br />
-        <label>
-          Task Description:
+        <label class='form-fields'>
+          Description:
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
         </label>
-        <br />
-        <label>
-          Task Type:
+        <label class='form-fields'>
+          Type:
           <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>
-        <br />
-        <label>
-          Task Due Date:
-          <input name="taskDueDate" type="text" placeholder = "MM/DD/YYYY" value={this.state.taskDueDate} onChange={this.handleChange} />
+        <label class='form-fields'>
+          Due Date: 
+          <DatePicker
+              selected={this.state.taskDueDate}
+              onChange={(date)=>{this.setState({taskDueDate:date})}}
+              showTimeSelect
+              timeIntervals={15}
+              dateFormat="M/D/YYYY [at] h:mm A"
+              timeCaption="Time"
+              shouldCloseOnSelect={true}
+              minDate={moment()}
+              maxDate={moment().add(100,'years')}
+              showDisabledMonthNavigation
+          />
         </label>
-        <br />
         <button type="button" value="Submit" onClick={this.handleSubmit}>Submit</button>
       </form>
+      </div>  
     );
   }
 }

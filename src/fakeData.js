@@ -1,7 +1,7 @@
 import moment from 'moment'
 
-export const subjects1 = [];
-export const subjects2 = [
+export const subjects2 = [];
+export const subjects1 = [
   			{
   				name:"Subject #1",
   				color:"blue",

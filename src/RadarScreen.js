@@ -6,6 +6,9 @@ import { DateRangePicker } from 'react-dates';
 import SubjectForm from './RadarComponent/SubjectForm.js'
 import TaskForm from './RadarComponent/TaskForm.js'
 import Buttons from './RadarComponent/Buttons.js'
+import AddForm from './RadarComponent/AddForm.js'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -107,6 +110,10 @@ class RadarScreen extends Component {
 		clearInterval(this.dateUpdateInterval);
 	}
 
+	openAddForm() {
+		this.setState({showAddForm:!this.state.showAddForm});
+	}
+
 	
 
 	render() {
@@ -148,23 +155,8 @@ class RadarScreen extends Component {
     		  }}
     		/>
     		<div>
-    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView}/>
-	    		<div style={{position:'absolute',bottom:50,right:20}} id='subjectButton'>
-		    		<svg width={320} height={120}>
-		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
-		    		</svg>
-		    		<div style={{position:'absolute',bottom:10,right:10}}>
-		    			<SubjectForm taskTypes={taskTypes}/>
-		    		</div>
-	    		</div>
-	    		{/*<div style={{position:'absolute',bottom:180,right:20}} id='subjectButton'>
-		    		<svg width={320} height={165}>
-		    			<rect width={.95*Math.min(this.state.view.width,this.state.view.height)} height={.95*Math.min(this.state.view.width,this.state.view.height)}  fill={'gray'}/>
-		    		</svg>
-		    		<div style={{position:'absolute',bottom:10,right:10}}>
-		    			<TaskForm taskTypes={taskTypes} subjectNames={subjectNames}/>
-		    		</div>
-	    		</div>*/}
+    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} openAddForm={this.openAddForm.bind(this)}/>
+		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm}/>
     		</div>
     	</div>
     )

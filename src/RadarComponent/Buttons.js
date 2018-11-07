@@ -26,7 +26,11 @@ class Buttons extends Component {
 
 		let buttons = [];
 		this.props.buttons.map((obj) => {
-			buttons.push(<circle cx={obj.x} cy={obj.y} r={obj.radius} fill={obj.color} onClick={obj.onClick}/>)
+			buttons.push(
+				<g>
+					<circle cx={obj.x} cy={obj.y} r={obj.radius} fill={obj.color} onClick={obj.onClick}/>
+				</g>
+				)
 		})
 
 		return (

@@ -147,20 +147,16 @@ class Radar extends Component {
 	}
 
 	makeLabel(subject, x, y, radius, startAngle, endAngle) {
-		let fontSize, width,height;
+		let fontSize;
 		if(window.innerWidth > 500) {
 			fontSize = 24;
-			width = subject.name.length*fontSize/2;
-			height = fontSize*0;
 		} else if(window.innerWidth < 250) {
 			fontSize = 12;
-			width = subject.name.length*fontSize;
-			height = fontSize;
 		} else {
 			fontSize = 18;
-			width = subject.name.length*fontSize;
-			height = fontSize;
 		}
+		let width = subject.name.length*fontSize/2;
+		let height = 0;
 
 	    let angle = startAngle+(endAngle-startAngle)/2; 
 	    var point = util.polarToCartesian(x, y, radius, angle);
@@ -174,7 +170,12 @@ class Radar extends Component {
 	    else if(point.y < this.view.dots.center.y)//upper hemisphere
 	    	point.y -= height;
 
-		return <text x={point.x} y={point.y} font-size={fontSize} stroke={subject.color}>{subject.name}</text>
+		return <text x={point.x} y={point.y} onClick={() => {this.openSubject(subject)}} font-size={fontSize} stroke={subject.color} cursor='pointer'>{subject.name}</text>
+	}
+
+	openSubject(subject) {
+		//Open a subject viewer when the subject label is selected
+		//Can view list of assignments and change name of subject
 	}
 
 	makeDot(dot) {
@@ -297,7 +298,7 @@ class Radar extends Component {
 
 		let buttons = [
 			{x:this.view.radar.radius*.2+ 20, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'blue',onClick:()=>{}, onIntersect:() => {console.log('woo')}},
-			{x:this.props.view.dotsView.width-20-this.view.radar.radius*.2, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'red',onClick:()=>{}, onIntersect:() => {console.log('woo')}}
+			{x:this.props.view.dotsView.width-20-this.view.radar.radius*.2, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'red',onClick:this.props.openAddForm, onIntersect:() => {console.log('woo')}}
 		];
 
 		buttons.map((button) => {
