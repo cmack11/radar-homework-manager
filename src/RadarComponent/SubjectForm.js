@@ -72,16 +72,16 @@ export class SubjectForm extends React.Component {
           padding:20
         }}>
       <form >
-        <b onClick={this.props.switchForm}>Add Subject</b>
-        <label class='form-fields'>
+        <b className='form-fields' onClick={this.props.switchForm}>Add Subject</b>
+        <label className='form-fields'>
           Subject Name:
           <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Subject Description:
           <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Default Task Type:
           <select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}>
             {taskTypeOptions}

@@ -78,7 +78,7 @@ export class TaskForm extends React.Component {
             padding:20
           }}>
       <form >
-        <b onClick={this.props.switchForm}>Add Task</b>
+        <b className='form-fields' onClick={this.props.switchForm}>Add Task</b>
         <br/>
         <label class='form-fields'>
           Name:
