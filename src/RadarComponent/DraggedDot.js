@@ -51,12 +51,25 @@ class DraggedDot extends Component {
 		})
 	}
 
+	pauseEvent(e){
+	    if(e.stopPropagation) e.stopPropagation();
+	    if(e.preventDefault) e.preventDefault();
+	    e.cancelBubble=true;
+	    e.returnValue=false;
+	    return false;
+	}
+
 	mouseMove(e) {
+		this.pauseEvent(e)
 		let dotsGroup = document.getElementById('dotsGroup');
 		dotsGroup.insertBefore(this.props.dot.dot,null);
-
-		let x = e.offsetX;
-		let y = e.offsetY;
+		let top = document.getElementById('radarScreen');
+		console.log(top.getBoundingClientRect())
+		let rect = top.getBoundingClientRect();
+		let style = top.currentStyle || window.getComputedStyle(top);
+		console.log(style.getPropertyValue('margin-top'))
+		let x = e.clientX;
+		let y = e.clientY-rect.height-parseInt(style.getPropertyValue('margin-top'));
 		this.setState({point:{x:x,y:y}})
 	}
 

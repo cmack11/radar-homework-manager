@@ -217,7 +217,16 @@ class Dots extends Component {
 		//this.setState(state);
 	}
 
+	pauseEvent(e){
+	    if(e.stopPropagation) e.stopPropagation();
+	    if(e.preventDefault) e.preventDefault();
+	    e.cancelBubble=true;
+	    e.returnValue=false;
+	    return false;
+	}
+
 	onMouseDownDot(e,dotObj) {
+		this.pauseEvent(e);
 		this.draggedDot = {
 			dot:e.target,
 			assignment:dotObj.assignment, 
@@ -235,6 +244,7 @@ class Dots extends Component {
 	}
 
 	onMouseMoveDot(e) {
+		this.pauseEvent(e);
 		this.draggedDot.moved = true;
 		this.draggedDot.dot.setAttribute('visibility','hidden');
 		window.removeEventListener('mousemove',this.draggedDot.mousemove)

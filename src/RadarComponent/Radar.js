@@ -8,6 +8,9 @@ import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
 import Buttons from './Buttons.js'
 import {Label} from 'semantic-ui-react';
+import addButton from '../images/add_button.png'
+import historyButton from '../images/history_button.png'
+
 
 
 
@@ -329,7 +332,8 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				<Buttons buttons={buttons}/>
+				<image style={{cursor:'pointer'}} onClick={this.props.openAddForm}  href={addButton} x={this.props.view.dotsView.width-125-10} y={this.props.view.dotsView.height-125-10} width={125} height={125}/>
+				<image style={{cursor:'pointer'}} onClick={this.props.openAddForm}  href={historyButton} x={10} y={this.props.view.dotsView.height-125-10} width={125} height={125}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>

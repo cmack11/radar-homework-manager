@@ -10,6 +10,7 @@
     "react-dates": "^18.1.1",
     "react-dom": "^16.5.2",
     "react-icons": "^3.2.1",
+    "react-native": "^0.57.4",
     "react-native-action-button": "^2.8.5",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
