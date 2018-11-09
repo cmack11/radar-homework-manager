@@ -51,7 +51,7 @@
     "husky": "^0.13.3"
   },
   "lint-staged": {
-    "src/**/*.test.js": [
+    "**/*.test.js": [
       "test:staged",
       "git add"
     ]
