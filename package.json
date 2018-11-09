@@ -29,7 +29,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "test:staged": "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests"
+    "test:staged": "CI=true react-scripts test --env=jsdom --findRelatedTests"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,8 +52,7 @@
   },
   "lint-staged": {
     "**/*.test.js": [
-      "test:staged",
-      "git add"
+      "test:staged"
     ]
   }
 }

@@ -76,10 +76,10 @@ describe('interval function', () => {
     expect(setLineAngle).not.toBeCalled();
 
     jest.runOnlyPendingTimers();
-    let angle = wrapper.instance().state.angle;
+    let newAngle = wrapper.instance().state.angle;
 
     expect(setLineAngle).toBeCalled();
-    expect(setLineAngle).toBeCalledWith(angle);
+    expect(setLineAngle).toBeCalledWith(newAngle);
   });
 
   it('should increase the angle of the line', () => {
