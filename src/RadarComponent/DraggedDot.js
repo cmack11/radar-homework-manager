@@ -29,7 +29,8 @@ class DraggedDot extends Component {
 			window.addEventListener('mousemove',this.mouseMove)
 			window.addEventListener('mouseup',this.mouseUp)
 		} else {
-			
+			if(this.props.dot)
+				this.oldDot = this.props.dot
 		}
 	}
 
@@ -46,7 +47,7 @@ class DraggedDot extends Component {
 			if(obj.rect && obj.func) {
 				if(x <= obj.rect.x+obj.rect.width && x >= obj.rect.x 
 					&& y <= obj.rect.y+obj.rect.height && y >= obj.rect.y)
-						obj.func();
+						obj.func(this.oldDot);
 			}
 		})
 	}
@@ -63,13 +64,14 @@ class DraggedDot extends Component {
 		this.pauseEvent(e)
 		let dotsGroup = document.getElementById('dotsGroup');
 		dotsGroup.insertBefore(this.props.dot.dot,null);
+
 		let top = document.getElementById('radarScreen');
-		console.log(top.getBoundingClientRect())
 		let rect = top.getBoundingClientRect();
+
 		let style = top.currentStyle || window.getComputedStyle(top);
-		console.log(style.getPropertyValue('margin-top'))
+		let yOffset = rect.height+parseInt(style.getPropertyValue('margin-top'));
 		let x = e.clientX;
-		let y = e.clientY-rect.height-parseInt(style.getPropertyValue('margin-top'));
+		let y = e.clientY-yOffset;
 		this.setState({point:{x:x,y:y}})
 	}
 

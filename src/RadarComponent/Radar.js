@@ -30,6 +30,7 @@ class Radar extends Component {
 			subjects:props.subjects,
 			view:props.view,
 			buttons:{
+				width:115,
 				left:{logo:historyButton},
 				right:{logo:addButton}
 			}
@@ -329,18 +330,14 @@ class Radar extends Component {
 		let intersectFuncs = [];
 
 		let buttons = [
-			{x:this.view.radar.radius*.2+ 20, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'blue',onClick:()=>{}, onIntersect:() => {console.log('woo')}},
+			{x:10, y:this.props.view.dotsView.height-125-10, radius:this.view.radar.radius*.2, color:'blue',onClick:()=>{}, onIntersect:() => {console.log('woo')}},
 			{x:this.props.view.dotsView.width-20-this.view.radar.radius*.2, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'red',onClick:this.props.openAddForm, onIntersect:() => {console.log('woo')}}
 		];
 
-		buttons.map((button) => {
-			intersectFuncs.push({
-				rect:{x:button.x-button.radius, y:button.y-button.radius, width:button.radius*2, height:button.radius*2},
-				func:button.onIntersect
-			})
+		intersectFuncs.push({
+			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
+			func:(dot)=>{dot.dot.setAttribute('visibility','hidden')}
 		})
-
-		let button1 = addButton;
 
 
     return (
@@ -363,8 +360,8 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-125-10} y={this.props.view.dotsView.height-125-10} width={125} height={125}/>
-				<image style={{cursor:'pointer'}} onClick={()=>{}}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-125-10} width={125} height={125}/>
+				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.state.buttons.width-10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={()=>{}}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>

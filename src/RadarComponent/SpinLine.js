@@ -6,7 +6,7 @@ class SpinLine extends Component {
 
 	constructor(props) {
 		super();
-		let state = {angle:(Math.PI/2)}
+		let state = {angle:0}
 		this.state = state;
 	}
 
