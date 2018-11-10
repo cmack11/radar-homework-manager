@@ -9,6 +9,7 @@ TaskList props:
     title = String (This title will be shown above the table)
     width
     height
+    hideSubjectCol = true/false - defaults to false
     assignments = array of assignments to display.
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
 */
@@ -26,16 +27,24 @@ class TaskList extends React.Component {
     if (!this.state.visible)
         return(<null />);
 
-    let columns =
-    [
+    let hideSubjectCol = this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
+
+    let columns = [];
+    columns.push(
         {
             Header: 'Name',
             accessor: 'name'
-        },
+        });
+    if (!hideSubjectCol)
+    {
+        columns.push(
         {
             Header: 'Subject',
             accessor: 'subject'
-        },
+        });
+    }
+    columns.push.apply(columns,
+    [
         {
             Header: 'Description',
             accessor: 'description'
@@ -49,7 +58,8 @@ class TaskList extends React.Component {
             accessor: 'dueDate',
             Cell: props => <span className='dueDate'>{props.value.format("MM/DD/YYYY")}</span>
         }
-    ];
+    ]);
+
     const data = this.props.assignments !== undefined ? this.props.assignments : subjects1[0].assignments;
 
     return (
