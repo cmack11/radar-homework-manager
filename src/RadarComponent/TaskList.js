@@ -21,11 +21,15 @@ class TaskList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {visible: this.props.visible};
+    this.state = {visible: this.props.visible, top:307, left:200};
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({visible:nextProps.visible})
+  }
+
+  componentDidMount() {
+    this.resize();
   }
 
 
@@ -64,9 +68,20 @@ class TaskList extends React.Component {
     return {}
   }
 
+  resize() {
+    let height = 307;//What it usually shows up as the first time
+    let e = document.getElementById('tasklist');
+    if(e)
+        height = e.getBoundingClientRect().height;
+    console.log(height);
+    let top = this.props.y-height/2+padding;
+    let left = this.props.x-this.props.width/2-padding;
+    this.setState({top:top, left:left} )
+  }
+
   render() {
-    if (!this.state.visible)
-        return(<null />);
+    //if (!this.state.visible)
+        //return(<null />);
 
 
     let hideSubjectCol = true;//this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
@@ -110,18 +125,15 @@ class TaskList extends React.Component {
     ]);
 
     const data = this.props.assignments !== undefined ? this.props.assignments : subjects1[0].assignments;
-
-    let top = this.props.y-this.props.height/2 - padding/2 - 50;
-    let left = this.props.x-this.props.width/2 - padding/2;
-    
+    let visible = this.state.visible ? 'visible' : 'hidden';
     return (
-    <div style={{
+    <div id="tasklist" style={{
+            visibility:visible,
             position:'absolute',
-            top:top,
-            left:left,
+            top:this.state.top,
+            left:this.state.left,
             width:this.props.width,
-            height:this.props.height,
-            paddingTop:padding
+            padding:padding
         }}>
         {this.props.title}
         <ReactTable
@@ -133,6 +145,7 @@ class TaskList extends React.Component {
             columns={columns} 
             defaultPageSize={5}
             pageSizeOptions = {[5, 10, 15]}
+            onPageSizeChange={(pageIndex) => {this.resize()}}
         />
     </div>  
     );

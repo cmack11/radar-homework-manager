@@ -228,7 +228,7 @@ class RadarScreen extends Component {
     			openSubject={this.openSubject.bind(this)}
     			/>
 		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={this.closeAddForm.bind(this)}/>
-		    	<TaskList useTypeColors={this.state.useTypeColors} visible={this.state.showHistoryScreen} title="" noDataText="No Completed Assignments Found" width={Math.min(window.innerWidth,500)} height={300} assignments={this.state.completedAssignments} colors={this.state.historyScreenColors} x={this.state.view.width/2} y={this.state.view.height/2} />
+		    	<TaskList useTypeColors={this.state.useTypeColors} visible={this.state.showHistoryScreen} title="" noDataText="No Completed Assignments Found" width={Math.min(window.innerWidth,500)} assignments={this.state.completedAssignments} colors={this.state.historyScreenColors} x={this.state.view.width/2} y={this.state.view.height/2} />
     		</div>
     	</div>
     )
