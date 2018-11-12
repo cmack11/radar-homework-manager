@@ -15,6 +15,10 @@ TaskList props:
 */
 
 const padding = 20;
+const dateCompare = function(a,b) {
+    //console.log(a.dueDate.valueOf() - b.dueDate.valueOf());
+    return a.dueDate.valueOf() - b.dueDate.valueOf();
+}
 
 class TaskList extends React.Component {
 
@@ -26,6 +30,7 @@ class TaskList extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({visible:nextProps.visible})
+    nextProps.assignments.sort(dateCompare);
   }
 
   componentDidMount() {
