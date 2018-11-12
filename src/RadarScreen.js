@@ -115,6 +115,9 @@ class RadarScreen extends Component {
 		clearInterval(this.dateUpdateInterval);
 	}
 
+	//Need to combine these with the same functions in Radar
+	//so they are always called together. Now sometimes the 
+	//pictures don't change if only these are called 
 	openAddForm() {
 		this.setState({
 			showAddForm:true,
@@ -159,14 +162,18 @@ class RadarScreen extends Component {
 		let show = !this.state.showHistoryScreen;
 		let assignments; 
 
-		if(!show)
+		if(!show) {
 			assignments = [];
-		else
+		} else {
 			assignments = subject.assignments;
+			this.closeHistoryScreen();
+			this.closeAddForm();
+		}
 
 		this.setState({
 			showHistoryScreen:show,
-			completedAssignments:assignments
+			completedAssignments:assignments,
+			useTypeColors:show
 		});
 		this.setRadarClickable(!show);
 	}
@@ -220,8 +227,8 @@ class RadarScreen extends Component {
     			completeAssignment={this.completeAssignment.bind(this)}
     			openSubject={this.openSubject.bind(this)}
     			/>
-		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm}/>
-		    	<TaskList useTypeColors visible={this.state.showHistoryScreen} title="" noDataText="No Completed Assignments Found" width={Math.min(window.innerWidth,500)} height={300} assignments={this.state.completedAssignments} colors={this.state.historyScreenColors} x={this.state.view.width/2} y={this.state.view.height/2} />
+		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={this.closeAddForm.bind(this)}/>
+		    	<TaskList useTypeColors={this.state.useTypeColors} visible={this.state.showHistoryScreen} title="" noDataText="No Completed Assignments Found" width={Math.min(window.innerWidth,500)} height={300} assignments={this.state.completedAssignments} colors={this.state.historyScreenColors} x={this.state.view.width/2} y={this.state.view.height/2} />
     		</div>
     	</div>
     )

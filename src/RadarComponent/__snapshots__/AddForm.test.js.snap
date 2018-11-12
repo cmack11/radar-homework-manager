@@ -34,6 +34,13 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <Connect(SubjectForm)
+        subjectNames={
+          Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ]
+        }
         switchForm={[Function]}
         taskTypes={
           Array [
@@ -57,6 +64,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "closeForm": undefined,
+        "subjectNames": Array [
+          "Subject #1",
+          "Subject #2",
+          "Subject #3",
+        ],
         "switchForm": [Function],
         "taskTypes": Array [
           "Type #1",
@@ -78,6 +91,13 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <Connect(SubjectForm)
+          subjectNames={
+            Array [
+              "Subject #1",
+              "Subject #2",
+              "Subject #3",
+            ]
+          }
           switchForm={[Function]}
           taskTypes={
             Array [
@@ -101,6 +121,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "closeForm": undefined,
+          "subjectNames": Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ],
           "switchForm": [Function],
           "taskTypes": Array [
             "Type #1",
@@ -170,6 +196,13 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <Connect(SubjectForm)
+        subjectNames={
+          Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ]
+        }
         switchForm={[Function]}
         taskTypes={
           Array [
@@ -193,6 +226,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "closeForm": undefined,
+        "subjectNames": Array [
+          "Subject #1",
+          "Subject #2",
+          "Subject #3",
+        ],
         "switchForm": [Function],
         "taskTypes": Array [
           "Type #1",
@@ -214,6 +253,13 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <Connect(SubjectForm)
+          subjectNames={
+            Array [
+              "Subject #1",
+              "Subject #2",
+              "Subject #3",
+            ]
+          }
           switchForm={[Function]}
           taskTypes={
             Array [
@@ -237,6 +283,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "closeForm": undefined,
+          "subjectNames": Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ],
           "switchForm": [Function],
           "taskTypes": Array [
             "Type #1",
@@ -387,6 +439,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "closeForm": undefined,
         "subjectNames": Array [
           "Subject #1",
           "Subject #2",
@@ -443,6 +496,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "closeForm": undefined,
           "subjectNames": Array [
             "Subject #1",
             "Subject #2",
@@ -517,6 +571,13 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <Connect(SubjectForm)
+        subjectNames={
+          Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ]
+        }
         switchForm={[Function]}
         taskTypes={
           Array [
@@ -540,6 +601,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "closeForm": undefined,
+        "subjectNames": Array [
+          "Subject #1",
+          "Subject #2",
+          "Subject #3",
+        ],
         "switchForm": [Function],
         "taskTypes": Array [
           "Type #1",
@@ -561,6 +628,13 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <Connect(SubjectForm)
+          subjectNames={
+            Array [
+              "Subject #1",
+              "Subject #2",
+              "Subject #3",
+            ]
+          }
           switchForm={[Function]}
           taskTypes={
             Array [
@@ -584,6 +658,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "closeForm": undefined,
+          "subjectNames": Array [
+            "Subject #1",
+            "Subject #2",
+            "Subject #3",
+          ],
           "switchForm": [Function],
           "taskTypes": Array [
             "Type #1",

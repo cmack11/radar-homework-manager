@@ -52,6 +52,8 @@ export class TaskForm extends React.Component {
       {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
       this.state.subject);
       this.setState(this.getDefaultState());
+      if(this.props.closeForm)
+        this.props.closeForm();
   }
 
   render() {

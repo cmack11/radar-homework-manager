@@ -49,6 +49,21 @@ class TaskList extends React.Component {
     }
   }
 
+  getTdProps(state, rowInfo, column, instance) {
+    if(!rowInfo || (column && column.id !== 'type')) return {};
+    
+    let color = "none";
+    let type = rowInfo.original.type;
+
+    if(this.props.colors && this.props.colors[type]) {
+        color = this.props.colors[type];
+        return {style:{background:color}};
+    }
+    
+
+    return {}
+  }
+
   render() {
     if (!this.state.visible)
         return(<null />);
@@ -112,6 +127,7 @@ class TaskList extends React.Component {
         <ReactTable
             getProps={()=>{return {style:{background:'lightgrey'}}}}
             getTrProps={this.getTrProps.bind(this)}
+            getTdProps={this.getTdProps.bind(this)}
             noDataText={this.props.noDataText}
             data={data}
             columns={columns} 

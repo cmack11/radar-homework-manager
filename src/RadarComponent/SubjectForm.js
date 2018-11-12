@@ -18,6 +18,9 @@ const mapStateToProps = state => {
     }
   }
 
+const maxNameLength = 14;
+const maxSubjectLength = 8;
+
 export class SubjectForm extends React.Component {
   constructor(props) {
     super(props);
@@ -43,11 +46,30 @@ export class SubjectForm extends React.Component {
     let index = Math.floor(Math.random() * colors.length);
     let color = colors[index];
 
+    if(!this.allValid()) return; 
 
     this.props.addSubject(
       {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
 
     this.setState(this.getDefaultState())
+    if(this.props.closeForm)
+      this.props.closeForm();
+  }
+
+  allValid() {
+    if(this.state.subjectName && this.state.subjectName.length > maxNameLength)
+      return false;
+    if(this.props.subjectNames) {
+      if(this.props.subjectNames.length === maxSubjectLength) return false;
+      let duplicate = false;
+      duplicate = this.props.subjectNames.some((name)=>{
+        return name.toLowerCase() === this.state.subjectName.toLowerCase();
+      })
+      if(duplicate) return false;
+    }
+
+
+    return true;
   }
 
   getDefaultState() {
