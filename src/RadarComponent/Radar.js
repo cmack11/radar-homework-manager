@@ -12,7 +12,7 @@ import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
 import completedButton from '../images/completed_button.png'
 import historyButton from '../images/history_button.png'
-
+import closeHistoryButton from '../images/history_button_close.png'
 
 
 
@@ -339,7 +339,7 @@ class Radar extends Component {
 
 	openHistoryScreen() {
 		let buttons = this.state.buttons;
-		buttons.left.logo = closeAddButton;
+		buttons.left.logo = closeHistoryButton;
 		this.props.openHistoryScreen();
 		this.setState({buttons:buttons})
 	}

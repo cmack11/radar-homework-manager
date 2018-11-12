@@ -162,7 +162,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "cursor": "pointer",
+      "cursor": "default",
       "cx": 10,
       "cy": 15,
       "draggable": true,
@@ -182,7 +182,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "cursor": "pointer",
+        "cursor": "default",
         "cx": 10,
         "cy": 15,
         "draggable": true,
@@ -244,7 +244,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "cursor": "pointer",
+      "cursor": "default",
       "cx": 10,
       "cy": 15,
       "draggable": true,
@@ -264,7 +264,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "cursor": "pointer",
+        "cursor": "default",
         "cx": 10,
         "cy": 15,
         "draggable": true,
@@ -349,7 +349,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "cursor": "pointer",
+      "cursor": "default",
       "cx": 10,
       "cy": 15,
       "draggable": true,
@@ -369,7 +369,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "cursor": "pointer",
+        "cursor": "default",
         "cx": 10,
         "cy": 15,
         "draggable": true,
