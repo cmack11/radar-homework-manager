@@ -238,9 +238,9 @@ export const subjects1 = [
 
 export const colors1 = {
 	typeColors:{
-		assignment:'white',
-		exam:'maroon',
-		reading:'cyan',
-		problemset:'magenta'
+		"Assignment":'white',
+		"Exam":'maroon',
+		"Reading":'cyan',
+		"Problem Set":'magenta'
 	}
 }

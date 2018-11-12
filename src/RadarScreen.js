@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import moment from 'moment'
 import Radar from './RadarComponent/Radar.js'
 import { DateRangePicker } from 'react-dates';
-import SubjectForm from './RadarComponent/SubjectForm.js'
-import TaskForm from './RadarComponent/TaskForm.js'
-import Buttons from './RadarComponent/Buttons.js'
 import AddForm from './RadarComponent/AddForm.js'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import TaskList from './RadarComponent/TaskList.js'
 
 
 
@@ -20,6 +17,8 @@ class RadarScreen extends Component {
 
 		let state = {
 			show:props.show,
+			completedAssignments:[],
+			historyScreenColors:{},
 			dates:{
 				startDate:moment(),
 				endDate:moment().add(7,'days')
@@ -42,7 +41,8 @@ class RadarScreen extends Component {
 					width:props.view.width,
 					height:props.view.height
 				},
-				colors:props.view.colors
+				colors:props.view.colors,
+				disable:false
 			}
 		}
 
@@ -50,7 +50,11 @@ class RadarScreen extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		
+		let newColors = Object.assign({}, nextProps.view.colors.typeColors);
+		nextProps.subjects.map((subj) =>{
+			newColors[subj.name] = subj.color;
+		})
+		this.setState({historyScreenColors:newColors})
     }
 
     componentDidMount() {
@@ -89,7 +93,8 @@ class RadarScreen extends Component {
 				width:state.view.width,
 				height:state.view.height
 			},
-			colors:state.radarView.colors
+			colors:state.radarView.colors,
+			disable:false
 		}
 		this.setState(state);
 	}
@@ -111,7 +116,59 @@ class RadarScreen extends Component {
 	}
 
 	openAddForm() {
-		this.setState({showAddForm:!this.state.showAddForm});
+		this.setState({
+			showAddForm:true,
+			showHistoryScreen:false
+		});
+		this.setRadarClickable(false);
+	}
+
+	closeAddForm() {
+		this.setState({
+			showAddForm:false
+		});
+		this.setRadarClickable(true);
+	}
+
+	openHistoryScreen() {
+		this.setState({
+			showHistoryScreen:true,
+			showAddForm:false,
+		});
+		this.setRadarClickable(false);
+	}
+
+	closeHistoryScreen() {
+		this.setState({showHistoryScreen:false});
+		this.setRadarClickable(true);
+	}
+
+	setRadarClickable(clickable) {
+		let rView = this.state.radarView;
+		rView.disable = !clickable;
+		this.setState({radarView:rView});
+	}
+
+	completeAssignment(assignment) {
+		let assignments = this.state.completedAssignments.slice();
+		assignments.push(assignment);
+		this.setState({completedAssignments:assignments})
+	}
+
+	openSubject(subject) {
+		let show = !this.state.showHistoryScreen;
+		let assignments; 
+
+		if(!show)
+			assignments = [];
+		else
+			assignments = subject.assignments;
+
+		this.setState({
+			showHistoryScreen:show,
+			completedAssignments:assignments
+		});
+		this.setRadarClickable(!show);
 	}
 
 	
@@ -155,8 +212,16 @@ class RadarScreen extends Component {
     		  }}
     		/>
     		<div>
-    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} openAddForm={this.openAddForm.bind(this)}/>
+    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} 
+    			openAddForm={this.openAddForm.bind(this)}
+    			closeAddForm={this.closeAddForm.bind(this)}
+    			openHistoryScreen={this.openHistoryScreen.bind(this)}
+    			closeHistoryScreen={this.closeHistoryScreen.bind(this)}
+    			completeAssignment={this.completeAssignment.bind(this)}
+    			openSubject={this.openSubject.bind(this)}
+    			/>
 		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm}/>
+		    	<TaskList useTypeColors visible={this.state.showHistoryScreen} title="" noDataText="No Completed Assignments Found" width={Math.min(window.innerWidth,500)} height={300} assignments={this.state.completedAssignments} colors={this.state.historyScreenColors} x={this.state.view.width/2} y={this.state.view.height/2} />
     		</div>
     	</div>
     )

@@ -35,6 +35,8 @@ export class AddForm extends React.Component {
       form = <TaskForm width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)}/>
     else if(this.state.form === SUBJECT_FORM)
       form = <SubjectForm width={320} taskTypes={this.props.taskTypes} switchForm={this.switchForm.bind(this)}/> 
+    else
+      form = null;
     return (
       <div style={{position:'absolute',bottom:0,right:0}} id='subjectButton'>
       {form}

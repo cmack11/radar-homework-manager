@@ -49,7 +49,7 @@ export class TaskForm extends React.Component {
 
   handleSubmit(event) {
     this.props.addAssignment(
-      {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
+      {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
       this.state.subject);
       this.setState(this.getDefaultState());
   }
@@ -80,27 +80,27 @@ export class TaskForm extends React.Component {
       <form >
         <b className='form-fields' onClick={this.props.switchForm}>Add Task</b>
         <br/>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Name:
           <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Subject:
           <select name="subject" value={this.state.subject} onChange={this.handleChange}>
             {subjectOptions}
           </select>
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Description:
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Type:
           <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Due Date: 
           <DatePicker
               selected={this.state.taskDueDate}

@@ -43,7 +43,7 @@ class DraggedDot extends Component {
 
 	checkIntersectFunctions(x,y) {
 		if(!this.props.intersectFunctions) return;
-		this.props.intersectFunctions.map((obj) => {
+		this.props.intersectFunctions.forEach((obj) => {
 			if(obj.rect && obj.func) {
 				if(x <= obj.rect.x+obj.rect.width && x >= obj.rect.x 
 					&& y <= obj.rect.y+obj.rect.height && y >= obj.rect.y)
