@@ -73,7 +73,7 @@ class TaskList extends React.Component {
     let e = document.getElementById('tasklist');
     if(e)
         height = e.getBoundingClientRect().height;
-    console.log(height);
+
     let top = this.props.y-height/2+padding;
     let left = this.props.x-this.props.width/2-padding;
     this.setState({top:top, left:left} )
