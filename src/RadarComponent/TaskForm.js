@@ -23,6 +23,9 @@ const mapStateToProps = state => {
     }
   }
 
+  const maxNameLength = 20;
+  const minNameLength = 1;
+
 export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
@@ -43,18 +46,38 @@ export class TaskForm extends React.Component {
     const name = target.name;
     let value = target.value;
 
+    if(name === 'taskName') {
+      if(value.length > 0)
+        this.setState({taskNameError:false});
+      else
+        this.setState({taskNameError:true});
+    } 
+
     this.setState({
       [name]: value
     });
   }
 
   handleSubmit(event) {
+
+    if(!this.allValid()) return; 
+
     this.props.addAssignment(
       {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
       this.state.subject);
       this.setState(this.getDefaultState());
       if(this.props.closeForm)
         this.props.closeForm();
+  }
+
+  allValid() {
+    if(!this.state.taskName || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
+      this.setState({taskNameError:true});
+      return false;
+    }
+
+
+    return true;
   }
 
   render() {
@@ -90,7 +113,7 @@ export class TaskForm extends React.Component {
         </div>
         <label className='form-fields'>
           Name:
-          <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
+          <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </label>
         <label className='form-fields'>
           Subject:

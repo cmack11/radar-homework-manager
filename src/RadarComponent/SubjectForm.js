@@ -38,6 +38,13 @@ export class SubjectForm extends React.Component {
     const name = target.name;
     let value = target.value;
 
+    if(name === 'subjectName') {
+      if(value.length > 0)
+        this.setState({subjectNameError:false});
+      else
+        this.setState({subjectNameError:true});
+    } 
+
     this.setState({
       [name]: value
     });
@@ -45,8 +52,8 @@ export class SubjectForm extends React.Component {
 
   handleSubmit(event) {
     //alert('The following Subject was submitted: ' + this.state.subjectName);
-    let colors = ['red','blue','green','orange','black','magenta','maroon','cyan'];
-    let index = Math.floor(Math.random() * colors.length);
+    let colors = ['blue','violet','orange','purple','darkgreen','cyan','maroon','yellow'];
+    let index = this.props.subjectNames.length;
     let color = colors[index];
 
     if(!this.allValid()) return; 
@@ -60,15 +67,20 @@ export class SubjectForm extends React.Component {
   }
 
   allValid() {
-    if(!this.state.subjectName || this.state.subjectName.length > maxNameLength || this.state.subjectName.length < minNameLength)
+    if(!this.state.subjectName || this.state.subjectName.length > maxNameLength || this.state.subjectName.length < minNameLength) {
+      this.setState({subjectNameError:true})
       return false;
+    }
     if(this.props.subjectNames) {
       if(this.props.subjectNames.length === maxSubjectLength) return false;
       let duplicate = false;
       duplicate = this.props.subjectNames.some((name)=>{
         return name.toLowerCase() === this.state.subjectName.toLowerCase();
       })
-      if(duplicate) return false;
+      if(duplicate) { 
+        this.setState({subjectNameError:true})
+        return false;
+      }
     }
 
 
@@ -106,7 +118,7 @@ export class SubjectForm extends React.Component {
         </div>
         <label className='form-fields'>
           Subject Name:
-          <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
+          <input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
         </label>
         <label className='form-fields'>
           Subject Description:
