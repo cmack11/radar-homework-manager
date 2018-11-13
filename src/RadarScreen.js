@@ -175,9 +175,9 @@ class RadarScreen extends Component {
 	}
 
 	completeAssignment(assignment) {
-		let assignments = this.state.completedAssignments.slice();
-		assignments.push(assignment);
-		this.setState({completedAssignments:assignments})
+		let historyScreen = this.state.historyScreen;
+		historyScreen.completedAssignments.push(assignment);
+		this.setState({historyScreen:historyScreen})
 	}
 
 
@@ -272,7 +272,7 @@ class RadarScreen extends Component {
     			/>
 		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={this.closeAddForm.bind(this)}/>
 		    	<HistoryPage x={this.state.view.width/2} y={this.state.view.height/2} 
-		    		completedAssignments={this.state.completedAssignments}
+		    		completedAssignments={this.state.historyScreen.completedAssignments}
 		    		close={()=>{this.runRadarOpenCloseFunction('closeHistoryScreen')}}
 		    		show={this.state.historyScreen.show}
 		    		colors={this.state.historyScreen.colors}
