@@ -38,7 +38,7 @@ export class AddForm extends React.Component {
     else
       form = null;
     return (
-      <div style={{position:'absolute',bottom:0,right:0}} id='subjectButton'>
+      <div style={{position:'absolute',top:0,left:0}} id='subjectButton'>
       {form}
       </div>
     );

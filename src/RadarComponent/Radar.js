@@ -138,6 +138,12 @@ class Radar extends Component {
 		this.fillDimensions();
 		this.fillRings();
 		this.fillComponents();
+		this.props.setRadarOpenCloseFunctions({
+			openAddForm:this.openAddForm.bind(this),
+			closeAddForm:this.closeAddForm.bind(this),
+			openHistoryScreen:this.openHistoryScreen.bind(this),
+			closeHistoryScreen:this.closeHistoryScreen.bind(this)
+		});
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {
@@ -185,7 +191,7 @@ class Radar extends Component {
 	}
 
 	openSubject(subject) {
-		this.props.openSubject(subject);
+		this.props.runRadarScreenOpenCloseFunction('openSubjectPage',subject)
 		//Open a subject viewer when the subject label is selected
 		//Can view list of assignments and change name of subject
 	}
@@ -316,15 +322,15 @@ class Radar extends Component {
 
 	openAddForm() {
 		let buttons = this.state.buttons;
-		this.props.openAddForm();
 		buttons.right.logo = closeAddButton;
+		this.props.runRadarScreenOpenCloseFunction('openAddForm');
 		this.setState({buttons:buttons})
 	}
 
 	closeAddForm() {
 		let buttons = this.state.buttons;
-		this.props.closeAddForm();
 		buttons.right.logo = addButton;
+		this.props.runRadarScreenOpenCloseFunction('closeAddForm');
 		this.setState({buttons:buttons})
 	}
 
@@ -340,14 +346,14 @@ class Radar extends Component {
 	openHistoryScreen() {
 		let buttons = this.state.buttons;
 		buttons.left.logo = closeHistoryButton;
-		this.props.openHistoryScreen();
+		this.props.runRadarScreenOpenCloseFunction('openHistoryScreen');
 		this.setState({buttons:buttons})
 	}
 
 	closeHistoryScreen() {
 		let buttons = this.state.buttons;
 		buttons.left.logo = historyButton;
-		this.props.closeHistoryScreen();
+		this.props.runRadarScreenOpenCloseFunction('closeHistoryScreen');
 		this.setState({buttons:buttons})
 	}
 

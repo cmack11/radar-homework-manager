@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
+import image from '../images/switch_form.png'
+
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
@@ -89,12 +91,18 @@ export class SubjectForm extends React.Component {
     <div style={{position:'absolute',
           backgroundColor:'grey',
           width:this.props.width,
-          right:(window.innerWidth-this.props.width)/2,
-          bottom:(window.innerHeight-150)/2,
-          padding:20
+          left:(window.innerWidth-this.props.width)/2,
+          top:(window.innerHeight-250)/2,
+          padding:20,
+          border:5,
+          borderColor:'black',
+          borderStyle:'solid'
         }}>
       <form >
-        <b className='form-fields' onClick={this.props.switchForm}>Add Subject</b>
+        <div className='form-fields'>
+          <span style={{verticalAlign:'middle'}}><b>Add Subject</b></span>
+          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" alt="close"/>
+        </div>
         <label className='form-fields'>
           Subject Name:
           <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />

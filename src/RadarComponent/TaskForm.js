@@ -4,6 +4,7 @@ import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import image from '../images/switch_form.png'
 
 
 const mapDispatchToProps = dispatch => ({
@@ -75,13 +76,18 @@ export class TaskForm extends React.Component {
       <div style={{position:'absolute',
             backgroundColor:'grey',
             width:this.props.width,
-            right:(window.innerWidth-this.props.width)/2,
-            bottom:(window.innerHeight-150)/2,
-            padding:20
+            left:(window.innerWidth-this.props.width)/2,
+            top:(window.innerHeight-250)/2,
+            padding:20,
+            border:5,
+            borderColor:'black',
+            borderStyle:'solid'
           }}>
       <form >
-        <b className='form-fields' onClick={this.props.switchForm}>Add Task</b>
-        <br/>
+        <div className='form-fields'>
+          <span style={{verticalAlign:'middle'}}><b>Add Task</b></span>
+          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" />
+        </div>
         <label className='form-fields'>
           Name:
           <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />

@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the initialization of the component creates an empty dot layer 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Dots
+    dims={Object {}}
+    getDistanceFromCenter={[Function]}
+    subjects={Array []}
+    view={Object {}}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [],
+      "height": 768,
+      "id": "dotsGroup",
+      "stroke": "black",
+      "strokeWidth": "2",
+      "width": 1024,
+    },
+    "ref": null,
+    "rendered": Array [],
+    "type": "svg",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [],
+        "height": 768,
+        "id": "dotsGroup",
+        "stroke": "black",
+        "strokeWidth": "2",
+        "width": 1024,
+      },
+      "ref": null,
+      "rendered": Array [],
+      "type": "svg",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`the initialization of the component creates layer of dots 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Dots
+    dims={Object {}}
+    getDistanceFromCenter={[Function]}
+    subjects={
+      Array [
+        Object {
+          "assignments": Array [
+            Object {
+              "dueDate": "2018-09-12T17:00:00.000Z",
+              "name": "Assignment #1",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "Assignment #2",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+          ],
+          "color": "red",
+          "name": "Subject #1",
+        },
+        Object {
+          "assignments": Array [],
+          "color": "blue",
+          "name": "Subject #2",
+        },
+      ]
+    }
+    view={Object {}}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        null,
+        null,
+      ],
+      "height": 768,
+      "id": "dotsGroup",
+      "stroke": "black",
+      "strokeWidth": "2",
+      "width": 1024,
+    },
+    "ref": null,
+    "rendered": Array [
+      null,
+      null,
+    ],
+    "type": "svg",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          null,
+          null,
+        ],
+        "height": 768,
+        "id": "dotsGroup",
+        "stroke": "black",
+        "strokeWidth": "2",
+        "width": 1024,
+      },
+      "ref": null,
+      "rendered": Array [
+        null,
+        null,
+      ],
+      "type": "svg",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

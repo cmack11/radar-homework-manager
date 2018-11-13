@@ -14,7 +14,7 @@ TaskList props:
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
 */
 
-const padding = 20;
+const padding = 0;
 const dateCompare = function(a,b) {
     //console.log(a.dueDate.valueOf() - b.dueDate.valueOf());
     return a.dueDate.valueOf() - b.dueDate.valueOf();
@@ -30,11 +30,11 @@ class TaskList extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({visible:nextProps.visible})
-    nextProps.assignments.sort(dateCompare);
+    //if(nextProps.assignments && nextProps.assignments.length)
+        //nextProps.assignments.sort(dateCompare);
   }
 
   componentDidMount() {
-    this.resize();
   }
 
 
@@ -59,7 +59,7 @@ class TaskList extends React.Component {
   }
 
   getTdProps(state, rowInfo, column, instance) {
-    if(!rowInfo || (column && column.id !== 'type')) return {};
+    /*if( !rowInfo || (column && column.id !== 'type')) return {};
     
     let color = "none";
     let type = rowInfo.original.type;
@@ -67,21 +67,10 @@ class TaskList extends React.Component {
     if(this.props.colors && this.props.colors[type]) {
         color = this.props.colors[type];
         return {style:{background:color}};
-    }
+    }*/
     
 
     return {}
-  }
-
-  resize() {
-    let height = 307;//What it usually shows up as the first time
-    let e = document.getElementById('tasklist');
-    if(e)
-        height = e.getBoundingClientRect().height;
-
-    let top = this.props.y-height/2+padding;
-    let left = this.props.x-this.props.width/2-padding;
-    this.setState({top:top, left:left} )
   }
 
   render() {
@@ -129,20 +118,16 @@ class TaskList extends React.Component {
         }
     ]);
 
-    const data = this.props.assignments !== undefined ? this.props.assignments : subjects1[0].assignments;
+    const data = this.props.assignments; //!== undefined ? this.props.assignments : subjects1[0].assignments;
     let visible = this.state.visible ? 'visible' : 'hidden';
     return (
     <div id="tasklist" style={{
             visibility:visible,
-            position:'absolute',
-            top:this.state.top,
-            left:this.state.left,
-            width:this.props.width,
             padding:padding
         }}>
         {this.props.title}
         <ReactTable
-            getProps={()=>{return {style:{background:'lightgrey'}}}}
+            getProps={()=>{return {style:{background:'grey'}}}}
             getTrProps={this.getTrProps.bind(this)}
             getTdProps={this.getTdProps.bind(this)}
             noDataText={this.props.noDataText}
@@ -150,7 +135,7 @@ class TaskList extends React.Component {
             columns={columns} 
             defaultPageSize={5}
             pageSizeOptions = {[5, 10, 15]}
-            onPageSizeChange={(pageIndex) => {this.resize()}}
+            onPageSizeChange={(pageIndex) => {this.props.onResize()}}
         />
     </div>  
     );

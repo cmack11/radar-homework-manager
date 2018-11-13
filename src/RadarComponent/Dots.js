@@ -40,6 +40,7 @@ class Dots extends Component {
 
 	//Make Dot Componenent so it can do its own opacity management
 	makeDot(dot) {
+		if(!this.view.dots || !this.view.dots.center) return null;
 		var distanceFromCenter = dot.distanceFromCenter;
 		var angle = dot.startAngle + dot.angle;
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
@@ -73,9 +74,9 @@ class Dots extends Component {
 				if(distanceFromCenter <= -1) continue;
 				if(distanceFromCenter < -2) continue;
 				
-				let color = this.props.view.colors.typeColors[assignment.type];
-				if(!color)
-					color = 'white';
+				let color = 'white';
+				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
+					color = this.props.view.colors.typeColors[assignment.type];
 				this.dotsObjs[i].push({
 					key:(subjects[i].name+'/'+assignment.name+'/'+assignment.dueDate.format('YYYY-MM-DD HH:mm')),
 					distanceFromCenter:distanceFromCenter,
@@ -94,7 +95,7 @@ class Dots extends Component {
 	}
 
 	getDotRows(dots, fixed, numSteps) {
-		if(!dots || dots.length === 0) return null;
+		if(!dots || dots.length === 0 || !this.view.radar) return null;
 		dots.sort(this.compareDots);
 		if(fixed && !numSteps)
 			numSteps = 10;
@@ -191,7 +192,7 @@ class Dots extends Component {
 		
 		let rows = this.getDotRows(dots);
 
-		for(let i = 0; i < rows.length; i++) {
+		for(let i = 0; rows && i < rows.length; i++) {
 			let row = rows[i];
 			if(row.length === 0) continue;
 			
