@@ -49,7 +49,6 @@ class Dots extends Component {
 		return <Dot id={point.x+'///'+point.y} center={point} radius={dot.r} fill={dot.color} 
 		onMouseDown={this.onMouseDownDot.bind(this)} 
 		dot={dot}
-		setRestartOpacityFunction={this.setRestartOpacityFunction.bind(this)}
 		intersectsLine={this.props.intersectsLine}
 		animateFades={true}
 		clickable={!this.props.view.disable}
@@ -71,8 +70,8 @@ class Dots extends Component {
 			for(j = 0; j < subjects[i].assignments.length; j++) {
 				let assignment = subjects[i].assignments[j];
 				let distanceFromCenter = this.props.getDistanceFromCenter(assignment);
-				if(distanceFromCenter <= -1) continue;
 				if(distanceFromCenter < -2) continue;
+				if(distanceFromCenter <= -1) continue;
 				
 				let color = 'white';
 				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
@@ -89,9 +88,6 @@ class Dots extends Component {
 				})
 			}
 		}
-	}
-
-	setRestartOpacityFunction(func) {
 	}
 
 	getDotRows(dots, fixed, numSteps) {

@@ -36,7 +36,7 @@ const subjects = [
   }
 ]
 
-const getDistanceFromCenter = function() {};
+const getDistanceFromCenter = function() {return 1};
 const view = {}
 const dims = {};
 
@@ -128,9 +128,325 @@ describe('componentWillReceiveProps', () => {
 
   });
 
-  
+})
+
+describe('makeDot', () => {
+
+  it('should return null because of missing dimensions', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {};
+      let dot = {};
+
+      let returnValue = dotsLayer.makeDot(dot);
+
+      expect(returnValue).toMatchSnapshot();
+
+  });
+
+  it('should return null because of missing dimensions', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {dots:{}};
+      let dot = {};
+
+      let returnValue = dotsLayer.makeDot(dot);
+
+      expect(returnValue).toMatchSnapshot();
+
+  });
+
+  it('should return a dot component', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {dots:{center:{x:50,y:50}}};
+      let dot = {
+        distanceFromCenter:10,
+        startAngle:10,
+        angle:30
+      };
+
+      let returnValue = dotsLayer.makeDot(dot);
+
+      expect(returnValue).toMatchSnapshot();
+
+  });
+
+  it('should return a dot component', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {dots:{center:{x:50,y:50}}};
+      let dot = {
+        distanceFromCenter:10,
+        startAngle:10,
+        angle:30,
+        r:15
+      };
+
+      let returnValue = dotsLayer.makeDot(dot);
+
+      expect(returnValue).toMatchSnapshot();
+  });
 
 })
+
+describe('fillDotsObjs', () => {
+
+  it('should do nothing', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+
+      let returnValue = dotsLayer.fillDotsObjs();
+
+      expect(returnValue).not.toBeDefined();
+  });
+
+  it('should add no objects because there are no assignments', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      let testSubjects = [];
+
+      dotsLayer.fillDotsObjs(testSubjects);
+
+      expect(dotsLayer.dotsObjs).toHaveLength(0);
+  });
+
+  it('should convert the subjects assignments to dot objects', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      let testSubjects = subjects;
+
+      dotsLayer.fillDotsObjs(testSubjects);
+
+      expect(dotsLayer.dotsObjs).toHaveLength(subjects.length);
+      for(let i = 0; i < subjects.length; i++) {
+        expect(dotsLayer.dotsObjs[i]).toHaveLength(subjects[i].assignments.length);
+      }
+  });
+
+  it('should add no objects because they are out of the time range', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={()=>{return -1}} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+
+      expect(dotsLayer.dotsObjs).toHaveLength(subjects.length);
+      for(let i = 0; i < subjects.length; i++) {
+        expect(dotsLayer.dotsObjs[i]).toHaveLength(0);
+      }
+  });
+
+  it('should add no objects because they are out of the time range', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={()=>{return -3}} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+
+      expect(dotsLayer.dotsObjs).toHaveLength(subjects.length);
+      for(let i = 0; i < subjects.length; i++) {
+        expect(dotsLayer.dotsObjs[i]).toHaveLength(0);
+      }
+  });
+
+  it('should convert the subjects assignments to well-formed dot objects', () => {
+    let fullView = view;
+    fullView.colors = {typeColors:{Assignment:'blue'}}
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+
+      expect(dotsLayer.dotsObjs).toMatchSnapshot();
+  });
+
+})
+
+describe('getDotRows', () => {
+
+  it('should return null', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      let dots = null;
+
+      let returnValue = dotsLayer.getDotRows(dots)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+  it('should return null', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      let dots = [];
+
+      let returnValue = dotsLayer.getDotRows(dots)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+  it('should return null', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view.radar = null;
+      let dots = [];
+
+      let returnValue = dotsLayer.getDotRows(dots)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+  it('should make variable sized rows', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {
+        dots:{radius:5},
+        radar:{},
+      }
+      let dots = [
+      {distanceFromCenter:5},
+      {distanceFromCenter:10},
+      {distanceFromCenter:15},
+      {distanceFromCenter:25}
+      ];
+
+      let returnValue = dotsLayer.getDotRows(dots)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+  it('should make fixed sized rows', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {
+        dots:{},
+        radar:{radius:100},
+      }
+      let dots = [
+      {distanceFromCenter:5},
+      {distanceFromCenter:7},
+      {distanceFromCenter:10},
+      {distanceFromCenter:15},
+      {distanceFromCenter:25},
+      {distanceFromCenter:23}
+      ];
+
+      let returnValue = dotsLayer.getDotRows(dots,true,10)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+  it('should make fixed sized rows using the default amount of rows', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+      dotsLayer.view = {
+        dots:{},
+        radar:{radius:100},
+      }
+      let dots = [
+      {distanceFromCenter:5},
+      {distanceFromCenter:7},
+      {distanceFromCenter:10},
+      {distanceFromCenter:15},
+      {distanceFromCenter:25},
+      {distanceFromCenter:23}
+      ];
+
+      let returnValue = dotsLayer.getDotRows(dots,true)
+
+      expect(returnValue).toMatchSnapshot();
+  });
+
+})
+
+
+/*describe(' ', () => {
+
+  it('should ', () => {
+    const wrapper = shallow(
+      <Dots  subjects={subjects} 
+          getDistanceFromCenter={getDistanceFromCenter} 
+          view={view} 
+          dims={dims}
+          />);
+      let dotsLayer = wrapper.instance();
+
+
+  });
+
+})*/
 
 
 

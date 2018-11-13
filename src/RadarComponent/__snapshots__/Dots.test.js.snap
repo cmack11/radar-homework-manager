@@ -1,5 +1,193 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fillDotsObjs should convert the subjects assignments to well-formed dot objects 1`] = `
+Array [
+  Array [
+    Object {
+      "angle": 90,
+      "assignment": Object {
+        "dueDate": "2018-09-12T17:00:00.000Z",
+        "name": "Assignment #1",
+        "subject": "Subject #1",
+        "type": "Problem Set",
+      },
+      "color": "white",
+      "distanceFromCenter": 1,
+      "key": "Subject #1/Assignment #1/2018-09-12 12:00",
+      "maxAngle": 180,
+      "radius": 15,
+      "startAngle": 0,
+    },
+    Object {
+      "angle": 90,
+      "assignment": Object {
+        "dueDate": "2018-09-13T19:00:00.000Z",
+        "name": "Assignment #2",
+        "subject": "Subject #1",
+        "type": "Assignment",
+      },
+      "color": "blue",
+      "distanceFromCenter": 1,
+      "key": "Subject #1/Assignment #2/2018-09-13 14:00",
+      "maxAngle": 180,
+      "radius": 15,
+      "startAngle": 0,
+    },
+  ],
+  Array [],
+]
+`;
+
+exports[`getDotRows should make fixed sized rows 1`] = `
+Array [
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [
+    Object {
+      "distanceFromCenter": 25,
+    },
+    Object {
+      "distanceFromCenter": 23,
+    },
+  ],
+  Array [
+    Object {
+      "distanceFromCenter": 15,
+    },
+  ],
+  Array [
+    Object {
+      "distanceFromCenter": 10,
+    },
+    Object {
+      "distanceFromCenter": 7,
+    },
+    Object {
+      "distanceFromCenter": 5,
+    },
+  ],
+]
+`;
+
+exports[`getDotRows should make fixed sized rows using the default amount of rows 1`] = `
+Array [
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [],
+  Array [
+    Object {
+      "distanceFromCenter": 25,
+    },
+    Object {
+      "distanceFromCenter": 23,
+    },
+  ],
+  Array [
+    Object {
+      "distanceFromCenter": 15,
+    },
+  ],
+  Array [
+    Object {
+      "distanceFromCenter": 10,
+    },
+    Object {
+      "distanceFromCenter": 7,
+    },
+    Object {
+      "distanceFromCenter": 5,
+    },
+  ],
+]
+`;
+
+exports[`getDotRows should make variable sized rows 1`] = `
+Array [
+  Array [
+    Object {
+      "distanceFromCenter": 25,
+    },
+  ],
+  Array [
+    Object {
+      "distanceFromCenter": 15,
+    },
+    Object {
+      "distanceFromCenter": 10,
+    },
+    Object {
+      "distanceFromCenter": 5,
+    },
+  ],
+]
+`;
+
+exports[`getDotRows should return null 1`] = `null`;
+
+exports[`getDotRows should return null 2`] = `null`;
+
+exports[`getDotRows should return null 3`] = `null`;
+
+exports[`makeDot should return a dot component 1`] = `
+<Dot
+  animateFades={true}
+  center={
+    Object {
+      "x": 56.42787609686539,
+      "y": 42.33955556881022,
+    }
+  }
+  clickable={true}
+  dot={
+    Object {
+      "angle": 30,
+      "distanceFromCenter": 10,
+      "r": undefined,
+      "startAngle": 10,
+    }
+  }
+  id="56.42787609686539///42.33955556881022"
+  onMouseDown={[Function]}
+/>
+`;
+
+exports[`makeDot should return a dot component 2`] = `
+<Dot
+  animateFades={true}
+  center={
+    Object {
+      "x": 56.42787609686539,
+      "y": 42.33955556881022,
+    }
+  }
+  clickable={true}
+  dot={
+    Object {
+      "angle": 30,
+      "distanceFromCenter": 10,
+      "r": 15,
+      "startAngle": 10,
+    }
+  }
+  id="56.42787609686539///42.33955556881022"
+  onMouseDown={[Function]}
+  radius={15}
+/>
+`;
+
+exports[`makeDot should return null because of missing dimensions 1`] = `null`;
+
+exports[`makeDot should return null because of missing dimensions 2`] = `null`;
+
 exports[`the initialization of the component creates an empty dot layer 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
