@@ -22,6 +22,7 @@ const mapStateToProps = state => {
 
 const maxNameLength = 14;
 const maxSubjectLength = 8;
+const minNameLength = 1;
 
 export class SubjectForm extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ export class SubjectForm extends React.Component {
   }
 
   allValid() {
-    if(this.state.subjectName && this.state.subjectName.length > maxNameLength)
+    if(!this.state.subjectName || this.state.subjectName.length > maxNameLength || this.state.subjectName.length < minNameLength)
       return false;
     if(this.props.subjectNames) {
       if(this.props.subjectNames.length === maxSubjectLength) return false;

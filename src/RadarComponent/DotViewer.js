@@ -45,7 +45,7 @@ class DotViewer extends Component {
 					x={x} y={y}
 					visibility={visibility}
 					onClick={this.props.closeDotViewer}/>
-				<text visible={visibility} stroke-width="1" font-size="14" x={x + 5} y={y + this.props.height / 2}>
+				<text visible={visibility} strokeWidth="1" fontSize="14" x={x + 5} y={y + this.props.height / 2}>
 				{taskText}
 				</text>	
 			</g>

@@ -270,7 +270,7 @@ class RadarScreen extends Component {
     			setRadarOpenCloseFunctions={this.setRadarOpenCloseFunctions.bind(this)}
     			runRadarScreenOpenCloseFunction={this.runRadarScreenOpenCloseFunction.bind(this)}
     			/>
-		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={this.closeAddForm.bind(this)}/>
+		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={()=>{this.closeAddForm.bind(this);this.runRadarOpenCloseFunction('closeAddForm')}}/>
 		    	<HistoryPage x={this.state.view.width/2} y={this.state.view.height/2} 
 		    		completedAssignments={this.state.historyScreen.completedAssignments}
 		    		close={()=>{this.runRadarOpenCloseFunction('closeHistoryScreen')}}
