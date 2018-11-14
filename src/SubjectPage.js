@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
-import image from './images/window_close.svg'
+import closeIcon from './images/window_close.svg'
+import editIcon from './images/pencil_icon.svg'
 
 
 
@@ -69,9 +70,17 @@ class SubjectPage extends Component {
 	    	        borderColor:'black',
 	    	        borderStyle:'solid'
 	    	    }}>
-	    	    <div style={{display:'flex'}}>
-	    	      <img style={{cursor:'pointer'}} onClick={this.props.close} src={image} height="5%" width="5%" />
-	    	      <span style={{verticalAlign:'middle',flexGrow:2,fontSize:'28px'}}><b>{subjectName}</b></span>
+	    	    <div style={{width:'100%', height:'10%',display:'flex',justifyContent:'space-between',alignItems:'center',paddingBottom:'10px'}}>
+	    	      <div style={{width:'10%',display:'inline-block',textAlign:'left'}}>
+	    	      	<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeIcon} height="50%" width="50%" />
+	    	      </div>
+	    	      <div style={{width:'50%',display:'inline-block'}}>
+	    	      	<b style={{verticalAlign:'middle',fontSize:'28px'}}>
+	    	      		{subjectName}
+	    	      		<img style={{paddingLeft:5,cursor:'pointer'}} onClick={()=>{}} src={editIcon} height="100%" width="6%" />
+	    	      	</b>
+	    	      </div>
+	    	      <div style={{width:'10%',display:'inline-block'}}></div>
 	    	    </div>
 	    		<TaskList 
 	    			visible={this.props.show}
