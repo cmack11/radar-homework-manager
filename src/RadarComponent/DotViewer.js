@@ -35,6 +35,16 @@ class DotViewer extends Component {
 		let taskText = show ? this.props.dot.assignment.type + ": " + this.props.dot.assignment.name + " (" + this.props.dot.assignment.dueDate.format("MM/DD/YYYY") + ")" : "";
 
 		return (
+
+			<div id='dotViewer' style={{display:'flex',justifyContent:'space-between',position:'absolute',top:y,left:x,width:this.props.width,visibility:visibility, background:fill}}>
+				<div style={{}}>
+					<b style={{fontSize:'2vw'}}>{taskText}</b>
+				</div>
+			</div>
+
+		);
+
+		/*return (
 			<g>
 				<rect id='dotViewer' 
 					width={this.props.width} 
@@ -49,7 +59,7 @@ class DotViewer extends Component {
 				{taskText}
 				</text>	
 			</g>
-		);
+		);*/
 	}
 }
 
