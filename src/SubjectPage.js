@@ -4,6 +4,7 @@ import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import closeIcon from './images/window_close.svg'
 import editIcon from './images/pencil_icon.svg'
+import checkmarkIcon from './images/checkmark_icon.png'
 
 
 
@@ -28,6 +29,8 @@ class SubjectPage extends Component {
 
 	componentWillReceiveProps(nextProps){
 		this.resize();
+		if(this.props.subject != nextProps.subject)
+			this.setState({editMode:false})
 	}
 
 	resize() {
@@ -45,6 +48,26 @@ class SubjectPage extends Component {
 	}
 
 
+	startEditMode(){
+		this.setState({editMode:true,newSubjectName:this.props.subject.name});
+	}
+
+	onChange(event) {
+	  const target = event.target;
+	  const name = target.name;
+	  let value = target.value;
+
+	  this.setState({
+	    [name]: value
+	  });
+	}
+
+	onSubmit() {
+		if(!this.state.newSubjectName || this.state.newSubjectName.length < 1 || this.state.newSubjectName.length > 14) return;
+		//Need api or reducer to make this change faster and more universal
+		this.props.subject.name = this.state.newSubjectName;
+		this.setState({editMode:false})
+	}
 	
 
 	render() {
@@ -55,6 +78,17 @@ class SubjectPage extends Component {
 			assignments = this.props.subject.assignments;
 			color = this.props.subject.color;
 			subjectName = this.props.subject.name;
+		}
+
+		let header;
+		if(this.state.editMode) {
+			header = (<div><input style={{verticalAlign:'middle',fontSize:'2.5vw'}} name="newSubjectName" type="text" value={this.state.newSubjectName} onChange={this.onChange.bind(this)}/>
+					  <img style={{verticalAlign:'middle',paddingLeft:5,cursor:'pointer'}} onClick={this.onSubmit.bind(this)} src={checkmarkIcon} height="100%" width="10%" /></div>);
+		} else {
+			header = (<b style={{verticalAlign:'middle',fontSize:'28px'}}>
+		    	      		{subjectName}
+		    	      		<img style={{paddingLeft:5,cursor:'pointer'}} onClick={this.startEditMode.bind(this)} src={editIcon} height="100%" width="6%" />
+		    	      	</b>);
 		}
 
 	    return (
@@ -75,10 +109,7 @@ class SubjectPage extends Component {
 	    	      	<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeIcon} height="50%" width="50%" />
 	    	      </div>
 	    	      <div style={{width:'50%',display:'inline-block'}}>
-	    	      	<b style={{verticalAlign:'middle',fontSize:'28px'}}>
-	    	      		{subjectName}
-	    	      		<img style={{paddingLeft:5,cursor:'pointer'}} onClick={()=>{}} src={editIcon} height="100%" width="6%" />
-	    	      	</b>
+	    	      	{header}
 	    	      </div>
 	    	      <div style={{width:'10%',display:'inline-block'}}></div>
 	    	    </div>
