@@ -17,7 +17,7 @@ export const initializeUser = () => dispatch => {
  export const authenticateUser = (data) =>  {
    return {
      type: types.LOGIN_USER,
-     payload: data.data
+     payload: data
    }
  }
 
@@ -29,14 +29,14 @@ export const resetUser = () => dispatch => {
 
 export const sendCredentials= (data, success) => {
   return (dispatch) => {
-    return axios.post(API_URL+"/login",data)
+    return axios.post(API_URL + '/RadarUsers/login',data)
     .then( response => {
+      console.log(response.data)
       dispatch(authenticateUser(response.data))
       success()
     })
     .catch(error => {
-      /* alert("Login failed") */
-      success()
+      alert("Login failed")
     })
   }
 

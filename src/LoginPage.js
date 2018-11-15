@@ -8,13 +8,12 @@ import ico from './images/icon_alt.png';
 
 
 const mapDispatchToProps = dispatch => ({
- initializeUser: () => dispatch(initializeUser()),
  sendCredentials : (data, success) => dispatch(sendCredentials(data, success)),
 })
 
 const mapStateToProps = state => {
     return {
-      id : state.user.id,
+      user_id : state.user.id,
       name : state.user.name,
       email : state.user.email,
     }
@@ -23,8 +22,8 @@ const mapStateToProps = state => {
 class LoginPage extends Component {
   onLoginButtonPress = () => {
      let d = {
-       username: this.refs.user.value,
-       pw: this.refs.pw.value
+       user: this.refs.user.value,
+       pass: this.refs.pw.value
      }
      this.props.sendCredentials(d, () => {this.successLogin()})
   }

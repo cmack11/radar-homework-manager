@@ -1,6 +1,6 @@
 import * as types from '../actions/action_types.js'
 let initialState = {
-  id: -1,
+  user_id: -1,
   name: "",
   email: "",
   /* add sign up date if needed*/
@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
   case types.INITIALIZE_USER:
    return {
     ...state,
-    id: action.payload.id,
+    user_id: action.payload.id,
     name : action.payload.name,
     email: action.payload.email,
    }
@@ -19,17 +19,14 @@ export default (state = initialState, action) => {
    *
    * payload : {
    *    id: ....,
-        name: ...
-        email: ...
    *  }
    *
    **/
-   case types.LOGIN_USER :
+   case types.LOGIN_USER:
+     console.log(action.payload)
      return {
       ...state,
-      id: action.payload.id,
-      name : action.payload.name,
-      email: action.payload.email,
+      user_id: action.payload.user_id,
      }
    case types.RESET_USER:
     return initialState
