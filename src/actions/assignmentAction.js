@@ -58,7 +58,7 @@ export const addAssignment = (data) => {
   return {
     type: types.ADD_ASSIGNMENT,
     payload : {
-      subjects : data.data
+      subjects : data
     }
   }
 }
@@ -102,6 +102,29 @@ export const newSubject = (subject) => {
   }
 }
 /* ADD SUBJECT */
+
+/* DELETE SUBJECT */
+export const deleteSubject = (data) => {
+  return {
+    type: types.DELETE_SUBJECT,
+    payload : {
+      subjects : data,
+    }
+  }
+}
+
+export const removeSubject = (subject) => {
+  return (dispatch) => {
+    return axios.post(API_URL, subject)
+    .then( response => {
+      dispatch(deleteSubject(response.data))
+    })
+    .catch(error => {
+      alert("Fail to create new subject")
+    })
+  }
+}
+/* DELETE SUBJECT */
 
 /* DELETE ASSIGNMENT */
 export const deleteAssignment = (data) => {
