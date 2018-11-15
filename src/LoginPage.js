@@ -21,6 +21,10 @@ const mapStateToProps = state => {
 
 class LoginPage extends Component {
   onLoginButtonPress = () => {
+    if (this.refs.user.value === "" || this.refs.pw.value === "")
+    {
+      return false
+    }
      let d = {
        user: this.refs.user.value,
        pass: this.refs.pw.value
@@ -42,11 +46,11 @@ render() {
         <Form>
             <Form.Field>
               <label className="login-text" tabIndex="2">Email</label>
-              <input placeholder='email' ref="user" />
+              <input required placeholder='email' ref="user" />
             </Form.Field>
             <Form.Field>
               <label className="login-text">Password</label>
-              <input type= "password" placeholder='password' ref="pw" />
+              <input  required type= "password" placeholder='password' ref="pw" />
             </Form.Field>
             <Button primary className="login-button" type='submit' onClick={()=> {this.onLoginButtonPress()}}>Login</Button>
         </Form>

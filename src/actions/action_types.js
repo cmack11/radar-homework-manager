@@ -9,6 +9,7 @@
 export const INITIALIZE_USER = 'INITIALIZE_USER'
 export const LOGIN_USER = 'LOGIN_USER'
 export const RESET_USER = 'RESET_USER'
+export const REGISTER_USER = 'REGISTER_USER'
 /* USER ACTION */
 
 /* ASSGINMENT ACTION */

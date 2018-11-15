@@ -32,7 +32,7 @@ export const sendCredentials= (data, success) => {
     return axios.post(API_URL,data)
     .then( response => {
       console.log(response.data)
-      if (response.data.length == 0) {
+      if (response.data === "failed") {
         alert("Login failed")
       }
       else {
@@ -41,8 +41,26 @@ export const sendCredentials= (data, success) => {
       }
     })
     .catch(error => {
-      alert("Login failed")
+      alert("Login server error. If this problem persists, contact admisnistrator")
     })
   }
 
+}
+
+export const registerUser = () => dispatch => {
+ dispatch({
+  type: types.REGISTER_USER
+ })
+}
+
+export const newUser = (data) => {
+  return (dispatch) => {
+    return axios.post(API_URL,data)
+    .then( response => {
+        dispatch(registerUser(response.data))
+    })
+    .catch(error => {
+      alert("Failed to register new user")
+    })
+  }
 }
