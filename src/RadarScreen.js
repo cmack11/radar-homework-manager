@@ -182,7 +182,6 @@ class RadarScreen extends Component {
 	completeAssignment(assignment) {
 		let historyScreen = this.state.historyScreen;
 		historyScreen.completedAssignments.push(assignment);
-		this.setState({historyScreen:historyScreen})
 	}
 
 

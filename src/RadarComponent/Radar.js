@@ -153,6 +153,7 @@ class Radar extends Component {
 				closeHistoryScreen:this.closeHistoryScreen.bind(this)
 			});
 		}
+		this.closeDotViewer =  this.closeDotViewer.bind(this);
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {
@@ -374,6 +375,10 @@ class Radar extends Component {
 	}
 	
 
+	closeDotViewer() {
+		this.setState({clickedDot:null})
+	}
+
 	render() {
 		
 		let intersectFuncs = [];
@@ -414,9 +419,10 @@ class Radar extends Component {
 				<image style={{cursor:'pointer'}} onClick={()=>{}} href={this.state.buttons.overdue.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-425} width={this.state.buttons.width} height={this.state.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
-				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
+				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={()=>{}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
 		</div>
     )
   }
