@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sampleAction } from './actions/sampleAction';
 import { initializeUser, resetUser } from './actions/userAction.js';
-import { updateAssignments, initializeAssignments } from './actions/assignmentAction.js';
+import { updateAssignment, initializeAssignments } from './actions/assignmentAction.js';
 import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import './_datepicker.css';
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
  sampleAction: () => dispatch(sampleAction()),
  initializeUser: () => dispatch(initializeUser()),
  resetUser: () => dispatch(resetUser()),
- updateAssignments : () => dispatch(updateAssignments()),
+ updateAssignment : () => dispatch(updateAssignment()),
  initializeAssignments : () => dispatch(initializeAssignments())
 })
 
