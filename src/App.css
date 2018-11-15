@@ -141,7 +141,7 @@ svg text#chk {
 .logo {
   width: 10em;
   height: 10em;
-  margin: 2em 0 2em 0;
+  margin: 2em 0 0.5em 0;
   float: left;
   display: block;
   margin-right: 100%;
