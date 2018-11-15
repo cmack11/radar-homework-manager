@@ -91,11 +91,11 @@ class DotViewer extends Component {
 				top:y,left:x,width:this.props.width,visibility:visibility, background:fill}}
 				>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
-					<div style={{width:'10%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeImage} height="70%" width="100%" />
+					<div style={{width:'15%',display:'inline-block',padding:5}}>
+						<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeImage} height="100%" width="100%" />
 					</div>
-					<div style={{width:'10%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={()=>{}} src={editImage} height="70%" width="100%" />
+					<div style={{width:'15%',display:'inline-block',padding:5}}>
+						<img style={{cursor:'pointer'}} onClick={()=>{}} src={editImage} height="100%" width="100%" />
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'center'}}>
@@ -114,13 +114,13 @@ class DotViewer extends Component {
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
-					<div style={{width:'10%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.completeAssignment.bind(this)} src={completeImage}  height="70%" width="100%" />
+					<div style={{width:'15%',display:'inline-block',padding:5}}>
+						<img style={{cursor:'pointer'}} onClick={this.completeAssignment.bind(this)} src={completeImage}  height="100%" width="100%" />
 					</div>
 					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
 					</div>
-					<div style={{width:'10%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.deleteAssignment.bind(this)}  src={trashImage} height="70%" width="100%" />
+					<div style={{width:'15%',display:'inline-block',padding:5}}>
+						<img style={{cursor:'pointer'}} onClick={this.deleteAssignment.bind(this)}  src={trashImage} height="100%" width="100%" />
 					</div>
 				</div>
 			</div>
