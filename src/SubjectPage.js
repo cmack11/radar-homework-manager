@@ -87,7 +87,7 @@ class SubjectPage extends Component {
 		} else {
 			header = (<b style={{verticalAlign:'middle',fontSize:'28px'}}>
 		    	      		{subjectName}
-		    	      		<img style={{paddingLeft:5,cursor:'pointer'}} onClick={this.startEditMode.bind(this)} src={editIcon} height="100%" width="6%" />
+		    	      		<img style={{paddingLeft:5,cursor:'pointer'}} onClick={this.startEditMode.bind(this)} src={editIcon} height="100%" width="10%" />
 		    	      	</b>);
 		}
 
@@ -114,6 +114,7 @@ class SubjectPage extends Component {
 	    	      <div style={{width:'10%',display:'inline-block'}}></div>
 	    	    </div>
 	    		<TaskList 
+	    			hideSubjectCol
 	    			visible={this.props.show}
 	    			useTypeColors={true} 
 	    			title="" 

@@ -46,7 +46,7 @@ class Dots extends Component {
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
 		if(!dot.r) dot.r = this.view.dots.radius;
 		
-		return <Dot id={point.x+'///'+point.y} center={point} radius={dot.r} fill={dot.color} 
+		return <Dot id={dot.assignment.name+' '+dot.assignment.type+'outer'} center={point} radius={dot.r} fill={dot.color} 
 		onMouseDown={this.onMouseDownDot.bind(this)} 
 		dot={dot}
 		intersectsLine={this.props.intersectsLine}

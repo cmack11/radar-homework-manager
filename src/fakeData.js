@@ -245,27 +245,27 @@ export const subjects1 = [
                 {
                   name:"Chapters 3-5",
                   type:"Reading",
-                  dueDate:moment().add(2,'days'),
+                  dueDate:moment().add(2,'days').hours(12).minutes(55),
                   subject:"History 211",
                 },{
                   name:"Chapters 5-7",
                   type:"Reading",
-                  dueDate:moment().add(9,'days'),
+                  dueDate:moment().add(9,'days').hours(12).minutes(55),
                   subject:"History 211",
                 },{
                   name:"Chapters 7-10",
                   type:"Reading",
-                  dueDate:moment().add(16,'days'),
+                  dueDate:moment().add(16,'days').hours(12).minutes(55),
                   subject:"History 211",
                 },{
                   name:"Reflection Essay",
                   type:"Assignment",
-                  dueDate:moment().add(14,'days'),
+                  dueDate:moment().add(14,'days').hours(23).minutes(59),
                   subject:"History 211",
                 },{
                   name:"Midterm #1",
                   type:"Exam",
-                  dueDate:moment().add(20,'days'),
+                  dueDate:moment().add(20,'days').hours(13).minutes(30),
                   subject:"History 211",
                 }
               ]
@@ -276,37 +276,37 @@ export const subjects1 = [
                 {
                   name:"Weekly Homework",
                   type:"Problem Set",
-                  dueDate:moment().add(3,'days'),
+                  dueDate:moment().add(3,'days').hours(23).minutes(59),
                   subject:"Math 222",
                 },{
                   name:"Weekly Homework",
                   type:"Problem Set",
-                  dueDate:moment().add(10,'days'),
+                  dueDate:moment().add(10,'days').hours(23).minutes(59),
                   subject:"Math 222",
                 },{
                   name:"Weekly Homework",
                   type:"Problem Set",
-                  dueDate:moment().add(17,'days'),
+                  dueDate:moment().add(17,'days').hours(23).minutes(59),
                   subject:"Math 222",
                 },{
                   name:"Weekly Homework",
                   type:"Problem Set",
-                  dueDate:moment().add(24,'days'),
+                  dueDate:moment().add(24,'days').hours(23).minutes(59),
                   subject:"Math 222",
                 },{
                   name:"In-Class Quiz",
                   type:"Exam",
-                  dueDate:moment().add(6,'days'),
+                  dueDate:moment().add(6,'days').hours(9).minutes(55),
                   subject:"Math 222",
                 },{
                   name:"In-Class Quiz",
                   type:"Exam",
-                  dueDate:moment().add(20,'days'),
+                  dueDate:moment().add(20,'days').hours(9).minutes(55),
                   subject:"Math 222",
                 },{
                   name:"Midterm Exam",
                   type:"Exam",
-                  dueDate:moment().add(30,'days'),
+                  dueDate:moment().add(30,'days').hours(17).minutes(30),
                   subject:"Math 222",
                 }
               ]
@@ -317,37 +317,37 @@ export const subjects1 = [
                 {
                   name:"Chapters 10-15",
                   type:"Reading",
-                  dueDate:moment().add(1,'days'),
+                  dueDate:moment().add(1,'days').hours(13).minutes(5),
                   subject:"English 134",
                 },{
                   name:"Chapters 15-20",
                   type:"Reading",
-                  dueDate:moment().add(4,'days'),
+                  dueDate:moment().add(4,'days').hours(13).minutes(5),
                   subject:"English 134",
                 },{
                   name:"Chapters 20-26",
                   type:"Reading",
-                  dueDate:moment().add(8,'days'),
+                  dueDate:moment().add(8,'days').hours(13).minutes(5),
                   subject:"English 134",
                 },{
                   name:"Chapters 26-End",
                   type:"Reading",
-                  dueDate:moment().add(11,'days'),
+                  dueDate:moment().add(11,'days').hours(13).minutes(5),
                   subject:"English 134",
                 },{
                   name:"Reflection Essay Rough Draft",
                   type:"Assignment",
-                  dueDate:moment().add(6,'days'),
+                  dueDate:moment().add(6,'days').hours(23).minutes(59),
                   subject:"English 134",
                 },{
                   name:"Reflection Essay Final Draft",
                   type:"Assignment",
-                  dueDate:moment().add(20,'days'),
+                  dueDate:moment().add(20,'days').hours(23).minutes(59),
                   subject:"English 134",
                 },{
                   name:"Online Discussion Response",
                   type:"Assignment",
-                  dueDate:moment().add(18,'days'),
+                  dueDate:moment().add(18,'days').hours(23).minutes(59),
                   subject:"English 134",
                 }
               ]
@@ -358,37 +358,37 @@ export const subjects1 = [
                 {
                   name:"Requirements and Specifications",
                   type:"Assignment",
-                  dueDate:moment().add(4,'days'),
+                  dueDate:moment().add(4,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 },{
                   name:"Design and Planning",
                   type:"Reading",
-                  dueDate:moment().add(11,'days'),
+                  dueDate:moment().add(11,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 },{
                   name:"GitHub Tutorial",
                   type:"Assignment",
-                  dueDate:moment().add(9,'days'),
+                  dueDate:moment().add(9,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 },{
                   name:"Iteration #1",
                   type:"Assignment",
-                  dueDate:moment().add(18,'days'),
+                  dueDate:moment().add(18,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 },{
                   name:"Midterm",
                   type:"Exam",
-                  dueDate:moment().add(22,'days'),
+                  dueDate:moment().add(22,'days').hours(17).minutes(30),
                   subject:"CS 506",
                 },{
                   name:"Iteration #2",
                   type:"Assignment",
-                  dueDate:moment().add(32,'days'),
+                  dueDate:moment().add(32,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 },{
                   name:"Final Presentation",
                   type:"Assignment",
-                  dueDate:moment().add(46,'days'),
+                  dueDate:moment().add(46,'days').hours(23).minutes(55),
                   subject:"CS 506",
                 }
               ]
@@ -399,47 +399,47 @@ export const subjects1 = [
                 {
                   name:"Chapter 4",
                   type:"Reading",
-                  dueDate:moment().add(5,'days'),
+                  dueDate:moment().add(5,'days').hours(9).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Chapter 5",
                   type:"Reading",
-                  dueDate:moment().add(12,'days'),
+                  dueDate:moment().add(12,'days').hours(9).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Chapter 6",
                   type:"Reading",
-                  dueDate:moment().add(18,'days'),
+                  dueDate:moment().add(18,'days').hours(9).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Chapter 7",
                   type:"Reading",
-                  dueDate:moment().add(25,'days'),
+                  dueDate:moment().add(25,'days').hours(9).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Lab Report",
                   type:"Assignment",
-                  dueDate:moment().add(6,'days'),
+                  dueDate:moment().add(6,'days').hours(23).minutes(59),
                   subject:"Chemistry 158",
                 },{
                   name:"Covalent Bond Practice",
                   type:"Assignment",
-                  dueDate:moment().add(20,'days'),
+                  dueDate:moment().add(20,'days').hours(23).minutes(59),
                   subject:"Chemistry 158",
                 },{
                   name:"Midterm #1",
                   type:"Exam",
-                  dueDate:moment().add(10,'days'),
+                  dueDate:moment().add(10,'days').hours(5).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Midterm #2",
                   type:"Exam",
-                  dueDate:moment().add(25,'days'),
+                  dueDate:moment().add(25,'days').hours(5).minutes(30),
                   subject:"Chemistry 158",
                 },{
                   name:"Final",
                   type:"Exam",
-                  dueDate:moment().add(40,'days'),
+                  dueDate:moment().add(40,'days').hours(5).minutes(30),
                   subject:"Chemistry 158",
                 }
               ]

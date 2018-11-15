@@ -197,7 +197,7 @@ class Radar extends Component {
 	    else if(point.y < this.view.dots.center.y)//upper hemisphere
 	    	point.y -= height;
 
-		return <text x={point.x} y={point.y} onClick={() => {this.openSubject(subject)}} font-size={fontSize} fill={subject.color} stroke={subject.color} cursor='pointer'>{subject.name}</text>
+		return <text x={point.x} y={point.y} onClick={() => {this.openSubject(subject)}} fontSize={fontSize} fill={subject.color} stroke={subject.color} cursor='pointer'>{subject.name}</text>
 	}
 
 	openSubject(subject) {

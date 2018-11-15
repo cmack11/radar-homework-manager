@@ -42,9 +42,9 @@ class TaskList extends React.Component {
     if(!rowInfo) return {};
     let color = 'none';
     if(this.props.useTypeColors) {
-        /*let type = rowInfo.original.type;
+        let type = rowInfo.original.type;
         if(this.props.colors && this.props.colors[type])
-            color = this.props.colors[type];*/
+            color = this.props.colors[type];
     } else {
         let subject = rowInfo.original.subject;
         if(this.props.colors && this.props.colors[subject])
@@ -53,7 +53,6 @@ class TaskList extends React.Component {
 
     return {
         style:{
-
             background:'darkgrey',
             color:color
         }
