@@ -4,6 +4,7 @@ import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import image from '../images/switch_form.png'
 
 
 const mapDispatchToProps = dispatch => ({
@@ -22,14 +23,17 @@ const mapStateToProps = state => {
     }
   }
 
+  const maxNameLength = 20;
+  const minNameLength = 1;
+
 export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
-	
-	 if(this.props.isEditForm == true){
-	 	this.state = this.getEditState();
-	 }else{
-    	this.state = this.getDefaultState();
+  
+   if(this.props.isEditForm == true){
+    this.state = this.getEditState();
+   }else{
+      this.state = this.getDefaultState();
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,11 +46,11 @@ export class TaskForm extends React.Component {
   }
   
   getEditState() {
-  		let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
-  		{taskname: this.props.assignment.name, taskDesc: this.props.assignment.description, 
+      let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
+      {taskname: this.props.assignment.name, taskDesc: this.props.assignment.description, 
 taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
-  		console.log(defaultState);
-  		return defaultState;
+      console.log(defaultState);
+      return defaultState;
   }
 
   handleChange(event) {
@@ -54,22 +58,41 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
     const name = target.name;
     let value = target.value;
 
+    if(name === 'taskName') {
+      if(value.length > 0)
+        this.setState({taskNameError:false});
+      else
+        this.setState({taskNameError:true});
+    } 
+
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(event) { 
+
+    if(!this.allValid()) return; 
+
     this.props.addAssignment(
-      {name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
+      {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
       this.state.subject);
       this.setState(this.getDefaultState());
+      if(this.props.closeForm)
+        this.props.closeForm();
+  }
+
+  allValid() {
+    if(!this.state.taskName || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
+      this.setState({taskNameError:true});
+      return false;
+    }
+
+
+    return true;
   }
 
   render() {
-  	 if(!this.props.show) return null;
-
-  	 
     let subjectOptions = [];
     for (let i = 0; i < this.props.subjectNames.length; ++i)
     {
@@ -83,39 +106,44 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
       const taskType = this.props.taskTypes[i];
       taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
     }
-	 
+
     return (
       <div style={{position:'absolute',
             backgroundColor:'grey',
             width:this.props.width,
-            top:(window.innerWidth-this.props.width)/2,
-            left:(window.innerHeight-150)/2,
-            padding:20
+            left:(window.innerWidth-this.props.width)/2,
+            top:(window.innerHeight-250)/2,
+            padding:20,
+            border:5,
+            borderColor:'black',
+            borderStyle:'solid'
           }}>
       <form >
-        <b className='form-fields' onClick={this.props.switchForm}>Add Task</b>
-        <br/>
-        <label class='form-fields'>
+        <div className='form-fields'>
+          <span style={{verticalAlign:'middle'}}><b>Add Task</b></span>
+          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" />
+        </div>
+        <label className='form-fields'>
           Name:
-          <input name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
+          <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Subject:
           <select name="subject" value={this.state.subject} onChange={this.handleChange}>
             {subjectOptions}
           </select>
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Description:
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Type:
           <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
         </label>
-        <label class='form-fields'>
+        <label className='form-fields'>
           Due Date: 
           <DatePicker
               selected={this.state.taskDueDate}

@@ -117,11 +117,11 @@ export class SubjectForm extends React.Component {
           <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" alt="close"/>
         </div>
         <label className='form-fields'>
-          Subject Name:
+          Name:
           <input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
         </label>
         <label className='form-fields'>
-          Subject Description:
+          Description:
           <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
         </label>
         <label className='form-fields'>

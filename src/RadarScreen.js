@@ -289,7 +289,7 @@ class RadarScreen extends Component {
 		    		show={this.state.historyScreen.show}
 		    		colors={this.state.historyScreen.colors}
 		    		/>
-		    	{form}
+		    	{/*form*/}
 		    	<SubjectPage x={this.state.view.width/2} y={this.state.view.height/2} 
 		    		subject={this.state.subjectViewer.subject}
 		    		close={()=>{this.runRadarScreenOpenCloseFunction('closeSubjectPage')}}
