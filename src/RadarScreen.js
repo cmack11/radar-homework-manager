@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import HistoryPage from './HistoryPage.js'
 import SubjectPage from './SubjectPage.js'
+import TaskForm from './RadarComponent/TaskForm.js'
 
 
 
@@ -50,7 +51,7 @@ class RadarScreen extends Component {
 					height:props.view.height
 				},
 
-				colors:props.view.colors
+				colors:props.view.colors,
 				disable:false
 			},
 			editDot:{},
