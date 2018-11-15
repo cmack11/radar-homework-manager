@@ -4562,3 +4562,14 @@ ShallowWrapper {
   },
 }
 `;
+
+exports[`TaskList ReactTable calls TaskList: getTdProps 1`] = `Object {}`;
+
+exports[`TaskList ReactTable calls TaskList: getTrProps 1`] = `
+Object {
+  "style": Object {
+    "background": "darkgrey",
+    "color": "none",
+  },
+}
+`;

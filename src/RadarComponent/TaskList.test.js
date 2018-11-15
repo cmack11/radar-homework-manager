@@ -103,3 +103,38 @@ beforeAll(() => {
     });
   
   })
+
+  describe('TaskList ReactTable calls', () => {
+
+    it('TaskList: getTrProps', () => {
+      const wrapper = shallow(
+            <TaskList title={"TestTaskList"} visible={true} assignments={fakeDataTasks} />
+      );
+        let instance = wrapper.instance();
+        const original = {
+            subject: "Subject #1"
+        };
+        const rowInfo = {
+            original: {original}
+        };
+      expect(instance.getTrProps(null, rowInfo, null)).toMatchSnapshot();
+    });
+  
+    it('TaskList: getTdProps', () => {
+        const wrapper = shallow(
+              <TaskList title={"TestTaskList"} visible={true} assignments={fakeDataTasks} />
+        );
+          let instance = wrapper.instance();
+          const original = {
+              subject: "Subject #1"
+          };
+          const rowInfo = {
+              original: {original}
+          };
+          const column = {
+              id: "type"
+          };
+        expect(instance.getTdProps(null, rowInfo, column, null)).toMatchSnapshot();
+      });
+
+  })
