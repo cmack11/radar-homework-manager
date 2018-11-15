@@ -24,7 +24,7 @@ class LoginPage extends Component {
   onLoginButtonPress = () => {
      let d = {
        username: this.refs.user.value,
-       password: this.refs.pw.value
+       pw: this.refs.pw.value
      }
      this.props.sendCredentials(d, () => {this.successLogin()})
   }

@@ -89,16 +89,22 @@
   z-index: 99;
 }
 
-.login-text {
+.label-text {
   text-align: left;
 }
+
+.label-center {
+  margin-top: 50%;
+}
+
 .radar-screen {
-  margin-top: 15px;
+  padding-top: 15px;
 }
 
 .form-fields {
-    margin-bottom: 20px;
-    display: block;
+    margin-bottom: 30px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 svg text#chk {
@@ -174,6 +180,37 @@ svg text#chk {
 .login input {
   margin-bottom: 30px  !important;
   display: block;
+}
+
+.subject-form {
+  margin: 0 auto !important;
+  width: 40%;
+  margin-top: 10%;
+  padding: 20px 20px 20px 20px;
+  background-color: rgb(233, 233, 233, 0.9);
+  height: auto;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  border: 2px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+.subject-title-container {
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.switch-icon {
+  position:absolute;
+  top:0;
+  right:0;
+  cursor:pointer;
+}
+
+.login-text {
+  text-align: left;
 }
 
 @keyframes App-logo-spin {

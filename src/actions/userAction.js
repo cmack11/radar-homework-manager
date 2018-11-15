@@ -13,6 +13,7 @@ export const initializeUser = () => dispatch => {
   }
  })
 }
+
  export const authenticateUser = (data) =>  {
    return {
      type: types.LOGIN_USER,

@@ -3,7 +3,6 @@ let initialState = {
   id: -1,
   name: "",
   email: "",
-  password: "",
   /* add sign up date if needed*/
 }
 export default (state = initialState, action) => {

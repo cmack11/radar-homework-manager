@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
 import image from '../images/switch_form.png'
+import {Button, Form} from 'semantic-ui-react';
+import { MdRepeat} from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
 
 const mapDispatchToProps = dispatch => ({
@@ -43,7 +46,7 @@ export class SubjectForm extends React.Component {
         this.setState({subjectNameError:false});
       else
         this.setState({subjectNameError:true});
-    } 
+    }
 
     this.setState({
       [name]: value
@@ -56,7 +59,7 @@ export class SubjectForm extends React.Component {
     let index = this.props.subjectNames.length;
     let color = colors[index];
 
-    if(!this.allValid()) return; 
+    if(!this.allValid()) return;
 
     this.props.addSubject(
       {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
@@ -77,7 +80,7 @@ export class SubjectForm extends React.Component {
       duplicate = this.props.subjectNames.some((name)=>{
         return name.toLowerCase() === this.state.subjectName.toLowerCase();
       })
-      if(duplicate) { 
+      if(duplicate) {
         this.setState({subjectNameError:true})
         return false;
       }
@@ -101,38 +104,33 @@ export class SubjectForm extends React.Component {
     }
 
     return (
-    <div style={{position:'absolute',
-          backgroundColor:'grey',
-          width:this.props.width,
-          left:(window.innerWidth-this.props.width)/2,
-          top:(window.innerHeight-250)/2,
-          padding:20,
-          border:5,
-          borderColor:'black',
-          borderStyle:'solid'
-        }}>
-      <form >
-        <div className='form-fields'>
-          <span style={{verticalAlign:'middle'}}><b>Add Subject</b></span>
-          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" alt="close"/>
+      <div className="subject-form">
+        <Form >
+            <div className="subject-title-container">
+              <b>Add Subject</b>
+              <div className="switch-icon" onClick={this.props.switchForm}>
+                <IconContext.Provider value={{size:20}}>
+                  <MdRepeat />
+                </IconContext.Provider>
+              </div>
+            </div>
+            <Form.Field className='form-fields'>
+              <label className="label-text label-center">Subject Name</label>
+              <input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field className='form-fields'>
+              <label  className="label-text">Subject Description</label>
+              <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
+            </Form.Field>
+            <Form.Field className='form-fields'>
+              <label  className="label-text">Default Task Type</label>
+              <select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}>
+                {taskTypeOptions}
+              </select>
+            </Form.Field>
+            <Button primary type="button" value="Submit" onClick={this.handleSubmit}>Submit</Button>
+          </Form>
         </div>
-        <label className='form-fields'>
-          Name:
-          <input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
-        </label>
-        <label className='form-fields'>
-          Description:
-          <input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} />
-        </label>
-        <label className='form-fields'>
-          Default Task Type:
-          <select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}>
-            {taskTypeOptions}
-          </select>
-        </label>
-        <button type="button" value="Submit" onClick={this.handleSubmit}>Submit</button>
-      </form>
-      </div>
     );
   }
 }
