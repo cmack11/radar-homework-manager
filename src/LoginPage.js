@@ -42,8 +42,8 @@ render() {
         <p className="login-title">Radar Homework Manager</p>
         <Form>
             <Form.Field>
-              <label className="login-text" tabIndex="2">Username or email</label>
-              <input placeholder='username or email' ref="user" />
+              <label className="login-text" tabIndex="2">Email</label>
+              <input placeholder='email' ref="user" />
             </Form.Field>
             <Form.Field>
               <label className="login-text">Password</label>
