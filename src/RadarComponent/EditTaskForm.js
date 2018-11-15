@@ -22,15 +22,11 @@ const mapStateToProps = state => {
     }
   }
 
-export class TaskForm extends React.Component {
+export class EditTaskForm extends React.Component {
   constructor(props) {
     super(props);
-	
-	 if(this.props.isEditForm == true){
-	 	this.state = this.getEditState();
-	 }else{
-    	this.state = this.getDefaultState();
-    }
+
+    this.state = this.getDefaultState();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,13 +35,6 @@ export class TaskForm extends React.Component {
   getDefaultState() {
     let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
     return defaultState;
-  }
-  
-  getEditState() {
-  		let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
-  		{taskname: this.props.assignment.name, taskDesc: this.props.assignment.description, taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
-  		console.log(defaultState);
-  		return defaultState;
   }
 
   handleChange(event) {
@@ -66,9 +55,6 @@ export class TaskForm extends React.Component {
   }
 
   render() {
-  
-  	 if(!this.props.show) return null;
-  	 
     let subjectOptions = [];
     for (let i = 0; i < this.props.subjectNames.length; ++i)
     {
@@ -82,7 +68,7 @@ export class TaskForm extends React.Component {
       const taskType = this.props.taskTypes[i];
       taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
     }
-	 
+
     return (
       <div style={{position:'absolute',
             backgroundColor:'grey',
@@ -92,7 +78,7 @@ export class TaskForm extends React.Component {
             padding:20
           }}>
       <form >
-        <b className='form-fields' onClick={this.props.switchForm}>Add Task</b>
+        <b className='form-fields' onClick={this.props.switchForm}>Edit Task</b>
         <br/>
         <label class='form-fields'>
           Name:
@@ -136,4 +122,4 @@ export class TaskForm extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditTaskForm);

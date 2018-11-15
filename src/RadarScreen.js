@@ -7,6 +7,7 @@ import SubjectForm from './RadarComponent/SubjectForm.js'
 import TaskForm from './RadarComponent/TaskForm.js'
 import Buttons from './RadarComponent/Buttons.js'
 import AddForm from './RadarComponent/AddForm.js'
+import EditTaskForm from './RadarComponent/EditTaskForm.js'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -43,7 +44,9 @@ class RadarScreen extends Component {
 					height:props.view.height
 				},
 				colors:props.view.colors
-			}
+			},
+			editDot:{},
+			isEditForm: false,
 		}
 
 		this.state = state;
@@ -113,8 +116,14 @@ class RadarScreen extends Component {
 	openAddForm() {
 		this.setState({showAddForm:!this.state.showAddForm});
 	}
-
 	
+	openEditForm(dot) {
+		this.setState({showEditForm: true, editDot: dot, isEditForm: true});
+	}
+	
+	closeEditForm() {
+		this.setState({showEditForm: false, editDot: null, isEditForm: false})
+	}
 
 	render() {
 	if(!this.props.show) return null;
@@ -124,8 +133,10 @@ class RadarScreen extends Component {
 		subjectNames.push(obj.name);
 	})
 
-	let taskTypes = ["Assignment","Exam","Reading","Problem Set"];
-
+	let taskTypes = ["Assignment","Exam","Reading","Problem Set"]; 
+	
+	let form = <TaskForm taskTypes={taskTypes} subjectNames={subjectNames} closeform={this.closeEditForm.bind(this)} show={this.state.showEditForm} isEditForm={this.state.isEditForm} assignment={this.state.editDot.assignment}/>;
+	
     return (
     	<div id= 'radarScreen' className='radar-screen'>
     		<DateRangePicker
@@ -155,8 +166,9 @@ class RadarScreen extends Component {
     		  }}
     		/>
     		<div>
-    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} openAddForm={this.openAddForm.bind(this)}/>
+    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} openAddForm={this.openAddForm.bind(this)} openEditForm={this.openEditForm.bind(this)}/>
 		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm}/>
+		    	{form}
     		</div>
     	</div>
     )

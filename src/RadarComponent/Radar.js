@@ -13,6 +13,7 @@ import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
 import completedButton from '../images/completed_button.png'
 import historyButton from '../images/history_button.png'
+import overdueButton from '../images/Overdue_button.png'
 
 
 
@@ -32,6 +33,7 @@ class Radar extends Component {
 			buttons:{
 				width:115,
 				left:{logo:historyButton},
+				overdue:{logo:overdueButton},
 				right:{logo:addButton}
 			}
 		}
@@ -324,6 +326,11 @@ class Radar extends Component {
 			buttons.right.logo = addButton;
 		this.setState({buttons:buttons})
 	}
+	
+	editButtonClick(dot) {
+		this.props.openEditForm(dot);
+	}
+	
 
 	render() {
 		
@@ -338,7 +345,11 @@ class Radar extends Component {
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{dot.dot.setAttribute('visibility','hidden')}
 		})
-
+		
+		intersectFuncs.push({
+			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
+			func:(dot)=>{this.editButtonClick(dot)}
+		})
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
@@ -362,6 +373,7 @@ class Radar extends Component {
 				</svg>
 				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.state.buttons.width-10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={()=>{}}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={()=>{}} href={this.state.buttons.overdue.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-425} width={this.state.buttons.width} height={this.state.buttons.width}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
