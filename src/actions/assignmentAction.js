@@ -1,6 +1,7 @@
 import * as types from './action_types.js';
 import {axios} from 'axios';
 import {subjects} from '../fakeData.js';
+import {API_URL} from '../config/config';
 
 export const initializeAssignments = () => {
   return {
@@ -35,23 +36,48 @@ export const updateAssignments = (data) => {
     }
 }
 
-export const addAssignment = (assignment, subject) => {
-  /* call api for update */
+export const addAssignment = (data) => {
   return {
     type: types.ADD_ASSIGNMENT,
     payload : {
-      subject : subject,
-      assignment : assignment
+      subjects : data.data
     }
   }
 }
 
-export const addSubject = (subject) => {
-  console.log("abc");
+export const newAssignment = (assignment, subject) => {
+  let dict = {
+    assignment : assignment,
+    subject : subject
+  }
+  return (dispatch) => {
+    return axios.post(API_URL,dict)
+    .then( response => {
+      dispatch(updateAssignments(response.data))
+    })
+    .catch(error => {
+      alert("Fail to create new assignment")
+    })
+  }
+}
+
+export const addSubject = (data) => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
-      subject : subject,
+      subjects : data,
     }
+  }
+}
+
+export const newSubject = (subject) => {
+  return (dispatch) => {
+    return axios.post(API_URL, subject)
+    .then( response => {
+      dispatch(updateAssignments(response.data))
+    })
+    .catch(error => {
+      alert("Fail to create new subject")
+    })
   }
 }

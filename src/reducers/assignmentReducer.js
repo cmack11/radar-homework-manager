@@ -1,6 +1,6 @@
 import * as types from '../actions/action_types.js';
 import {axios} from 'axios';
-import {subjects1} from '../fakeData.js';
+
 
 let initialState = {
   subjects : []
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
       newSubjects.map((el, index)=> {
         if (el.name === action.payload.subject){
           el.assignments.push(action.payload.assignment)
-        } 
+        }
       });
       return {
         ...state,
