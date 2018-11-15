@@ -19,8 +19,21 @@ class DotViewer extends Component {
 		if(this.props.dot && this.props.dot.id) {
 			let element = document.getElementById(this.props.dot.id)
 			if(element) element.setAttribute('visibility','hidden');
+			//Replace this with API Call/Redux to update status of assignment to completed
 			let assignment = this.props.dot.assignment;
 			this.props.complete(assignment)
+			//
+			this.props.close();
+		}
+	}
+
+	deleteAssignment() {
+		if(this.props.dot && this.props.dot.id) {
+			let element = document.getElementById(this.props.dot.id)
+			if(element) element.setAttribute('visibility','hidden');
+			//Replace this with API Call/Redux to delete assignment from user's account
+			let assignment = this.props.dot.assignment;
+			//
 			this.props.close();
 		}
 	}
@@ -107,7 +120,7 @@ class DotViewer extends Component {
 					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
 					</div>
 					<div style={{width:'10%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={()=>{}}  src={trashImage} height="70%" width="100%" />
+						<img style={{cursor:'pointer'}} onClick={this.deleteAssignment.bind(this)}  src={trashImage} height="70%" width="100%" />
 					</div>
 				</div>
 			</div>
