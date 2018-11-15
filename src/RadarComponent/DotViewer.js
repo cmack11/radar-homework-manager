@@ -64,7 +64,7 @@ class DotViewer extends Component {
 		let date = '', name = '', type = '';
 		if(assignment) {
 			name = assignment.name;
-			date = ' ' + assignment.dueDate.format('MMMM Do YYYY, h:mm:ss a');
+			date = ' ' + assignment.dueDate.format('MMMM Do YYYY, h:mm a');
 			type = ' ' + assignment.type;
 		}
 
@@ -81,11 +81,13 @@ class DotViewer extends Component {
 					<div style={{width:'10%',display:'inline-block',padding:5}}>
 						<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeImage} height="70%" width="100%" />
 					</div>
-					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
-						<b style={{fontSize:'2.5vw'}}>{name}</b>
-					</div>
 					<div style={{width:'10%',display:'inline-block',padding:5}}>
 						<img style={{cursor:'pointer'}} onClick={()=>{}} src={editImage} height="70%" width="100%" />
+					</div>
+				</div>
+				<div style={{display:'flex',justifyContent:'center'}}>
+					<div style={{display:'inline-block',padding:5}}>
+						<b style={{fontSize:'2.5vw'}}>{name}</b>
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
