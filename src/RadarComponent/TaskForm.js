@@ -67,8 +67,8 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
   }
 
   render() {
-  
   	 if(!this.props.show) return null;
+
   	 
     let subjectOptions = [];
     for (let i = 0; i < this.props.subjectNames.length; ++i)
@@ -88,8 +88,8 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
       <div style={{position:'absolute',
             backgroundColor:'grey',
             width:this.props.width,
-            right:(window.innerWidth-this.props.width)/2,
-            bottom:(window.innerHeight-150)/2,
+            top:(window.innerWidth-this.props.width)/2,
+            left:(window.innerHeight-150)/2,
             padding:20
           }}>
       <form >
