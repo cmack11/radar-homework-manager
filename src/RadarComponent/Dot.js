@@ -93,7 +93,7 @@ class Dot extends Component {
 			<circle id={this.getId()} cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
 				 draggable={true} opacity={this.state.opacity} 
 				 onMouseDown={this.onMouseDown.bind(this)}
-				 cursor='pointer'
+				 cursor={this.props.clickable ? 'pointer' : 'default'}
 				 />
 
 		)

@@ -142,6 +142,11 @@ ShallowWrapper {
         "y": 15,
       }
     }
+    dot={
+      Object {
+        "restartFadeOut": [Function],
+      }
+    }
     radius={100}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -157,7 +162,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "cursor": "pointer",
+      "cursor": "default",
       "cx": 10,
       "cy": 15,
       "draggable": true,
@@ -177,7 +182,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "cursor": "pointer",
+        "cursor": "default",
         "cx": 10,
         "cy": 15,
         "draggable": true,
@@ -223,6 +228,7 @@ ShallowWrapper {
         "y": 15,
       }
     }
+    intersectsLine={[MockFunction]}
     radius={100}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -238,7 +244,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "cursor": "pointer",
+      "cursor": "default",
       "cx": 10,
       "cy": 15,
       "draggable": true,
@@ -258,7 +264,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "cursor": "pointer",
+        "cursor": "default",
         "cx": 10,
         "cy": 15,
         "draggable": true,
@@ -266,6 +272,111 @@ ShallowWrapper {
         "id": "10/15",
         "onMouseDown": [Function],
         "opacity": 0.1,
+        "r": 100,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "circle",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`the onMouseDown function should call the prop onMouseDown function 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Dot
+    animateFades={false}
+    center={
+      Object {
+        "x": 10,
+        "y": 15,
+      }
+    }
+    dot={
+      Object {
+        "restartFadeOut": [Function],
+      }
+    }
+    intersectsLine={[MockFunction]}
+    onMouseDown={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {},
+            Object {
+              "restartFadeOut": [Function],
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    radius={100}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "cursor": "default",
+      "cx": 10,
+      "cy": 15,
+      "draggable": true,
+      "fill": undefined,
+      "id": "10/15",
+      "onMouseDown": [Function],
+      "opacity": 1,
+      "r": 100,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": "circle",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "cursor": "default",
+        "cx": 10,
+        "cy": 15,
+        "draggable": true,
+        "fill": undefined,
+        "id": "10/15",
+        "onMouseDown": [Function],
+        "opacity": 1,
         "r": 100,
       },
       "ref": null,

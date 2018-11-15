@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import moment from 'moment'
 import util from './utils.js'
-import DotViewer from './DotViewer.js'
 import PropTypes from 'prop-types';
 import Dot from './Dot.js';
 
@@ -21,10 +20,10 @@ class Dots extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.view.dotsView.width != this.state.width)
+		if(nextProps.view.dotsView.width !== this.state.width)
 			this.setState({width:nextProps.view.dotsView.width})
 		
-		if(nextProps.view.dotsView.height != this.state.height)
+		if(nextProps.view.dotsView.height !== this.state.height)
 			this.setState({height:nextProps.view.dotsView.height})
 	}
 
@@ -41,6 +40,7 @@ class Dots extends Component {
 
 	//Make Dot Componenent so it can do its own opacity management
 	makeDot(dot) {
+		if(!this.view.dots || !this.view.dots.center) return null;
 		var distanceFromCenter = dot.distanceFromCenter;
 		var angle = dot.startAngle + dot.angle;
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
@@ -49,9 +49,9 @@ class Dots extends Component {
 		return <Dot id={point.x+'///'+point.y} center={point} radius={dot.r} fill={dot.color} 
 		onMouseDown={this.onMouseDownDot.bind(this)} 
 		dot={dot}
-		setRestartOpacityFunction={this.setRestartOpacityFunction.bind(this)}
 		intersectsLine={this.props.intersectsLine}
 		animateFades={true}
+		clickable={!this.props.view.disable}
 		/>
 	}
 
@@ -70,11 +70,12 @@ class Dots extends Component {
 			for(j = 0; j < subjects[i].assignments.length; j++) {
 				let assignment = subjects[i].assignments[j];
 				let distanceFromCenter = this.props.getDistanceFromCenter(assignment);
-				if(distanceFromCenter <= -1) continue;
 				if(distanceFromCenter < -2) continue;
-				let color = this.props.view.colors.typeColors[assignment.type.toLowerCase().replace(" ",'')];
-				if(!color)
-					color = 'white';
+				if(distanceFromCenter <= -1) continue;
+				
+				let color = 'white';
+				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
+					color = this.props.view.colors.typeColors[assignment.type];
 				this.dotsObjs[i].push({
 					key:(subjects[i].name+'/'+assignment.name+'/'+assignment.dueDate.format('YYYY-MM-DD HH:mm')),
 					distanceFromCenter:distanceFromCenter,
@@ -89,11 +90,8 @@ class Dots extends Component {
 		}
 	}
 
-	setRestartOpacityFunction(func) {
-	}
-
 	getDotRows(dots, fixed, numSteps) {
-		if(!dots || dots.length === 0) return null;
+		if(!dots || dots.length === 0 || !this.view.radar) return null;
 		dots.sort(this.compareDots);
 		if(fixed && !numSteps)
 			numSteps = 10;
@@ -190,7 +188,7 @@ class Dots extends Component {
 		
 		let rows = this.getDotRows(dots);
 
-		for(let i = 0; i < rows.length; i++) {
+		for(let i = 0; rows && i < rows.length; i++) {
 			let row = rows[i];
 			if(row.length === 0) continue;
 			
@@ -227,6 +225,7 @@ class Dots extends Component {
 
 	onMouseDownDot(e,dotObj) {
 		this.pauseEvent(e);
+		if(this.props.view.disable) return;
 		this.draggedDot = {
 			dot:e.target,
 			assignment:dotObj.assignment, 
@@ -264,14 +263,6 @@ class Dots extends Component {
 		}
 		this.draggedDot = null;
 	}
-
-	
-
-	/*closeDotViewer() {
-		let state = this.state;
-		state.clickedDot = null;
-		this.setState(state);
-	}*/
 
 
 	render() {

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import moment from 'moment'
 import Radar from './RadarComponent/Radar.js'
 import { DateRangePicker } from 'react-dates';
-import SubjectForm from './RadarComponent/SubjectForm.js'
-import TaskForm from './RadarComponent/TaskForm.js'
-import Buttons from './RadarComponent/Buttons.js'
 import AddForm from './RadarComponent/AddForm.js'
-import EditTaskForm from './RadarComponent/EditTaskForm.js'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import HistoryPage from './HistoryPage.js'
+import SubjectPage from './SubjectPage.js'
+
 
 
 
@@ -20,6 +19,13 @@ class RadarScreen extends Component {
 		super();
 
 		let state = {
+			historyScreen:{
+				completedAssignments:[],
+				colors:{}
+			},
+			subjectViewer:{
+
+			},
 			show:props.show,
 			dates:{
 				startDate:moment(),
@@ -43,7 +49,9 @@ class RadarScreen extends Component {
 					width:props.view.width,
 					height:props.view.height
 				},
+
 				colors:props.view.colors
+				disable:false
 			},
 			editDot:{},
 			isEditForm: false,
@@ -53,13 +61,27 @@ class RadarScreen extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		
+		let newColors = Object.assign({}, nextProps.view.colors.typeColors);
+		nextProps.subjects.map((subj) =>{
+			newColors[subj.name] = subj.color;
+		})
+		let hist = this.state.historyScreen;
+		hist.colors = newColors;
+		this.setState({historyScreen:hist})
     }
 
     componentDidMount() {
     	this.updateWindowDimensions();
 		window.addEventListener('resize', this.updateWindowDimensions.bind(this));
 		this.startUpdateInterval();
+		this.radarScreenOpenCloseFunctions = {
+			openAddForm:this.openAddForm.bind(this),
+			closeAddForm:this.closeAddForm.bind(this),
+			openHistoryScreen:this.openHistoryScreen.bind(this),
+			closeHistoryScreen:this.closeHistoryScreen.bind(this),
+			openSubjectPage:this.openSubjectPage.bind(this),
+			closeSubjectPage:this.closeSubjectPage.bind(this)
+		}
     }
 
     componentWillUnmount() {
@@ -92,7 +114,8 @@ class RadarScreen extends Component {
 				width:state.view.width,
 				height:state.view.height
 			},
-			colors:state.radarView.colors
+			colors:state.radarView.colors,
+			disable:false
 		}
 		this.setState(state);
 	}
@@ -113,8 +136,96 @@ class RadarScreen extends Component {
 		clearInterval(this.dateUpdateInterval);
 	}
 
+	/*Passed to RADAR and called from there*/
 	openAddForm() {
-		this.setState({showAddForm:!this.state.showAddForm});
+		this.setState({
+			showAddForm:true,
+		});
+		this.closeHistoryScreen();
+		this.closeSubjectPage();
+		this.setRadarClickable(false);
+	}
+
+	closeAddForm() {
+		this.setState({
+			showAddForm:false
+		});
+		this.setRadarClickable(true);
+	}
+
+	openHistoryScreen() {
+		let historyScreen = this.state.historyScreen;
+		historyScreen.show = true;
+		this.setState({historyScreen:historyScreen});
+		this.closeAddForm();
+		this.closeSubjectPage();
+		this.setRadarClickable(false);
+	}
+
+	closeHistoryScreen() {
+		let historyScreen = this.state.historyScreen;
+		historyScreen.show = false;
+		this.setState({historyScreen:historyScreen});
+		this.setRadarClickable(true);
+	}
+	/*Passed to RADAR and called from there*/
+
+
+
+	setRadarClickable(clickable) {
+		let rView = this.state.radarView;
+		rView.disable = !clickable;
+		this.setState({radarView:rView});
+	}
+
+	completeAssignment(assignment) {
+		let historyScreen = this.state.historyScreen;
+		historyScreen.completedAssignments.push(assignment);
+		this.setState({historyScreen:historyScreen})
+	}
+
+
+
+	//Get methods from RADAR so they can be called from here
+	setRadarOpenCloseFunctions(obj) {
+		this.radarOpenCloseFunctions = obj;
+	}
+
+	//Used to run the open/close functions that are stored in RADAR (Change buttons)
+	runRadarOpenCloseFunction(functionName) {
+		if(this.radarOpenCloseFunctions && this.radarOpenCloseFunctions[functionName]) 
+			this.radarOpenCloseFunctions[functionName]();
+	}
+
+	//Given to RADAR so when open/close functions are called there they are also called here
+	runRadarScreenOpenCloseFunction(functionName,arg) {
+		if(this.radarScreenOpenCloseFunctions && this.radarScreenOpenCloseFunctions[functionName]) 
+			this.radarScreenOpenCloseFunctions[functionName](arg);
+	}
+
+	openSubjectPage(subject) {
+		let subjectViewer = this.state.subjectViewer;
+
+		subjectViewer.subject = subject;
+		subjectViewer.show = true;
+		subjectViewer.colors = this.state.historyScreen.colors;
+
+		this.closeHistoryScreen();
+		this.runRadarOpenCloseFunction('closeHistoryScreen');
+		this.closeAddForm();
+		this.runRadarOpenCloseFunction('closeAddForm');
+		
+		this.setState({subjectViewer:subjectViewer});
+		this.setRadarClickable(false);
+	}
+
+	closeSubjectPage() {
+		let subjectViewer = this.state.subjectViewer;
+		subjectViewer.subject = null;
+		subjectViewer.show = false;
+		subjectViewer.colors = [];
+		this.setState({subjectViewer:subjectViewer});
+		this.setRadarClickable(true);
 	}
 	
 	openEditForm(dot) {
@@ -166,9 +277,25 @@ class RadarScreen extends Component {
     		  }}
     		/>
     		<div>
-    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} openAddForm={this.openAddForm.bind(this)} openEditForm={this.openEditForm.bind(this)}/>
-		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm}/>
+    			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} 
+    			completeAssignment={this.completeAssignment.bind(this)}
+    			setRadarOpenCloseFunctions={this.setRadarOpenCloseFunctions.bind(this)}
+    			runRadarScreenOpenCloseFunction={this.runRadarScreenOpenCloseFunction.bind(this)}
+    			openEditForm={this.openEditForm.bind(this)}/>
+		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={()=>{this.closeAddForm.bind(this);this.runRadarOpenCloseFunction('closeAddForm')}}/>
+		    	<HistoryPage x={this.state.view.width/2} y={this.state.view.height/2} 
+		    		completedAssignments={this.state.historyScreen.completedAssignments}
+		    		close={()=>{this.runRadarOpenCloseFunction('closeHistoryScreen')}}
+		    		show={this.state.historyScreen.show}
+		    		colors={this.state.historyScreen.colors}
+		    		/>
 		    	{form}
+		    	<SubjectPage x={this.state.view.width/2} y={this.state.view.height/2} 
+		    		subject={this.state.subjectViewer.subject}
+		    		close={()=>{this.runRadarScreenOpenCloseFunction('closeSubjectPage')}}
+		    		show={this.state.subjectViewer.show}
+		    		colors={this.state.subjectViewer.colors}
+		    		/>
     		</div>
     	</div>
     )

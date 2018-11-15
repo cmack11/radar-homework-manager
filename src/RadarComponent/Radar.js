@@ -6,15 +6,13 @@ import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
-import Buttons from './Buttons.js'
-import {Label} from 'semantic-ui-react';
 import addButton from '../images/add_button.png'
 import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
 import completedButton from '../images/completed_button.png'
 import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
-
+import closeHistoryButton from '../images/history_button_close.png'
 
 
 
@@ -90,8 +88,11 @@ class Radar extends Component {
 			state.view.dotRadiusPercent = .07;
 		if(!state.view.strokeWidth)
 			state.view.strokeWidth = 3;
-		if(!state.view.ringsWidth)
-			state.view.ringsWidth = moment().add(7,'days') - moment();
+		if(!state.view.ringsWidth) {
+			let today = moment();
+			let end = moment(today).add(7,'days');
+			state.view.ringsWidth = end - today;
+		}
 		if(!state.view.colors)
 			state.view.colors = {};
 		if(!state.view.colors.subjectDivider)
@@ -105,8 +106,8 @@ class Radar extends Component {
 		state.dates = props.dates;
 		state.view = props.view;
 		this.verifyAndDefaultSubjects(state,props)
-		this.verifyAndDefaultDates(state,props)
 		this.verifyAndDefaultView(state,props)
+		this.verifyAndDefaultDates(state,props)
 	}
 
 	setDefault() {
@@ -134,6 +135,9 @@ class Radar extends Component {
 			strokeWidth:0,
 			strokeColor:0
 		}
+		view.buttons = {
+			width:0
+		}
 		this.view = view;
 	}
 
@@ -141,6 +145,14 @@ class Radar extends Component {
 		this.fillDimensions();
 		this.fillRings();
 		this.fillComponents();
+		if(this.props.setRadarOpenCloseFunctions) {
+			this.props.setRadarOpenCloseFunctions({
+				openAddForm:this.openAddForm.bind(this),
+				closeAddForm:this.closeAddForm.bind(this),
+				openHistoryScreen:this.openHistoryScreen.bind(this),
+				closeHistoryScreen:this.closeHistoryScreen.bind(this)
+			});
+		}
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {
@@ -184,24 +196,13 @@ class Radar extends Component {
 	    else if(point.y < this.view.dots.center.y)//upper hemisphere
 	    	point.y -= height;
 
-		return <text x={point.x} y={point.y} onClick={() => {this.openSubject(subject)}} font-size={fontSize} stroke={subject.color} cursor='pointer'>{subject.name}</text>
+		return <text x={point.x} y={point.y} onClick={() => {this.openSubject(subject)}} font-size={fontSize} fill={subject.color} stroke={subject.color} cursor='pointer'>{subject.name}</text>
 	}
 
 	openSubject(subject) {
+		this.props.runRadarScreenOpenCloseFunction('openSubjectPage',subject)
 		//Open a subject viewer when the subject label is selected
 		//Can view list of assignments and change name of subject
-	}
-
-	makeDot(dot) {
-		var distanceFromCenter = dot.distanceFromCenter;
-		var angle = dot.startAngle + dot.angle;
-		var point = this.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
-		if(!dot.r) dot.r = this.view.dots.radius;
-
-		return <circle cx={point.x} cy={point.y} r={dot.r} fill={dot.color}
-				 key={dot.key} draggable={true}
-				 onMouseDown={this.onMouseDownDot.bind(this)}
-				 />;
 	}
 
 	getDistanceFromCenter(assignment) {
@@ -244,11 +245,14 @@ class Radar extends Component {
 		}
 		view.dotViewer={
 			width:Math.min(250, width),
-			height:Math.min(300, width),
+			height:Math.min(300, width)
 		}
 		view.style = {
 			strokeWidth:this.state.view.strokeWidth,
 			strokeColor:this.state.view.colors.subjectDivider
+		}
+		view.buttons = {
+			width:(.2 * width)
 		}
 		this.view = view;
 	}
@@ -318,12 +322,50 @@ class Radar extends Component {
 	}
 
 	addButtonClick() {
-		this.props.openAddForm();
 		let buttons = this.state.buttons;
-		if(buttons.right.logo === addButton)
-			buttons.right.logo = closeAddButton;
-		else
-			buttons.right.logo = addButton;
+		if(buttons.right.logo === addButton) {
+			this.closeHistoryScreen();//order matters
+			this.openAddForm();
+		} else {
+			this.closeAddForm();
+		}
+		this.setState({buttons:buttons})
+	}
+
+	openAddForm() {
+		let buttons = this.state.buttons;
+		buttons.right.logo = closeAddButton;
+		this.props.runRadarScreenOpenCloseFunction('openAddForm');
+		this.setState({buttons:buttons})
+	}
+
+	closeAddForm() {
+		let buttons = this.state.buttons;
+		buttons.right.logo = addButton;
+		this.props.runRadarScreenOpenCloseFunction('closeAddForm');
+		this.setState({buttons:buttons})
+	}
+
+	historyButtonClick() {
+		if(this.state.buttons.left.logo === historyButton) {
+			this.closeAddForm();//order matters
+			this.openHistoryScreen();
+		} else {
+			this.closeHistoryScreen();
+		}
+	}
+
+	openHistoryScreen() {
+		let buttons = this.state.buttons;
+		buttons.left.logo = closeHistoryButton;
+		this.props.runRadarScreenOpenCloseFunction('openHistoryScreen');
+		this.setState({buttons:buttons})
+	}
+
+	closeHistoryScreen() {
+		let buttons = this.state.buttons;
+		buttons.left.logo = historyButton;
+		this.props.runRadarScreenOpenCloseFunction('closeHistoryScreen');
 		this.setState({buttons:buttons})
 	}
 	
@@ -336,14 +378,12 @@ class Radar extends Component {
 		
 		let intersectFuncs = [];
 
-		let buttons = [
-			{x:10, y:this.props.view.dotsView.height-125-10, radius:this.view.radar.radius*.2, color:'blue',onClick:()=>{}, onIntersect:() => {console.log('woo')}},
-			{x:this.props.view.dotsView.width-20-this.view.radar.radius*.2, y:this.props.view.dotsView.height-this.view.radar.radius*.2-10, radius:this.view.radar.radius*.2, color:'red',onClick:this.props.openAddForm, onIntersect:() => {console.log('woo')}}
-		];
-
 		intersectFuncs.push({
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
-			func:(dot)=>{dot.dot.setAttribute('visibility','hidden')}
+			func:(dot)=>{
+				dot.dot.setAttribute('visibility','hidden');
+				this.props.completeAssignment(dot.assignment);
+			}
 		})
 		
 		intersectFuncs.push({
@@ -371,9 +411,9 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.state.buttons.width-10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
-				<image style={{cursor:'pointer'}} onClick={()=>{}}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={()=>{}} href={this.state.buttons.overdue.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-425} width={this.state.buttons.width} height={this.state.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>

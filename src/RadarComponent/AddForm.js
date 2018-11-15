@@ -32,11 +32,14 @@ export class AddForm extends React.Component {
     let form;
 
      if(this.state.form === TASK_FORM) 
-      form = <TaskForm width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} isEditForm={false}/>
+      form = <TaskForm width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} closeForm={this.props.closeForm}/>
+
     else if(this.state.form === SUBJECT_FORM)
-      form = <SubjectForm width={320} taskTypes={this.props.taskTypes} switchForm={this.switchForm.bind(this)}/> 
+      form = <SubjectForm width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} closeForm={this.props.closeForm}/> 
+    else
+      form = null;
     return (
-      <div style={{position:'absolute',bottom:0,right:0}} id='subjectButton'>
+      <div style={{position:'absolute',top:0,left:0}} id='subjectButton'>
       {form}
       </div>
     );

@@ -1,0 +1,4575 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hide/Show Subjects Column TaskList with Subjects Column 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TaskList
+    assignments={
+      Array [
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A1",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS2",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A3",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS4",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A5",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1R6",
+          "subject": "Subject #1",
+          "type": "Reading",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A7",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A8",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+      ]
+    }
+    hideSubjectCol={false}
+    title="TestTaskList"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "TestTaskList",
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ]
+          }
+          data={
+            Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ]
+          }
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPageSize={5}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={false}
+          loadingText="Loading..."
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          onPageSizeChange={[Function]}
+          originalKey="_original"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              15,
+            ]
+          }
+          pageText="Page"
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={true}
+          style={Object {}}
+          subRowsKey="_subRows"
+        />,
+      ],
+      "id": "tasklist",
+      "style": Object {
+        "padding": 0,
+        "visibility": "hidden",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      "TestTaskList",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "AggregatedComponent": [Function],
+          "ExpanderComponent": [Function],
+          "FilterComponent": [Function],
+          "LoadingComponent": [Function],
+          "NextComponent": undefined,
+          "NoDataComponent": [Function],
+          "PadRowComponent": [Function],
+          "PaginationComponent": [Function],
+          "PivotComponent": undefined,
+          "PivotValueComponent": [Function],
+          "PreviousComponent": undefined,
+          "ResizerComponent": [Function],
+          "TableComponent": [Function],
+          "TbodyComponent": [Function],
+          "TdComponent": [Function],
+          "TfootComponent": [Function],
+          "ThComponent": [Function],
+          "TheadComponent": [Function],
+          "TrComponent": [Function],
+          "TrGroupComponent": [Function],
+          "aggregatedKey": "_aggregated",
+          "className": "",
+          "collapseOnDataChange": true,
+          "collapseOnPageChange": true,
+          "collapseOnSortingChange": true,
+          "column": Object {
+            "Aggregated": undefined,
+            "Cell": undefined,
+            "Expander": undefined,
+            "Filter": undefined,
+            "Footer": undefined,
+            "Header": undefined,
+            "Pivot": undefined,
+            "PivotValue": undefined,
+            "aggregate": undefined,
+            "className": "",
+            "filterAll": false,
+            "filterMethod": undefined,
+            "filterable": undefined,
+            "footerClassName": "",
+            "footerStyle": Object {},
+            "getFooterProps": [Function],
+            "getHeaderProps": [Function],
+            "getProps": [Function],
+            "headerClassName": "",
+            "headerStyle": Object {},
+            "minWidth": 100,
+            "resizable": undefined,
+            "show": true,
+            "sortMethod": undefined,
+            "sortable": undefined,
+            "style": Object {},
+          },
+          "columns": Array [
+            Object {
+              "Header": "Name",
+              "accessor": "name",
+            },
+            Object {
+              "Header": "Subject",
+              "accessor": "subject",
+            },
+            Object {
+              "Header": "Description",
+              "accessor": "description",
+            },
+            Object {
+              "Header": "Type",
+              "accessor": "type",
+            },
+            Object {
+              "Cell": [Function],
+              "Header": "Due Date",
+              "accessor": "dueDate",
+            },
+          ],
+          "data": Array [
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A1",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS2",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A3",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS4",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A5",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1R6",
+              "subject": "Subject #1",
+              "type": "Reading",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A7",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A8",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+          ],
+          "defaultExpanded": Object {},
+          "defaultFilterMethod": [Function],
+          "defaultFiltered": Array [],
+          "defaultPageSize": 5,
+          "defaultResized": Array [],
+          "defaultSortDesc": false,
+          "defaultSortMethod": [Function],
+          "defaultSorted": Array [],
+          "expanderDefaults": Object {
+            "filterable": false,
+            "resizable": false,
+            "sortable": false,
+            "width": 35,
+          },
+          "filterable": false,
+          "freezeWhenExpanded": false,
+          "getLoadingProps": [Function],
+          "getNoDataProps": [Function],
+          "getPaginationProps": [Function],
+          "getProps": [Function],
+          "getResizerProps": [Function],
+          "getTableProps": [Function],
+          "getTbodyProps": [Function],
+          "getTdProps": [Function],
+          "getTfootProps": [Function],
+          "getTfootTdProps": [Function],
+          "getTfootTrProps": [Function],
+          "getTheadFilterProps": [Function],
+          "getTheadFilterThProps": [Function],
+          "getTheadFilterTrProps": [Function],
+          "getTheadGroupProps": [Function],
+          "getTheadGroupThProps": [Function],
+          "getTheadGroupTrProps": [Function],
+          "getTheadProps": [Function],
+          "getTheadThProps": [Function],
+          "getTheadTrProps": [Function],
+          "getTrGroupProps": [Function],
+          "getTrProps": [Function],
+          "groupedByPivotKey": "_groupedByPivot",
+          "indexKey": "_index",
+          "loading": false,
+          "loadingText": "Loading...",
+          "multiSort": true,
+          "nestingLevelKey": "_nestingLevel",
+          "nextText": "Next",
+          "noDataText": "No rows found",
+          "ofText": "of",
+          "onExpandedChange": undefined,
+          "onFetchData": [Function],
+          "onFilteredChange": undefined,
+          "onPageChange": undefined,
+          "onPageSizeChange": [Function],
+          "onResizedChange": undefined,
+          "onSortedChange": undefined,
+          "originalKey": "_original",
+          "pageSizeOptions": Array [
+            5,
+            10,
+            15,
+          ],
+          "pageText": "Page",
+          "pivotBy": undefined,
+          "pivotDefaults": Object {},
+          "pivotIDKey": "_pivotID",
+          "pivotValKey": "_pivotVal",
+          "previousText": "Previous",
+          "resizable": true,
+          "resolveData": [Function],
+          "rowsText": "rows",
+          "showPageJump": true,
+          "showPageSizeOptions": true,
+          "showPagination": true,
+          "showPaginationBottom": true,
+          "showPaginationTop": false,
+          "sortable": true,
+          "style": Object {},
+          "subRowsKey": "_subRows",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "TestTaskList",
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Header": "Name",
+                  "accessor": "name",
+                },
+                Object {
+                  "Header": "Subject",
+                  "accessor": "subject",
+                },
+                Object {
+                  "Header": "Description",
+                  "accessor": "description",
+                },
+                Object {
+                  "Header": "Type",
+                  "accessor": "type",
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "Due Date",
+                  "accessor": "dueDate",
+                },
+              ]
+            }
+            data={
+              Array [
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A1",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS2",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A3",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS4",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A5",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1R6",
+                  "subject": "Subject #1",
+                  "type": "Reading",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A7",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A8",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+              ]
+            }
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPageSize={5}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={false}
+            loadingText="Loading..."
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            onPageSizeChange={[Function]}
+            originalKey="_original"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                15,
+              ]
+            }
+            pageText="Page"
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={true}
+            style={Object {}}
+            subRowsKey="_subRows"
+          />,
+        ],
+        "id": "tasklist",
+        "style": Object {
+          "padding": 0,
+          "visibility": "hidden",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        "TestTaskList",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "AggregatedComponent": [Function],
+            "ExpanderComponent": [Function],
+            "FilterComponent": [Function],
+            "LoadingComponent": [Function],
+            "NextComponent": undefined,
+            "NoDataComponent": [Function],
+            "PadRowComponent": [Function],
+            "PaginationComponent": [Function],
+            "PivotComponent": undefined,
+            "PivotValueComponent": [Function],
+            "PreviousComponent": undefined,
+            "ResizerComponent": [Function],
+            "TableComponent": [Function],
+            "TbodyComponent": [Function],
+            "TdComponent": [Function],
+            "TfootComponent": [Function],
+            "ThComponent": [Function],
+            "TheadComponent": [Function],
+            "TrComponent": [Function],
+            "TrGroupComponent": [Function],
+            "aggregatedKey": "_aggregated",
+            "className": "",
+            "collapseOnDataChange": true,
+            "collapseOnPageChange": true,
+            "collapseOnSortingChange": true,
+            "column": Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            },
+            "columns": Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ],
+            "data": Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ],
+            "defaultExpanded": Object {},
+            "defaultFilterMethod": [Function],
+            "defaultFiltered": Array [],
+            "defaultPageSize": 5,
+            "defaultResized": Array [],
+            "defaultSortDesc": false,
+            "defaultSortMethod": [Function],
+            "defaultSorted": Array [],
+            "expanderDefaults": Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            },
+            "filterable": false,
+            "freezeWhenExpanded": false,
+            "getLoadingProps": [Function],
+            "getNoDataProps": [Function],
+            "getPaginationProps": [Function],
+            "getProps": [Function],
+            "getResizerProps": [Function],
+            "getTableProps": [Function],
+            "getTbodyProps": [Function],
+            "getTdProps": [Function],
+            "getTfootProps": [Function],
+            "getTfootTdProps": [Function],
+            "getTfootTrProps": [Function],
+            "getTheadFilterProps": [Function],
+            "getTheadFilterThProps": [Function],
+            "getTheadFilterTrProps": [Function],
+            "getTheadGroupProps": [Function],
+            "getTheadGroupThProps": [Function],
+            "getTheadGroupTrProps": [Function],
+            "getTheadProps": [Function],
+            "getTheadThProps": [Function],
+            "getTheadTrProps": [Function],
+            "getTrGroupProps": [Function],
+            "getTrProps": [Function],
+            "groupedByPivotKey": "_groupedByPivot",
+            "indexKey": "_index",
+            "loading": false,
+            "loadingText": "Loading...",
+            "multiSort": true,
+            "nestingLevelKey": "_nestingLevel",
+            "nextText": "Next",
+            "noDataText": "No rows found",
+            "ofText": "of",
+            "onExpandedChange": undefined,
+            "onFetchData": [Function],
+            "onFilteredChange": undefined,
+            "onPageChange": undefined,
+            "onPageSizeChange": [Function],
+            "onResizedChange": undefined,
+            "onSortedChange": undefined,
+            "originalKey": "_original",
+            "pageSizeOptions": Array [
+              5,
+              10,
+              15,
+            ],
+            "pageText": "Page",
+            "pivotBy": undefined,
+            "pivotDefaults": Object {},
+            "pivotIDKey": "_pivotID",
+            "pivotValKey": "_pivotVal",
+            "previousText": "Previous",
+            "resizable": true,
+            "resolveData": [Function],
+            "rowsText": "rows",
+            "showPageJump": true,
+            "showPageSizeOptions": true,
+            "showPagination": true,
+            "showPaginationBottom": true,
+            "showPaginationTop": false,
+            "sortable": true,
+            "style": Object {},
+            "subRowsKey": "_subRows",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Hide/Show Subjects Column TaskList without Subjects Column 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TaskList
+    assignments={
+      Array [
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A1",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS2",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A3",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS4",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A5",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1R6",
+          "subject": "Subject #1",
+          "type": "Reading",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A7",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A8",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+      ]
+    }
+    hideSubjectCol={true}
+    title="TestTaskList"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "TestTaskList",
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ]
+          }
+          data={
+            Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ]
+          }
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPageSize={5}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={false}
+          loadingText="Loading..."
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          onPageSizeChange={[Function]}
+          originalKey="_original"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              15,
+            ]
+          }
+          pageText="Page"
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={true}
+          style={Object {}}
+          subRowsKey="_subRows"
+        />,
+      ],
+      "id": "tasklist",
+      "style": Object {
+        "padding": 0,
+        "visibility": "hidden",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      "TestTaskList",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "AggregatedComponent": [Function],
+          "ExpanderComponent": [Function],
+          "FilterComponent": [Function],
+          "LoadingComponent": [Function],
+          "NextComponent": undefined,
+          "NoDataComponent": [Function],
+          "PadRowComponent": [Function],
+          "PaginationComponent": [Function],
+          "PivotComponent": undefined,
+          "PivotValueComponent": [Function],
+          "PreviousComponent": undefined,
+          "ResizerComponent": [Function],
+          "TableComponent": [Function],
+          "TbodyComponent": [Function],
+          "TdComponent": [Function],
+          "TfootComponent": [Function],
+          "ThComponent": [Function],
+          "TheadComponent": [Function],
+          "TrComponent": [Function],
+          "TrGroupComponent": [Function],
+          "aggregatedKey": "_aggregated",
+          "className": "",
+          "collapseOnDataChange": true,
+          "collapseOnPageChange": true,
+          "collapseOnSortingChange": true,
+          "column": Object {
+            "Aggregated": undefined,
+            "Cell": undefined,
+            "Expander": undefined,
+            "Filter": undefined,
+            "Footer": undefined,
+            "Header": undefined,
+            "Pivot": undefined,
+            "PivotValue": undefined,
+            "aggregate": undefined,
+            "className": "",
+            "filterAll": false,
+            "filterMethod": undefined,
+            "filterable": undefined,
+            "footerClassName": "",
+            "footerStyle": Object {},
+            "getFooterProps": [Function],
+            "getHeaderProps": [Function],
+            "getProps": [Function],
+            "headerClassName": "",
+            "headerStyle": Object {},
+            "minWidth": 100,
+            "resizable": undefined,
+            "show": true,
+            "sortMethod": undefined,
+            "sortable": undefined,
+            "style": Object {},
+          },
+          "columns": Array [
+            Object {
+              "Header": "Name",
+              "accessor": "name",
+            },
+            Object {
+              "Header": "Description",
+              "accessor": "description",
+            },
+            Object {
+              "Header": "Type",
+              "accessor": "type",
+            },
+            Object {
+              "Cell": [Function],
+              "Header": "Due Date",
+              "accessor": "dueDate",
+            },
+          ],
+          "data": Array [
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A1",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS2",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A3",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS4",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A5",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1R6",
+              "subject": "Subject #1",
+              "type": "Reading",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A7",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A8",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+          ],
+          "defaultExpanded": Object {},
+          "defaultFilterMethod": [Function],
+          "defaultFiltered": Array [],
+          "defaultPageSize": 5,
+          "defaultResized": Array [],
+          "defaultSortDesc": false,
+          "defaultSortMethod": [Function],
+          "defaultSorted": Array [],
+          "expanderDefaults": Object {
+            "filterable": false,
+            "resizable": false,
+            "sortable": false,
+            "width": 35,
+          },
+          "filterable": false,
+          "freezeWhenExpanded": false,
+          "getLoadingProps": [Function],
+          "getNoDataProps": [Function],
+          "getPaginationProps": [Function],
+          "getProps": [Function],
+          "getResizerProps": [Function],
+          "getTableProps": [Function],
+          "getTbodyProps": [Function],
+          "getTdProps": [Function],
+          "getTfootProps": [Function],
+          "getTfootTdProps": [Function],
+          "getTfootTrProps": [Function],
+          "getTheadFilterProps": [Function],
+          "getTheadFilterThProps": [Function],
+          "getTheadFilterTrProps": [Function],
+          "getTheadGroupProps": [Function],
+          "getTheadGroupThProps": [Function],
+          "getTheadGroupTrProps": [Function],
+          "getTheadProps": [Function],
+          "getTheadThProps": [Function],
+          "getTheadTrProps": [Function],
+          "getTrGroupProps": [Function],
+          "getTrProps": [Function],
+          "groupedByPivotKey": "_groupedByPivot",
+          "indexKey": "_index",
+          "loading": false,
+          "loadingText": "Loading...",
+          "multiSort": true,
+          "nestingLevelKey": "_nestingLevel",
+          "nextText": "Next",
+          "noDataText": "No rows found",
+          "ofText": "of",
+          "onExpandedChange": undefined,
+          "onFetchData": [Function],
+          "onFilteredChange": undefined,
+          "onPageChange": undefined,
+          "onPageSizeChange": [Function],
+          "onResizedChange": undefined,
+          "onSortedChange": undefined,
+          "originalKey": "_original",
+          "pageSizeOptions": Array [
+            5,
+            10,
+            15,
+          ],
+          "pageText": "Page",
+          "pivotBy": undefined,
+          "pivotDefaults": Object {},
+          "pivotIDKey": "_pivotID",
+          "pivotValKey": "_pivotVal",
+          "previousText": "Previous",
+          "resizable": true,
+          "resolveData": [Function],
+          "rowsText": "rows",
+          "showPageJump": true,
+          "showPageSizeOptions": true,
+          "showPagination": true,
+          "showPaginationBottom": true,
+          "showPaginationTop": false,
+          "sortable": true,
+          "style": Object {},
+          "subRowsKey": "_subRows",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "TestTaskList",
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Header": "Name",
+                  "accessor": "name",
+                },
+                Object {
+                  "Header": "Description",
+                  "accessor": "description",
+                },
+                Object {
+                  "Header": "Type",
+                  "accessor": "type",
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "Due Date",
+                  "accessor": "dueDate",
+                },
+              ]
+            }
+            data={
+              Array [
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A1",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS2",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A3",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS4",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A5",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1R6",
+                  "subject": "Subject #1",
+                  "type": "Reading",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A7",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A8",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+              ]
+            }
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPageSize={5}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={false}
+            loadingText="Loading..."
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            onPageSizeChange={[Function]}
+            originalKey="_original"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                15,
+              ]
+            }
+            pageText="Page"
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={true}
+            style={Object {}}
+            subRowsKey="_subRows"
+          />,
+        ],
+        "id": "tasklist",
+        "style": Object {
+          "padding": 0,
+          "visibility": "hidden",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        "TestTaskList",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "AggregatedComponent": [Function],
+            "ExpanderComponent": [Function],
+            "FilterComponent": [Function],
+            "LoadingComponent": [Function],
+            "NextComponent": undefined,
+            "NoDataComponent": [Function],
+            "PadRowComponent": [Function],
+            "PaginationComponent": [Function],
+            "PivotComponent": undefined,
+            "PivotValueComponent": [Function],
+            "PreviousComponent": undefined,
+            "ResizerComponent": [Function],
+            "TableComponent": [Function],
+            "TbodyComponent": [Function],
+            "TdComponent": [Function],
+            "TfootComponent": [Function],
+            "ThComponent": [Function],
+            "TheadComponent": [Function],
+            "TrComponent": [Function],
+            "TrGroupComponent": [Function],
+            "aggregatedKey": "_aggregated",
+            "className": "",
+            "collapseOnDataChange": true,
+            "collapseOnPageChange": true,
+            "collapseOnSortingChange": true,
+            "column": Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            },
+            "columns": Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ],
+            "data": Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ],
+            "defaultExpanded": Object {},
+            "defaultFilterMethod": [Function],
+            "defaultFiltered": Array [],
+            "defaultPageSize": 5,
+            "defaultResized": Array [],
+            "defaultSortDesc": false,
+            "defaultSortMethod": [Function],
+            "defaultSorted": Array [],
+            "expanderDefaults": Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            },
+            "filterable": false,
+            "freezeWhenExpanded": false,
+            "getLoadingProps": [Function],
+            "getNoDataProps": [Function],
+            "getPaginationProps": [Function],
+            "getProps": [Function],
+            "getResizerProps": [Function],
+            "getTableProps": [Function],
+            "getTbodyProps": [Function],
+            "getTdProps": [Function],
+            "getTfootProps": [Function],
+            "getTfootTdProps": [Function],
+            "getTfootTrProps": [Function],
+            "getTheadFilterProps": [Function],
+            "getTheadFilterThProps": [Function],
+            "getTheadFilterTrProps": [Function],
+            "getTheadGroupProps": [Function],
+            "getTheadGroupThProps": [Function],
+            "getTheadGroupTrProps": [Function],
+            "getTheadProps": [Function],
+            "getTheadThProps": [Function],
+            "getTheadTrProps": [Function],
+            "getTrGroupProps": [Function],
+            "getTrProps": [Function],
+            "groupedByPivotKey": "_groupedByPivot",
+            "indexKey": "_index",
+            "loading": false,
+            "loadingText": "Loading...",
+            "multiSort": true,
+            "nestingLevelKey": "_nestingLevel",
+            "nextText": "Next",
+            "noDataText": "No rows found",
+            "ofText": "of",
+            "onExpandedChange": undefined,
+            "onFetchData": [Function],
+            "onFilteredChange": undefined,
+            "onPageChange": undefined,
+            "onPageSizeChange": [Function],
+            "onResizedChange": undefined,
+            "onSortedChange": undefined,
+            "originalKey": "_original",
+            "pageSizeOptions": Array [
+              5,
+              10,
+              15,
+            ],
+            "pageText": "Page",
+            "pivotBy": undefined,
+            "pivotDefaults": Object {},
+            "pivotIDKey": "_pivotID",
+            "pivotValKey": "_pivotVal",
+            "previousText": "Previous",
+            "resizable": true,
+            "resolveData": [Function],
+            "rowsText": "rows",
+            "showPageJump": true,
+            "showPageSizeOptions": true,
+            "showPagination": true,
+            "showPaginationBottom": true,
+            "showPaginationTop": false,
+            "sortable": true,
+            "style": Object {},
+            "subRowsKey": "_subRows",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Hiding TaskList Set visible flag to false 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TaskList
+    assignments={
+      Array [
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A1",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS2",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A3",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS4",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A5",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1R6",
+          "subject": "Subject #1",
+          "type": "Reading",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A7",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A8",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+      ]
+    }
+    title="TestTaskList"
+    visible={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "TestTaskList",
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ]
+          }
+          data={
+            Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ]
+          }
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPageSize={5}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={false}
+          loadingText="Loading..."
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          onPageSizeChange={[Function]}
+          originalKey="_original"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              15,
+            ]
+          }
+          pageText="Page"
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={true}
+          style={Object {}}
+          subRowsKey="_subRows"
+        />,
+      ],
+      "id": "tasklist",
+      "style": Object {
+        "padding": 0,
+        "visibility": "hidden",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      "TestTaskList",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "AggregatedComponent": [Function],
+          "ExpanderComponent": [Function],
+          "FilterComponent": [Function],
+          "LoadingComponent": [Function],
+          "NextComponent": undefined,
+          "NoDataComponent": [Function],
+          "PadRowComponent": [Function],
+          "PaginationComponent": [Function],
+          "PivotComponent": undefined,
+          "PivotValueComponent": [Function],
+          "PreviousComponent": undefined,
+          "ResizerComponent": [Function],
+          "TableComponent": [Function],
+          "TbodyComponent": [Function],
+          "TdComponent": [Function],
+          "TfootComponent": [Function],
+          "ThComponent": [Function],
+          "TheadComponent": [Function],
+          "TrComponent": [Function],
+          "TrGroupComponent": [Function],
+          "aggregatedKey": "_aggregated",
+          "className": "",
+          "collapseOnDataChange": true,
+          "collapseOnPageChange": true,
+          "collapseOnSortingChange": true,
+          "column": Object {
+            "Aggregated": undefined,
+            "Cell": undefined,
+            "Expander": undefined,
+            "Filter": undefined,
+            "Footer": undefined,
+            "Header": undefined,
+            "Pivot": undefined,
+            "PivotValue": undefined,
+            "aggregate": undefined,
+            "className": "",
+            "filterAll": false,
+            "filterMethod": undefined,
+            "filterable": undefined,
+            "footerClassName": "",
+            "footerStyle": Object {},
+            "getFooterProps": [Function],
+            "getHeaderProps": [Function],
+            "getProps": [Function],
+            "headerClassName": "",
+            "headerStyle": Object {},
+            "minWidth": 100,
+            "resizable": undefined,
+            "show": true,
+            "sortMethod": undefined,
+            "sortable": undefined,
+            "style": Object {},
+          },
+          "columns": Array [
+            Object {
+              "Header": "Name",
+              "accessor": "name",
+            },
+            Object {
+              "Header": "Subject",
+              "accessor": "subject",
+            },
+            Object {
+              "Header": "Description",
+              "accessor": "description",
+            },
+            Object {
+              "Header": "Type",
+              "accessor": "type",
+            },
+            Object {
+              "Cell": [Function],
+              "Header": "Due Date",
+              "accessor": "dueDate",
+            },
+          ],
+          "data": Array [
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A1",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS2",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A3",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS4",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A5",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1R6",
+              "subject": "Subject #1",
+              "type": "Reading",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A7",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A8",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+          ],
+          "defaultExpanded": Object {},
+          "defaultFilterMethod": [Function],
+          "defaultFiltered": Array [],
+          "defaultPageSize": 5,
+          "defaultResized": Array [],
+          "defaultSortDesc": false,
+          "defaultSortMethod": [Function],
+          "defaultSorted": Array [],
+          "expanderDefaults": Object {
+            "filterable": false,
+            "resizable": false,
+            "sortable": false,
+            "width": 35,
+          },
+          "filterable": false,
+          "freezeWhenExpanded": false,
+          "getLoadingProps": [Function],
+          "getNoDataProps": [Function],
+          "getPaginationProps": [Function],
+          "getProps": [Function],
+          "getResizerProps": [Function],
+          "getTableProps": [Function],
+          "getTbodyProps": [Function],
+          "getTdProps": [Function],
+          "getTfootProps": [Function],
+          "getTfootTdProps": [Function],
+          "getTfootTrProps": [Function],
+          "getTheadFilterProps": [Function],
+          "getTheadFilterThProps": [Function],
+          "getTheadFilterTrProps": [Function],
+          "getTheadGroupProps": [Function],
+          "getTheadGroupThProps": [Function],
+          "getTheadGroupTrProps": [Function],
+          "getTheadProps": [Function],
+          "getTheadThProps": [Function],
+          "getTheadTrProps": [Function],
+          "getTrGroupProps": [Function],
+          "getTrProps": [Function],
+          "groupedByPivotKey": "_groupedByPivot",
+          "indexKey": "_index",
+          "loading": false,
+          "loadingText": "Loading...",
+          "multiSort": true,
+          "nestingLevelKey": "_nestingLevel",
+          "nextText": "Next",
+          "noDataText": "No rows found",
+          "ofText": "of",
+          "onExpandedChange": undefined,
+          "onFetchData": [Function],
+          "onFilteredChange": undefined,
+          "onPageChange": undefined,
+          "onPageSizeChange": [Function],
+          "onResizedChange": undefined,
+          "onSortedChange": undefined,
+          "originalKey": "_original",
+          "pageSizeOptions": Array [
+            5,
+            10,
+            15,
+          ],
+          "pageText": "Page",
+          "pivotBy": undefined,
+          "pivotDefaults": Object {},
+          "pivotIDKey": "_pivotID",
+          "pivotValKey": "_pivotVal",
+          "previousText": "Previous",
+          "resizable": true,
+          "resolveData": [Function],
+          "rowsText": "rows",
+          "showPageJump": true,
+          "showPageSizeOptions": true,
+          "showPagination": true,
+          "showPaginationBottom": true,
+          "showPaginationTop": false,
+          "sortable": true,
+          "style": Object {},
+          "subRowsKey": "_subRows",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "TestTaskList",
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Header": "Name",
+                  "accessor": "name",
+                },
+                Object {
+                  "Header": "Subject",
+                  "accessor": "subject",
+                },
+                Object {
+                  "Header": "Description",
+                  "accessor": "description",
+                },
+                Object {
+                  "Header": "Type",
+                  "accessor": "type",
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "Due Date",
+                  "accessor": "dueDate",
+                },
+              ]
+            }
+            data={
+              Array [
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A1",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS2",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A3",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS4",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A5",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1R6",
+                  "subject": "Subject #1",
+                  "type": "Reading",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A7",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A8",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+              ]
+            }
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPageSize={5}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={false}
+            loadingText="Loading..."
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            onPageSizeChange={[Function]}
+            originalKey="_original"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                15,
+              ]
+            }
+            pageText="Page"
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={true}
+            style={Object {}}
+            subRowsKey="_subRows"
+          />,
+        ],
+        "id": "tasklist",
+        "style": Object {
+          "padding": 0,
+          "visibility": "hidden",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        "TestTaskList",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "AggregatedComponent": [Function],
+            "ExpanderComponent": [Function],
+            "FilterComponent": [Function],
+            "LoadingComponent": [Function],
+            "NextComponent": undefined,
+            "NoDataComponent": [Function],
+            "PadRowComponent": [Function],
+            "PaginationComponent": [Function],
+            "PivotComponent": undefined,
+            "PivotValueComponent": [Function],
+            "PreviousComponent": undefined,
+            "ResizerComponent": [Function],
+            "TableComponent": [Function],
+            "TbodyComponent": [Function],
+            "TdComponent": [Function],
+            "TfootComponent": [Function],
+            "ThComponent": [Function],
+            "TheadComponent": [Function],
+            "TrComponent": [Function],
+            "TrGroupComponent": [Function],
+            "aggregatedKey": "_aggregated",
+            "className": "",
+            "collapseOnDataChange": true,
+            "collapseOnPageChange": true,
+            "collapseOnSortingChange": true,
+            "column": Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            },
+            "columns": Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ],
+            "data": Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ],
+            "defaultExpanded": Object {},
+            "defaultFilterMethod": [Function],
+            "defaultFiltered": Array [],
+            "defaultPageSize": 5,
+            "defaultResized": Array [],
+            "defaultSortDesc": false,
+            "defaultSortMethod": [Function],
+            "defaultSorted": Array [],
+            "expanderDefaults": Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            },
+            "filterable": false,
+            "freezeWhenExpanded": false,
+            "getLoadingProps": [Function],
+            "getNoDataProps": [Function],
+            "getPaginationProps": [Function],
+            "getProps": [Function],
+            "getResizerProps": [Function],
+            "getTableProps": [Function],
+            "getTbodyProps": [Function],
+            "getTdProps": [Function],
+            "getTfootProps": [Function],
+            "getTfootTdProps": [Function],
+            "getTfootTrProps": [Function],
+            "getTheadFilterProps": [Function],
+            "getTheadFilterThProps": [Function],
+            "getTheadFilterTrProps": [Function],
+            "getTheadGroupProps": [Function],
+            "getTheadGroupThProps": [Function],
+            "getTheadGroupTrProps": [Function],
+            "getTheadProps": [Function],
+            "getTheadThProps": [Function],
+            "getTheadTrProps": [Function],
+            "getTrGroupProps": [Function],
+            "getTrProps": [Function],
+            "groupedByPivotKey": "_groupedByPivot",
+            "indexKey": "_index",
+            "loading": false,
+            "loadingText": "Loading...",
+            "multiSort": true,
+            "nestingLevelKey": "_nestingLevel",
+            "nextText": "Next",
+            "noDataText": "No rows found",
+            "ofText": "of",
+            "onExpandedChange": undefined,
+            "onFetchData": [Function],
+            "onFilteredChange": undefined,
+            "onPageChange": undefined,
+            "onPageSizeChange": [Function],
+            "onResizedChange": undefined,
+            "onSortedChange": undefined,
+            "originalKey": "_original",
+            "pageSizeOptions": Array [
+              5,
+              10,
+              15,
+            ],
+            "pageText": "Page",
+            "pivotBy": undefined,
+            "pivotDefaults": Object {},
+            "pivotIDKey": "_pivotID",
+            "pivotValKey": "_pivotVal",
+            "previousText": "Previous",
+            "resizable": true,
+            "resolveData": [Function],
+            "rowsText": "rows",
+            "showPageJump": true,
+            "showPageSizeOptions": true,
+            "showPagination": true,
+            "showPaginationBottom": true,
+            "showPaginationTop": false,
+            "sortable": true,
+            "style": Object {},
+            "subRowsKey": "_subRows",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Initialization of TaskList Creating Empty TaskList 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TaskList />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        undefined,
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ]
+          }
+          data={Array []}
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPageSize={5}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={false}
+          loadingText="Loading..."
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          onPageSizeChange={[Function]}
+          originalKey="_original"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              15,
+            ]
+          }
+          pageText="Page"
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={true}
+          style={Object {}}
+          subRowsKey="_subRows"
+        />,
+      ],
+      "id": "tasklist",
+      "style": Object {
+        "padding": 0,
+        "visibility": "hidden",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "AggregatedComponent": [Function],
+          "ExpanderComponent": [Function],
+          "FilterComponent": [Function],
+          "LoadingComponent": [Function],
+          "NextComponent": undefined,
+          "NoDataComponent": [Function],
+          "PadRowComponent": [Function],
+          "PaginationComponent": [Function],
+          "PivotComponent": undefined,
+          "PivotValueComponent": [Function],
+          "PreviousComponent": undefined,
+          "ResizerComponent": [Function],
+          "TableComponent": [Function],
+          "TbodyComponent": [Function],
+          "TdComponent": [Function],
+          "TfootComponent": [Function],
+          "ThComponent": [Function],
+          "TheadComponent": [Function],
+          "TrComponent": [Function],
+          "TrGroupComponent": [Function],
+          "aggregatedKey": "_aggregated",
+          "className": "",
+          "collapseOnDataChange": true,
+          "collapseOnPageChange": true,
+          "collapseOnSortingChange": true,
+          "column": Object {
+            "Aggregated": undefined,
+            "Cell": undefined,
+            "Expander": undefined,
+            "Filter": undefined,
+            "Footer": undefined,
+            "Header": undefined,
+            "Pivot": undefined,
+            "PivotValue": undefined,
+            "aggregate": undefined,
+            "className": "",
+            "filterAll": false,
+            "filterMethod": undefined,
+            "filterable": undefined,
+            "footerClassName": "",
+            "footerStyle": Object {},
+            "getFooterProps": [Function],
+            "getHeaderProps": [Function],
+            "getProps": [Function],
+            "headerClassName": "",
+            "headerStyle": Object {},
+            "minWidth": 100,
+            "resizable": undefined,
+            "show": true,
+            "sortMethod": undefined,
+            "sortable": undefined,
+            "style": Object {},
+          },
+          "columns": Array [
+            Object {
+              "Header": "Name",
+              "accessor": "name",
+            },
+            Object {
+              "Header": "Subject",
+              "accessor": "subject",
+            },
+            Object {
+              "Header": "Description",
+              "accessor": "description",
+            },
+            Object {
+              "Header": "Type",
+              "accessor": "type",
+            },
+            Object {
+              "Cell": [Function],
+              "Header": "Due Date",
+              "accessor": "dueDate",
+            },
+          ],
+          "data": Array [],
+          "defaultExpanded": Object {},
+          "defaultFilterMethod": [Function],
+          "defaultFiltered": Array [],
+          "defaultPageSize": 5,
+          "defaultResized": Array [],
+          "defaultSortDesc": false,
+          "defaultSortMethod": [Function],
+          "defaultSorted": Array [],
+          "expanderDefaults": Object {
+            "filterable": false,
+            "resizable": false,
+            "sortable": false,
+            "width": 35,
+          },
+          "filterable": false,
+          "freezeWhenExpanded": false,
+          "getLoadingProps": [Function],
+          "getNoDataProps": [Function],
+          "getPaginationProps": [Function],
+          "getProps": [Function],
+          "getResizerProps": [Function],
+          "getTableProps": [Function],
+          "getTbodyProps": [Function],
+          "getTdProps": [Function],
+          "getTfootProps": [Function],
+          "getTfootTdProps": [Function],
+          "getTfootTrProps": [Function],
+          "getTheadFilterProps": [Function],
+          "getTheadFilterThProps": [Function],
+          "getTheadFilterTrProps": [Function],
+          "getTheadGroupProps": [Function],
+          "getTheadGroupThProps": [Function],
+          "getTheadGroupTrProps": [Function],
+          "getTheadProps": [Function],
+          "getTheadThProps": [Function],
+          "getTheadTrProps": [Function],
+          "getTrGroupProps": [Function],
+          "getTrProps": [Function],
+          "groupedByPivotKey": "_groupedByPivot",
+          "indexKey": "_index",
+          "loading": false,
+          "loadingText": "Loading...",
+          "multiSort": true,
+          "nestingLevelKey": "_nestingLevel",
+          "nextText": "Next",
+          "noDataText": "No rows found",
+          "ofText": "of",
+          "onExpandedChange": undefined,
+          "onFetchData": [Function],
+          "onFilteredChange": undefined,
+          "onPageChange": undefined,
+          "onPageSizeChange": [Function],
+          "onResizedChange": undefined,
+          "onSortedChange": undefined,
+          "originalKey": "_original",
+          "pageSizeOptions": Array [
+            5,
+            10,
+            15,
+          ],
+          "pageText": "Page",
+          "pivotBy": undefined,
+          "pivotDefaults": Object {},
+          "pivotIDKey": "_pivotID",
+          "pivotValKey": "_pivotVal",
+          "previousText": "Previous",
+          "resizable": true,
+          "resolveData": [Function],
+          "rowsText": "rows",
+          "showPageJump": true,
+          "showPageSizeOptions": true,
+          "showPagination": true,
+          "showPaginationBottom": true,
+          "showPaginationTop": false,
+          "sortable": true,
+          "style": Object {},
+          "subRowsKey": "_subRows",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          undefined,
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Header": "Name",
+                  "accessor": "name",
+                },
+                Object {
+                  "Header": "Subject",
+                  "accessor": "subject",
+                },
+                Object {
+                  "Header": "Description",
+                  "accessor": "description",
+                },
+                Object {
+                  "Header": "Type",
+                  "accessor": "type",
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "Due Date",
+                  "accessor": "dueDate",
+                },
+              ]
+            }
+            data={Array []}
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPageSize={5}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={false}
+            loadingText="Loading..."
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            onPageSizeChange={[Function]}
+            originalKey="_original"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                15,
+              ]
+            }
+            pageText="Page"
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={true}
+            style={Object {}}
+            subRowsKey="_subRows"
+          />,
+        ],
+        "id": "tasklist",
+        "style": Object {
+          "padding": 0,
+          "visibility": "hidden",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "AggregatedComponent": [Function],
+            "ExpanderComponent": [Function],
+            "FilterComponent": [Function],
+            "LoadingComponent": [Function],
+            "NextComponent": undefined,
+            "NoDataComponent": [Function],
+            "PadRowComponent": [Function],
+            "PaginationComponent": [Function],
+            "PivotComponent": undefined,
+            "PivotValueComponent": [Function],
+            "PreviousComponent": undefined,
+            "ResizerComponent": [Function],
+            "TableComponent": [Function],
+            "TbodyComponent": [Function],
+            "TdComponent": [Function],
+            "TfootComponent": [Function],
+            "ThComponent": [Function],
+            "TheadComponent": [Function],
+            "TrComponent": [Function],
+            "TrGroupComponent": [Function],
+            "aggregatedKey": "_aggregated",
+            "className": "",
+            "collapseOnDataChange": true,
+            "collapseOnPageChange": true,
+            "collapseOnSortingChange": true,
+            "column": Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            },
+            "columns": Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ],
+            "data": Array [],
+            "defaultExpanded": Object {},
+            "defaultFilterMethod": [Function],
+            "defaultFiltered": Array [],
+            "defaultPageSize": 5,
+            "defaultResized": Array [],
+            "defaultSortDesc": false,
+            "defaultSortMethod": [Function],
+            "defaultSorted": Array [],
+            "expanderDefaults": Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            },
+            "filterable": false,
+            "freezeWhenExpanded": false,
+            "getLoadingProps": [Function],
+            "getNoDataProps": [Function],
+            "getPaginationProps": [Function],
+            "getProps": [Function],
+            "getResizerProps": [Function],
+            "getTableProps": [Function],
+            "getTbodyProps": [Function],
+            "getTdProps": [Function],
+            "getTfootProps": [Function],
+            "getTfootTdProps": [Function],
+            "getTfootTrProps": [Function],
+            "getTheadFilterProps": [Function],
+            "getTheadFilterThProps": [Function],
+            "getTheadFilterTrProps": [Function],
+            "getTheadGroupProps": [Function],
+            "getTheadGroupThProps": [Function],
+            "getTheadGroupTrProps": [Function],
+            "getTheadProps": [Function],
+            "getTheadThProps": [Function],
+            "getTheadTrProps": [Function],
+            "getTrGroupProps": [Function],
+            "getTrProps": [Function],
+            "groupedByPivotKey": "_groupedByPivot",
+            "indexKey": "_index",
+            "loading": false,
+            "loadingText": "Loading...",
+            "multiSort": true,
+            "nestingLevelKey": "_nestingLevel",
+            "nextText": "Next",
+            "noDataText": "No rows found",
+            "ofText": "of",
+            "onExpandedChange": undefined,
+            "onFetchData": [Function],
+            "onFilteredChange": undefined,
+            "onPageChange": undefined,
+            "onPageSizeChange": [Function],
+            "onResizedChange": undefined,
+            "onSortedChange": undefined,
+            "originalKey": "_original",
+            "pageSizeOptions": Array [
+              5,
+              10,
+              15,
+            ],
+            "pageText": "Page",
+            "pivotBy": undefined,
+            "pivotDefaults": Object {},
+            "pivotIDKey": "_pivotID",
+            "pivotValKey": "_pivotVal",
+            "previousText": "Previous",
+            "resizable": true,
+            "resolveData": [Function],
+            "rowsText": "rows",
+            "showPageJump": true,
+            "showPageSizeOptions": true,
+            "showPagination": true,
+            "showPaginationBottom": true,
+            "showPaginationTop": false,
+            "sortable": true,
+            "style": Object {},
+            "subRowsKey": "_subRows",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Initialization of TaskList Creating TaskList with Tasks 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TaskList
+    assignments={
+      Array [
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A1",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS2",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A3",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1PS4",
+          "subject": "Subject #1",
+          "type": "Problem Set",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A5",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1R6",
+          "subject": "Subject #1",
+          "type": "Reading",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A7",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+        Object {
+          "dueDate": "2018-09-13T19:00:00.000Z",
+          "name": "S1A8",
+          "subject": "Subject #1",
+          "type": "Assignment",
+        },
+      ]
+    }
+    title="TestTaskList"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "TestTaskList",
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ]
+          }
+          data={
+            Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ]
+          }
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPageSize={5}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={false}
+          loadingText="Loading..."
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          onPageSizeChange={[Function]}
+          originalKey="_original"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              15,
+            ]
+          }
+          pageText="Page"
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={true}
+          style={Object {}}
+          subRowsKey="_subRows"
+        />,
+      ],
+      "id": "tasklist",
+      "style": Object {
+        "padding": 0,
+        "visibility": "hidden",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      "TestTaskList",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "AggregatedComponent": [Function],
+          "ExpanderComponent": [Function],
+          "FilterComponent": [Function],
+          "LoadingComponent": [Function],
+          "NextComponent": undefined,
+          "NoDataComponent": [Function],
+          "PadRowComponent": [Function],
+          "PaginationComponent": [Function],
+          "PivotComponent": undefined,
+          "PivotValueComponent": [Function],
+          "PreviousComponent": undefined,
+          "ResizerComponent": [Function],
+          "TableComponent": [Function],
+          "TbodyComponent": [Function],
+          "TdComponent": [Function],
+          "TfootComponent": [Function],
+          "ThComponent": [Function],
+          "TheadComponent": [Function],
+          "TrComponent": [Function],
+          "TrGroupComponent": [Function],
+          "aggregatedKey": "_aggregated",
+          "className": "",
+          "collapseOnDataChange": true,
+          "collapseOnPageChange": true,
+          "collapseOnSortingChange": true,
+          "column": Object {
+            "Aggregated": undefined,
+            "Cell": undefined,
+            "Expander": undefined,
+            "Filter": undefined,
+            "Footer": undefined,
+            "Header": undefined,
+            "Pivot": undefined,
+            "PivotValue": undefined,
+            "aggregate": undefined,
+            "className": "",
+            "filterAll": false,
+            "filterMethod": undefined,
+            "filterable": undefined,
+            "footerClassName": "",
+            "footerStyle": Object {},
+            "getFooterProps": [Function],
+            "getHeaderProps": [Function],
+            "getProps": [Function],
+            "headerClassName": "",
+            "headerStyle": Object {},
+            "minWidth": 100,
+            "resizable": undefined,
+            "show": true,
+            "sortMethod": undefined,
+            "sortable": undefined,
+            "style": Object {},
+          },
+          "columns": Array [
+            Object {
+              "Header": "Name",
+              "accessor": "name",
+            },
+            Object {
+              "Header": "Subject",
+              "accessor": "subject",
+            },
+            Object {
+              "Header": "Description",
+              "accessor": "description",
+            },
+            Object {
+              "Header": "Type",
+              "accessor": "type",
+            },
+            Object {
+              "Cell": [Function],
+              "Header": "Due Date",
+              "accessor": "dueDate",
+            },
+          ],
+          "data": Array [
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A1",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS2",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A3",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1PS4",
+              "subject": "Subject #1",
+              "type": "Problem Set",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A5",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1R6",
+              "subject": "Subject #1",
+              "type": "Reading",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A7",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+            Object {
+              "dueDate": "2018-09-13T19:00:00.000Z",
+              "name": "S1A8",
+              "subject": "Subject #1",
+              "type": "Assignment",
+            },
+          ],
+          "defaultExpanded": Object {},
+          "defaultFilterMethod": [Function],
+          "defaultFiltered": Array [],
+          "defaultPageSize": 5,
+          "defaultResized": Array [],
+          "defaultSortDesc": false,
+          "defaultSortMethod": [Function],
+          "defaultSorted": Array [],
+          "expanderDefaults": Object {
+            "filterable": false,
+            "resizable": false,
+            "sortable": false,
+            "width": 35,
+          },
+          "filterable": false,
+          "freezeWhenExpanded": false,
+          "getLoadingProps": [Function],
+          "getNoDataProps": [Function],
+          "getPaginationProps": [Function],
+          "getProps": [Function],
+          "getResizerProps": [Function],
+          "getTableProps": [Function],
+          "getTbodyProps": [Function],
+          "getTdProps": [Function],
+          "getTfootProps": [Function],
+          "getTfootTdProps": [Function],
+          "getTfootTrProps": [Function],
+          "getTheadFilterProps": [Function],
+          "getTheadFilterThProps": [Function],
+          "getTheadFilterTrProps": [Function],
+          "getTheadGroupProps": [Function],
+          "getTheadGroupThProps": [Function],
+          "getTheadGroupTrProps": [Function],
+          "getTheadProps": [Function],
+          "getTheadThProps": [Function],
+          "getTheadTrProps": [Function],
+          "getTrGroupProps": [Function],
+          "getTrProps": [Function],
+          "groupedByPivotKey": "_groupedByPivot",
+          "indexKey": "_index",
+          "loading": false,
+          "loadingText": "Loading...",
+          "multiSort": true,
+          "nestingLevelKey": "_nestingLevel",
+          "nextText": "Next",
+          "noDataText": "No rows found",
+          "ofText": "of",
+          "onExpandedChange": undefined,
+          "onFetchData": [Function],
+          "onFilteredChange": undefined,
+          "onPageChange": undefined,
+          "onPageSizeChange": [Function],
+          "onResizedChange": undefined,
+          "onSortedChange": undefined,
+          "originalKey": "_original",
+          "pageSizeOptions": Array [
+            5,
+            10,
+            15,
+          ],
+          "pageText": "Page",
+          "pivotBy": undefined,
+          "pivotDefaults": Object {},
+          "pivotIDKey": "_pivotID",
+          "pivotValKey": "_pivotVal",
+          "previousText": "Previous",
+          "resizable": true,
+          "resolveData": [Function],
+          "rowsText": "rows",
+          "showPageJump": true,
+          "showPageSizeOptions": true,
+          "showPagination": true,
+          "showPaginationBottom": true,
+          "showPaginationTop": false,
+          "sortable": true,
+          "style": Object {},
+          "subRowsKey": "_subRows",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "TestTaskList",
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Header": "Name",
+                  "accessor": "name",
+                },
+                Object {
+                  "Header": "Subject",
+                  "accessor": "subject",
+                },
+                Object {
+                  "Header": "Description",
+                  "accessor": "description",
+                },
+                Object {
+                  "Header": "Type",
+                  "accessor": "type",
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "Due Date",
+                  "accessor": "dueDate",
+                },
+              ]
+            }
+            data={
+              Array [
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A1",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS2",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A3",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1PS4",
+                  "subject": "Subject #1",
+                  "type": "Problem Set",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A5",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1R6",
+                  "subject": "Subject #1",
+                  "type": "Reading",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A7",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+                Object {
+                  "dueDate": "2018-09-13T19:00:00.000Z",
+                  "name": "S1A8",
+                  "subject": "Subject #1",
+                  "type": "Assignment",
+                },
+              ]
+            }
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPageSize={5}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={false}
+            loadingText="Loading..."
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            onPageSizeChange={[Function]}
+            originalKey="_original"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                15,
+              ]
+            }
+            pageText="Page"
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={true}
+            style={Object {}}
+            subRowsKey="_subRows"
+          />,
+        ],
+        "id": "tasklist",
+        "style": Object {
+          "padding": 0,
+          "visibility": "hidden",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        "TestTaskList",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "AggregatedComponent": [Function],
+            "ExpanderComponent": [Function],
+            "FilterComponent": [Function],
+            "LoadingComponent": [Function],
+            "NextComponent": undefined,
+            "NoDataComponent": [Function],
+            "PadRowComponent": [Function],
+            "PaginationComponent": [Function],
+            "PivotComponent": undefined,
+            "PivotValueComponent": [Function],
+            "PreviousComponent": undefined,
+            "ResizerComponent": [Function],
+            "TableComponent": [Function],
+            "TbodyComponent": [Function],
+            "TdComponent": [Function],
+            "TfootComponent": [Function],
+            "ThComponent": [Function],
+            "TheadComponent": [Function],
+            "TrComponent": [Function],
+            "TrGroupComponent": [Function],
+            "aggregatedKey": "_aggregated",
+            "className": "",
+            "collapseOnDataChange": true,
+            "collapseOnPageChange": true,
+            "collapseOnSortingChange": true,
+            "column": Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            },
+            "columns": Array [
+              Object {
+                "Header": "Name",
+                "accessor": "name",
+              },
+              Object {
+                "Header": "Subject",
+                "accessor": "subject",
+              },
+              Object {
+                "Header": "Description",
+                "accessor": "description",
+              },
+              Object {
+                "Header": "Type",
+                "accessor": "type",
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "Due Date",
+                "accessor": "dueDate",
+              },
+            ],
+            "data": Array [
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A1",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS2",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A3",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1PS4",
+                "subject": "Subject #1",
+                "type": "Problem Set",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A5",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1R6",
+                "subject": "Subject #1",
+                "type": "Reading",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A7",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+              Object {
+                "dueDate": "2018-09-13T19:00:00.000Z",
+                "name": "S1A8",
+                "subject": "Subject #1",
+                "type": "Assignment",
+              },
+            ],
+            "defaultExpanded": Object {},
+            "defaultFilterMethod": [Function],
+            "defaultFiltered": Array [],
+            "defaultPageSize": 5,
+            "defaultResized": Array [],
+            "defaultSortDesc": false,
+            "defaultSortMethod": [Function],
+            "defaultSorted": Array [],
+            "expanderDefaults": Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            },
+            "filterable": false,
+            "freezeWhenExpanded": false,
+            "getLoadingProps": [Function],
+            "getNoDataProps": [Function],
+            "getPaginationProps": [Function],
+            "getProps": [Function],
+            "getResizerProps": [Function],
+            "getTableProps": [Function],
+            "getTbodyProps": [Function],
+            "getTdProps": [Function],
+            "getTfootProps": [Function],
+            "getTfootTdProps": [Function],
+            "getTfootTrProps": [Function],
+            "getTheadFilterProps": [Function],
+            "getTheadFilterThProps": [Function],
+            "getTheadFilterTrProps": [Function],
+            "getTheadGroupProps": [Function],
+            "getTheadGroupThProps": [Function],
+            "getTheadGroupTrProps": [Function],
+            "getTheadProps": [Function],
+            "getTheadThProps": [Function],
+            "getTheadTrProps": [Function],
+            "getTrGroupProps": [Function],
+            "getTrProps": [Function],
+            "groupedByPivotKey": "_groupedByPivot",
+            "indexKey": "_index",
+            "loading": false,
+            "loadingText": "Loading...",
+            "multiSort": true,
+            "nestingLevelKey": "_nestingLevel",
+            "nextText": "Next",
+            "noDataText": "No rows found",
+            "ofText": "of",
+            "onExpandedChange": undefined,
+            "onFetchData": [Function],
+            "onFilteredChange": undefined,
+            "onPageChange": undefined,
+            "onPageSizeChange": [Function],
+            "onResizedChange": undefined,
+            "onSortedChange": undefined,
+            "originalKey": "_original",
+            "pageSizeOptions": Array [
+              5,
+              10,
+              15,
+            ],
+            "pageText": "Page",
+            "pivotBy": undefined,
+            "pivotDefaults": Object {},
+            "pivotIDKey": "_pivotID",
+            "pivotValKey": "_pivotVal",
+            "previousText": "Previous",
+            "resizable": true,
+            "resolveData": [Function],
+            "rowsText": "rows",
+            "showPageJump": true,
+            "showPageSizeOptions": true,
+            "showPagination": true,
+            "showPaginationBottom": true,
+            "showPaginationTop": false,
+            "sortable": true,
+            "style": Object {},
+            "subRowsKey": "_subRows",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`TaskList ReactTable calls TaskList: getTdProps 1`] = `Object {}`;
+
+exports[`TaskList ReactTable calls TaskList: getTrProps 1`] = `
+Object {
+  "style": Object {
+    "background": "darkgrey",
+    "color": "none",
+  },
+}
+`;

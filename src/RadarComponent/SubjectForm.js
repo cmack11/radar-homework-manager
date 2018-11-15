@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
+import image from '../images/switch_form.png'
+
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
@@ -18,6 +20,10 @@ const mapStateToProps = state => {
     }
   }
 
+const maxNameLength = 14;
+const maxSubjectLength = 8;
+const minNameLength = 1;
+
 export class SubjectForm extends React.Component {
   constructor(props) {
     super(props);
@@ -32,6 +38,13 @@ export class SubjectForm extends React.Component {
     const name = target.name;
     let value = target.value;
 
+    if(name === 'subjectName') {
+      if(value.length > 0)
+        this.setState({subjectNameError:false});
+      else
+        this.setState({subjectNameError:true});
+    } 
+
     this.setState({
       [name]: value
     });
@@ -39,15 +52,39 @@ export class SubjectForm extends React.Component {
 
   handleSubmit(event) {
     //alert('The following Subject was submitted: ' + this.state.subjectName);
-    let colors = ['red','blue','green','orange','black','magenta','maroon','cyan'];
-    let index = Math.floor(Math.random() * colors.length);
+    let colors = ['blue','violet','orange','purple','darkgreen','cyan','maroon','yellow'];
+    let index = this.props.subjectNames.length;
     let color = colors[index];
 
+    if(!this.allValid()) return; 
 
     this.props.addSubject(
       {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
 
     this.setState(this.getDefaultState())
+    if(this.props.closeForm)
+      this.props.closeForm();
+  }
+
+  allValid() {
+    if(!this.state.subjectName || this.state.subjectName.length > maxNameLength || this.state.subjectName.length < minNameLength) {
+      this.setState({subjectNameError:true})
+      return false;
+    }
+    if(this.props.subjectNames) {
+      if(this.props.subjectNames.length === maxSubjectLength) return false;
+      let duplicate = false;
+      duplicate = this.props.subjectNames.some((name)=>{
+        return name.toLowerCase() === this.state.subjectName.toLowerCase();
+      })
+      if(duplicate) { 
+        this.setState({subjectNameError:true})
+        return false;
+      }
+    }
+
+
+    return true;
   }
 
   getDefaultState() {
@@ -67,15 +104,21 @@ export class SubjectForm extends React.Component {
     <div style={{position:'absolute',
           backgroundColor:'grey',
           width:this.props.width,
-          right:(window.innerWidth-this.props.width)/2,
-          bottom:(window.innerHeight-150)/2,
-          padding:20
+          left:(window.innerWidth-this.props.width)/2,
+          top:(window.innerHeight-250)/2,
+          padding:20,
+          border:5,
+          borderColor:'black',
+          borderStyle:'solid'
         }}>
       <form >
-        <b className='form-fields' onClick={this.props.switchForm}>Add Subject</b>
+        <div className='form-fields'>
+          <span style={{verticalAlign:'middle'}}><b>Add Subject</b></span>
+          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" alt="close"/>
+        </div>
         <label className='form-fields'>
           Subject Name:
-          <input name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
+          <input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} />
         </label>
         <label className='form-fields'>
           Subject Description:

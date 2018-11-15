@@ -14,19 +14,73 @@ TaskList props:
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
 */
 
+const padding = 0;
+const dateCompare = function(a,b) {
+    //console.log(a.dueDate.valueOf() - b.dueDate.valueOf());
+    return a.dueDate.valueOf() - b.dueDate.valueOf();
+}
+
 class TaskList extends React.Component {
+
+
   constructor(props) {
     super(props);
-    let visible = true;
-    if (this.props.visible !== undefined && !this.props.visible)
-        visible = false;
-    this.state = {visible: visible};
+    this.state = {visible: this.props.visible, top:307, left:200};
   }
 
-  render() {
-    if (!this.state.visible)
-        return(<null />);
+  componentWillReceiveProps(nextProps){
+    this.setState({visible:nextProps.visible})
+    //if(nextProps.assignments && nextProps.assignments.length)
+        //nextProps.assignments.sort(dateCompare);
+  }
 
+  componentDidMount() {
+  }
+
+
+  getTrProps(state, rowInfo, column) {
+    if(!rowInfo) return {};
+    let color = 'none';
+    if(this.props.useTypeColors) {
+        /*let type = rowInfo.original.type;
+        if(this.props.colors && this.props.colors[type])
+            color = this.props.colors[type];*/
+    } else {
+        let subject = rowInfo.original.subject;
+        if(this.props.colors && this.props.colors[subject])
+            color = this.props.colors[subject];
+    }
+
+    return {
+        style:{
+
+            background:'darkgrey',
+            color:color
+        }
+    }
+  }
+
+  getTdProps(state, rowInfo, column, instance) {
+    if( !rowInfo || (column && column.id !== 'type')) return {};
+    
+    let color = "none";
+    let type = rowInfo.original.type;
+
+    if(this.props.colors && this.props.colors[type]) {
+        color = this.props.colors[type];
+        return {
+            style:{
+                color:color,
+                fontWeight:'bold'
+            }
+        };
+    }
+    
+
+    return {}
+  }
+
+  getColumns() {
     let hideSubjectCol = this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
 
     let columns = [];
@@ -60,20 +114,30 @@ class TaskList extends React.Component {
         }
     ]);
 
-    const data = this.props.assignments !== undefined ? this.props.assignments : subjects1[0].assignments;
+    return columns;
+  }
 
+  render() {
+    let columns = this.getColumns();
+
+    const data = this.props.assignments; //!== undefined ? this.props.assignments : subjects1[0].assignments;
+    let visible = this.state.visible ? 'visible' : 'hidden';
     return (
-    <div style={{
-            width:this.props.width,
-            height:this.props.height,
-            padding:20
+    <div id="tasklist" style={{
+            visibility:visible,
+            padding:padding
         }}>
         {this.props.title}
         <ReactTable
+            getProps={()=>{return {style:{background:'lightgrey'}}}}
+            getTrProps={this.getTrProps.bind(this)}
+            getTdProps={this.getTdProps.bind(this)}
+            noDataText={this.props.noDataText}
             data={data}
             columns={columns} 
             defaultPageSize={5}
             pageSizeOptions = {[5, 10, 15]}
+            onPageSizeChange={(pageIndex) => {this.props.onResize()}}
         />
     </div>  
     );

@@ -1,12 +1,12 @@
 import * as types from './action_types.js';
 import {axios} from 'axios';
-import {subjects1} from '../fakeData.js';
+import {subjects} from '../fakeData.js';
 
 export const initializeAssignments = () => {
   return {
     type: types.INITIALIZE_ASSIGNMENTS,
     payload: {
-      subjects : subjects1,
+      subjects : subjects,
       /* needs api here */
     }
   }
