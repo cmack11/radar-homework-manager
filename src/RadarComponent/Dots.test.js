@@ -178,7 +178,8 @@ describe('makeDot', () => {
       let dot = {
         distanceFromCenter:10,
         startAngle:10,
-        angle:30
+        angle:30,
+        assignment:{name:'Test Name',type:'Type'}
       };
 
       let returnValue = dotsLayer.makeDot(dot);
@@ -200,7 +201,8 @@ describe('makeDot', () => {
         distanceFromCenter:10,
         startAngle:10,
         angle:30,
-        r:15
+        r:15,
+        assignment:{name:'Test Name',type:'Type'}
       };
 
       let returnValue = dotsLayer.makeDot(dot);

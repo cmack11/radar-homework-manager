@@ -38,628 +38,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <svg
-        height={100}
-        id="radar"
-        stroke="black"
-        strokeWidth="2"
-        width={100}
-      >
+      "children": Array [
         <svg
-          height={250}
-          stroke="#39ff14"
-          strokeWidth={3}
-          width={250}
-          x={0}
-          y={0}
-        >
-          <circle
-            cx={125}
-            cy={125}
-            fill="none"
-            r={122}
-          />
-          <circle
-            cx={125}
-            cy={125}
-            fill="#39ff14"
-            r={8.540000000000001}
-          />
-        </svg>
-        <Dots
-          dims={
-            Object {
-              "buttons": Object {
-                "width": 50,
-              },
-              "dotViewer": Object {
-                "height": 250,
-                "width": 250,
-              },
-              "dots": Object {
-                "center": Object {
-                  "x": 125,
-                  "y": 125,
-                },
-                "radius": 8.540000000000001,
-              },
-              "radar": Object {
-                "center": Object {
-                  "x": 125,
-                  "y": 125,
-                },
-                "height": 250,
-                "radius": 122,
-                "width": 250,
-                "x": 0,
-                "y": 0,
-              },
-              "style": Object {
-                "strokeColor": "#39ff14",
-                "strokeWidth": 3,
-              },
-            }
-          }
-          getDistanceFromCenter={[Function]}
-          intersectFunctions={
-            Array [
-              Object {
-                "func": [Function],
-                "rect": Object {
-                  "height": 125,
-                  "width": 125,
-                  "x": 10,
-                  "y": -35,
-                },
-              },
-            ]
-          }
-          intersectsLine={[Function]}
-          setClickedDot={[Function]}
-          setDraggedDot={[Function]}
-          subjects={Array []}
-          view={
-            Object {
-              "colors": Object {
-                "subjectDivider": "#39ff14",
-                "typeColors": Object {},
-              },
-              "dotRadiusPercent": 0.07,
-              "dotsView": Object {
-                "height": 100,
-                "width": 100,
-              },
-              "height": 250,
-              "ringsWidth": 604800000,
-              "strokeWidth": 3,
-              "width": 250,
-              "x": 0,
-              "y": 0,
-            }
-          }
-        />
-        <svg
-          height={250}
-          stroke="#39ff14"
-          strokeWidth={3}
-          width={250}
-          x={0}
-          y={0}
-        >
-          <SpinLine
-            center={
-              Object {
-                "x": 125,
-                "y": 125,
-              }
-            }
-            lineColor="#39ff14"
-            radius={122}
-            rpm={6}
-            setLineAngle={[Function]}
-            show={true}
-          />
-        </svg>
-        <image
-          height={50}
-          href="add_button.png"
-          onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-          width={50}
-          x={40}
-          y={40}
-        />
-        <image
-          height={50}
-          href="history_button.png"
-          onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-          width={50}
-          x={10}
-          y={40}
-        />
-        <DotViewer
-          closeDotViewer={[Function]}
-          height={200}
-          width={250}
-        />
-        <DraggedDot
-          intersectFunctions={
-            Array [
-              Object {
-                "func": [Function],
-                "rect": Object {
-                  "height": 125,
-                  "width": 125,
-                  "x": 10,
-                  "y": -35,
-                },
-              },
-            ]
-          }
-          radius={12.810000000000002}
-        />
-      </svg>,
-      "id": "radardiv",
-      "style": Object {
-        "position": "absolute",
-      },
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <svg
-            height={250}
-            stroke="#39ff14"
-            strokeWidth={3}
-            width={250}
-            x={0}
-            y={0}
-          >
-            <circle
-              cx={125}
-              cy={125}
-              fill="none"
-              r={122}
-            />
-            <circle
-              cx={125}
-              cy={125}
-              fill="#39ff14"
-              r={8.540000000000001}
-            />
-          </svg>,
-          Array [],
-          <Dots
-            dims={
-              Object {
-                "buttons": Object {
-                  "width": 50,
-                },
-                "dotViewer": Object {
-                  "height": 250,
-                  "width": 250,
-                },
-                "dots": Object {
-                  "center": Object {
-                    "x": 125,
-                    "y": 125,
-                  },
-                  "radius": 8.540000000000001,
-                },
-                "radar": Object {
-                  "center": Object {
-                    "x": 125,
-                    "y": 125,
-                  },
-                  "height": 250,
-                  "radius": 122,
-                  "width": 250,
-                  "x": 0,
-                  "y": 0,
-                },
-                "style": Object {
-                  "strokeColor": "#39ff14",
-                  "strokeWidth": 3,
-                },
-              }
-            }
-            getDistanceFromCenter={[Function]}
-            intersectFunctions={
-              Array [
-                Object {
-                  "func": [Function],
-                  "rect": Object {
-                    "height": 125,
-                    "width": 125,
-                    "x": 10,
-                    "y": -35,
-                  },
-                },
-              ]
-            }
-            intersectsLine={[Function]}
-            setClickedDot={[Function]}
-            setDraggedDot={[Function]}
-            subjects={Array []}
-            view={
-              Object {
-                "colors": Object {
-                  "subjectDivider": "#39ff14",
-                  "typeColors": Object {},
-                },
-                "dotRadiusPercent": 0.07,
-                "dotsView": Object {
-                  "height": 100,
-                  "width": 100,
-                },
-                "height": 250,
-                "ringsWidth": 604800000,
-                "strokeWidth": 3,
-                "width": 250,
-                "x": 0,
-                "y": 0,
-              }
-            }
-          />,
-          <svg
-            height={250}
-            stroke="#39ff14"
-            strokeWidth={3}
-            width={250}
-            x={0}
-            y={0}
-          >
-            <SpinLine
-              center={
-                Object {
-                  "x": 125,
-                  "y": 125,
-                }
-              }
-              lineColor="#39ff14"
-              radius={122}
-              rpm={6}
-              setLineAngle={[Function]}
-              show={true}
-            />
-          </svg>,
-          <image
-            height={50}
-            href="add_button.png"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-            width={50}
-            x={40}
-            y={40}
-          />,
-          <image
-            height={50}
-            href="history_button.png"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-            width={50}
-            x={10}
-            y={40}
-          />,
-          <DotViewer
-            closeDotViewer={[Function]}
-            height={200}
-            width={250}
-          />,
-          <DraggedDot
-            intersectFunctions={
-              Array [
-                Object {
-                  "func": [Function],
-                  "rect": Object {
-                    "height": 125,
-                    "width": 125,
-                    "x": 10,
-                    "y": -35,
-                  },
-                },
-              ]
-            }
-            radius={12.810000000000002}
-          />,
-        ],
-        "height": 100,
-        "id": "radar",
-        "stroke": "black",
-        "strokeWidth": "2",
-        "width": 100,
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <circle
-                cx={125}
-                cy={125}
-                fill="none"
-                r={122}
-              />,
-              <circle
-                cx={125}
-                cy={125}
-                fill="#39ff14"
-                r={8.540000000000001}
-              />,
-              Array [],
-            ],
-            "height": 250,
-            "stroke": "#39ff14",
-            "strokeWidth": 3,
-            "width": 250,
-            "x": 0,
-            "y": 0,
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "cx": 125,
-                "cy": 125,
-                "fill": "none",
-                "r": 122,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "circle",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "cx": 125,
-                "cy": 125,
-                "fill": "#39ff14",
-                "r": 8.540000000000001,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "circle",
-            },
-          ],
-          "type": "svg",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "dims": Object {
-              "buttons": Object {
-                "width": 50,
-              },
-              "dotViewer": Object {
-                "height": 250,
-                "width": 250,
-              },
-              "dots": Object {
-                "center": Object {
-                  "x": 125,
-                  "y": 125,
-                },
-                "radius": 8.540000000000001,
-              },
-              "radar": Object {
-                "center": Object {
-                  "x": 125,
-                  "y": 125,
-                },
-                "height": 250,
-                "radius": 122,
-                "width": 250,
-                "x": 0,
-                "y": 0,
-              },
-              "style": Object {
-                "strokeColor": "#39ff14",
-                "strokeWidth": 3,
-              },
-            },
-            "getDistanceFromCenter": [Function],
-            "intersectFunctions": Array [
-              Object {
-                "func": [Function],
-                "rect": Object {
-                  "height": 125,
-                  "width": 125,
-                  "x": 10,
-                  "y": -35,
-                },
-              },
-            ],
-            "intersectsLine": [Function],
-            "setClickedDot": [Function],
-            "setDraggedDot": [Function],
-            "subjects": Array [],
-            "view": Object {
-              "colors": Object {
-                "subjectDivider": "#39ff14",
-                "typeColors": Object {},
-              },
-              "dotRadiusPercent": 0.07,
-              "dotsView": Object {
-                "height": 100,
-                "width": 100,
-              },
-              "height": 250,
-              "ringsWidth": 604800000,
-              "strokeWidth": 3,
-              "width": 250,
-              "x": 0,
-              "y": 0,
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <SpinLine
-              center={
-                Object {
-                  "x": 125,
-                  "y": 125,
-                }
-              }
-              lineColor="#39ff14"
-              radius={122}
-              rpm={6}
-              setLineAngle={[Function]}
-              show={true}
-            />,
-            "height": 250,
-            "stroke": "#39ff14",
-            "strokeWidth": 3,
-            "width": 250,
-            "x": 0,
-            "y": 0,
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "center": Object {
-                "x": 125,
-                "y": 125,
-              },
-              "lineColor": "#39ff14",
-              "radius": 122,
-              "rpm": 6,
-              "setLineAngle": [Function],
-              "show": true,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": "svg",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "height": 50,
-            "href": "add_button.png",
-            "onClick": [Function],
-            "style": Object {
-              "cursor": "pointer",
-            },
-            "width": 50,
-            "x": 40,
-            "y": 40,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "image",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "height": 50,
-            "href": "history_button.png",
-            "onClick": [Function],
-            "style": Object {
-              "cursor": "pointer",
-            },
-            "width": 50,
-            "x": 10,
-            "y": 40,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "image",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "closeDotViewer": [Function],
-            "dot": undefined,
-            "height": 200,
-            "width": 250,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "dot": undefined,
-            "intersectFunctions": Array [
-              Object {
-                "func": [Function],
-                "rect": Object {
-                  "height": 125,
-                  "width": 125,
-                  "x": 10,
-                  "y": -35,
-                },
-              },
-            ],
-            "radius": 12.810000000000002,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "svg",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <svg
           height={100}
           id="radar"
           stroke="black"
@@ -733,6 +113,15 @@ ShallowWrapper {
                     "y": -35,
                   },
                 },
+                Object {
+                  "func": [Function],
+                  "rect": Object {
+                    "height": 125,
+                    "width": 125,
+                    "x": -25,
+                    "y": -35,
+                  },
+                },
               ]
             }
             intersectsLine={[Function]}
@@ -782,6 +171,19 @@ ShallowWrapper {
             />
           </svg>
           <image
+            height={115}
+            href="Overdue_button.png"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            width={115}
+            x={10}
+            y={-440}
+          />
+          <image
             height={50}
             href="add_button.png"
             onClick={[Function]}
@@ -807,11 +209,6 @@ ShallowWrapper {
             x={10}
             y={40}
           />
-          <DotViewer
-            closeDotViewer={[Function]}
-            height={200}
-            width={250}
-          />
           <DraggedDot
             intersectFunctions={
               Array [
@@ -824,18 +221,36 @@ ShallowWrapper {
                     "y": -35,
                   },
                 },
+                Object {
+                  "func": [Function],
+                  "rect": Object {
+                    "height": 125,
+                    "width": 125,
+                    "x": -25,
+                    "y": -35,
+                  },
+                },
               ]
             }
             radius={12.810000000000002}
           />
         </svg>,
-        "id": "radardiv",
-        "style": Object {
-          "position": "absolute",
-        },
+        <DotViewer
+          close={[Function]}
+          delete={[Function]}
+          edit={[Function]}
+          height={200}
+          width={250}
+        />,
+      ],
+      "id": "radardiv",
+      "style": Object {
+        "position": "absolute",
       },
-      "ref": null,
-      "rendered": Object {
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -909,6 +324,15 @@ ShallowWrapper {
                       "y": -35,
                     },
                   },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
+                      "y": -35,
+                    },
+                  },
                 ]
               }
               intersectsLine={[Function]}
@@ -958,6 +382,19 @@ ShallowWrapper {
               />
             </svg>,
             <image
+              height={115}
+              href="Overdue_button.png"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+              width={115}
+              x={10}
+              y={-440}
+            />,
+            <image
               height={50}
               href="add_button.png"
               onClick={[Function]}
@@ -983,11 +420,6 @@ ShallowWrapper {
               x={10}
               y={40}
             />,
-            <DotViewer
-              closeDotViewer={[Function]}
-              height={200}
-              width={250}
-            />,
             <DraggedDot
               intersectFunctions={
                 Array [
@@ -997,6 +429,15 @@ ShallowWrapper {
                       "height": 125,
                       "width": 125,
                       "x": 10,
+                      "y": -35,
+                    },
+                  },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
                       "y": -35,
                     },
                   },
@@ -1120,6 +561,15 @@ ShallowWrapper {
                     "y": -35,
                   },
                 },
+                Object {
+                  "func": [Function],
+                  "rect": Object {
+                    "height": 125,
+                    "width": 125,
+                    "x": -25,
+                    "y": -35,
+                  },
+                },
               ],
               "intersectsLine": [Function],
               "setClickedDot": [Function],
@@ -1199,6 +649,25 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
+              "height": 115,
+              "href": "Overdue_button.png",
+              "onClick": [Function],
+              "style": Object {
+                "cursor": "pointer",
+              },
+              "width": 115,
+              "x": 10,
+              "y": -440,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "image",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
               "height": 50,
               "href": "add_button.png",
               "onClick": [Function],
@@ -1237,20 +706,6 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "closeDotViewer": [Function],
-              "dot": undefined,
-              "height": 200,
-              "width": 250,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
               "dot": undefined,
               "intersectFunctions": Array [
                 Object {
@@ -1259,6 +714,15 @@ ShallowWrapper {
                     "height": 125,
                     "width": 125,
                     "x": 10,
+                    "y": -35,
+                  },
+                },
+                Object {
+                  "func": [Function],
+                  "rect": Object {
+                    "height": 125,
+                    "width": 125,
+                    "x": -25,
                     "y": -35,
                   },
                 },
@@ -1272,6 +736,748 @@ ShallowWrapper {
         ],
         "type": "svg",
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "close": [Function],
+          "complete": undefined,
+          "delete": [Function],
+          "dot": undefined,
+          "edit": [Function],
+          "height": 200,
+          "width": 250,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <svg
+            height={100}
+            id="radar"
+            stroke="black"
+            strokeWidth="2"
+            width={100}
+          >
+            <svg
+              height={250}
+              stroke="#39ff14"
+              strokeWidth={3}
+              width={250}
+              x={0}
+              y={0}
+            >
+              <circle
+                cx={125}
+                cy={125}
+                fill="none"
+                r={122}
+              />
+              <circle
+                cx={125}
+                cy={125}
+                fill="#39ff14"
+                r={8.540000000000001}
+              />
+            </svg>
+            <Dots
+              dims={
+                Object {
+                  "buttons": Object {
+                    "width": 50,
+                  },
+                  "dotViewer": Object {
+                    "height": 250,
+                    "width": 250,
+                  },
+                  "dots": Object {
+                    "center": Object {
+                      "x": 125,
+                      "y": 125,
+                    },
+                    "radius": 8.540000000000001,
+                  },
+                  "radar": Object {
+                    "center": Object {
+                      "x": 125,
+                      "y": 125,
+                    },
+                    "height": 250,
+                    "radius": 122,
+                    "width": 250,
+                    "x": 0,
+                    "y": 0,
+                  },
+                  "style": Object {
+                    "strokeColor": "#39ff14",
+                    "strokeWidth": 3,
+                  },
+                }
+              }
+              getDistanceFromCenter={[Function]}
+              intersectFunctions={
+                Array [
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": 10,
+                      "y": -35,
+                    },
+                  },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
+                      "y": -35,
+                    },
+                  },
+                ]
+              }
+              intersectsLine={[Function]}
+              setClickedDot={[Function]}
+              setDraggedDot={[Function]}
+              subjects={Array []}
+              view={
+                Object {
+                  "colors": Object {
+                    "subjectDivider": "#39ff14",
+                    "typeColors": Object {},
+                  },
+                  "dotRadiusPercent": 0.07,
+                  "dotsView": Object {
+                    "height": 100,
+                    "width": 100,
+                  },
+                  "height": 250,
+                  "ringsWidth": 604800000,
+                  "strokeWidth": 3,
+                  "width": 250,
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+            />
+            <svg
+              height={250}
+              stroke="#39ff14"
+              strokeWidth={3}
+              width={250}
+              x={0}
+              y={0}
+            >
+              <SpinLine
+                center={
+                  Object {
+                    "x": 125,
+                    "y": 125,
+                  }
+                }
+                lineColor="#39ff14"
+                radius={122}
+                rpm={6}
+                setLineAngle={[Function]}
+                show={true}
+              />
+            </svg>
+            <image
+              height={115}
+              href="Overdue_button.png"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+              width={115}
+              x={10}
+              y={-440}
+            />
+            <image
+              height={50}
+              href="add_button.png"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+              width={50}
+              x={40}
+              y={40}
+            />
+            <image
+              height={50}
+              href="history_button.png"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+              width={50}
+              x={10}
+              y={40}
+            />
+            <DraggedDot
+              intersectFunctions={
+                Array [
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": 10,
+                      "y": -35,
+                    },
+                  },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
+                      "y": -35,
+                    },
+                  },
+                ]
+              }
+              radius={12.810000000000002}
+            />
+          </svg>,
+          <DotViewer
+            close={[Function]}
+            delete={[Function]}
+            edit={[Function]}
+            height={200}
+            width={250}
+          />,
+        ],
+        "id": "radardiv",
+        "style": Object {
+          "position": "absolute",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <svg
+                height={250}
+                stroke="#39ff14"
+                strokeWidth={3}
+                width={250}
+                x={0}
+                y={0}
+              >
+                <circle
+                  cx={125}
+                  cy={125}
+                  fill="none"
+                  r={122}
+                />
+                <circle
+                  cx={125}
+                  cy={125}
+                  fill="#39ff14"
+                  r={8.540000000000001}
+                />
+              </svg>,
+              Array [],
+              <Dots
+                dims={
+                  Object {
+                    "buttons": Object {
+                      "width": 50,
+                    },
+                    "dotViewer": Object {
+                      "height": 250,
+                      "width": 250,
+                    },
+                    "dots": Object {
+                      "center": Object {
+                        "x": 125,
+                        "y": 125,
+                      },
+                      "radius": 8.540000000000001,
+                    },
+                    "radar": Object {
+                      "center": Object {
+                        "x": 125,
+                        "y": 125,
+                      },
+                      "height": 250,
+                      "radius": 122,
+                      "width": 250,
+                      "x": 0,
+                      "y": 0,
+                    },
+                    "style": Object {
+                      "strokeColor": "#39ff14",
+                      "strokeWidth": 3,
+                    },
+                  }
+                }
+                getDistanceFromCenter={[Function]}
+                intersectFunctions={
+                  Array [
+                    Object {
+                      "func": [Function],
+                      "rect": Object {
+                        "height": 125,
+                        "width": 125,
+                        "x": 10,
+                        "y": -35,
+                      },
+                    },
+                    Object {
+                      "func": [Function],
+                      "rect": Object {
+                        "height": 125,
+                        "width": 125,
+                        "x": -25,
+                        "y": -35,
+                      },
+                    },
+                  ]
+                }
+                intersectsLine={[Function]}
+                setClickedDot={[Function]}
+                setDraggedDot={[Function]}
+                subjects={Array []}
+                view={
+                  Object {
+                    "colors": Object {
+                      "subjectDivider": "#39ff14",
+                      "typeColors": Object {},
+                    },
+                    "dotRadiusPercent": 0.07,
+                    "dotsView": Object {
+                      "height": 100,
+                      "width": 100,
+                    },
+                    "height": 250,
+                    "ringsWidth": 604800000,
+                    "strokeWidth": 3,
+                    "width": 250,
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+              />,
+              <svg
+                height={250}
+                stroke="#39ff14"
+                strokeWidth={3}
+                width={250}
+                x={0}
+                y={0}
+              >
+                <SpinLine
+                  center={
+                    Object {
+                      "x": 125,
+                      "y": 125,
+                    }
+                  }
+                  lineColor="#39ff14"
+                  radius={122}
+                  rpm={6}
+                  setLineAngle={[Function]}
+                  show={true}
+                />
+              </svg>,
+              <image
+                height={115}
+                href="Overdue_button.png"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+                width={115}
+                x={10}
+                y={-440}
+              />,
+              <image
+                height={50}
+                href="add_button.png"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+                width={50}
+                x={40}
+                y={40}
+              />,
+              <image
+                height={50}
+                href="history_button.png"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+                width={50}
+                x={10}
+                y={40}
+              />,
+              <DraggedDot
+                intersectFunctions={
+                  Array [
+                    Object {
+                      "func": [Function],
+                      "rect": Object {
+                        "height": 125,
+                        "width": 125,
+                        "x": 10,
+                        "y": -35,
+                      },
+                    },
+                    Object {
+                      "func": [Function],
+                      "rect": Object {
+                        "height": 125,
+                        "width": 125,
+                        "x": -25,
+                        "y": -35,
+                      },
+                    },
+                  ]
+                }
+                radius={12.810000000000002}
+              />,
+            ],
+            "height": 100,
+            "id": "radar",
+            "stroke": "black",
+            "strokeWidth": "2",
+            "width": 100,
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <circle
+                    cx={125}
+                    cy={125}
+                    fill="none"
+                    r={122}
+                  />,
+                  <circle
+                    cx={125}
+                    cy={125}
+                    fill="#39ff14"
+                    r={8.540000000000001}
+                  />,
+                  Array [],
+                ],
+                "height": 250,
+                "stroke": "#39ff14",
+                "strokeWidth": 3,
+                "width": 250,
+                "x": 0,
+                "y": 0,
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "cx": 125,
+                    "cy": 125,
+                    "fill": "none",
+                    "r": 122,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "circle",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "cx": 125,
+                    "cy": 125,
+                    "fill": "#39ff14",
+                    "r": 8.540000000000001,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "circle",
+                },
+              ],
+              "type": "svg",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "dims": Object {
+                  "buttons": Object {
+                    "width": 50,
+                  },
+                  "dotViewer": Object {
+                    "height": 250,
+                    "width": 250,
+                  },
+                  "dots": Object {
+                    "center": Object {
+                      "x": 125,
+                      "y": 125,
+                    },
+                    "radius": 8.540000000000001,
+                  },
+                  "radar": Object {
+                    "center": Object {
+                      "x": 125,
+                      "y": 125,
+                    },
+                    "height": 250,
+                    "radius": 122,
+                    "width": 250,
+                    "x": 0,
+                    "y": 0,
+                  },
+                  "style": Object {
+                    "strokeColor": "#39ff14",
+                    "strokeWidth": 3,
+                  },
+                },
+                "getDistanceFromCenter": [Function],
+                "intersectFunctions": Array [
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": 10,
+                      "y": -35,
+                    },
+                  },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
+                      "y": -35,
+                    },
+                  },
+                ],
+                "intersectsLine": [Function],
+                "setClickedDot": [Function],
+                "setDraggedDot": [Function],
+                "subjects": Array [],
+                "view": Object {
+                  "colors": Object {
+                    "subjectDivider": "#39ff14",
+                    "typeColors": Object {},
+                  },
+                  "dotRadiusPercent": 0.07,
+                  "dotsView": Object {
+                    "height": 100,
+                    "width": 100,
+                  },
+                  "height": 250,
+                  "ringsWidth": 604800000,
+                  "strokeWidth": 3,
+                  "width": 250,
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <SpinLine
+                  center={
+                    Object {
+                      "x": 125,
+                      "y": 125,
+                    }
+                  }
+                  lineColor="#39ff14"
+                  radius={122}
+                  rpm={6}
+                  setLineAngle={[Function]}
+                  show={true}
+                />,
+                "height": 250,
+                "stroke": "#39ff14",
+                "strokeWidth": 3,
+                "width": 250,
+                "x": 0,
+                "y": 0,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "center": Object {
+                    "x": 125,
+                    "y": 125,
+                  },
+                  "lineColor": "#39ff14",
+                  "radius": 122,
+                  "rpm": 6,
+                  "setLineAngle": [Function],
+                  "show": true,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "svg",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "height": 115,
+                "href": "Overdue_button.png",
+                "onClick": [Function],
+                "style": Object {
+                  "cursor": "pointer",
+                },
+                "width": 115,
+                "x": 10,
+                "y": -440,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "image",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "height": 50,
+                "href": "add_button.png",
+                "onClick": [Function],
+                "style": Object {
+                  "cursor": "pointer",
+                },
+                "width": 50,
+                "x": 40,
+                "y": 40,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "image",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "height": 50,
+                "href": "history_button.png",
+                "onClick": [Function],
+                "style": Object {
+                  "cursor": "pointer",
+                },
+                "width": 50,
+                "x": 10,
+                "y": 40,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "image",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "dot": undefined,
+                "intersectFunctions": Array [
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": 10,
+                      "y": -35,
+                    },
+                  },
+                  Object {
+                    "func": [Function],
+                    "rect": Object {
+                      "height": 125,
+                      "width": 125,
+                      "x": -25,
+                      "y": -35,
+                    },
+                  },
+                ],
+                "radius": 12.810000000000002,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "svg",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "close": [Function],
+            "complete": undefined,
+            "delete": [Function],
+            "dot": undefined,
+            "edit": [Function],
+            "height": 200,
+            "width": 250,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
       "type": "div",
     },
   ],

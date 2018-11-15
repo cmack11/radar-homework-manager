@@ -150,12 +150,16 @@ exports[`makeDot should return a dot component 1`] = `
   dot={
     Object {
       "angle": 30,
+      "assignment": Object {
+        "name": "Test Name",
+        "type": "Type",
+      },
       "distanceFromCenter": 10,
       "r": undefined,
       "startAngle": 10,
     }
   }
-  id="56.42787609686539///42.33955556881022"
+  id="Test Name Typeouter"
   onMouseDown={[Function]}
 />
 `;
@@ -173,12 +177,16 @@ exports[`makeDot should return a dot component 2`] = `
   dot={
     Object {
       "angle": 30,
+      "assignment": Object {
+        "name": "Test Name",
+        "type": "Type",
+      },
       "distanceFromCenter": 10,
       "r": 15,
       "startAngle": 10,
     }
   }
-  id="56.42787609686539///42.33955556881022"
+  id="Test Name Typeouter"
   onMouseDown={[Function]}
   radius={15}
 />
