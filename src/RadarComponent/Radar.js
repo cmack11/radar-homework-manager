@@ -6,7 +6,6 @@ import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
-import {Label} from 'semantic-ui-react';
 import addButton from '../images/add_button.png'
 import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
@@ -87,8 +86,11 @@ class Radar extends Component {
 			state.view.dotRadiusPercent = .07;
 		if(!state.view.strokeWidth)
 			state.view.strokeWidth = 3;
-		if(!state.view.ringsWidth)
-			state.view.ringsWidth = moment().add(7,'days') - moment();
+		if(!state.view.ringsWidth) {
+			let today = moment();
+			let end = moment(today).add(7,'days');
+			state.view.ringsWidth = end - today;
+		}
 		if(!state.view.colors)
 			state.view.colors = {};
 		if(!state.view.colors.subjectDivider)
@@ -102,8 +104,8 @@ class Radar extends Component {
 		state.dates = props.dates;
 		state.view = props.view;
 		this.verifyAndDefaultSubjects(state,props)
-		this.verifyAndDefaultDates(state,props)
 		this.verifyAndDefaultView(state,props)
+		this.verifyAndDefaultDates(state,props)
 	}
 
 	setDefault() {
@@ -131,6 +133,9 @@ class Radar extends Component {
 			strokeWidth:0,
 			strokeColor:0
 		}
+		view.buttons = {
+			width:0
+		}
 		this.view = view;
 	}
 
@@ -138,12 +143,14 @@ class Radar extends Component {
 		this.fillDimensions();
 		this.fillRings();
 		this.fillComponents();
-		this.props.setRadarOpenCloseFunctions({
-			openAddForm:this.openAddForm.bind(this),
-			closeAddForm:this.closeAddForm.bind(this),
-			openHistoryScreen:this.openHistoryScreen.bind(this),
-			closeHistoryScreen:this.closeHistoryScreen.bind(this)
-		});
+		if(this.props.setRadarOpenCloseFunctions) {
+			this.props.setRadarOpenCloseFunctions({
+				openAddForm:this.openAddForm.bind(this),
+				closeAddForm:this.closeAddForm.bind(this),
+				openHistoryScreen:this.openHistoryScreen.bind(this),
+				closeHistoryScreen:this.closeHistoryScreen.bind(this)
+			});
+		}
 	}
 
 	describeSlice(x, y, radius, startAngle, endAngle) {
@@ -241,6 +248,9 @@ class Radar extends Component {
 		view.style = {
 			strokeWidth:this.state.view.strokeWidth,
 			strokeColor:this.state.view.colors.subjectDivider
+		}
+		view.buttons = {
+			width:(.2 * width)
 		}
 		this.view = view;
 	}
@@ -368,6 +378,7 @@ class Radar extends Component {
 				this.props.completeAssignment(dot.assignment);
 			}
 		})
+	
 
 
     return (
@@ -390,8 +401,8 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.state.buttons.width-10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
-				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.state.buttons.width-10} width={this.state.buttons.width} height={this.state.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
+				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>

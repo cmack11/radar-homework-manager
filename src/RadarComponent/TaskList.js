@@ -42,9 +42,9 @@ class TaskList extends React.Component {
     if(!rowInfo) return {};
     let color = 'none';
     if(this.props.useTypeColors) {
-        let type = rowInfo.original.type;
+        /*let type = rowInfo.original.type;
         if(this.props.colors && this.props.colors[type])
-            color = this.props.colors[type];
+            color = this.props.colors[type];*/
     } else {
         let subject = rowInfo.original.subject;
         if(this.props.colors && this.props.colors[subject])
@@ -53,21 +53,28 @@ class TaskList extends React.Component {
 
     return {
         style:{
-            background:color
+
+            background:'darkgrey',
+            color:color
         }
     }
   }
 
   getTdProps(state, rowInfo, column, instance) {
-    /*if( !rowInfo || (column && column.id !== 'type')) return {};
+    if( !rowInfo || (column && column.id !== 'type')) return {};
     
     let color = "none";
     let type = rowInfo.original.type;
 
     if(this.props.colors && this.props.colors[type]) {
         color = this.props.colors[type];
-        return {style:{background:color}};
-    }*/
+        return {
+            style:{
+                color:color,
+                fontWeight:'bold'
+            }
+        };
+    }
     
 
     return {}
@@ -122,7 +129,7 @@ class TaskList extends React.Component {
         }}>
         {this.props.title}
         <ReactTable
-            getProps={()=>{return {style:{background:'grey'}}}}
+            getProps={()=>{return {style:{background:'lightgrey'}}}}
             getTrProps={this.getTrProps.bind(this)}
             getTdProps={this.getTdProps.bind(this)}
             noDataText={this.props.noDataText}

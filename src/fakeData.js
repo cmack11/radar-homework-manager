@@ -400,52 +400,52 @@ export const subjects1 = [
                   name:"Chapter 4",
                   type:"Reading",
                   dueDate:moment().add(5,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Chapter 5",
                   type:"Reading",
                   dueDate:moment().add(12,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Chapter 6",
                   type:"Reading",
                   dueDate:moment().add(18,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Chapter 7",
                   type:"Reading",
                   dueDate:moment().add(25,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Lab Report",
                   type:"Assignment",
                   dueDate:moment().add(6,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Covalent Bond Practice",
                   type:"Assignment",
                   dueDate:moment().add(20,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Midterm #1",
                   type:"Exam",
                   dueDate:moment().add(10,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Midterm #2",
                   type:"Exam",
                   dueDate:moment().add(25,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 },{
                   name:"Final",
                   type:"Exam",
                   dueDate:moment().add(40,'days'),
-                  subject:"Chemistry",
+                  subject:"Chemistry 158",
                 }
               ]
             }
         ];
-export const subjects = subjects1;
+export const subjects = detailedSubjects;
 
 export const colors1 = {
 	typeColors:{
