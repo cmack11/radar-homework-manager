@@ -73,19 +73,8 @@ class TaskList extends React.Component {
     return {}
   }
 
-  render() {
-    //if (!this.state.visible)
-        //return(<null />);
-
-
-    let hideSubjectCol = true;//this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
-    if(this.props.assignments && this.props.assignments.length) {
-        let subject = this.props.assignments[0].subject;
-        for(let i = 1; i < this.props.assignments.length && hideSubjectCol; i++)
-            if(this.props.assignments[i].subject !== subject)
-                hideSubjectCol = false;
-    }
-
+  getColumns() {
+    let hideSubjectCol = this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
 
     let columns = [];
     columns.push(
@@ -117,6 +106,12 @@ class TaskList extends React.Component {
             Cell: props => <span className='dueDate'>{props.value.format("MM/DD/YYYY")}</span>
         }
     ]);
+
+    return columns;
+  }
+
+  render() {
+    let columns = this.getColumns();
 
     const data = this.props.assignments; //!== undefined ? this.props.assignments : subjects1[0].assignments;
     let visible = this.state.visible ? 'visible' : 'hidden';
