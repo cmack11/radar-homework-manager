@@ -5,6 +5,9 @@ import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import image from '../images/switch_form.png'
+import {Button, Form} from 'semantic-ui-react';
+import { MdRepeat} from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
 
 const mapDispatchToProps = dispatch => ({
@@ -29,7 +32,7 @@ const mapStateToProps = state => {
 export class TaskForm extends React.Component {
   constructor(props) {
     super(props);
-  
+
    if(this.props.isEditForm == true){
     this.state = this.getEditState();
    }else{
@@ -44,10 +47,10 @@ export class TaskForm extends React.Component {
     let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
     return defaultState;
   }
-  
+
   getEditState() {
       let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
-      {taskname: this.props.assignment.name, taskDesc: this.props.assignment.description, 
+      {taskname: this.props.assignment.name, taskDesc: this.props.assignment.description,
 taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
       console.log(defaultState);
       return defaultState;
@@ -63,16 +66,16 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
         this.setState({taskNameError:false});
       else
         this.setState({taskNameError:true});
-    } 
+    }
 
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event) { 
+  handleSubmit(event) {
 
-    if(!this.allValid()) return; 
+    if(!this.allValid()) return;
 
     this.props.addAssignment(
       {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
@@ -108,43 +111,38 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
     }
 
     return (
-      <div style={{position:'absolute',
-            backgroundColor:'grey',
-            width:this.props.width,
-            left:(window.innerWidth-this.props.width)/2,
-            top:(window.innerHeight-250)/2,
-            padding:20,
-            border:5,
-            borderColor:'black',
-            borderStyle:'solid'
-          }}>
-      <form >
-        <div className='form-fields'>
-          <span style={{verticalAlign:'middle'}}><b>Add Task</b></span>
-          <img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" />
+      <div className="subject-task-form">
+      <Form >
+        <div className="subject-title-container">
+            <b>Add Task</b>
+            <div className="switch-icon" onClick={this.props.switchForm}>
+              <IconContext.Provider value={{size:20}}>
+                <MdRepeat />
+              </IconContext.Provider>
+            </div>
         </div>
-        <label className='form-fields'>
-          Name:
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">Name</label>
           <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
-        </label>
-        <label className='form-fields'>
-          Subject:
+        </Form.Field>
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">Subject</label>
           <select name="subject" value={this.state.subject} onChange={this.handleChange}>
             {subjectOptions}
           </select>
-        </label>
-        <label className='form-fields'>
-          Description:
+        </Form.Field>
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">Description</label>
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
-        </label>
-        <label className='form-fields'>
-          Type:
+        </Form.Field>
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">Description</label>
           <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
-        </label>
-        <label className='form-fields'>
-          Due Date: 
+        </Form.Field>
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">Due date</label>
           <DatePicker
               selected={this.state.taskDueDate}
               onChange={(date)=>{this.setState({taskDueDate:date})}}
@@ -157,10 +155,10 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
               maxDate={moment().add(100,'years')}
               showDisabledMonthNavigation
           />
-        </label>
-        <button type="button" value="Submit" onClick={this.handleSubmit}>Submit</button>
-      </form>
-      </div>  
+        </Form.Field>
+        <Button primary type="button" value="Submit" onClick={this.handleSubmit}>Submit</Button>
+      </Form>
+      </div>
     );
   }
 }

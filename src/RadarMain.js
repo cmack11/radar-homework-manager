@@ -16,7 +16,6 @@ import {colors1} from './fakeData.js';
 import './App.css';
 
 const mapDispatchToProps = dispatch => ({
- sampleAction: () => dispatch(sampleAction()),
  initializeUser: () => dispatch(initializeUser()),
  resetUser: () => dispatch(resetUser()),
  updateAssignment : () => dispatch(updateAssignment()),
@@ -30,7 +29,6 @@ const mapStateToProps = state => {
       id : state.user.id,
       name : state.user.name,
       email : state.user.email,
-      usertype : state.user.usertype,
       assignmentData : state.assignment.subjects,
     }
   }

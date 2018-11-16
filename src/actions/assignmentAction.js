@@ -11,14 +11,12 @@ export const initializeAssignments = () => {
       /* needs api here */
     }
   }
-
-
 }
 
 /* retrieve assignment should call initialize assignment */
 export const retrieveAssignments = (data) => {
   return (dispatch) => {
-    return axios.get(API_URL)
+    return axios.get(API_URL + "/Subjects/getSubjectsByUserId/" + data)
     .then( response => {
       dispatch(updateAssignment(response.data))
     })
@@ -34,6 +32,7 @@ export const updateAssignment = (data) => {
       payload: data
     }
 }
+
 
 export const editAssignment = (assignment, subject, desc, due) => {
   let dict = {

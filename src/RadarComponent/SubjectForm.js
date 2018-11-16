@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
-import image from '../images/switch_form.png'
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
@@ -104,7 +103,7 @@ export class SubjectForm extends React.Component {
     }
 
     return (
-      <div className="subject-form">
+      <div className="subject-task-form">
         <Form >
             <div className="subject-title-container">
               <b>Add Subject</b>
