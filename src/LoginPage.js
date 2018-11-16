@@ -21,6 +21,7 @@ const mapStateToProps = state => {
 
 class LoginPage extends Component {
   onLoginButtonPress = () => {
+  		
     if (this.refs.user.value === "" || this.refs.pw.value === "")
     {
       return false

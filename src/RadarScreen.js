@@ -7,6 +7,7 @@ import AddForm from './RadarComponent/AddForm.js'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import HistoryPage from './HistoryPage.js'
+import OverduePage from './OverduePage.js'
 import SubjectPage from './SubjectPage.js'
 import TaskForm from './RadarComponent/TaskForm.js'
 
@@ -22,6 +23,10 @@ class RadarScreen extends Component {
 		let state = {
 			historyScreen:{
 				completedAssignments:[],
+				colors:{}
+			},
+			overdueScreen:{
+				overdueAssignments:[],
 				colors:{}
 			},
 			subjectViewer:{
@@ -80,6 +85,8 @@ class RadarScreen extends Component {
 			closeAddForm:this.closeAddForm.bind(this),
 			openHistoryScreen:this.openHistoryScreen.bind(this),
 			closeHistoryScreen:this.closeHistoryScreen.bind(this),
+			openOverdueScreen:this.openOverdueScreen.bind(this),
+			closeOverdueScreen:this.closeOverdueScreen.bind(this),
 			openSubjectPage:this.openSubjectPage.bind(this),
 			closeSubjectPage:this.closeSubjectPage.bind(this)
 		}
@@ -171,7 +178,21 @@ class RadarScreen extends Component {
 	}
 	/*Passed to RADAR and called from there*/
 
+	openOverdueScreen() {
+		let overdueScreen = this.state.overdueScreen;
+		overdueScreen.show = true;
+		this.setState({overdueScreen:overdueScreen});
+		this.closeAddForm();
+		this.closeSubjectPage();
+		this.setRadarClickable(false);
+	}
 
+	closeOverdueScreen() {
+		let overdueScreen = this.state.overdueScreen;
+		overdueScreen.show = false;
+		this.setState({overdueScreen:overdueScreen});
+		this.setRadarClickable(true);
+	}
 
 	setRadarClickable(clickable) {
 		let rView = this.state.radarView;
@@ -183,8 +204,6 @@ class RadarScreen extends Component {
 		let historyScreen = this.state.historyScreen;
 		historyScreen.completedAssignments.push(assignment);
 	}
-
-
 
 	//Get methods from RADAR so they can be called from here
 	setRadarOpenCloseFunctions(obj) {
@@ -288,6 +307,12 @@ class RadarScreen extends Component {
 		    		close={()=>{this.runRadarOpenCloseFunction('closeHistoryScreen')}}
 		    		show={this.state.historyScreen.show}
 		    		colors={this.state.historyScreen.colors}
+		    		/>
+		    	<OverduePage x={this.state.view.width/2} y={this.state.view.height/2} 
+		    		overdueAssignments={this.state.overdueScreen.overdueAssignments}
+		    		close={()=>{this.runRadarOpenCloseFunction('closeOverdueScreen')}}
+		    		show={this.state.overdueScreen.show}
+		    		colors={this.state.overdueScreen.colors}
 		    		/>
 		    	{/*form*/}
 		    	<SubjectPage x={this.state.view.width/2} y={this.state.view.height/2} 
