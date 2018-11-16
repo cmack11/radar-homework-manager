@@ -1,4 +1,5 @@
 import * as types from './action_types.js'
+import * as errorMessages from '../ErrorMessages/error_messages.js';
 import {API_URL} from '../config/config';
 import axios from 'axios';
 
@@ -31,10 +32,8 @@ export const sendCredentials= (data, success) => {
   return (dispatch) => {
     return axios.post(API_URL + '/RadarUsers/login',data)
     .then( response => {
-      console.log("Successfully logged in with id " + JSON.stringify(response.data))
-
       if (response.data === "failed") {
-        alert("Login failed")
+        alert(errorMessages.LOGIN_FAILED)
       }
       else {
         dispatch(authenticateUser(response.data))
@@ -43,7 +42,7 @@ export const sendCredentials= (data, success) => {
     })
     .catch(error => {
       /* success() */ /* use this and comment the alert to bypass login */
-      alert("Login server error. If this problem persists, contact admisnistrator")
+      alert(errorMessages.LOGIN_SERVER_ERROR)
     })
   }
 
@@ -61,7 +60,6 @@ export const retrieveName = (id) => {
   return (dispatch) => {
     return axios.get(API_URL + '/RadarUsers/getName/' +id)
     .then( response => {
-        console.log("Retrieved data is")
         if (response.data === "failed")
         {
           alert("Failed to retrieve name")
@@ -85,12 +83,18 @@ export const newUser = (data, success) => {
   return (dispatch) => {
     return axios.post(API_URL + '/RadarUsers/register',data)
     .then( response => {
-        dispatch(registerUser())
-        success()
-        alert("You are signed up!")
+        if (response.data === "failed")
+        {
+          alert("Failed to register new user")
+        }
+        else {
+          dispatch(registerUser())
+          success()
+          alert("You are signed up!")
+        }
     })
     .catch(error => {
-      alert("Failed to register new user")
+      alert("Can't register new user at this time. If the error persists, contact administrator")
     })
   }
 }

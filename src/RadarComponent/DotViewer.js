@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 		}
 	}
 
-class DotViewer extends Component {
+export class DotViewer extends Component {
 	constructor(props) {
 		super();
 	}

@@ -3,11 +3,11 @@ import {axios} from 'axios';
 import {subjects} from '../fakeData.js';
 import {API_URL} from '../config/config';
 
-export const initializeAssignments = () => {
+export const initializeAssignments = (data) => {
   return {
     type: types.INITIALIZE_ASSIGNMENTS,
     payload: {
-      subjects : subjects,
+      subjects : data,
       /* needs api here */
     }
   }
@@ -16,9 +16,9 @@ export const initializeAssignments = () => {
 /* retrieve assignment should call initialize assignment */
 export const retrieveAssignments = (data) => {
   return (dispatch) => {
-    return axios.get(API_URL + "/Subjects/getSubjectsByUserId/" + data)
+    return axios.get(API_URL + "/Subjects/getAll/" + data)
     .then( response => {
-      dispatch(updateAssignment(response.data))
+      dispatch(initializeAssignments(response.data))
     })
     .catch(error => {
         alert("Failed to retrieve assignments")
@@ -62,13 +62,9 @@ export const addAssignment = (data) => {
   }
 }
 
-export const newAssignment = (assignment, subject) => {
-  let dict = {
-    assignment : assignment,
-    subject : subject
-  }
+export const newAssignment = (data) => {
   return (dispatch) => {
-    return axios.post(API_URL,dict)
+    return axios.post(API_URL,data)
     .then( response => {
       dispatch(addAssignment(response.data))
     })
@@ -84,14 +80,14 @@ export const addSubject = (data) => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
-      subjects : data,
+      subject : data,
     }
   }
 }
 
-export const newSubject = (subject) => {
+export const newSubject = (data) => {
   return (dispatch) => {
-    return axios.post(API_URL, subject)
+    return axios.post(API_URL, data)
     .then( response => {
       dispatch(addSubject(response.data))
     })
@@ -125,6 +121,28 @@ export const removeSubject = (subject) => {
 }
 /* DELETE SUBJECT */
 
+/* EDIT SUBJECT */
+export const updateSubject = (data) => {
+  return {
+    type: types.DELETE_SUBJECT,
+    payload : {
+      subjects : data,
+    }
+  }
+}
+
+export const editSubject = (data) => {
+  return (dispatch) => {
+    return axios.post(API_URL, data)
+    .then( response => {
+      dispatch(deleteSubject(response.data))
+    })
+    .catch(error => {
+      alert("Fail to create new subject at this time. If the persists, contact administrator")
+    })
+  }
+}
+
 /* DELETE ASSIGNMENT */
 export const deleteAssignment = (data) => {
   return {
@@ -135,13 +153,9 @@ export const deleteAssignment = (data) => {
   }
 }
 
-export const removeAssignment = (user_id, assignment_id) => {
-  let d = {
-    user_id : user_id,
-    assignment_id : assignment_id
-  }
+export const removeAssignment = (assignment_id) => {
   return (dispatch) => {
-    return axios.post(API_URL, d)
+    return axios.post(API_URL + '/Tasks/deleteTask/' + assignment_id)
     .then( response => {
       dispatch(deleteAssignment(response.data))
     })
