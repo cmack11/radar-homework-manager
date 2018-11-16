@@ -125,7 +125,7 @@ ShallowWrapper {
           Submit
         </Button>
       </Form>,
-      "className": "subject-form",
+      "className": "subject-task-form",
     },
     "ref": null,
     "rendered": Object {
@@ -666,7 +666,7 @@ ShallowWrapper {
             Submit
           </Button>
         </Form>,
-        "className": "subject-form",
+        "className": "subject-task-form",
       },
       "ref": null,
       "rendered": Object {
