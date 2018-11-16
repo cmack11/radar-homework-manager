@@ -30,7 +30,7 @@ class SignupPage extends Component {
     if (this.refs.pw.value !== this.refs.pw2.value)
     {
       alert("Password does not match")
-      return false;
+      return false
     }
      let d = {
        name : this.refs.fname.value + " " + this.refs.lname.value,
@@ -61,15 +61,17 @@ render() {
             </Form.Field>
             <Form.Field>
               <label className="login-text" tabIndex="2">Email</label>
-              <input required placeholder='email' ref="email" />
+              <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                oninvalid="setCustomValidity('Please enter a valid email address')"
+                required placeholder='email' ref="email" />
             </Form.Field>
             <Form.Field>
               <label className="login-text">Password</label>
-              <input  required type= "password" placeholder='password' ref="pw" />
+              <input required type= "password" placeholder='password' ref="pw" />
             </Form.Field>
             <Form.Field>
               <label className="login-text">Re-type Password</label>
-              <input  required type= "password" placeholder='confirm password' ref="pw2" />
+              <input required type= "password" placeholder='confirm password' ref="pw2" />
             </Form.Field>
             <Button primary className="login-button" type='submit' onClick={()=> {this.onSignupButtonPress()}}>Sign up</Button>
             <div className="back-container" onClick={()=> {this.successSignup()}}>

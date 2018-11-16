@@ -9,8 +9,8 @@ export const subjects1 = [
   					{
   						name:"S1A1",
   						type:"Assignment",
-						dueDate:moment().add(3,'days'),
-						subject:"Subject #1",
+  						dueDate:moment().add(3,'days'),
+  						subject:"Subject #1",
   					},{
   						name:"S1PS2",
   						type:"Problem Set",
@@ -76,7 +76,7 @@ export const subjects1 = [
   						name:"S2A5",
   						type:"Assignment",
   						dueDate:moment().add(1,'seconds'),
-						subject:"Subject #2",
+						  subject:"Subject #2",
   					}
   				]
   			},{

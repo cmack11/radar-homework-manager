@@ -23,10 +23,15 @@ export default (state = initialState, action) => {
    *
    **/
    case types.LOGIN_USER:
-     console.log(action.payload)
+    console.log("Before retreived login " + JSON.stringify(action.payload[0]))
      return {
       ...state,
-      user_id: action.payload.user_id,
+      user_id: action.payload[0].User_id,
+     }
+   case types.INITIALIZE_USERNAME:
+     return {
+       ...state,
+       name: action.payload[0].Name,
      }
    case types.REGISTER_USER:
     return initialState

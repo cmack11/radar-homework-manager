@@ -53,7 +53,7 @@ render() {
             </Form.Field>
             <Form.Field>
               <label className="login-text">Password</label>
-              <input  required type= "password" placeholder='password' ref="pw" />
+              <input  required type= "password" placeholder='password' ref="pw" pattern=".{6,20}"/>
             </Form.Field>
             <Button primary className="login-button" type='submit' onClick={()=> {this.onLoginButtonPress()}}>Login</Button>
         </Form>

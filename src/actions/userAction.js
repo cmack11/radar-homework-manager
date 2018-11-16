@@ -7,7 +7,7 @@ export const initializeUser = () => dispatch => {
  dispatch({
   type: types.INITIALIZE_USER,
   payload: {
-    id : 0,
+    id : -1,
     name: "John Doe",
     email: "example@mail.com"
   }
@@ -31,7 +31,8 @@ export const sendCredentials= (data, success) => {
   return (dispatch) => {
     return axios.post(API_URL + '/RadarUsers/login',data)
     .then( response => {
-      console.log(response.data)
+      console.log("Successfully logged in with id " + JSON.stringify(response.data))
+
       if (response.data === "failed") {
         alert("Login failed")
       }
@@ -47,6 +48,32 @@ export const sendCredentials= (data, success) => {
 
 }
 
+export const initializeName = (data) =>  {
+  return {
+    type: types.INITIALIZE_USERNAME,
+    payload: data
+  }
+}
+
+export const retrieveName = (id) => {
+  console.log("Retrived name called " + id)
+  return (dispatch) => {
+    return axios.get(API_URL + '/RadarUsers/getName/' +id)
+    .then( response => {
+        console.log("Retrieved data is")
+        if (response.data === "failed")
+        {
+          alert("Failed to retrieve name")
+        }
+        else {
+          dispatch(initializeName(response.data))
+        }
+    })
+    .catch(error => {
+      alert("Failed to retrieve name. If this error persists, contact and administrator")
+    })
+  }
+}
 export const registerUser = () => dispatch => {
  dispatch({
   type: types.REGISTER_USER

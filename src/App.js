@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { initializeUser, resetUser } from './actions/userAction.js';
+import { retrieveName, resetUser } from './actions/userAction.js';
 import {Button, Divider} from 'semantic-ui-react';
 import Sidebar from "react-sidebar";
 import 'react-dates/initialize';
@@ -33,14 +33,14 @@ import SignupPage from './SignupPage.js';
 import ico from './images/icon_alt.png';
 
 const mapDispatchToProps = dispatch => ({
- initializeUser: () => dispatch(initializeUser()),
+ retrieveName: (id) => dispatch(retrieveName(id)),
  resetUser: () => dispatch(resetUser()),
 })
 
 const mapStateToProps = state => {
     console.log("Map :"+ JSON.stringify(state));
     return {
-      id : state.user.id,
+      id : state.user.user_id,
       name : state.user.name,
       email : state.user.email,
     }
@@ -54,12 +54,11 @@ class App extends Component {
       sidebarAvailable: true
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-    this.props.initializeUser();
+    this._nameUpdated = false
   }
 
   componentWillMount() {
     this.unlisten = this.props.history.listen((location, action) => {
-      console.log("on route change");
       this.onRouteChange(location)
     });
 
@@ -67,7 +66,18 @@ class App extends Component {
       // not logged in
       this.props.history.push("/login")
     }
+
   }
+
+  componentDidUpdate() {
+    if(this.props.id != -1 && !this._nameUpdated) {
+      console.log("Before retrieved" + this.props.id)
+      this.props.retrieveName(this.props.id);
+      this._nameUpdated = true
+    }
+
+  }
+
   componentWillUnmount() {
       this.unlisten();
   }
