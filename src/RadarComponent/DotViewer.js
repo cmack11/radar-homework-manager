@@ -1,20 +1,30 @@
-import React, { Component } from 'react';
-import closeImage from '../images/window_close.svg'
-import editImage from '../images/pencil_icon.svg'
-import completeImage from '../images/check_icon.png'
-import trashImage from '../images/trash_icon.png'
-import { MdModeEdit } from 'react-icons/md';
-import { MdDelete } from 'react-icons/md';
-import { MdClose } from 'react-icons/md';
-import { MdCheck } from 'react-icons/md';
-import { IconContext } from 'react-icons';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { MdModeEdit } from 'react-icons/md'
+import { MdDelete } from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
+import { MdCheck } from 'react-icons/md'
+import { IconContext } from 'react-icons'
+import { removeSubject, completeAssignment } from '../actions/assignmentAction.js'
+
+
+const mapDispatchToProps = dispatch => ({
+ removeSubject: (user_id, assignment_id) => dispatch(removeSubject(user_id, assignment_id)),
+ completeAssignment : (user_id, assignment_id) => dispatch(completeAssignment(user_id,assignment_id))
+})
+
+const mapStateToProps = state => {
+		console.log("Map :"+ JSON.stringify(state));
+		return {
+			subjects : state.assignment.subjects,
+		}
+	}
 
 class DotViewer extends Component {
-
-
 	constructor(props) {
 		super();
 	}
+
 
 	componentDidMount() {
 
@@ -25,6 +35,7 @@ class DotViewer extends Component {
 			let element = document.getElementById(this.props.dot.id)
 			if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to update status of assignment to completed
+			//completeAssignment(param,param) //this functions is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
 			this.props.complete(assignment)
 			//
@@ -37,6 +48,7 @@ class DotViewer extends Component {
 			let element = document.getElementById(this.props.dot.id)
 			if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to delete assignment from user's account
+			//removeSubject(param,param) //function is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
 			//
 			this.props.close();
@@ -167,4 +179,4 @@ class DotViewer extends Component {
 	}
 }
 
-export default DotViewer;
+export default connect(mapStateToProps, mapDispatchToProps)(DotViewer)

@@ -135,10 +135,10 @@ export const deleteAssignment = (data) => {
   }
 }
 
-export const removeAssignment = (assignment, subject) => {
+export const removeAssignment = (user_id, assignment_id) => {
   let d = {
-    assignment : assignment,
-    subject : subject
+    user_id : user_id,
+    assignment_id : assignment_id
   }
   return (dispatch) => {
     return axios.post(API_URL, d)
