@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/RadarComponent/DotViewer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/RadarComponent</a> DotViewer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/18</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+&nbsp;
+class DotViewer extends Component {
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >	co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >		super();</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	co</span>mponentDidMount() {
+		
+	}
+&nbsp;
+	
+<span class="fstat-no" title="function not covered" >	re</span>nder() {
+&nbsp;
+		let x=<span class="cstat-no" title="statement not covered" >0,</span>y=<span class="cstat-no" title="statement not covered" >0,</span>fill,visibility = <span class="cstat-no" title="statement not covered" >'hidden';</span>
+<span class="cstat-no" title="statement not covered" >		if(this.props.dot) {</span>
+<span class="cstat-no" title="statement not covered" >			visibility = 'visible';</span>
+<span class="cstat-no" title="statement not covered" >			fill = this.props.dot.fill;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			x = this.props.dot.x - this.props.width/2;</span>
+<span class="cstat-no" title="statement not covered" >			y = this.props.dot.y - this.props.height/2;</span>
+		
+<span class="cstat-no" title="statement not covered" >			if(x+this.props.width &gt; window.innerWidth)</span>
+<span class="cstat-no" title="statement not covered" >				x = Math.max(window.innerWidth - this.props.width, this.props.dot.x - this.props.width);</span>
+<span class="cstat-no" title="statement not covered" >			if(x &lt; 0)</span>
+<span class="cstat-no" title="statement not covered" >				x = 0;</span>
+<span class="cstat-no" title="statement not covered" >			if(y+this.props.height &gt; window.innerHeight)</span>
+<span class="cstat-no" title="statement not covered" >				y = Math.max(window.innerHeight - this.props.height, this.props.dot.y - this.props.height);</span>
+<span class="cstat-no" title="statement not covered" >			if(y &lt; 0)</span>
+<span class="cstat-no" title="statement not covered" >				y = 0;</span>
+		}
+		let show = <span class="cstat-no" title="statement not covered" >visibility === 'visible';</span>
+		let taskText = <span class="cstat-no" title="statement not covered" >show ? this.props.dot.assignment.type + ": " + this.props.dot.assignment.name + " (" + this.props.dot.assignment.dueDate.format("MM/DD/YYYY") + ")" : "";</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return (</span>
+			&lt;g&gt;
+				&lt;rect id='dotViewer' 
+					width={this.props.width} 
+					height={this.props.height} 
+					rx={15} ry={15}
+					fill={fill}
+					stroke='black'
+					x={x} y={y}
+					visibility={visibility}
+					onClick={this.props.closeDotViewer}/&gt;
+				&lt;text visible={visibility} stroke-width="1" font-size="14" x={x + 5} y={y + this.props.height / 2}&gt;
+				{taskText}
+				&lt;/text&gt;	
+			&lt;/g&gt;
+		);
+	}
+}
+&nbsp;
+export default DotViewer;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 08 2018 17:11:36 GMT-0600 (Central Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

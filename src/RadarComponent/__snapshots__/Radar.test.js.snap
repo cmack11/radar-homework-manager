@@ -235,7 +235,7 @@ ShallowWrapper {
             radius={12.810000000000002}
           />
         </svg>,
-        <DotViewer
+        <Connect(DotViewer)
           close={[Function]}
           delete={[Function]}
           edit={[Function]}
@@ -959,7 +959,7 @@ ShallowWrapper {
               radius={12.810000000000002}
             />
           </svg>,
-          <DotViewer
+          <Connect(DotViewer)
             close={[Function]}
             delete={[Function]}
             edit={[Function]}

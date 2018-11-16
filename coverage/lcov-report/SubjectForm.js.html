@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for SubjectForm.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> SubjectForm.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>26/50</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">28.57% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">54.55% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">53.19% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/47</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { connect } from 'react-redux';
+import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
+import image from '../images/switch_form.png'
+&nbsp;
+&nbsp;
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >di</span>spatch =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+ retrieveAssignments: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch(retrieveAssignments()),</span>
+ addSubject: <span class="fstat-no" title="function not covered" >(s</span>ubject) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(addSubject(subject))</span>
+})
+&nbsp;
+const mapStateToProps = <span class="fstat-no" title="function not covered" >st</span>ate =&gt; {
+<span class="cstat-no" title="statement not covered" >    console.log("Map :"+ JSON.stringify(state));</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      /* map this later
+      name:"",
+      color:"",
+      assignments:[],
+      */
+    }
+  }
+&nbsp;
+const maxNameLength = 14;
+const maxSubjectLength = 8;
+const minNameLength = 1;
+&nbsp;
+export class SubjectForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.getDefaultState();
+&nbsp;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+&nbsp;
+  handleChange(event) {
+    const target = event.target;
+    const name = target.name;
+    let value = target.value;
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(name === 'subjectName') {
+<span class="cstat-no" title="statement not covered" >      if(value.length &gt; 0)</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({subjectNameError:false});</span>
+      else
+<span class="cstat-no" title="statement not covered" >        this.setState({subjectNameError:true});</span>
+    } 
+&nbsp;
+    this.setState({
+      [name]: value
+    });
+  }
+&nbsp;
+  handleSubmit(event) {
+    //alert('The following Subject was submitted: ' + this.state.subjectName);
+    let colors = ['blue','violet','orange','purple','darkgreen','cyan','maroon','yellow'];
+    let index = this.props.subjectNames.length;
+    let color = colors[index];
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(!this.allValid()) return; 
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.props.addSubject(</span>
+      {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.setState(this.getDefaultState())</span>
+<span class="cstat-no" title="statement not covered" >    if(this.props.closeForm)</span>
+<span class="cstat-no" title="statement not covered" >      this.props.closeForm();</span>
+  }
+&nbsp;
+  allValid() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(!this.state.subjectName || <span class="branch-1 cbranch-no" title="branch not covered" >this.state.subjectName.length &gt; maxNameLength </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >this.state.subjectName.length &lt; minNameLength)</span> {
+      this.setState({subjectNameError:true})
+      return false;
+    }
+<span class="cstat-no" title="statement not covered" >    if(this.props.subjectNames) {</span>
+<span class="cstat-no" title="statement not covered" >      if(this.props.subjectNames.length === maxSubjectLength) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+      let duplicate = <span class="cstat-no" title="statement not covered" >false;</span>
+<span class="cstat-no" title="statement not covered" >      duplicate = this.props.subjectNames.some(<span class="fstat-no" title="function not covered" >(n</span>ame)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >        return name.toLowerCase() === this.state.subjectName.toLowerCase();</span>
+      })
+<span class="cstat-no" title="statement not covered" >      if(duplicate) { </span>
+<span class="cstat-no" title="statement not covered" >        this.setState({subjectNameError:true})</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+      }
+    }
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return true;</span>
+  }
+&nbsp;
+  getDefaultState() {
+    return {subjectName:'', subjectDesc:'', defaultTaskType: 'Assignment'};
+  }
+&nbsp;
+  render() {
+&nbsp;
+    let taskTypeOptions = [];
+    for (let i = 0; i &lt; this.props.taskTypes.length; ++i)
+    {
+      const taskType = <span class="cstat-no" title="statement not covered" >this.props.taskTypes[i];</span>
+<span class="cstat-no" title="statement not covered" >      taskTypeOptions.push(&lt;option value={taskType}&gt;{taskType}&lt;/option&gt;);</span>
+    }
+&nbsp;
+    return (
+    &lt;div style={{position:'absolute',
+          backgroundColor:'grey',
+          width:this.props.width,
+          left:(window.innerWidth-this.props.width)/2,
+          top:(window.innerHeight-250)/2,
+          padding:20,
+          border:5,
+          borderColor:'black',
+          borderStyle:'solid'
+        }}&gt;
+      &lt;form &gt;
+        &lt;div className='form-fields'&gt;
+          &lt;span style={{verticalAlign:'middle'}}&gt;&lt;b&gt;Add Subject&lt;/b&gt;&lt;/span&gt;
+          &lt;img style={{verticalAlign:'middle', cursor:'pointer'}} onClick={this.props.switchForm} src={image} height="10%" width="10%" alt="close"/&gt;
+        &lt;/div&gt;
+        &lt;label className='form-fields'&gt;
+          Subject Name:
+          &lt;input style={{borderColor:(this.state.subjectNameError ? 'red': null)}} name="subjectName" type="text" value={this.state.subjectName} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;label className='form-fields'&gt;
+          Subject Description:
+          &lt;input name="subjectDesc" type="text" value={this.state.subjectDesc} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;label className='form-fields'&gt;
+          Default Task Type:
+          &lt;select name="defaultTaskType" value={this.state.defaultTaskType} onChange={this.handleChange}&gt;
+            {taskTypeOptions}
+          &lt;/select&gt;
+        &lt;/label&gt;
+        &lt;button type="button" value="Submit" onClick={this.handleSubmit}&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+&nbsp;
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectForm);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 12 2018 21:07:48 GMT-0600 (Central Standard Time)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>

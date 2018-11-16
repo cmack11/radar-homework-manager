@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/RadarScreen.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> RadarScreen.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/104</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/100</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+//import PropTypes from 'prop-types';
+import moment from 'moment'
+import Radar from './RadarComponent/Radar.js'
+import { DateRangePicker } from 'react-dates';
+import AddForm from './RadarComponent/AddForm.js'
+import "react-datepicker/dist/react-datepicker.css";
+import HistoryPage from './HistoryPage.js'
+import SubjectPage from './SubjectPage.js'
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+class RadarScreen extends Component {
+&nbsp;
+<span class="fstat-no" title="function not covered" >	co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >		super();</span>
+&nbsp;
+		let state = <span class="cstat-no" title="statement not covered" >{</span>
+			historyScreen:{
+				completedAssignments:[],
+				colors:{}
+			},
+			subjectViewer:{
+&nbsp;
+			},
+			show:props.show,
+			dates:{
+				startDate:moment(),
+				endDate:moment().add(7,'days')
+			},
+			datePicker:{
+			},
+			view:{
+				x:props.view.x,
+				y:props.view.y,
+				width:props.view.width,
+				height:props.view.height
+&nbsp;
+			},
+			radarView:{
+				x:0,
+				y:0,
+				width:1,
+				height:1,
+				dotsView:{
+					width:props.view.width,
+					height:props.view.height
+				},
+				colors:props.view.colors,
+				disable:false
+			}
+		}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.state = state;</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	co</span>mponentWillReceiveProps(nextProps){
+		let newColors = <span class="cstat-no" title="statement not covered" >Object.assign({}, nextProps.view.colors.typeColors);</span>
+<span class="cstat-no" title="statement not covered" >		nextProps.subjects.map(<span class="fstat-no" title="function not covered" >(s</span>ubj) =&gt;{</span>
+<span class="cstat-no" title="statement not covered" >			newColors[subj.name] = subj.color;</span>
+		})
+		let hist = <span class="cstat-no" title="statement not covered" >this.state.historyScreen;</span>
+<span class="cstat-no" title="statement not covered" >		hist.colors = newColors;</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({historyScreen:hist})</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    co</span>mponentDidMount() {
+<span class="cstat-no" title="statement not covered" >    	this.updateWindowDimensions();</span>
+<span class="cstat-no" title="statement not covered" >		window.addEventListener('resize', this.updateWindowDimensions.bind(this));</span>
+<span class="cstat-no" title="statement not covered" >		this.startUpdateInterval();</span>
+<span class="cstat-no" title="statement not covered" >		this.radarScreenOpenCloseFunctions = {</span>
+			openAddForm:this.openAddForm.bind(this),
+			closeAddForm:this.closeAddForm.bind(this),
+			openHistoryScreen:this.openHistoryScreen.bind(this),
+			closeHistoryScreen:this.closeHistoryScreen.bind(this),
+			openSubjectPage:this.openSubjectPage.bind(this),
+			closeSubjectPage:this.closeSubjectPage.bind(this)
+		}
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    co</span>mponentWillUnmount() {
+<span class="cstat-no" title="statement not covered" >    	if(this.dateUpdateInterval)</span>
+<span class="cstat-no" title="statement not covered" >    		clearInterval(this.dateUpdateInterval);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    up</span>dateWindowDimensions() {
+    	let e = <span class="cstat-no" title="statement not covered" >document.getElementById('radar');</span>
+    	let yOffset = <span class="cstat-no" title="statement not covered" >0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    	if(e) {</span>
+    		let rect = <span class="cstat-no" title="statement not covered" >e.getBoundingClientRect();</span>
+<span class="cstat-no" title="statement not covered" >    		yOffset = rect.top;</span>
+    	} 
+		let state = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >		state.view.width = window.innerWidth;</span>
+<span class="cstat-no" title="statement not covered" >		state.view.height = window.innerHeight - yOffset;</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarDimensions(state);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	se</span>tRadarDimensions(state) {
+		let rWidth = <span class="cstat-no" title="statement not covered" >.9 * Math.min(state.view.width,state.view.height);</span>
+<span class="cstat-no" title="statement not covered" >		state.radarView = {</span>
+			x:(state.view.width-rWidth) / 2,
+			y:(state.view.height-rWidth) / 2,
+			width:rWidth,
+			height:rWidth,
+			dotsView:{
+				width:state.view.width,
+				height:state.view.height
+			},
+			colors:state.radarView.colors,
+			disable:false
+		}
+<span class="cstat-no" title="statement not covered" >		this.setState(state);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	st</span>artUpdateInterval() {
+<span class="cstat-no" title="statement not covered" >		if(this.dateUpdateInterval) <span class="cstat-no" title="statement not covered" >return;</span></span>
+<span class="cstat-no" title="statement not covered" >		this.dateUpdateInterval = setInterval(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+			let difference = <span class="cstat-no" title="statement not covered" >this.state.dates.endDate.valueOf() - this.state.dates.startDate.valueOf();</span>
+			let state = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >			state.dates.startDate = moment();</span>
+<span class="cstat-no" title="statement not covered" >			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')</span>
+<span class="cstat-no" title="statement not covered" >			this.setState(state);</span>
+		},10000)
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	en</span>dUpdateInterval() {
+<span class="cstat-no" title="statement not covered" >		if(!this.dateUpdateInterval) <span class="cstat-no" title="statement not covered" >return;</span></span>
+<span class="cstat-no" title="statement not covered" >		clearInterval(this.dateUpdateInterval);</span>
+	}
+&nbsp;
+	/*Passed to RADAR and called from there*/
+<span class="fstat-no" title="function not covered" >	op</span>enAddForm() {
+<span class="cstat-no" title="statement not covered" >		this.setState({</span>
+			showAddForm:true,
+		});
+<span class="cstat-no" title="statement not covered" >		this.closeHistoryScreen();</span>
+<span class="cstat-no" title="statement not covered" >		this.closeSubjectPage();</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(false);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	cl</span>oseAddForm() {
+<span class="cstat-no" title="statement not covered" >		this.setState({</span>
+			showAddForm:false
+		});
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(true);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	op</span>enHistoryScreen() {
+		let historyScreen = <span class="cstat-no" title="statement not covered" >this.state.historyScreen;</span>
+<span class="cstat-no" title="statement not covered" >		historyScreen.show = true;</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({historyScreen:historyScreen});</span>
+<span class="cstat-no" title="statement not covered" >		this.closeAddForm();</span>
+<span class="cstat-no" title="statement not covered" >		this.closeSubjectPage();</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(false);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	cl</span>oseHistoryScreen() {
+		let historyScreen = <span class="cstat-no" title="statement not covered" >this.state.historyScreen;</span>
+<span class="cstat-no" title="statement not covered" >		historyScreen.show = false;</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({historyScreen:historyScreen});</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(true);</span>
+	}
+	/*Passed to RADAR and called from there*/
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="fstat-no" title="function not covered" >	se</span>tRadarClickable(clickable) {
+		let rView = <span class="cstat-no" title="statement not covered" >this.state.radarView;</span>
+<span class="cstat-no" title="statement not covered" >		rView.disable = !clickable;</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({radarView:rView});</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	co</span>mpleteAssignment(assignment) {
+		let historyScreen = <span class="cstat-no" title="statement not covered" >this.state.historyScreen;</span>
+<span class="cstat-no" title="statement not covered" >		historyScreen.completedAssignments.push(assignment);</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({historyScreen:historyScreen})</span>
+	}
+&nbsp;
+&nbsp;
+&nbsp;
+	//Get methods from RADAR so they can be called from here
+<span class="fstat-no" title="function not covered" >	se</span>tRadarOpenCloseFunctions(obj) {
+<span class="cstat-no" title="statement not covered" >		this.radarOpenCloseFunctions = obj;</span>
+	}
+&nbsp;
+	//Used to run the open/close functions that are stored in RADAR (Change buttons)
+<span class="fstat-no" title="function not covered" >	ru</span>nRadarOpenCloseFunction(functionName) {
+<span class="cstat-no" title="statement not covered" >		if(this.radarOpenCloseFunctions &amp;&amp; this.radarOpenCloseFunctions[functionName]) </span>
+<span class="cstat-no" title="statement not covered" >			this.radarOpenCloseFunctions[functionName]();</span>
+	}
+&nbsp;
+	//Given to RADAR so when open/close functions are called there they are also called here
+<span class="fstat-no" title="function not covered" >	ru</span>nRadarScreenOpenCloseFunction(functionName,arg) {
+<span class="cstat-no" title="statement not covered" >		if(this.radarScreenOpenCloseFunctions &amp;&amp; this.radarScreenOpenCloseFunctions[functionName]) </span>
+<span class="cstat-no" title="statement not covered" >			this.radarScreenOpenCloseFunctions[functionName](arg);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	op</span>enSubjectPage(subject) {
+		let subjectViewer = <span class="cstat-no" title="statement not covered" >this.state.subjectViewer;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		subjectViewer.subject = subject;</span>
+<span class="cstat-no" title="statement not covered" >		subjectViewer.show = true;</span>
+<span class="cstat-no" title="statement not covered" >		subjectViewer.colors = this.state.historyScreen.colors;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.closeHistoryScreen();</span>
+<span class="cstat-no" title="statement not covered" >		this.runRadarOpenCloseFunction('closeHistoryScreen');</span>
+<span class="cstat-no" title="statement not covered" >		this.closeAddForm();</span>
+<span class="cstat-no" title="statement not covered" >		this.runRadarOpenCloseFunction('closeAddForm');</span>
+		
+<span class="cstat-no" title="statement not covered" >		this.setState({subjectViewer:subjectViewer});</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(false);</span>
+	}
+&nbsp;
+<span class="fstat-no" title="function not covered" >	cl</span>oseSubjectPage() {
+		let subjectViewer = <span class="cstat-no" title="statement not covered" >this.state.subjectViewer;</span>
+<span class="cstat-no" title="statement not covered" >		subjectViewer.subject = null;</span>
+<span class="cstat-no" title="statement not covered" >		subjectViewer.show = false;</span>
+<span class="cstat-no" title="statement not covered" >		subjectViewer.colors = [];</span>
+<span class="cstat-no" title="statement not covered" >		this.setState({subjectViewer:subjectViewer});</span>
+<span class="cstat-no" title="statement not covered" >		this.setRadarClickable(true);</span>
+	}
+&nbsp;
+	
+&nbsp;
+<span class="fstat-no" title="function not covered" >	re</span>nder() {
+<span class="cstat-no" title="statement not covered" >	if(!this.props.show) <span class="cstat-no" title="statement not covered" >return null;</span></span>
+&nbsp;
+	let subjectNames = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >	this.props.subjects.map(<span class="fstat-no" title="function not covered" >(o</span>bj)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >		subjectNames.push(obj.name);</span>
+	})
+&nbsp;
+	let taskTypes = <span class="cstat-no" title="statement not covered" >["Assignment","Exam","Reading","Problem Set"];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+    	&lt;div id= 'radarScreen' className='radar-screen'&gt;
+    		&lt;DateRangePicker
+    		  startDate={this.state.dates.startDate}
+    		  startDateId="StartDate"
+    		  endDate={this.state.dates.endDate}
+    		  endDateId="EndDate"
+    		  onDatesChange={<span class="fstat-no" title="function not covered" >({</span> startDate, endDate }) =&gt; {
+    		  	let state = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    		  	if(startDate.isSame(moment(),'day')) {</span>
+<span class="cstat-no" title="statement not covered" >    		  		startDate = moment();</span>
+<span class="cstat-no" title="statement not covered" >    		  		this.startUpdateInterval();</span>
+    		  	} else {
+<span class="cstat-no" title="statement not covered" >    		  		this.endUpdateInterval();</span>
+    		  	}
+<span class="cstat-no" title="statement not covered" >    		  	if(!state.dates.startDate.isSame(startDate,'day') || !state.dates.endDate.isSame(endDate,'day')) {</span>
+<span class="cstat-no" title="statement not covered" >	    		  	state.dates.startDate = startDate;</span>
+<span class="cstat-no" title="statement not covered" >	    		  	state.dates.endDate = endDate;</span>
+<span class="cstat-no" title="statement not covered" >	    		  	this.setState(state);</span>
+	    		  }
+    		  }}
+    		  focusedInput= {this.state.datePicker.focus}
+    		  onFocusChange={<span class="fstat-no" title="function not covered" >(f</span>ocusedInput) =&gt; {
+    		  	let state = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    		  	state.datePicker.focus = focusedInput;</span>
+<span class="cstat-no" title="statement not covered" >    		  	this.setState(state);</span>
+    		  }}
+    		/&gt;
+    		&lt;div&gt;
+    			&lt;Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} 
+    			completeAssignment={this.completeAssignment.bind(this)}
+    			setRadarOpenCloseFunctions={this.setRadarOpenCloseFunctions.bind(this)}
+    			runRadarScreenOpenCloseFunction={this.runRadarScreenOpenCloseFunction.bind(this)}
+    			/&gt;
+		    	&lt;AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={<span class="fstat-no" title="function not covered" >()</span>=&gt;{<span class="cstat-no" title="statement not covered" >this.closeAddForm.bind(this);<span class="cstat-no" title="statement not covered" >t</span>his.runRadarOpenCloseFunction('closeAddForm')}</span>}/&gt;
+		    	&lt;HistoryPage x={this.state.view.width/2} y={this.state.view.height/2} 
+		    		completedAssignments={this.state.historyScreen.completedAssignments}
+		    		close={<span class="fstat-no" title="function not covered" >()</span>=&gt;{<span class="cstat-no" title="statement not covered" >this.runRadarOpenCloseFunction('closeHistoryScreen')}</span>}
+		    		show={this.state.historyScreen.show}
+		    		colors={this.state.historyScreen.colors}
+		    		/&gt;
+		    	&lt;SubjectPage x={this.state.view.width/2} y={this.state.view.height/2} 
+		    		subject={this.state.subjectViewer.subject}
+		    		close={<span class="fstat-no" title="function not covered" >()</span>=&gt;{<span class="cstat-no" title="statement not covered" >this.runRadarScreenOpenCloseFunction('closeSubjectPage')}</span>}
+		    		show={this.state.subjectViewer.show}
+		    		colors={this.state.subjectViewer.colors}
+		    		/&gt;
+    		&lt;/div&gt;
+    	&lt;/div&gt;
+    )
+  }
+}
+&nbsp;
+&nbsp;
+export default RadarScreen;  
+&nbsp;
+/* known issues
+* right now: on variable dividing, the rows get cut off at 20% of radius
+* future: 
+	* should figure out how many dots are in view
+	* divide all into variable row sizes
+	* figure out if row is "too large"
+		* if so, divide whereever the distance between circles is largest OR divide so that it alternates even and odd to minimize center overlaps
+*/
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 14 2018 11:16:16 GMT-0600 (Central Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
