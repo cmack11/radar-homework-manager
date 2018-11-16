@@ -3,6 +3,11 @@ import closeImage from '../images/window_close.svg'
 import editImage from '../images/pencil_icon.svg'
 import completeImage from '../images/check_icon.png'
 import trashImage from '../images/trash_icon.png'
+import { MdModeEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
+import { MdClose } from 'react-icons/md';
+import { MdCheck } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
 class DotViewer extends Component {
 
@@ -12,7 +17,7 @@ class DotViewer extends Component {
 	}
 
 	componentDidMount() {
-		
+
 	}
 
 	completeAssignment() {
@@ -40,7 +45,7 @@ class DotViewer extends Component {
 
 
 
-	
+
 	render() {
 
 		let x=0,y=0,fill,visibility = 'hidden',assignment = null;
@@ -58,7 +63,7 @@ class DotViewer extends Component {
 
 			x = this.props.dot.x - width/2;
 			y = this.props.dot.y - height/2;
-		
+
 			//Needs to be reworked so that div is centered over the dot that is
 			//clicked and so that the div doesn't spill over the edge of the screen
 
@@ -66,7 +71,7 @@ class DotViewer extends Component {
 				x = Math.max(window.innerWidth - width, x - width);
 			if(x < 0)
 				x = 0;
-			if(y+height > window.innerHeight) 
+			if(y+height > window.innerHeight)
 				y = Math.max(window.innerHeight - height, y - height);
 			if(y < 0)
 				y = 0;*/
@@ -92,10 +97,18 @@ class DotViewer extends Component {
 				>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.props.close} src={closeImage} height="100%" width="100%" />
+						<div style={{cursor:'pointer'}} onClick={this.props.close} height="100%" width="100%">
+							<IconContext.Provider value={{size:25}}>
+								<MdClose />
+							</IconContext.Provider>
+						</div>
 					</div>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={()=>{}} src={editImage} height="100%" width="100%" />
+						<div style={{cursor:'pointer'}} onClick={()=>{}} height="100%" width="100%">
+							<IconContext.Provider value={{size:25}}>
+								<MdModeEdit />
+							</IconContext.Provider>
+						</div>
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'center'}}>
@@ -115,12 +128,20 @@ class DotViewer extends Component {
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.completeAssignment.bind(this)} src={completeImage}  height="100%" width="100%" />
+						<div style={{cursor:'pointer'}} onClick={this.completeAssignment.bind(this)} height="100%" width="100%">
+							<IconContext.Provider value={{size:25}}>
+								<MdCheck />
+							</IconContext.Provider>
+						</div>
 					</div>
 					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
 					</div>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<img style={{cursor:'pointer'}} onClick={this.deleteAssignment.bind(this)}  src={trashImage} height="100%" width="100%" />
+						<div style={{cursor:'pointer'}} onClick={this.deleteAssignment.bind(this)} height="100%" width="100%">
+							<IconContext.Provider value={{size:25}}>
+								<MdDelete />
+							</IconContext.Provider>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -129,9 +150,9 @@ class DotViewer extends Component {
 
 		/*return (
 			<g>
-				<rect id='dotViewer' 
-					width={this.props.width} 
-					height={this.props.height} 
+				<rect id='dotViewer'
+					width={this.props.width}
+					height={this.props.height}
 					rx={15} ry={15}
 					fill={fill}
 					stroke='black'
@@ -140,7 +161,7 @@ class DotViewer extends Component {
 					onClick={this.props.closeDotViewer}/>
 				<text visible={visibility} strokeWidth="1" fontSize="14" x={x + 5} y={y + this.props.height / 2}>
 				{taskText}
-				</text>	
+				</text>
 			</g>
 		);*/
 	}

@@ -42,6 +42,7 @@ export const sendCredentials= (data, success) => {
       }
     })
     .catch(error => {
+      /* success() */ /* use this and comment the alert to bypass login */
       alert("Login server error. If this problem persists, contact admisnistrator")
     })
   }
