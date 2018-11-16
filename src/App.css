@@ -173,7 +173,7 @@ svg text#chk {
 .signup {
   margin: 0 auto;
   width: 40%;
-  margin-top: 5%;
+  margin-top: 2%;
   padding: 20px 20px 20px 20px;
   background-color: white;
   height: auto;
@@ -233,6 +233,20 @@ svg text#chk {
   flex-direction: row;
 }
 
+.back {
+  margin-top: 0px !important;
+  text-align:left;
+}
+
+.back-container {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.back-align {
+  top: 4 !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

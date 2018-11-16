@@ -5,7 +5,8 @@ import { newUser } from './actions/userAction.js';
 import './App.css';
 import {Button, Form} from 'semantic-ui-react';
 import ico from './images/icon_alt.png';
-
+import { MdKeyboardBackspace } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
 const mapDispatchToProps = dispatch => ({
  newUser : (data, success) => dispatch(newUser(data, success)),
@@ -25,6 +26,11 @@ class SignupPage extends Component {
         this.refs.fname.value === "" || this.refs.lname.value === "")
     {
       return false
+    }
+    if (this.refs.pw.value !== this.refs.pw2.value)
+    {
+      alert("Password does not match")
+      return false;
     }
      let d = {
        name : this.refs.fname.value + " " + this.refs.lname.value,
@@ -61,7 +67,19 @@ render() {
               <label className="login-text">Password</label>
               <input  required type= "password" placeholder='password' ref="pw" />
             </Form.Field>
+            <Form.Field>
+              <label className="login-text">Re-type Password</label>
+              <input  required type= "password" placeholder='confirm password' ref="pw2" />
+            </Form.Field>
             <Button primary className="login-button" type='submit' onClick={()=> {this.onSignupButtonPress()}}>Sign up</Button>
+            <div className="back-container" onClick={()=> {this.successSignup()}}>
+              <div className="back-align">
+                <IconContext.Provider value={{size:22}}>
+                  <MdKeyboardBackspace />
+                </IconContext.Provider>
+              </div>
+              <p className="back">back</p>
+            </div>
         </Form>
       </div>
     </div>
