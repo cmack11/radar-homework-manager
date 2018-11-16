@@ -12,6 +12,7 @@ TaskList props:
     hideSubjectCol = true/false - defaults to false
     assignments = array of assignments to display.
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
+    showCompleteButton = true/false 
 */
 
 const padding = 0;
@@ -37,6 +38,10 @@ class TaskList extends React.Component {
   componentDidMount() {
   }
 
+  markComplete(assignment) {
+    console.log("MARKED COMPLETE: " + assignment.name);
+    //TODO: Add connection to Reducer, and switch to using assignment ID. Requires a change on line 124.
+  }
 
   getTrProps(state, rowInfo, column) {
     if(!rowInfo) return {};
@@ -110,8 +115,17 @@ class TaskList extends React.Component {
             Header: 'Due Date',
             accessor: 'dueDate',
             Cell: props => <span className='dueDate'>{props.value.format("MM/DD/YYYY")}</span>
-        }
+        },
     ]);
+    if (this.props.showCompleteButton)
+    {
+        columns.push(
+        {
+            Header: 'Complete',
+            accessor: '',
+            Cell: props => <button onClick={() => this.markComplete(props.value)}>Complete</button>
+        });
+    }
 
     return columns;
   }
