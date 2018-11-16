@@ -75,7 +75,9 @@ class OverduePage extends Component {
 	    			width={Math.min(window.innerWidth,500)} 
 	    			assignments={this.props.overdueAssignments} 
 	    			colors={this.props.colors}
-	    			onResize={this.resize.bind(this)} />
+	    			onResize={this.resize.bind(this)}
+					showCompleteButton={true}
+				/>
 			</div>
 	    )
   }

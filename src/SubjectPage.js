@@ -135,7 +135,9 @@ class SubjectPage extends Component {
 	    			width={Math.min(window.innerWidth,500)} 
 	    			assignments={assignments} 
 	    			colors={this.props.colors}
-	    			onResize={this.resize.bind(this)} />
+	    			onResize={this.resize.bind(this)} 
+					showCompleteButton={true}
+					/>
 			</div>
 	    )
   }
