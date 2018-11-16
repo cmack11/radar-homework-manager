@@ -40,7 +40,7 @@ class TaskList extends React.Component {
 
   markComplete(assignment) {
     console.log("MARKED COMPLETE: " + assignment.name);
-    //TODO: Add connection to Reducer, and switch to using assignment ID. Requires a change on line 124.
+    //TODO: Add connection to Reducer
   }
 
   getTrProps(state, rowInfo, column) {
