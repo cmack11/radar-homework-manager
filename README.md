@@ -26,8 +26,7 @@ HOW TO RUN MYSQL:
     Run the script “create.sql”
     
 HOW TO BYPASS LOGIN : 
-    under src/actions/userAction there is a function called sendCredentials(data, success). Uncomment success() and    
-    comment out the alert. The code will look like this :
+    under src/actions/userAction there is a function called sendCredentials(data, success). Uncomment success() and comment out the alert. The code will look like this :
     .......
     .catch(error => {
     success() 
