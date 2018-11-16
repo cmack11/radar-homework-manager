@@ -33,7 +33,8 @@ class Radar extends Component {
 				left:{logo:historyButton},
 				overdue:{logo:overdueButton},
 				right:{logo:addButton}
-			}
+			},
+			noOverdue: false
 		}
 		this.verifyAndDefaultSubjects(state,props);
 		this.verifyAndDefaultDates(state,props);
@@ -150,7 +151,9 @@ class Radar extends Component {
 				openAddForm:this.openAddForm.bind(this),
 				closeAddForm:this.closeAddForm.bind(this),
 				openHistoryScreen:this.openHistoryScreen.bind(this),
-				closeHistoryScreen:this.closeHistoryScreen.bind(this)
+				closeHistoryScreen:this.closeHistoryScreen.bind(this),
+				openOverdueScreen:this.openOverdueScreen.bind(this),
+				closeOverdueScreen:this.closeOverdueScreen.bind(this),
 			});
 		}
 		this.closeDotViewer =  this.closeDotViewer.bind(this);
@@ -373,6 +376,7 @@ class Radar extends Component {
 	overdueButtonClick() {
 		let buttons = this.state.buttons;
 		if(buttons.overdue.logo === overdueButton){
+			this.closeAddForm();//order matters
 			this.openOverdueScreen();
 		} else {
 			this.closeOverdueScreen();
@@ -419,7 +423,12 @@ class Radar extends Component {
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{this.editButtonClick(dot)}
 		})
-
+		
+		let overdueForm = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
+		if(this.state.noOverdue){
+			overdueForm = null;
+		}
+		
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
@@ -440,7 +449,7 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				<image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>
+				{overdueForm}
 				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}

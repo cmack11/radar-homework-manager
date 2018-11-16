@@ -192,7 +192,6 @@ class RadarScreen extends Component {
 		overdueScreen.show = false;
 		this.setState({overdueScreen:overdueScreen});
 		this.setRadarClickable(true);
-		console.log('ran openoverduescreen');
 	}
 
 	setRadarClickable(clickable) {
