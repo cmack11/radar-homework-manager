@@ -22,8 +22,7 @@ const mapStateToProps = state => {
 class LoginPage extends Component {
   onLoginButtonPress = () => {
   
-  this.successLogin();
-    /*if (this.refs.user.value === "" || this.refs.pw.value === "")
+    if (this.refs.user.value === "" || this.refs.pw.value === "")
     {
       return false
     }
@@ -31,7 +30,7 @@ class LoginPage extends Component {
        user: this.refs.user.value,
        pass: this.refs.pw.value
      }
-     this.props.sendCredentials(d, () => {this.successLogin()})*/
+     this.props.sendCredentials(d, () => {this.successLogin()})
   }
 
   successLogin = () => {
