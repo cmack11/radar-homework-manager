@@ -98,3 +98,21 @@ export const newUser = (data, success) => {
     })
   }
 }
+
+export const retrieveTasks = (data) => {
+  return (dispatch) => {
+    return axios.get(API_URL + '/Subjects/getAll/2')
+    .then( response => {
+        if (response.data === "failed")
+        {
+          alert("Failed to retrieve name")
+        }
+        else {
+          console.log(response.data)
+        }
+    })
+    .catch(error => {
+      alert("Failed to retrieve name. If this error persists, contact and administrator")
+    })
+  }
+}

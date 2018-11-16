@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import moment from 'moment'
+import moment from 'moment'
 //import PropTypes from 'prop-types';
 
 class Dot extends Component {
@@ -10,7 +10,7 @@ class Dot extends Component {
 		this.minOpacity = .1;
 		this.opacityStep = .03;
 		this.state = {opacity:this.minOpacity}
-		
+
 	}
 
 	startFadeOut() {
@@ -91,7 +91,7 @@ class Dot extends Component {
 
 		return (
 			<circle id={this.props.id} cx={this.props.center.x} cy={this.props.center.y} r={this.props.radius} fill={this.props.fill}
-				 draggable={true} opacity={this.state.opacity} 
+				 draggable={true} opacity={this.state.opacity}
 				 onMouseDown={this.onMouseDown.bind(this)}
 				 cursor={this.props.clickable ? 'pointer' : 'default'}
 				 />
@@ -104,4 +104,3 @@ export default Dot;
 
 //need to find a way to have the dragged dot be on top of the spinline, but stationary dots be below
 //And also have dotviewer be on top of spinline
-

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import moment from 'moment'
+import moment from 'moment'
 import util from './utils.js'
 import PropTypes from 'prop-types';
 import Dot from './Dot.js';
@@ -22,7 +22,7 @@ class Dots extends Component {
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.view.dotsView.width !== this.state.width)
 			this.setState({width:nextProps.view.dotsView.width})
-		
+
 		if(nextProps.view.dotsView.height !== this.state.height)
 			this.setState({height:nextProps.view.dotsView.height})
 	}
@@ -32,11 +32,11 @@ class Dots extends Component {
 		/*setInterval(() => {
 			for(let i = 0; this.dotsObjs && i < this.dotsObjs.length; i++)
 				for(let j = 0; j < this.dotsObjs[i].length; j++)
-					
+
 		},4000)	*/
 	}
 
-	
+
 
 	//Make Dot Componenent so it can do its own opacity management
 	makeDot(dot) {
@@ -45,9 +45,9 @@ class Dots extends Component {
 		var angle = dot.startAngle + dot.angle;
 		var point = util.polarToCartesian(this.view.dots.center.x,this.view.dots.center.y,distanceFromCenter,angle);
 		if(!dot.r) dot.r = this.view.dots.radius;
-		
-		return <Dot id={dot.assignment.name+' '+dot.assignment.type+'outer'} center={point} radius={dot.r} fill={dot.color} 
-		onMouseDown={this.onMouseDownDot.bind(this)} 
+
+		return <Dot id={dot.assignment.name+' '+dot.assignment.type+'outer'} center={point} radius={dot.r} fill={dot.color}
+		onMouseDown={this.onMouseDownDot.bind(this)}
 		dot={dot}
 		intersectsLine={this.props.intersectsLine}
 		animateFades={true}
@@ -72,12 +72,12 @@ class Dots extends Component {
 				let distanceFromCenter = this.props.getDistanceFromCenter(assignment);
 				if(distanceFromCenter < -2) continue;
 				if(distanceFromCenter <= -1) continue;
-				
+
 				let color = 'white';
 				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
 					color = this.props.view.colors.typeColors[assignment.type];
 				this.dotsObjs[i].push({
-					key:(subjects[i].name+'/'+assignment.name+'/'+assignment.dueDate.format('YYYY-MM-DD HH:mm')),
+					key:(subjects[i].name+'/'+assignment.name+'/'+moment(assignment.dueDate).format('YYYY-MM-DD HH:mm')),
 					distanceFromCenter:distanceFromCenter,
 					radius:15,
 					startAngle:i*angle,
@@ -151,11 +151,11 @@ class Dots extends Component {
 		let rowAngles = [], step;
 		if(this.props.subjects.length > 1)
 			step = maxAngle / (row.length+1);
-		else 
+		else
 			step = maxAngle / (row.length);
 
 		//Fill an array of the angles that will be "claimed" by the dots in the row
-		for(var k = 0; k < row.length; k++) 
+		for(var k = 0; k < row.length; k++)
 			rowAngles.push((k+1)*step);
 		//if odd amount of dots, do first and then only worry about even
 		var rowAngleIndex, rowIndex, close = (row.length % 2 !== 0);
@@ -185,15 +185,15 @@ class Dots extends Component {
 
 	shuffleDots(dots) {
 		if(dots.length < 1) return;
-		
+
 		let rows = this.getDotRows(dots);
 
 		for(let i = 0; rows && i < rows.length; i++) {
 			let row = rows[i];
 			if(row.length === 0) continue;
-			
+
 			this.disperseRow(row,row[0].maxAngle);
-		
+
 		}
 	}
 
@@ -228,8 +228,8 @@ class Dots extends Component {
 		if(this.props.view.disable) return;
 		this.draggedDot = {
 			dot:e.target,
-			assignment:dotObj.assignment, 
-			moved:false, 
+			assignment:dotObj.assignment,
+			moved:false,
 			mousemove:this.onMouseMoveDot.bind(this),
 			mouseup:this.onMouseUpDot.bind(this),
 			onclick:this.onClickDot.bind(this),
@@ -297,4 +297,3 @@ export default Dots;
 
 //need to find a way to have the dragged dot be on top of the spinline, but stationary dots be below
 //And also have dotviewer be on top of spinline
-

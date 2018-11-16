@@ -1,5 +1,5 @@
 import * as types from './action_types.js';
-import {axios} from 'axios';
+import axios from 'axios';
 import {subjects} from '../fakeData.js';
 import {API_URL} from '../config/config';
 
@@ -14,17 +14,43 @@ export const initializeAssignments = (data) => {
 }
 
 /* retrieve assignment should call initialize assignment */
+
 export const retrieveAssignments = (data) => {
   return (dispatch) => {
-    return axios.get(API_URL + "/Subjects/getAll/" + data)
+    return axios.get(API_URL + '/Subjects/getAll/' + data)
     .then( response => {
-      dispatch(initializeAssignments(response.data))
+        if (response.data === "failed")
+        {
+          alert("Failed to retrieve name")
+        }
+        else {
+          dispatch(initializeAssignments(response.data))
+        }
     })
     .catch(error => {
-        alert("Failed to retrieve assignments")
+      alert("Failed to retrieve name. If this error persists, contact and administrator")
     })
   }
 }
+
+/*export const retrieveAssignments = (data) => {
+  return (dispatch) => {
+    return axios.get(API_URL + '/Subjects/getAll/' + data)
+    .then( response => {
+        if (response.data === "failed")
+        {
+          alert("Failed to retrieve name")
+        }
+        else {
+          dispatch(initializeAssignments(response.data))
+        }
+    })
+    .catch(error => {
+      alert("Failed to retrieve name. If this error persists, contact and administrator")
+    })
+  }*/
+
+
 
 export const updateAssignment = (data) => {
     return {
