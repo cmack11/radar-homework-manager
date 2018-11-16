@@ -24,4 +24,13 @@ HOW TO RUN MYSQL:
     The mySQL database files can be found in the DATABASE SETUP directory.
     Install mySQL
     Run the script “create.sql”
+    
+HOW TO BYPASS LOGIN : 
+    under src/actions/userAction there is a function called sendCredentials(data, success). Uncomment success() and    
+    comment out the alert. The code will look like this :
+    .......
+    .catch(error => {
+    success() 
+    /* alert("Login server error. If this problem persists, contact admisnistrator") */
+     })
 
