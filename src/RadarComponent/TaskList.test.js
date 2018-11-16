@@ -112,12 +112,38 @@ beforeAll(() => {
       );
         let instance = wrapper.instance();
         const original = {
+            subject: "Subject #1",
+            type: "assignment"
+        };
+        const rowInfo = {
+            original: {original}
+        };
+      expect(instance.getTrProps(null, rowInfo, null)).toMatchSnapshot();
+    });
+
+    it('TaskList: getTrProps with useTypeColors', () => {
+      const colors = {assignment: "blue"};
+      const wrapper = shallow(
+            <TaskList title={"TestTaskList"} visible={true} useTypeColors={true} assignments={fakeDataTasks} colors={colors}/>
+      );
+        let instance = wrapper.instance();
+        const original = {
             subject: "Subject #1"
         };
         const rowInfo = {
             original: {original}
         };
       expect(instance.getTrProps(null, rowInfo, null)).toMatchSnapshot();
+    });
+
+    it('TaskList: getTrProps with null rowInfo', () => {
+      const colors = {assignment: "blue"};
+      const wrapper = shallow(
+            <TaskList title={"TestTaskList"} visible={true} useTypeColors={true} assignments={fakeDataTasks} colors={colors}/>
+      );
+        let instance = wrapper.instance();
+
+      expect(instance.getTrProps(null, null, null)).toMatchSnapshot();
     });
   
     it('TaskList: getTdProps', () => {
@@ -135,6 +161,18 @@ beforeAll(() => {
               id: "type"
           };
         expect(instance.getTdProps(null, rowInfo, column, null)).toMatchSnapshot();
+      });
+
+      it('TaskList: getTdProps with null rowInfo', () => {
+        const wrapper = shallow(
+              <TaskList title={"TestTaskList"} visible={true} assignments={fakeDataTasks} />
+        );
+          let instance = wrapper.instance();
+
+          const column = {
+              id: "type"
+          };
+        expect(instance.getTdProps(null, null, column, null)).toMatchSnapshot();
       });
 
   })

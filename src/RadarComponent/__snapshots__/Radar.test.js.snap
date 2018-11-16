@@ -171,7 +171,7 @@ ShallowWrapper {
             />
           </svg>
           <image
-            height={115}
+            height={50}
             href="Overdue_button.png"
             onClick={[Function]}
             style={
@@ -179,9 +179,9 @@ ShallowWrapper {
                 "cursor": "pointer",
               }
             }
-            width={115}
+            width={50}
             x={10}
-            y={-440}
+            y={10}
           />
           <image
             height={50}
@@ -382,7 +382,7 @@ ShallowWrapper {
               />
             </svg>,
             <image
-              height={115}
+              height={50}
               href="Overdue_button.png"
               onClick={[Function]}
               style={
@@ -390,9 +390,9 @@ ShallowWrapper {
                   "cursor": "pointer",
                 }
               }
-              width={115}
+              width={50}
               x={10}
-              y={-440}
+              y={10}
             />,
             <image
               height={50}
@@ -649,15 +649,15 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "height": 115,
+              "height": 50,
               "href": "Overdue_button.png",
               "onClick": [Function],
               "style": Object {
                 "cursor": "pointer",
               },
-              "width": 115,
+              "width": 50,
               "x": 10,
-              "y": -440,
+              "y": 10,
             },
             "ref": null,
             "rendered": null,
@@ -895,7 +895,7 @@ ShallowWrapper {
               />
             </svg>
             <image
-              height={115}
+              height={50}
               href="Overdue_button.png"
               onClick={[Function]}
               style={
@@ -903,9 +903,9 @@ ShallowWrapper {
                   "cursor": "pointer",
                 }
               }
-              width={115}
+              width={50}
               x={10}
-              y={-440}
+              y={10}
             />
             <image
               height={50}
@@ -1106,7 +1106,7 @@ ShallowWrapper {
                 />
               </svg>,
               <image
-                height={115}
+                height={50}
                 href="Overdue_button.png"
                 onClick={[Function]}
                 style={
@@ -1114,9 +1114,9 @@ ShallowWrapper {
                     "cursor": "pointer",
                   }
                 }
-                width={115}
+                width={50}
                 x={10}
-                y={-440}
+                y={10}
               />,
               <image
                 height={50}
@@ -1373,15 +1373,15 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "height": 115,
+                "height": 50,
                 "href": "Overdue_button.png",
                 "onClick": [Function],
                 "style": Object {
                   "cursor": "pointer",
                 },
-                "width": 115,
+                "width": 50,
                 "x": 10,
-                "y": -440,
+                "y": 10,
               },
               "ref": null,
               "rendered": null,

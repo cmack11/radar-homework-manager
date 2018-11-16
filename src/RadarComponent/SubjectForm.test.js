@@ -41,3 +41,20 @@ describe('the handleSubmit funtion', () => {
   		expect(spy).toBeCalled();
    });
 })
+
+describe('isValid Check', () => {
+	
+	it('Check if valid input gets submitted', () => {
+		const wrapper = shallow(
+			<SubjectForm taskTypes={["assignment", "exam"]} subjectNames = {["sub1", "sub2"]} addSubject={() => {}}/>
+		);
+		let instance = wrapper.instance();
+		instance.state.subjectName = "NewSub";
+		instance.state.subjectDesc = "SOME DESC";
+		instance.state.defaultTaskType = "assignment";
+		instance.handleSubmit();
+		expect(wrapper).toMatchSnapshot();
+   });
+})
+
+//   {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
