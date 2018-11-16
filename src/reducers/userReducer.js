@@ -28,6 +28,8 @@ export default (state = initialState, action) => {
       ...state,
       user_id: action.payload.user_id,
      }
+   case types.REGISTER_USER:
+    return initialState
    case types.RESET_USER:
     return initialState
   default:

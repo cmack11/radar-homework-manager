@@ -36,6 +36,9 @@ class LoginPage extends Component {
     this.props.history.push('/')
   }
 
+  gotoSignup = () => {
+      this.props.history.push('/signup')
+  }
 render() {
   /* add required on input later on */
   return (
@@ -54,7 +57,11 @@ render() {
             </Form.Field>
             <Button primary className="login-button" type='submit' onClick={()=> {this.onLoginButtonPress()}}>Login</Button>
         </Form>
-          <p className="forgot-password">forgot password ?</p>
+          <div className="subtext-container">
+            <p className="subtext-login">forgot password ?</p>
+            <p className="subtext-divider">|</p>
+            <p className="subtext-login"  onClick={()=> {this.gotoSignup()}}>New user? sign up!</p>
+          </div>
       </div>
     </div>
   )

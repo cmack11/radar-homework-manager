@@ -28,6 +28,7 @@ import AccountSetting from './AccountSetting.js';
 import AdvancedSetting from './AdvancedSetting.js';
 import Help from './Help.js';
 import LoginPage from './LoginPage.js';
+import SignupPage from './SignupPage.js';
 
 import ico from './images/icon_alt.png';
 
@@ -164,7 +165,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {(this.state.sidebarAvailable == true) && (this.props.location.pathname !== '/login') && (this.renderSidebar())}
+        {(this.state.sidebarAvailable == true) && (this.props.location.pathname !== '/login') && (this.props.location.pathname !== '/signup') && (this.renderSidebar())}
         <div className="inner-content">
           <Switch onChange={this.onRouteChange}>
             <Route path='/' exact component={RadarMain} />s
@@ -172,6 +173,7 @@ class App extends Component {
             <Route path='/account' exact component={AccountSetting} />
             <Route path='/help' exact component={Help} />
             <Route path='/login' exact component={LoginPage} />
+            <Route path='/signup' exact component={SignupPage} />
           </Switch>
         </div>
       </div>

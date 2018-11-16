@@ -170,11 +170,26 @@ svg text#chk {
   height: 100%;
 }
 
-.forgot-password {
-  margin-top: 20px;
+.signup {
+  margin: 0 auto;
+  width: 40%;
+  margin-top: 5%;
+  padding: 20px 20px 20px 20px;
+  background-color: white;
+  height: auto;
+}
+.subtext-login {
   font-size: 12px;
   text-align: left !important;
-  cursor :default;
+  cursor : pointer;
+  margin-right: 20px;
+}
+
+.subtext-divider {
+  font-size: 12px;
+  text-align: left !important;
+  cursor : default;
+  margin-right: 20px;
 }
 
 .login input {
@@ -211,6 +226,11 @@ svg text#chk {
 
 .login-text {
   text-align: left;
+}
+
+.subtext-container {
+  display: flex;
+  flex-direction: row;
 }
 
 @keyframes App-logo-spin {

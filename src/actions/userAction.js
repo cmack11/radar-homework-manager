@@ -29,7 +29,7 @@ export const resetUser = () => dispatch => {
 
 export const sendCredentials= (data, success) => {
   return (dispatch) => {
-    return axios.post(API_URL,data)
+    return axios.post(API_URL + '/RadarUsers/login',data)
     .then( response => {
       console.log(response.data)
       if (response.data === "failed") {
@@ -53,11 +53,13 @@ export const registerUser = () => dispatch => {
  })
 }
 
-export const newUser = (data) => {
+export const newUser = (data, success) => {
   return (dispatch) => {
-    return axios.post(API_URL,data)
+    return axios.post(API_URL + '/RadarUsers/register',data)
     .then( response => {
-        dispatch(registerUser(response.data))
+        dispatch(registerUser())
+        success()
+        alert("You are signed up!")
     })
     .catch(error => {
       alert("Failed to register new user")

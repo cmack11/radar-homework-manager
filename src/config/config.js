@@ -1,1 +1,1 @@
-export const API_URL = "http://radar.shao11.com:4396/RadarUsers/login";
+export const API_URL = 'http://radar.shao11.com:4396'
