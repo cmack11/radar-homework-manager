@@ -5,6 +5,7 @@ import TaskList from './RadarComponent/TaskList.js'
 import closeIcon from './images/window_close.svg'
 import editIcon from './images/pencil_icon.svg'
 import checkmarkIcon from './images/checkmark_icon.png'
+import trashIcon from './images/trash_icon.png'
 
 
 
@@ -68,6 +69,13 @@ class SubjectPage extends Component {
 		this.props.subject.name = this.state.newSubjectName;
 		this.setState({editMode:false})
 	}
+
+	deleteSubject() {
+		let subject = this.props.subject;
+		if (window.confirm('Are you sure you wish to delete '+subject.name+'? This action will also delete all assignments associated with this subject and can not be undone')) {
+			//should delete the subject
+		}
+	}
 	
 
 	render() {
@@ -82,8 +90,11 @@ class SubjectPage extends Component {
 
 		let header;
 		if(this.state.editMode) {
-			header = (<div><input style={{verticalAlign:'middle',fontSize:'2.5vw'}} name="newSubjectName" type="text" value={this.state.newSubjectName} onChange={this.onChange.bind(this)}/>
-					  <img style={{verticalAlign:'middle',paddingLeft:5,cursor:'pointer'}} onClick={this.onSubmit.bind(this)} src={checkmarkIcon} height="100%" width="10%" /></div>);
+			header = (
+				<div>
+					<input style={{verticalAlign:'middle',fontSize:'2.5vw'}} name="newSubjectName" type="text" value={this.state.newSubjectName} onChange={this.onChange.bind(this)}/>
+					<img style={{verticalAlign:'middle',paddingLeft:5,cursor:'pointer'}} onClick={this.onSubmit.bind(this)} src={checkmarkIcon} height="100%" width="10%" />
+				</div>);
 		} else {
 			header = (<b style={{verticalAlign:'middle',fontSize:'28px'}}>
 		    	      		{subjectName}
@@ -111,7 +122,9 @@ class SubjectPage extends Component {
 	    	      <div style={{width:'50%',display:'inline-block'}}>
 	    	      	{header}
 	    	      </div>
-	    	      <div style={{width:'10%',display:'inline-block'}}></div>
+	    	      <div style={{width:'10%',display:'inline-block'}}>
+	    	      	<img style={{cursor:'pointer'}} onClick={this.deleteSubject.bind(this)} src={trashIcon} height="50%" width="50%" />
+	    	      </div>
 	    	    </div>
 	    		<TaskList 
 	    			hideSubjectCol

@@ -17,7 +17,7 @@ export const initializeUser = () => dispatch => {
  export const authenticateUser = (data) =>  {
    return {
      type: types.LOGIN_USER,
-     payload: data.data
+     payload: data
    }
  }
 
@@ -29,15 +29,40 @@ export const resetUser = () => dispatch => {
 
 export const sendCredentials= (data, success) => {
   return (dispatch) => {
-    return axios.post(API_URL+"/login",data)
+    return axios.post(API_URL + '/RadarUsers/login',data)
     .then( response => {
-      dispatch(authenticateUser(response.data))
-      success()
+      console.log(response.data)
+      if (response.data === "failed") {
+        alert("Login failed")
+      }
+      else {
+        dispatch(authenticateUser(response.data))
+        success()
+      }
     })
     .catch(error => {
-      /* alert("Login failed") */
-      success()
+      alert("Login server error. If this problem persists, contact admisnistrator")
     })
   }
 
+}
+
+export const registerUser = () => dispatch => {
+ dispatch({
+  type: types.REGISTER_USER
+ })
+}
+
+export const newUser = (data, success) => {
+  return (dispatch) => {
+    return axios.post(API_URL + '/RadarUsers/register',data)
+    .then( response => {
+        dispatch(registerUser())
+        success()
+        alert("You are signed up!")
+    })
+    .catch(error => {
+      alert("Failed to register new user")
+    })
+  }
 }
