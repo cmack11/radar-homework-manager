@@ -45,14 +45,8 @@ export class TaskForm extends React.Component {
   }
 
   getEditState() {
-<<<<<<< HEAD
-      let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
-      {taskname: this.props.assignment.name, taskDesc: this.props.assignment.description,
-taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
-=======
       let defaultState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
 taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.dueDate), subject: this.props.assignment.subject, focused:false};
->>>>>>> 0d1a90dceee7a189f19ceeef86a7eba707d2c867
       console.log(defaultState);
       return defaultState;
   }
@@ -90,26 +84,26 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
         type:this.state.taskType,
         dudeDate:this.state.taskDueDate,
         subject_id : this.props.subjects.filter(sub => sub.name.toLowerCase() == subject.toLowerCase())[0].subject_id,
+        user_id : this.state.id
         }
 
     console.log("New subject is " + JSON.stringify(d))
 
     this.props.newAssignment(d)
 
-      this.setState(this.getDefaultState());
+    this.setState(this.getDefaultState());
 
       if(this.props.closeForm)
         this.props.closeForm();
   }
+}
 
   allValid() {
-    if(!this.state.taskName || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
+    if(this.state.taskName == "" || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
       this.setState({taskNameError:true});
       return false;
     }
-
-
-    return true;
+    return true
   }
 
   render() {
