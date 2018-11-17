@@ -13,7 +13,7 @@ import completedButton from '../images/completed_button.png'
 import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
 import closeHistoryButton from '../images/history_button_close.png'
-
+import closeOverdueButton from '../images/overdue_button_close.png'
 
 
 
@@ -385,7 +385,7 @@ class Radar extends Component {
 
 	openOverdueScreen() {
 		let buttons = this.state.buttons;
-		buttons.overdue.logo = closeHistoryButton;
+		buttons.overdue.logo = closeOverdueButton;
 		console.log('ran part of openoverdue screen');
 		this.props.runRadarScreenOpenCloseFunction('openOverdueScreen');
 		this.setState({buttons:buttons})
