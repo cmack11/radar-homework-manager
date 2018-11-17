@@ -398,10 +398,9 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 	
-	editButtonClick(dot) {
-		this.props.openEditForm(dot);
+	editButtonClick(assignment) {
+		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
-	
 
 	closeDotViewer() {
 		this.setState({clickedDot:null})
@@ -421,7 +420,7 @@ class Radar extends Component {
 		
 		intersectFuncs.push({
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
-			func:(dot)=>{this.editButtonClick(dot)}
+			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
 		
 		let overdueForm = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
