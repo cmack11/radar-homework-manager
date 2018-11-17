@@ -1,24 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, addSubject } from '../actions/assignmentAction.js';
+import { retrieveAssignments, newSubject } from '../actions/assignmentAction.js';
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: () => dispatch(retrieveAssignments()),
- addSubject: (subject) => dispatch(addSubject(subject))
+ retrieveAssignments: (id) => dispatch(retrieveAssignments(id)),
+ newSubject: (subject) => dispatch(newSubject(subject))
 })
 
 const mapStateToProps = state => {
     console.log("Map :"+ JSON.stringify(state));
     return {
-      /* map this later
-      name:"",
-      color:"",
-      assignments:[],
-      */
+      id: state.user.user_id,
     }
   }
 
@@ -60,8 +56,22 @@ export class SubjectForm extends React.Component {
 
     if(!this.allValid()) return;
 
-    this.props.addSubject(
-      {name:this.state.subjectName, color:color, assignments:[], description:this.state.subjectDesc, defaultType:this.state.defaultTaskType});
+    let d = {
+      name:this.state.subjectName,
+      color:color,
+      description:this.state.subjectDesc,
+      primary_type:this.state.defaultTaskType,
+      user_id : this.props.id,
+    }
+
+    console.log("params in subject form " + this.state.subjectName)
+    console.log("params in subject form " + color)
+    console.log("params in subject form " + this.state.subjectDesc)
+    console.log("params in subject form " + this.state.defaultTaskType)
+    console.log("params in subject form " + this.props.id)
+
+    this.props.newSubject(d)
+
 
     this.setState(this.getDefaultState())
     if(this.props.closeForm)
