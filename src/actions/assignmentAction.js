@@ -33,24 +33,6 @@ export const retrieveAssignments = (data) => {
   }
 }
 
-/*export const retrieveAssignments = (data) => {
-  return (dispatch) => {
-    return axios.get(API_URL + '/Subjects/getAll/' + data)
-    .then( response => {
-        if (response.data === "failed")
-        {
-          alert("Failed to retrieve name")
-        }
-        else {
-          dispatch(initializeAssignments(response.data))
-        }
-    })
-    .catch(error => {
-      alert("Failed to retrieve name. If this error persists, contact and administrator")
-    })
-  }*/
-
-
 
 export const updateAssignment = (data) => {
     return {
@@ -88,9 +70,16 @@ export const addAssignment = (data) => {
   }
 }
 
-export const newAssignment = (data) => {
+export const newAssignment = (data, name) => {
+  let sub_id
+  this.state.subjects.map((el, index)=> {
+    if (el.name === name){
+      sub_id = el.subject_id
+    }
+  });
+  data.subject_id = sub_id
   return (dispatch) => {
-    return axios.post(API_URL,data)
+    return axios.post(API_URL + '/Tasks/addA',data)
     .then( response => {
       dispatch(addAssignment(response.data))
     })
@@ -102,23 +91,28 @@ export const newAssignment = (data) => {
 /* ADD ASSIGNMENT */
 
 /* ADD SUBJECT */
-export const addSubject = (data) => {
+export const addSubject = (data) => dispatch => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
-      subject : data,
+      subjects : data,
     }
   }
 }
 
 export const newSubject = (data) => {
   return (dispatch) => {
-    return axios.post(API_URL, data)
+    return axios.post(API_URL + '/Subjects/addSubject',data)
     .then( response => {
-      dispatch(addSubject(response.data))
+      if (response.data === "failed") {
+        alert("Adding failed")
+      }
+      else {
+        dispatch(addSubject(response.data))
+      }
     })
     .catch(error => {
-      alert("Fail to create new subject")
+      alert("Server error")
     })
   }
 }

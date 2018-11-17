@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, addAssignment } from '../actions/assignmentAction.js';
+import { retrieveAssignments, newAssignment } from '../actions/assignmentAction.js';
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,17 +12,12 @@ import { IconContext } from 'react-icons';
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
- addAssignment: (assignment, subject) => dispatch(addAssignment(assignment, subject)),
+ newAssignment: (data) => dispatch(newAssignment(data)),
 })
 
 const mapStateToProps = state => {
-    console.log("Map :"+ JSON.stringify(state));
     return {
-      /* map this later
-      name:"",
-      color:"",
-      assignments:[],
-      */
+      id: state.user.user_id,
     }
   }
 
@@ -80,9 +75,17 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
     if (subject === '')
       subject = this.props.subjectNames[0];
 
-    this.props.addAssignment(
-      {subject:subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
-      subject);
+
+
+    let d ={
+        name:this.state.taskName,
+        description:this.state.taskDesc,
+        type:this.state.taskType,
+        dueDate:this.state.taskDueDate,
+        }
+
+    this.props.newAssignment(d, subject)
+
       this.setState(this.getDefaultState());
       if(this.props.closeForm)
         this.props.closeForm();

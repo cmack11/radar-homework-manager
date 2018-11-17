@@ -6,6 +6,7 @@ let initialState = {
 }
 export default (state = initialState, action) => {
   console.log(state);
+  let newSubjects
  switch (action.type) {
   case types.INITIALIZE_ASSIGNMENTS:
    return {
@@ -18,22 +19,14 @@ export default (state = initialState, action) => {
       subjects : action.payload.subjects
     }
     case types.ADD_ASSIGNMENT :
-      let newSubjects = state.subjects.slice();
-      newSubjects.map((el, index)=> {
-        if (el.name === action.payload.subject){
-          el.assignments.push(action.payload.assignment)
-        }
-      });
       return {
         ...state,
-        subjects:newSubjects
+        subjects:action.payload.subjects,
       };
     case types.ADD_SUBJECT :
-      let newSubjs = state.subjects.slice();
-      newSubjs.push(action.payload.subject);
       return {
         ...state,
-        subjects:newSubjs
+        subjects : action.payload.subjects
       };
 
   default:
