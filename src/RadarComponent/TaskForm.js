@@ -50,7 +50,7 @@ export class TaskForm extends React.Component {
 
   getEditState() {
       let defaultState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
-taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
+taskType: this.props.assignment.type, taskDueDate: '' /*this.props.assignment.dueDate*/, subject: this.props.assignment.subject, focused:false};
       console.log(defaultState);
       return defaultState;
   }

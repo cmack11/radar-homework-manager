@@ -149,6 +149,10 @@ class RadarScreen extends Component {
 			showAddForm:true,
 		});
 		this.closeHistoryScreen();
+		this.runRadarOpenCloseFunction('closeHistoryScreen');
+		this.closeOverdueScreen();
+		this.runRadarOpenCloseFunction('closeOverdueScreen');
+		this.closeEditForm();
 		this.closeSubjectPage();
 		this.setRadarClickable(false);
 	}
@@ -165,6 +169,10 @@ class RadarScreen extends Component {
 		historyScreen.show = true;
 		this.setState({historyScreen:historyScreen});
 		this.closeAddForm();
+		this.runRadarOpenCloseFunction('closeAddForm');
+		this.closeEditForm();
+		this.closeOverdueScreen();
+		this.runRadarOpenCloseFunction('closeOverdueScreen');
 		this.closeSubjectPage();
 		this.setRadarClickable(false);
 	}
@@ -182,6 +190,10 @@ class RadarScreen extends Component {
 		overdueScreen.show = true;
 		this.setState({overdueScreen:overdueScreen});
 		this.closeAddForm();
+		this.runRadarOpenCloseFunction('closeAddForm');
+		this.closeHistoryScreen();
+		this.runRadarOpenCloseFunction('closeHistoryScreen');
+		this.closeEditForm();
 		this.closeSubjectPage();
 		this.setRadarClickable(false);
 	}
@@ -201,7 +213,12 @@ class RadarScreen extends Component {
 		this.setState({
 			editForm: <TaskForm taskTypes={taskTypes} subjectNames={subjectNames} closeForm={this.closeEditForm.bind(this)} show={true} isEditForm={true} assignment={assignment}/>,
 		});
+		this.closeAddForm();
+		this.runRadarOpenCloseFunction('closeAddForm');
+		this.closeOverdueScreen();
+		this.runRadarOpenCloseFunction('closeOverdueScreen');
 		this.closeHistoryScreen();
+		this.runRadarOpenCloseFunction('closeHistoryScreen');
 		this.closeSubjectPage();
 		this.setRadarClickable(false);
 	}
@@ -252,7 +269,9 @@ class RadarScreen extends Component {
 		this.runRadarOpenCloseFunction('closeHistoryScreen');
 		this.closeAddForm();
 		this.runRadarOpenCloseFunction('closeAddForm');
-		
+		this.closeOverdueScreen();
+		this.runRadarOpenCloseFunction('closeOverdueScreen');
+		this.closeEditForm();
 		this.setState({subjectViewer:subjectViewer});
 		this.setRadarClickable(false);
 	}
