@@ -117,7 +117,7 @@ export class DotViewer extends Component {
 						</div>
 					</div>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<div style={{cursor:'pointer'}} onClick={()=>{}} height="100%" width="100%">
+						<div style={{cursor:'pointer'}} onClick={this.props.edit} height="100%" width="100%">
 							<IconContext.Provider value={{size:25}}>
 								<MdModeEdit />
 							</IconContext.Provider>

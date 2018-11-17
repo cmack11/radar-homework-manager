@@ -454,7 +454,7 @@ class Radar extends Component {
 				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={()=>{}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={() => {this.editButtonClick(this.state.clickedDot.assignment)}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
 		</div>
     )
   }
