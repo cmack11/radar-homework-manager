@@ -15,6 +15,7 @@ const mapStateToProps = state => {
     console.log("Map :"+ JSON.stringify(state));
     return {
       id: state.user.user_id,
+      assignmentData : state.assignment.subjects
     }
   }
 
@@ -71,7 +72,7 @@ export class SubjectForm extends React.Component {
     console.log("params in subject form " + this.props.id)
 
     this.props.newSubject(d)
-
+    console.log("Assignment data after sub form" + JSON.stringify(this.props.assignmentData))
 
     this.setState(this.getDefaultState())
     if(this.props.closeForm)

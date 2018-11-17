@@ -70,17 +70,11 @@ export const addAssignment = (data) => {
   }
 }
 
-export const newAssignment = (data, name) => {
-  let sub_id
-  this.state.subjects.map((el, index)=> {
-    if (el.name === name){
-      sub_id = el.subject_id
-    }
-  });
-  data.subject_id = sub_id
+export const newAssignment = (data) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/addA',data)
     .then( response => {
+      console.log("NEW ASSIGNMENT IS " + JSON.stringify(response.data))
       dispatch(addAssignment(response.data))
     })
     .catch(error => {
@@ -91,7 +85,7 @@ export const newAssignment = (data, name) => {
 /* ADD ASSIGNMENT */
 
 /* ADD SUBJECT */
-export const addSubject = (data) => dispatch => {
+export const addSubject = (data) => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
@@ -108,6 +102,7 @@ export const newSubject = (data) => {
         alert("Adding failed")
       }
       else {
+        console.log("new subject" + JSON.stringify(response.data) )
         dispatch(addSubject(response.data))
       }
     })
