@@ -386,7 +386,6 @@ class Radar extends Component {
 	openOverdueScreen() {
 		let buttons = this.state.buttons;
 		buttons.overdue.logo = closeOverdueButton;
-		console.log('ran part of openoverdue screen');
 		this.props.runRadarScreenOpenCloseFunction('openOverdueScreen');
 		this.setState({buttons:buttons})
 	}
