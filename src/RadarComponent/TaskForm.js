@@ -44,7 +44,7 @@ export class TaskForm extends React.Component {
   }
 
   getDefaultState() {
-    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
+    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: '', focused:false};
     return defaultState;
   }
 
@@ -76,10 +76,13 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
   handleSubmit(event) {
 
     if(!this.allValid()) return;
+    let subject = this.state.subject;
+    if (subject === '')
+      subject = this.props.subjectNames[0];
 
     this.props.addAssignment(
-      {subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
-      this.state.subject);
+      {subject:subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
+      subject);
       this.setState(this.getDefaultState());
       if(this.props.closeForm)
         this.props.closeForm();

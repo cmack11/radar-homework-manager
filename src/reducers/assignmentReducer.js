@@ -1,5 +1,4 @@
 import * as types from '../actions/action_types.js';
-import {axios} from 'axios';
 
 
 let initialState = {

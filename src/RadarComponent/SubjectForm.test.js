@@ -21,7 +21,7 @@ const event = {
 describe('the handleChange funtion', () => {
 	
 	it('should call handleChange', () => {
-  		const component = shallow(<SubjectForm subjectNames={[]} taskTypes={[]} addSubject={()=>{}}/>,);
+  		const component = shallow(<SubjectForm subjectNames={[]} taskTypes={[]} addSubject={()=>{}}/>);
 		const spy = jest.spyOn(component.instance(),'handleChange');
   	
   		component.instance().handleChange(event);
@@ -33,7 +33,7 @@ describe('the handleChange funtion', () => {
 describe('the handleSubmit funtion', () => {
 	
 	it('should call handleSubmit', () => {
-  		const component = shallow(<SubjectForm subjectNames={[]} taskTypes={[]} addSubject={()=>{}}/>,);
+  		const component = shallow(<SubjectForm subjectNames={[]} taskTypes={[]} addSubject={()=>{}}/>);
 		const spy = jest.spyOn(component.instance(),'handleSubmit');
   	
   		component.instance().handleSubmit(event);

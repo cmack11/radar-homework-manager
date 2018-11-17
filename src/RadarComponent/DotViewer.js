@@ -6,6 +6,7 @@ import { MdClose } from 'react-icons/md'
 import { MdCheck } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import { removeSubject, completeAssignment } from '../actions/assignmentAction.js'
+import moment from 'moment'
 
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +21,7 @@ const mapStateToProps = state => {
 		}
 	}
 
-class DotViewer extends Component {
+export class DotViewer extends Component {
 	constructor(props) {
 		super();
 	}
@@ -94,7 +95,7 @@ class DotViewer extends Component {
 		let date = '', name = '', type = '';
 		if(assignment) {
 			name = assignment.name;
-			date = ' ' + assignment.dueDate.format('MMMM Do YYYY, h:mm a');
+			date = ' ' + moment(assignment.dueDate).format('MMMM Do YYYY, h:mm a');
 			type = ' ' + assignment.type;
 		}
 

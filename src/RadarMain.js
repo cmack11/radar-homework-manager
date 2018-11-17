@@ -17,7 +17,7 @@ import './App.css';
 
 const mapDispatchToProps = dispatch => ({
  initializeUser: () => dispatch(initializeUser()),
- retrieveAssignments : (id) => dispatch(retrieveAssignments(id))
+ retrieveAssignments : (data) => dispatch(retrieveAssignments(data)),
 })
 
 const mapStateToProps = state => {
@@ -38,18 +38,14 @@ class App extends Component {
       startDate: moment(),
       endDate: moment().add(7,'days'),
     };
-    this.props.initializeUser()
-    this._assignmentUpdated = false
-
-  }
-
-
-  componentDidUpdate() {
-    if(this.props.id != -1 && !this._assignmentUpdated) {
+    if(this.props.id != -1) {
       console.log("Before init assignment " + this.props.id)
       this.props.retrieveAssignments(this.props.id);
-      this._assignmentUpdated = true
     }
+  }
+
+  componentDidUpdate() {
+
 
   }
 
@@ -60,7 +56,6 @@ class App extends Component {
         subjects={this.props.assignmentData}
         dates={{today:this.state.startDate, end:this.state.endDate}}
         view={{height:window.innerHeight,width:window.innerWidth, colors:colors1}}/>
-
 
     );
   }
