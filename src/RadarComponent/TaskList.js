@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import {subjects1} from '../fakeData.js'
+import moment from 'moment';
 
 /*
 TaskList props:
@@ -18,7 +19,7 @@ TaskList props:
 const padding = 0;
 const dateCompare = function(a,b) {
     //console.log(a.dueDate.valueOf() - b.dueDate.valueOf());
-    return a.dueDate.valueOf() - b.dueDate.valueOf();
+    return moment(a.dueDate).valueOf() - moment(b.dueDate).valueOf();
 }
 
 class TaskList extends React.Component {
@@ -114,7 +115,7 @@ class TaskList extends React.Component {
         {
             Header: 'Due Date',
             accessor: 'dueDate',
-            Cell: props => <span className='dueDate'>{props.value.format("MM/DD/YYYY")}</span>
+            Cell: props => <span className='dueDate'>{moment(props.value).format("MM/DD/YYYY")}</span>
         },
     ]);
     if (this.props.showCompleteButton)

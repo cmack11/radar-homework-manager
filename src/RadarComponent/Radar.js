@@ -211,7 +211,7 @@ class Radar extends Component {
 
 	getDistanceFromCenter(assignment) {
 		if(!assignment) return 0;
-		let date = assignment.dueDate;
+		let date = moment(assignment.dueDate);
 		if(!date) return 0;
 
 		let percent = this.scaleTimeToPercent(date);
