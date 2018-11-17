@@ -13,7 +13,7 @@ import completedButton from '../images/completed_button.png'
 import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
 import closeHistoryButton from '../images/history_button_close.png'
-
+import closeOverdueButton from '../images/overdue_button_close.png'
 
 
 
@@ -385,7 +385,7 @@ class Radar extends Component {
 
 	openOverdueScreen() {
 		let buttons = this.state.buttons;
-		buttons.overdue.logo = closeHistoryButton;
+		buttons.overdue.logo = closeOverdueButton;
 		console.log('ran part of openoverdue screen');
 		this.props.runRadarScreenOpenCloseFunction('openOverdueScreen');
 		this.setState({buttons:buttons})
@@ -398,10 +398,9 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 	
-	editButtonClick(dot) {
-		this.props.openEditForm(dot);
+	editButtonClick(assignment) {
+		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
-	
 
 	closeDotViewer() {
 		this.setState({clickedDot:null})
@@ -421,7 +420,7 @@ class Radar extends Component {
 		
 		intersectFuncs.push({
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
-			func:(dot)=>{this.editButtonClick(dot)}
+			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
 		
 		let overdueForm = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
@@ -455,7 +454,7 @@ class Radar extends Component {
 				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={()=>{}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={() => {this.editButtonClick(this.state.clickedDot.assignment)}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
 		</div>
     )
   }

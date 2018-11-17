@@ -59,8 +59,6 @@ class RadarScreen extends Component {
 				colors:props.view.colors,
 				disable:false
 			},
-			editDot:{},
-			isEditForm: false,
 		}
 
 		this.state = state;
@@ -83,6 +81,7 @@ class RadarScreen extends Component {
 		this.radarScreenOpenCloseFunctions = {
 			openAddForm:this.openAddForm.bind(this),
 			closeAddForm:this.closeAddForm.bind(this),
+			openEditForm:this.openEditForm.bind(this),
 			openHistoryScreen:this.openHistoryScreen.bind(this),
 			closeHistoryScreen:this.closeHistoryScreen.bind(this),
 			openOverdueScreen:this.openOverdueScreen.bind(this),
@@ -193,6 +192,26 @@ class RadarScreen extends Component {
 		this.setState({overdueScreen:overdueScreen});
 		this.setRadarClickable(true);
 	}
+	
+	openEditForm(assignment) {
+		let subjectNames = [];
+		this.props.subjects.map((obj)=> {subjectNames.push(obj.name);})
+		let taskTypes = ["Assignment","Exam","Reading","Problem Set"];
+		
+		this.setState({
+			editForm: <TaskForm taskTypes={taskTypes} subjectNames={subjectNames} closeForm={this.closeEditForm.bind(this)} show={true} isEditForm={true} assignment={assignment}/>,
+		});
+		this.closeHistoryScreen();
+		this.closeSubjectPage();
+		this.setRadarClickable(false);
+	}
+	
+	closeEditForm() {
+		this.setState({
+			editForm: null
+		});
+		this.setRadarClickable(true);
+	}
 
 	setRadarClickable(clickable) {
 		let rView = this.state.radarView;
@@ -246,14 +265,6 @@ class RadarScreen extends Component {
 		this.setState({subjectViewer:subjectViewer});
 		this.setRadarClickable(true);
 	}
-	
-	openEditForm(dot) {
-		this.setState({showEditForm: true, editDot: dot, isEditForm: true});
-	}
-	
-	closeEditForm() {
-		this.setState({showEditForm: false, editDot: null, isEditForm: false})
-	}
 
 	render() {
 	if(!this.props.show) return null;
@@ -264,8 +275,6 @@ class RadarScreen extends Component {
 	})
 
 	let taskTypes = ["Assignment","Exam","Reading","Problem Set"]; 
-	
-	let form = <TaskForm taskTypes={taskTypes} subjectNames={subjectNames} closeform={this.closeEditForm.bind(this)} show={this.state.showEditForm} isEditForm={this.state.isEditForm} assignment={this.state.editDot.assignment}/>;
 	
     return (
     	<div id= 'radarScreen' className='radar-screen'>
@@ -299,8 +308,7 @@ class RadarScreen extends Component {
     			<Radar subjects={this.props.subjects} dates={this.state.dates} view={this.state.radarView} 
     			completeAssignment={this.completeAssignment.bind(this)}
     			setRadarOpenCloseFunctions={this.setRadarOpenCloseFunctions.bind(this)}
-    			runRadarScreenOpenCloseFunction={this.runRadarScreenOpenCloseFunction.bind(this)}
-    			openEditForm={this.openEditForm.bind(this)}/>
+    			runRadarScreenOpenCloseFunction={this.runRadarScreenOpenCloseFunction.bind(this)}/>
 		    	<AddForm taskTypes={taskTypes} subjectNames={subjectNames} show={this.state.showAddForm} closeForm={()=>{this.closeAddForm.bind(this);this.runRadarOpenCloseFunction('closeAddForm')}}/>
 		    	<HistoryPage x={this.state.view.width/2} y={this.state.view.height/2} 
 		    		completedAssignments={this.state.historyScreen.completedAssignments}
@@ -314,7 +322,7 @@ class RadarScreen extends Component {
 		    		show={this.state.overdueScreen.show}
 		    		colors={this.state.overdueScreen.colors}
 		    		/>
-		    	{/*form*/}
+		    	{this.state.editForm}
 		    	<SubjectPage x={this.state.view.width/2} y={this.state.view.height/2} 
 		    		subject={this.state.subjectViewer.subject}
 		    		close={()=>{this.runRadarScreenOpenCloseFunction('closeSubjectPage')}}
