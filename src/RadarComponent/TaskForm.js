@@ -44,8 +44,7 @@ export class TaskForm extends React.Component {
   }
 
   getEditState() {
-      let defaultState = //{taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: 'Subject #1', focused:false};
-      {taskname: this.props.assignment.name, taskDesc: this.props.assignment.description,
+      let defaultState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
 taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate, subject: this.props.assignment.subject, focused:false};
       console.log(defaultState);
       return defaultState;
@@ -68,10 +67,10 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
     });
   }
 
-  handleSubmit(event) {
+   handleSubmit(event) {
 
     if(!this.allValid()) return;
-    let subject = this.state.subject;
+	 let subject = this.state.subject;
     if (subject === '')
       subject = this.props.subjectNames[0];
 
@@ -88,7 +87,15 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
 
       this.setState(this.getDefaultState());
       if(this.props.closeForm)
-        this.props.closeForm();
+      this.props.closeForm();	
+	 }else{
+    	this.props.addAssignment(
+      	{subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
+      	this.state.subject);
+      	this.setState(this.getDefaultState());
+      	if(this.props.closeForm)
+        		this.props.closeForm();
+    }
   }
 
   allValid() {
@@ -96,7 +103,6 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
       this.setState({taskNameError:true});
       return false;
     }
-
 
     return true;
   }
@@ -116,16 +122,26 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
       taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
     }
 
-    return (
+    let formName = <b>Add Task</b>;
+    let buttonName = <b>Submit</b>;
+    let switchForm = <div className="switch-icon" onClick={this.props.switchForm}>
+              			<IconContext.Provider value={{size:20}}>
+                		<MdRepeat />
+              			</IconContext.Provider>
+            			</div>;
+
+    if(this.props.isEditForm) {
+    	formName = <b>Edit Task</b>;
+		buttonName = <b>Save Changes</b>;
+      switchForm = null;
+    }
+
+    	 return (
       <div className="subject-task-form">
       <Form >
         <div className="subject-title-container">
-            <b>Add Task</b>
-            <div className="switch-icon" onClick={this.props.switchForm}>
-              <IconContext.Provider value={{size:20}}>
-                <MdRepeat />
-              </IconContext.Provider>
-            </div>
+            {formName}
+            {switchForm}
         </div>
         <Form.Field className='form-fields'>
           <label className="label-text label-center">Name</label>
@@ -162,7 +178,8 @@ taskType: this.props.assignment.type, taskDueDate: this.props.assignment.dueDate
               showDisabledMonthNavigation
           />
         </Form.Field>
-        <Button primary type="button" value="Submit" onClick={this.handleSubmit}>Submit</Button>
+        <Button primary type="button" value="submit" onClick={this.handleSubmit}> {buttonName}
+        </Button>
       </Form>
       </div>
     );
