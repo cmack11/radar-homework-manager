@@ -63,16 +63,21 @@ class DraggedDot extends Component {
 	mouseMove(e) {
 		this.pauseEvent(e)
 		let dotsGroup = document.getElementById('dotsGroup');
-		dotsGroup.insertBefore(this.props.dot.dot,null);
+		if(dotsGroup)
+			dotsGroup.insertBefore(this.props.dot.dot,null);
 
 		let top = document.getElementById('radarScreen');
-		let rect = top.getBoundingClientRect();
-
-		let style = top.currentStyle || window.getComputedStyle(top);
-		let yOffset = rect.height+parseInt(style.getPropertyValue('margin-top'));
-		let x = e.clientX;
-		let y = e.clientY-yOffset;
-		this.setState({point:{x:x,y:y}})
+		if(top) {
+			let rect = top.getBoundingClientRect();
+			
+			let style = top.currentStyle || window.getComputedStyle(top);
+			let yOffset = rect.height+parseInt(style.getPropertyValue('margin-top'));
+			let x = e.clientX;
+			let y = e.clientY-yOffset;
+			this.setState({point:{x:x,y:y}})
+		} else {
+			this.setState({point:{x:-1,y:-1}})
+		}
 	}
 
 
