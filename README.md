@@ -40,10 +40,11 @@ NOTICE: The backend tests only work when the API Server is online.
 ## Others
 
 ### How To Bypass Login: 
-Under `src/actions/userAction` there is a function called `sendCredentials(data, success)`. Uncomment `success()` and comment out the alert. The code will look like this :
+Under `src/actions/userAction` there is a function called `sendCredentials(data, success)`. Uncomment `success()` and comment out the alert. The code will look like this :  
+
     .......
     .catch(error => {
     success() 
     /* alert("Login server error. If this problem persists, contact admisnistrator") */
-     })
+    })
 
