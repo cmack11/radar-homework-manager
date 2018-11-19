@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, newAssignment } from '../actions/assignmentAction.js';
+import { retrieveAssignments, newAssignment, editAssignment } from '../actions/assignmentAction.js';
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,7 +12,8 @@ import { IconContext } from 'react-icons';
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: () => dispatch(retrieveAssignments()),
- newAssignment: (data) => dispatch(newAssignment(data)),
+ newAssignment: (name,description,type,dueDate, subject_id, user_id) => dispatch(newAssignment(name,description,type,dueDate, subject_id, user_id)),
+ editAssignment: (newAssignment) => dispatch(editAssignment(newAssignment)),
 })
 
 const mapStateToProps = state => {
@@ -47,7 +48,6 @@ export class TaskForm extends React.Component {
   getEditState() {
       let defaultState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
 taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.dueDate), subject: this.props.assignment.subject, focused:false};
-      console.log(defaultState);
       return defaultState;
   }
 
@@ -69,37 +69,65 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
   }
 
   handleSubmit(event) {
-
     if(!this.allValid()) return;
+
     let subject = this.state.subject;
-    if (subject === '')
+    if (!subject || subject === '')
       subject = this.props.subjectNames[0];
 
 
-	if(this.props.isEditForm){
+	if(!this.props.isEditForm){
 
     let d ={
         name:this.state.taskName,
         description:this.state.taskDesc,
         type:this.state.taskType,
-        dudeDate:this.state.taskDueDate,
-        subject_id : this.props.subjects.filter(sub => sub.name.toLowerCase() == subject.toLowerCase())[0].subject_id,
-        user_id : this.state.id
+        dueDate:this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS'),
+        subject_id : this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
+        user_id : this.props.id
         }
-
-    console.log("New subject is " + JSON.stringify(d))
-
-    this.props.newAssignment(d)
+    console.log(d)
+    this.props.newAssignment(this.state.taskName,
+                              this.state.taskDesc,
+                              this.state.taskType,
+                              this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS'),
+                              this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
+                              this.props.id)
 
     this.setState(this.getDefaultState());
+  } else {
 
-      if(this.props.closeForm)
-        this.props.closeForm();
+    let assignment = this.props.assignment;
+    assignment.name = this.state.taskName;
+    assignment.description = this.state.taskDesc;
+    assignment.type = this.state.taskType;
+    assignment.dueDate = this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS')
+    console.log(this.props.subjects)
+    console.log(assignment)
+
+    let subject_id;
+    for(let i = 0; i < this.props.subjects.length && !subject_id; i++) {
+      let s = this.props.subjects[i];
+      for(let j = 0; j < s.assignments.length && !subject_id; j++) {
+        let a = s.assignments[j];
+        if(a.task_id === assignment.task_id)
+          subject_id = s.subject_id;
+      }
+    }
+
+    let user_id = this.props.id;
+
+    this.props.editAssignment(assignment,subject_id,user_id);
+
+    this.setState(this.getDefaultState());
   }
+
+  if(this.props.closeForm)
+    this.props.closeForm();
 }
 
   allValid() {
-    if(this.state.taskName == "" || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
+    if(this.state.taskName === "" || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
       this.setState({taskNameError:true});
       return false;
     }
@@ -121,16 +149,26 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
     }
 
+    let formName = <b>Add Task</b>;
+    let buttonName = <b>Submit</b>;
+    let switchForm =  <div className="switch-icon" onClick={this.props.switchForm}>
+                        <IconContext.Provider value={{size:20}}>
+                          <MdRepeat />
+                        </IconContext.Provider>
+                      </div>;
+
+     if(this.props.isEditForm) {
+      formName = <b>Edit Task</b>;
+      buttonName = <b>Save Changes</b>;
+      switchForm = null;
+    }
+
     return (
       <div className="subject-task-form">
       <Form >
         <div className="subject-title-container">
-            <b>Add Task</b>
-            <div className="switch-icon" onClick={this.props.switchForm}>
-              <IconContext.Provider value={{size:20}}>
-                <MdRepeat />
-              </IconContext.Provider>
-            </div>
+            {formName}
+            {switchForm}            
         </div>
         <Form.Field className='form-fields'>
           <label className="label-text label-center">Name</label>
@@ -158,7 +196,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
               selected={this.state.taskDueDate}
               onChange={(date)=>{this.setState({taskDueDate:date})}}
               showTimeSelect
-              timeIntervals={15}
+              timeIntervals={1}
               dateFormat="M/D/YYYY [at] h:mm A"
               timeCaption="Time"
               shouldCloseOnSelect={true}
@@ -167,7 +205,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
               showDisabledMonthNavigation
           />
         </Form.Field>
-        <Button primary type="button" value="Submit" onClick={this.handleSubmit}>Submit</Button>
+        <Button primary type="button" value="Submit" onClick={this.handleSubmit}>{buttonName}</Button>
       </Form>
       </div>
     );

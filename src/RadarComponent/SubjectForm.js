@@ -8,7 +8,7 @@ import { IconContext } from 'react-icons';
 
 const mapDispatchToProps = dispatch => ({
  retrieveAssignments: (id) => dispatch(retrieveAssignments(id)),
- newSubject: (subject) => dispatch(newSubject(subject))
+ newSubject: (name, color, description, primary_type, user_id) => dispatch(newSubject(name, color, description, primary_type, user_id))
 })
 
 const mapStateToProps = state => {
@@ -57,22 +57,9 @@ export class SubjectForm extends React.Component {
 
     if(!this.allValid()) return;
 
-    let d = {
-      name:this.state.subjectName,
-      color:color,
-      description:this.state.subjectDesc,
-      primary_type:this.state.defaultTaskType,
-      user_id : this.props.id,
-    }
+    
 
-    console.log("params in subject form " + this.state.subjectName)
-    console.log("params in subject form " + color)
-    console.log("params in subject form " + this.state.subjectDesc)
-    console.log("params in subject form " + this.state.defaultTaskType)
-    console.log("params in subject form " + this.props.id)
-
-    this.props.newSubject(d)
-    console.log("Assignment data after sub form" + JSON.stringify(this.props.assignmentData))
+    this.props.newSubject(this.state.subjectName, color, this.state.subjectDesc, this.state.defaultTaskType, this.props.id)
 
     this.setState(this.getDefaultState())
     if(this.props.closeForm)

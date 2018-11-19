@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 //import PropTypes from 'prop-types';
 import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import image from './images/window_close.svg'
+import { retrieveCompletedAssignments } from './actions/assignmentAction.js'
 
+
+
+const mapDispatchToProps = dispatch => ({
+ retrieveCompletedAssignments: (user_id) => dispatch(retrieveCompletedAssignments(user_id)),
+})
+
+const mapStateToProps = state => {
+		console.log(state);
+		return {
+			user_id: state.user.user_id,
+			assignments: state.assignment.completedAssignments,
+		}
+	}
 
 
 const padding = 10;
@@ -27,6 +42,9 @@ class HistoryPage extends Component {
 
 	componentWillReceiveProps(nextProps){
 		this.resize();
+		if(nextProps.show && this.props.show !== nextProps.show) {
+			this.props.retrieveCompletedAssignments(this.props.user_id)
+		}
 	}
 
 	resize() {
@@ -73,7 +91,7 @@ class HistoryPage extends Component {
 	    			title="" 
 	    			noDataText="No Completed Assignments Found" 
 	    			width={Math.min(window.innerWidth,500)} 
-	    			assignments={this.props.completedAssignments} 
+	    			assignments={this.props.assignments} 
 	    			colors={this.props.colors}
 	    			onResize={this.resize.bind(this)} />
 			</div>
@@ -82,5 +100,5 @@ class HistoryPage extends Component {
 }
 
 
-export default HistoryPage;  
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryPage);  
 

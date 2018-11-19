@@ -93,6 +93,7 @@ class Dots extends Component {
 	getDotRows(dots, fixed, numSteps) {
 		if(!dots || dots.length === 0 || !this.view.radar) return null;
 		dots.sort(this.compareDots);
+
 		if(fixed && !numSteps)
 			numSteps = 10;
 
@@ -123,7 +124,7 @@ class Dots extends Component {
 					//Decrement the next step by a factor of .9 to curb number of rows
 					step *= this.variableRowSizeFactor;
 				}
-				if(innerBoundary < 0) break;
+				if(outerBoundary < 0) break;
 			} else {
 				if(fixed){//Increase the boundry a fixed amount and create new row
 					i--;
@@ -134,7 +135,7 @@ class Dots extends Component {
 				} else {//Set new boundry at next dot, create new row
 					outerBoundary = dots[i].distanceFromCenter
 					innerBoundary = outerBoundary - this.view.dots.radius*2;
-					if(innerBoundary < 0) break;
+					if(outerBoundary < 0) break;
 					currRow++;
 					rows[currRow] = [dots[i]];
 					step = this.view.dots.radius*2;
@@ -271,6 +272,7 @@ class Dots extends Component {
 
 
 		this.fillDotsObjs(subjects);
+
 		this.dotsElems = [];
 		for(let i = 0; this.dotsObjs && i < this.dotsObjs.length; i++) {
 			this.shuffleDots(this.dotsObjs[i]);

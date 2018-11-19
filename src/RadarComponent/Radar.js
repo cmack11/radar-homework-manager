@@ -212,7 +212,7 @@ class Radar extends Component {
 	getDistanceFromCenter(assignment) {
 		if(!assignment) return 0;
 		let date = moment(assignment.dueDate);
-		if(!date) return 0;
+		if(!date || !date.isValid()) return 0;
 
 		let percent = this.scaleTimeToPercent(date);
 		let minPercent = 1.8*this.state.view.dotRadiusPercent;
@@ -402,11 +402,12 @@ class Radar extends Component {
 	}
 
 	closeDotViewer() {
-		this.setState({clickedDot:null})
+		let state = this.state;
+		delete state.clickedDot;
+		this.setState(state)
 	}
 
 	render() {
-		
 		let intersectFuncs = [];
 
 		intersectFuncs.push({
@@ -450,10 +451,9 @@ class Radar extends Component {
 				{overdueForm}
 				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
-				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={() => {this.editButtonClick(this.state.clickedDot.assignment)}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
 		</div>
     )
   }

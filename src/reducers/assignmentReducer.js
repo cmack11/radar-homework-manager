@@ -6,14 +6,14 @@ let initialState = {
 }
 export default (state = initialState, action) => {
   console.log(state);
-  let newSubjects
+  let newSubjects;
  switch (action.type) {
   case types.INITIALIZE_ASSIGNMENTS:
    return {
     ...state,
     subjects : action.payload.subjects
    }
-   case types.UPDATE_ASSIGNMENT :
+   case types.UPDATE_ASSIGNMENT+'deletemetoaccesslater' :
     return {
       ...state,
       subjects : action.payload.subjects
@@ -28,6 +28,15 @@ export default (state = initialState, action) => {
         ...state,
         subjects : action.payload.subjects
       };
+    case types.COMPLETE_ASSIGNMENT :
+        return state;
+    case types.SET_COMPLETED_ASSIGNMENTS:
+      return {
+        ...state,
+        completedAssignments: action.payload.assignments
+      }
+    case types.DELETE_TASK:
+      return state;
 
   default:
    return state
