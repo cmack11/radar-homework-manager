@@ -3,6 +3,9 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import {subjects1} from '../fakeData.js'
 import moment from 'moment';
+import { connect } from 'react-redux'
+import { completeAssignment } from '../actions/assignmentAction.js'
+
 
 /*
 TaskList props:
@@ -15,6 +18,17 @@ TaskList props:
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
     showCompleteButton = true/false 
 */
+
+const mapDispatchToProps = dispatch => ({
+ completeAssignment : (task) => dispatch(completeAssignment(task))
+})
+
+const mapStateToProps = state => {
+        return {
+            id: state.user.user_id,
+            subjects : state.assignment.subjects,
+        }
+    }
 
 const padding = 0;
 const dateCompare = function(a,b) {
@@ -41,7 +55,7 @@ class TaskList extends React.Component {
 
   markComplete(assignment) {
     console.log("MARKED COMPLETE: " + assignment.name);
-    //TODO: Add connection to Reducer
+    this.props.completeAssignment(assignment)
   }
 
   getTrProps(state, rowInfo, column) {
@@ -158,4 +172,4 @@ class TaskList extends React.Component {
   }
 }
 
-export default TaskList;
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

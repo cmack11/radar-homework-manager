@@ -15,10 +15,8 @@ export const setCompletedAssignments = (assignments) => {
 }
 
 export const retrieveCompletedAssignments = (user_id) => {
-  let params = {user_id:user_id};
-
   return (dispatch) => {
-    return axios.get(API_URL + '/Tasks/viewCompletedTasks/' + params)
+    return axios.get(API_URL + '/Tasks/viewCompletedTasks/' + user_id)
     .then( response => {
       console.log(response)
         if (response.data === "failed") {
@@ -44,10 +42,8 @@ export const setOverdueAssignments = (assignments) => {
 }
 
 export const retrieveOverdueAssignments = (user_id) => {
-  let params = {user_id:user_id};
-
   return (dispatch) => {
-    return axios.get(API_URL + '/Tasks/getOverdueTasks/' + params)
+    return axios.get(API_URL + '/Tasks/getOverdueTasks/' + user_id)
     .then( response => {
       console.log(response)
         if (response.data === "failed") {
@@ -190,6 +186,7 @@ export const newSubject = (name, color, description, primary_type, user_id) => {
     primary_type:primary_type,
     user_id : user_id,
   }
+  console.log(params)
   return (dispatch) => {
     return axios.post(API_URL + '/Subjects/addSubject',params)
     .then( response => {
@@ -198,7 +195,6 @@ export const newSubject = (name, color, description, primary_type, user_id) => {
       }
       else {
         let newSubject;
-
         //Can delete once api only returns a single new subject object
         let s = response.data;
         s.map((subject) => {
@@ -232,7 +228,7 @@ export const removeSubject = (subject_id) => {
 export const deleteSubject = (subject) => {
   let params = {subject_id:subject.subject_id}
   return (dispatch) => {
-    return axios.post(API_URL+'/Subjects/deleteSubject/', params)
+    return axios.delete(API_URL+'/Subjects/deleteSubject/'+params.subject_id)
     .then( response => {
       dispatch(removeSubject(subject.subject_id))
     })
@@ -294,7 +290,7 @@ export const deleteTask = (task) => {
   let params = {task_id:task.task_id}
 
   return (dispatch) => {
-    return axios.post(API_URL + '/Tasks/deleteTask/',params)
+    return axios.delete(API_URL + '/Tasks/deleteTask/'+params.task_id)
     .then( response => {
       dispatch(removeTask(task.task_id))
     })
