@@ -7,17 +7,22 @@ import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
-import addButton from '../images/add_button.png'
-import closeAddButton from '../images/add_button_close.png'
+//import addButton from '../images/add_button.png'
+//import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
 import completedButton from '../images/completed_button.png'
-import historyButton from '../images/history_button.png'
+//import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
-import closeHistoryButton from '../images/history_button_close.png'
+//import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
 import { Icon } from 'semantic-ui-react'
 import '../App.css';
 import { completeAssignment } from '../actions/assignmentAction.js'
+
+const addButton = 'plus';
+const closeAddButton = 'minus';
+const historyButton = 'history';
+const closeHistoryButton = 'close';
 
 const mapDispatchToProps = dispatch => ({
  completeAssignment : (data) => dispatch(completeAssignment(data))
@@ -53,8 +58,6 @@ class Radar extends Component {
 		this.verifyAndDefaultSubjects(state,props);
 		this.verifyAndDefaultDates(state,props);
 		this.verifyAndDefaultView(state,props)
-		this._openAddButton = false
-		this._openHistoryButton = false
 		this.state = state;
 		this.setDefault();
 	}
@@ -345,10 +348,8 @@ class Radar extends Component {
 		if(buttons.right.logo === addButton) {
 			this.closeHistoryScreen();//order matters
 			this.openAddForm();
-			this._openAddButton = true
 		} else {
 			this.closeAddForm();
-			this._openAddButton = false
 		}
 		this.setState({buttons:buttons})
 	}
@@ -371,10 +372,8 @@ class Radar extends Component {
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
-			this._openHistoryButton = true
 		} else {
 			this.closeHistoryScreen();
-			this._openHistoryButton = false
 		}
 	}
 
@@ -449,8 +448,8 @@ class Radar extends Component {
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
-			<Icon name={(this._openAddButton) ? 'minus' : 'plus'} circular size='huge' className="plus-button" onClick={this.addButtonClick.bind(this)}/>
-			<Icon name={(this._openHistoryButton) ? 'close' : 'history'} circular size='huge' className="history-button"  onClick={this.historyButtonClick.bind(this)}/>
+			<Icon name={this.state.buttons.right.logo} circular size='huge' className="plus-button" onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={this.state.buttons.left.logo} circular size='huge' className="history-button"  onClick={this.historyButtonClick.bind(this)}/>
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
