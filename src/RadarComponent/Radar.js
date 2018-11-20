@@ -441,7 +441,7 @@ class Radar extends Component {
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
-		
+
 		let overDueImage = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
 		if(!this.props.overdueAssignments.length){
 			overDueImage = null;
@@ -470,8 +470,6 @@ class Radar extends Component {
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
 				{overDueImage}
-				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
-				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
 			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
@@ -486,7 +484,7 @@ Radar.propTypes = {
   	dates: PropTypes.object
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Radar);  
+export default connect(mapStateToProps, mapDispatchToProps)(Radar);
 
 
 /* known issues
