@@ -253,7 +253,6 @@ svg text#chk {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  background-color: rgb(215, 120, 99);
 }
 
 .history-button {
@@ -261,7 +260,6 @@ svg text#chk {
   position: absolute;
   left: 10px;
   bottom: 10px;
-  background-color: rgb(230, 202, 130);
 }
 
 
