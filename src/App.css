@@ -266,6 +266,12 @@ svg text#chk {
   z-index: -1;
 }
 
+.overdue-button {
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

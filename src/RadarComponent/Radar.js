@@ -18,6 +18,10 @@ import closeOverdueButton from '../images/overdue_button_close.png'
 import { Icon } from 'semantic-ui-react'
 import '../App.css';
 import { completeTask } from '../actions/assignmentAction.js'
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import { MdNotifications } from 'react-icons/md';
+
 
 const addButton = 'plus';
 const closeAddButton = 'minus';
@@ -449,15 +453,20 @@ class Radar extends Component {
 			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
 
-		let overDueImage = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
+    /*  <Badge badgeContent={5} color="secondary" className="overdueButton" onClick={this.overdueButtonClick.bind(this)}>
+        <MdNotifications />
+        </Badge>
+    */
+		let overDueImage =
+    <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
 		if(!this.props.overdueAssignments.length){
 			overDueImage = null;
 		}
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
-			<Icon name={(this._openAddButton) ? 'minus' : ((this._openEditButton) ? 'pencil alternate' : 'plus')} circular size='huge' className={(this._openEditButton ? "plus-button" : "plus-button button-behind" )} style={{background : (this._openEditButton) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
-			<Icon name={(this._openHistoryButton) ? 'close' : ((this._openCompletedButton) ? 'checkmark' : 'history')} circular size='huge' className={(this._openCompletedButton ? "history-button" : "history-button button-behind" )} style={{background : (this._openCompletedButton) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
+			<Icon name={(this._openAddButton) ? 'minus' : ((this._openEditButton) ? 'pencil alternate' : 'plus')} circular size='huge' className={(this._openEditButton ? "plus-button button-behind" : "plus-button" )} style={{background : (this._openEditButton) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={(this._openHistoryButton) ? 'close' : ((this._openCompletedButton) ? 'checkmark' : 'history')} circular size='huge' className={(this._openCompletedButton ? "history-button button-behind" :"history-button" )} style={{background : (this._openCompletedButton) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
