@@ -152,8 +152,8 @@ class RadarScreen extends Component {
 			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
 			this.setState(state);
 
-			//this.props.retrieveOverdueAssignments(this.props.user_id)
-			//this.props.retrieveCompletedAssignments(this.props.user_id)
+			this.props.retrieveOverdueAssignments(this.props.user_id)
+			this.props.retrieveCompletedAssignments(this.props.user_id)
 		},10000)
 	}
 
@@ -374,7 +374,7 @@ class RadarScreen extends Component {
 }
 
 
-export default RadarScreen;  
+export default connect(mapStateToProps, mapDispatchToProps)(RadarScreen);  
 
 /* known issues
 * right now: on variable dividing, the rows get cut off at 20% of radius

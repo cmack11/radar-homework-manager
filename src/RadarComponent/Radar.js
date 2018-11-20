@@ -7,17 +7,22 @@ import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
-import addButton from '../images/add_button.png'
-import closeAddButton from '../images/add_button_close.png'
+//import addButton from '../images/add_button.png'
+//import closeAddButton from '../images/add_button_close.png'
 import editButton from '../images/edit_button.png'
 import completedButton from '../images/completed_button.png'
-import historyButton from '../images/history_button.png'
+//import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
-import closeHistoryButton from '../images/history_button_close.png'
+//import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
 import { Icon } from 'semantic-ui-react'
 import '../App.css';
 import { completeAssignment } from '../actions/assignmentAction.js'
+
+const addButton = 'plus';
+const closeAddButton = 'minus';
+const historyButton = 'history';
+const closeHistoryButton = 'close';
 
 const mapDispatchToProps = dispatch => ({
  completeAssignment : (data) => dispatch(completeAssignment(data))
@@ -351,10 +356,8 @@ class Radar extends Component {
 		if(buttons.right.logo === addButton) {
 			this.closeHistoryScreen();//order matters
 			this.openAddForm();
-			this._openAddButton = true
 		} else {
 			this.closeAddForm();
-			this._openAddButton = false
 		}
 		this.setState({buttons:buttons})
 	}
@@ -377,10 +380,8 @@ class Radar extends Component {
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
-			this._openHistoryButton = true
 		} else {
 			this.closeHistoryScreen();
-			this._openHistoryButton = false
 		}
 	}
 
