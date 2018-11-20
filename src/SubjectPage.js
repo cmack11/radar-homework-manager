@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import moment from 'moment'
+import { connect } from 'react-redux'
 import TaskList from './RadarComponent/TaskList.js'
 import closeIcon from './images/window_close.svg'
 import editIcon from './images/pencil_icon.svg'
 import checkmarkIcon from './images/checkmark_icon.png'
 import trashIcon from './images/trash_icon.png'
+import { deleteSubject, editSubject } from './actions/assignmentAction.js'
 
 
+const mapDispatchToProps = dispatch => ({
+ deleteSubject: (subject) => dispatch(deleteSubject(subject)),
+ editSubject: (subject) => dispatch(editSubject(subject)),
+})
+
+const mapStateToProps = state => {
+		return {
+			id: state.user.user_id,
+		}
+	}
 
 const padding = 10;
 
@@ -66,14 +78,17 @@ class SubjectPage extends Component {
 	onSubmit() {
 		if(!this.state.newSubjectName || this.state.newSubjectName.length < 1 || this.state.newSubjectName.length > 14) return;
 		//Need api or reducer to make this change faster and more universal
-		this.props.subject.name = this.state.newSubjectName;
+		let subject = this.props.subject;
+		subject.name = this.state.newSubjectName;
+		this.props.editSubject(subject);
 		this.setState({editMode:false})
 	}
 
 	deleteSubject() {
 		let subject = this.props.subject;
 		if (window.confirm('Are you sure you wish to delete '+subject.name+'? This action will also delete all assignments associated with this subject and can not be undone')) {
-			//should delete the subject
+			this.props.deleteSubject(subject);
+			this.props.close();
 		}
 	}
 	
@@ -144,5 +159,5 @@ class SubjectPage extends Component {
 }
 
 
-export default SubjectPage;  
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectPage);  
 

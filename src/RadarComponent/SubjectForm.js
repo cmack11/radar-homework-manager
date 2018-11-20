@@ -57,8 +57,6 @@ export class SubjectForm extends React.Component {
 
     if(!this.allValid()) return;
 
-    
-
     this.props.newSubject(this.state.subjectName, color, this.state.subjectDesc, this.state.defaultTaskType, this.props.id)
 
     this.setState(this.getDefaultState())

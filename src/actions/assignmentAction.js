@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios';
 import {subjects} from '../fakeData.js';
 import {API_URL} from '../config/config';
+import moment from 'moment'
 
 export const initializeAssignments = (data) => {
   return {
@@ -37,7 +38,7 @@ export const retrieveCompletedAssignments = (user_id) => {
         }
     })
     .catch(error => {
-      alert("Failed to retrieve name. If this error persists, contact and administrator")
+      alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
     })
   }
 }
@@ -84,6 +85,7 @@ export const editAssignment = (task, subject_id, user_id) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateA',params)
     .then( response => {
+      console.log('editted...')
       console.log(response)
       dispatch(updateAssignment(response.data))
     })
@@ -94,11 +96,12 @@ export const editAssignment = (task, subject_id, user_id) => {
 }
 
 /* ADD ASSIGNMENT */
-export const addAssignment = (data) => {
+export const addAssignment = (assignment, subject_id) => {
   return {
     type: types.ADD_ASSIGNMENT,
     payload : {
-      subjects : data
+      assignment : assignment,
+      subject_id: subject_id
     }
   }
 }
@@ -116,7 +119,20 @@ export const newAssignment = (name,description,type,dueDate, subject_id, user_id
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/addA',params)
     .then( response => {
-      dispatch(addAssignment(response.data))
+      let s = response.data;
+      console.log('response')
+      console.log(s)
+      //Can delete once api returns new assignment
+      let newAssignment;
+      s.map((subject) => {
+        if(subject.subject_id === subject_id)
+          subject.assignments.map((a) => {
+            if(a.name === name && moment(a.dueDate).isSame(moment(dueDate)))
+              newAssignment = a;
+          })
+      })
+      //Can delete once api returns new assignment
+      dispatch(addAssignment(newAssignment, subject_id))
     })
     .catch(error => {
       alert("Fail to create new assignment")
@@ -126,11 +142,11 @@ export const newAssignment = (name,description,type,dueDate, subject_id, user_id
 /* ADD ASSIGNMENT */
 
 /* ADD SUBJECT */
-export const addSubject = (data) => {
+export const addSubject = (subject) => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
-      subjects : data,
+      subject : subject,
     }
   }
 }
@@ -150,7 +166,17 @@ export const newSubject = (name, color, description, primary_type, user_id) => {
         alert("Adding failed")
       }
       else {
-        dispatch(addSubject(response.data))
+        let newSubject;
+
+        //Can delete once api only returns a single new subject object
+        let s = response.data;
+        s.map((subject) => {
+          if(subject.name === name)
+            newSubject = subject;
+        })
+        //Can delete once api only returns a single new subject object
+
+        dispatch(addSubject(newSubject))
       }
     })
     .catch(error => {
@@ -161,43 +187,61 @@ export const newSubject = (name, color, description, primary_type, user_id) => {
 /* ADD SUBJECT */
 
 /* DELETE SUBJECT */
-export const deleteSubject = (data) => {
+export const removeSubject = (subject_id) => {
+  console.log('removing '+subject_id)
   return {
     type: types.DELETE_SUBJECT,
     payload : {
-      subjects : data,
+      subject_id : subject_id,
     }
   }
 }
 
-export const removeSubject = (subject) => {
+
+export const deleteSubject = (subject) => {
+  let params = {subject_id:subject.subject_id}
   return (dispatch) => {
-    return axios.post(API_URL, subject)
+    return axios.post(API_URL+'/Subjects/deleteSubject/', params)
     .then( response => {
-      dispatch(deleteSubject(response.data))
+      dispatch(removeSubject(subject.subject_id))
     })
     .catch(error => {
-      alert("Fail to create new subject")
+      alert("Fail to delete subject")
     })
   }
 }
 /* DELETE SUBJECT */
 
 /* EDIT SUBJECT */
-export const updateSubject = (data) => {
+export const updateSubject = (subject) => {
   return {
-    type: types.DELETE_SUBJECT,
+    type: types.UPDATE_SUBJECT,
     payload : {
-      subjects : data,
+      subject : subject,
     }
   }
 }
 
-export const editSubject = (data) => {
+export const editSubject = (newSubject) => {
+  let params = {
+    subject_id:newSubject.subject_id,
+    name:newSubject.name,
+    color:newSubject.color,
+    default_task_type:newSubject.default_task_type
+  };
   return (dispatch) => {
-    return axios.post(API_URL, data)
+    return axios.post(API_URL+'/Subjects/updateSubjectName/', params)
     .then( response => {
-      dispatch(deleteSubject(response.data))
+      let newS;
+      //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
+      let s = response.data;
+      s.map((subject) => {
+        if(subject.subject_id === newSubject.subject_id)
+          newSubject = subject;
+      })
+      //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
+      console.log(newS)
+      dispatch(updateSubject(newS))
     })
     .catch(error => {
       alert("Fail to create new subject at this time. If the persists, contact administrator")
@@ -206,11 +250,12 @@ export const editSubject = (data) => {
 }
 
 /* DELETE ASSIGNMENT */
-export const removeTask = (data) => {
+export const removeTask = (task_id, subject_id) => {
   return {
     type: types.DELETE_TASK,
     payload : {
-      subjects : data,
+      task_id:task_id,
+      subject_id:subject_id
     }
   }
 }
@@ -224,7 +269,6 @@ export const deleteTask = (task) => {
       dispatch(removeTask(response.data))
     })
     .catch(error => {
-      console.log(error)
       alert("Failed to delete task")
     })
   }
@@ -241,20 +285,20 @@ export const compAssignment = (id) => {
   }
 }
 
-export const completeAssignment = (assignment)  => {
+export const completeAssignment = (task)  => {
   
   let params = {
-    task_id:assignment.task_id
+    task_id:task.task_id
   }
   console.log(params)
   return (dispatch) => {
     return axios.post(API_URL+'/Tasks/setCompleted', params)
     .then( response => {
       console.log(response)
-      dispatch(compAssignment(assignment.task_id))
+      dispatch(removeTask(task.task_id))
     })
     .catch(error => {
-      alert("Fail to complete assignment");
+      alert("Failed to complete task");
     })
   }
 }

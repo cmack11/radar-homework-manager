@@ -8,6 +8,7 @@ import image from '../images/switch_form.png'
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
+import {DATE_FORMAT} from '../config/config.js'
 
 
 const mapDispatchToProps = dispatch => ({
@@ -41,7 +42,7 @@ export class TaskForm extends React.Component {
   }
 
   getDefaultState() {
-    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours'), subject: '', focused:false};
+    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours').minutes(0).seconds(0), subject: '', focused:false};
     return defaultState;
   }
 
@@ -77,20 +78,10 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
 
 	if(!this.props.isEditForm){
-
-    let d ={
-        name:this.state.taskName,
-        description:this.state.taskDesc,
-        type:this.state.taskType,
-        dueDate:this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS'),
-        subject_id : this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
-        user_id : this.props.id
-        }
-    console.log(d)
     this.props.newAssignment(this.state.taskName,
                               this.state.taskDesc,
                               this.state.taskType,
-                              this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS'),
+                              this.state.taskDueDate.format(DATE_FORMAT),
                               this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
                               this.props.id)
 
@@ -101,10 +92,8 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     assignment.name = this.state.taskName;
     assignment.description = this.state.taskDesc;
     assignment.type = this.state.taskType;
-    assignment.dueDate = this.state.taskDueDate.format('YYYY-MM-DD HH:MM:SS')
-    console.log(this.props.subjects)
-    console.log(assignment)
-
+    assignment.dueDate = this.state.taskDueDate.format(DATE_FORMAT)
+    console.log(this.state)
     let subject_id;
     for(let i = 0; i < this.props.subjects.length && !subject_id; i++) {
       let s = this.props.subjects[i];
@@ -185,7 +174,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
         </Form.Field>
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Description</label>
+          <label className="label-text label-center">Task Type</label>
           <select name="taskType" value={this.state.taskType} onChange={this.handleChange}>
             {taskTypeOptions}
           </select>
@@ -195,8 +184,15 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
           <DatePicker
               selected={this.state.taskDueDate}
               onChange={(date)=>{this.setState({taskDueDate:date})}}
+              onChangeRaw={(e) => {
+                let d = moment(e.target.value,"M/D/YYYY [at] h:mm A");
+                if(!d.isValid()) return;
+                console.log(d.format())
+                this.setState({taskDueDate:d});
+              }}
               showTimeSelect
-              timeIntervals={1}
+              disabledKeyboardNavigation
+              timeIntervals={15}
               dateFormat="M/D/YYYY [at] h:mm A"
               timeCaption="Time"
               shouldCloseOnSelect={true}
