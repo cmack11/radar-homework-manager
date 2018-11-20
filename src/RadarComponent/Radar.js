@@ -55,6 +55,8 @@ class Radar extends Component {
 		this.verifyAndDefaultView(state,props)
 		this._openAddButton = false
 		this._openHistoryButton = false
+    this._openEditButton = false
+    this._openCompletedButton = false
 		this.state = state;
 		this.setDefault();
 	}
@@ -331,11 +333,15 @@ class Radar extends Component {
 			let buttons = this.state.buttons;
 			buttons.left.logo = completedButton;
 			buttons.right.logo = editButton;
+      this._openEditButton = true
+      this._openCompletedButton = true
 			this.setState({buttons:buttons})
 		} else {
 			let buttons = this.state.buttons;
 			buttons.left.logo = historyButton;
 			buttons.right.logo = addButton;
+      this._openEditButton = false
+      this._openCompletedButton = false
 			this.setState({buttons:buttons})
 		}
 	}
@@ -449,8 +455,8 @@ class Radar extends Component {
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
-			<Icon name={(this._openAddButton) ? 'minus' : 'plus'} circular size='huge' className="plus-button" onClick={this.addButtonClick.bind(this)}/>
-			<Icon name={(this._openHistoryButton) ? 'close' : 'history'} circular size='huge' className="history-button"  onClick={this.historyButtonClick.bind(this)}/>
+			<Icon name={(this._openAddButton) ? 'minus' : ((this._openEditButton) ? 'pencil alternate' : 'plus')} circular size='huge' className="plus-button" onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={(this._openHistoryButton) ? 'close' : ((this._openCompletedButton) ? 'checkmark' : 'history')} circular size='huge' className="history-button"  onClick={this.historyButtonClick.bind(this)}/>
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
