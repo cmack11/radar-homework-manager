@@ -15,6 +15,8 @@ import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
 import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
+import { Icon } from 'semantic-ui-react'
+import '../App.css';
 import { completeAssignment } from '../actions/assignmentAction.js'
 
 const mapDispatchToProps = dispatch => ({
@@ -51,7 +53,8 @@ class Radar extends Component {
 		this.verifyAndDefaultSubjects(state,props);
 		this.verifyAndDefaultDates(state,props);
 		this.verifyAndDefaultView(state,props)
-
+		this._openAddButton = false
+		this._openHistoryButton = false
 		this.state = state;
 		this.setDefault();
 	}
@@ -64,7 +67,7 @@ class Radar extends Component {
             this.setState(state);
             this.fillDimensions();
             this.fillRings();
-            this.fillComponents();            
+            this.fillComponents();
         }
 
 
@@ -180,11 +183,11 @@ class Radar extends Component {
 
 	    var d = [
 	        "M", x,y,
-	        "L", start.x, start.y, 
+	        "L", start.x, start.y,
 	        "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
 	        "L", x, y
 	    ].join(" ");
-	    return d;  
+	    return d;
 
 	}
 
@@ -200,7 +203,7 @@ class Radar extends Component {
 		let width = subject.name.length*fontSize/2;
 		let height = 0;
 
-	    let angle = startAngle+(endAngle-startAngle)/2; 
+	    let angle = startAngle+(endAngle-startAngle)/2;
 	    var point = util.polarToCartesian(x, y, radius, angle);
 
 	    if(Math.abs(point.x - this.view.dots.center.x) < .01)//On prime meridian
@@ -305,7 +308,7 @@ class Radar extends Component {
 		let step = this.scaleTimeToPercent(moment(this.state.dates.startDate).add(this.state.view.ringsWidth))
 
 		for(let percent = step; percent < 1; percent+=step) {
-			let radius = percent*this.view.radar.radius; 
+			let radius = percent*this.view.radar.radius;
 			rings.push(<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={radius} fill='none' key={'Ring at '+percent+'of radius'}/>)
 		}
 		let state = this.state;
@@ -342,8 +345,10 @@ class Radar extends Component {
 		if(buttons.right.logo === addButton) {
 			this.closeHistoryScreen();//order matters
 			this.openAddForm();
+			this._openAddButton = true
 		} else {
 			this.closeAddForm();
+			this._openAddButton = false
 		}
 		this.setState({buttons:buttons})
 	}
@@ -366,8 +371,10 @@ class Radar extends Component {
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
+			this._openHistoryButton = true
 		} else {
 			this.closeHistoryScreen();
+			this._openHistoryButton = false
 		}
 	}
 
@@ -384,7 +391,7 @@ class Radar extends Component {
 		this.props.runRadarScreenOpenCloseFunction('closeHistoryScreen');
 		this.setState({buttons:buttons})
 	}
-	
+
 	overdueButtonClick() {
 		let buttons = this.state.buttons;
 		if(buttons.overdue.logo === overdueButton){
@@ -408,7 +415,7 @@ class Radar extends Component {
 		this.props.runRadarScreenOpenCloseFunction('closeOverdueScreen');
 		this.setState({buttons:buttons})
 	}
-	
+
 	editButtonClick(assignment) {
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
@@ -429,7 +436,7 @@ class Radar extends Component {
 				this.props.completeAssignment(dot.assignment);
 			}
 		})
-		
+
 		intersectFuncs.push({
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{this.editButtonClick(dot.assignment)}
@@ -439,9 +446,11 @@ class Radar extends Component {
 		if(!this.props.overdueAssignments.length){
 			overDueImage = null;
 		}
-		
+
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
+			<Icon name={(this._openAddButton) ? 'minus' : 'plus'} circular size='huge' className="plus-button" onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={(this._openHistoryButton) ? 'close' : 'history'} circular size='huge' className="history-button"  onClick={this.historyButtonClick.bind(this)}/>
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
@@ -449,8 +458,8 @@ class Radar extends Component {
 			  		{this.state.rings}
 				</svg>
 				{this.state.sliceLabels}
-				<Dots subjects={this.state.subjects} 
-					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
+				<Dots subjects={this.state.subjects}
+					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)}
 					view={this.state.view} dims={this.view} //bad
 					intersectFunctions={intersectFuncs}
 					intersectsLine={this.intersectsLine.bind(this)}
@@ -479,10 +488,11 @@ Radar.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Radar);  
 
+
 /* known issues
 * on single slice circle, dots will not be placed near top because of (.1,.9) boundry
 * right now: on variable dividing, the rows get cut off at 20% of radius
-* future: 
+* future:
 	* should figure out how many dots are in view
 	* divide all into variable row sizes
 	* figure out if row is "too large"
