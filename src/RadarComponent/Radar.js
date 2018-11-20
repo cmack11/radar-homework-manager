@@ -17,7 +17,7 @@ import overdueButton from '../images/Overdue_button.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
 import { Icon } from 'semantic-ui-react'
 import '../App.css';
-import { completeAssignment } from '../actions/assignmentAction.js'
+import { completeTask } from '../actions/assignmentAction.js'
 
 const addButton = 'plus';
 const closeAddButton = 'minus';
@@ -25,7 +25,7 @@ const historyButton = 'history';
 const closeHistoryButton = 'close';
 
 const mapDispatchToProps = dispatch => ({
- completeAssignment : (data) => dispatch(completeAssignment(data))
+ completeTask : (data) => dispatch(completeTask(data))
 })
 
 const mapStateToProps = state => {
@@ -432,7 +432,7 @@ class Radar extends Component {
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{
 				dot.dot.setAttribute('visibility','hidden');
-				this.props.completeAssignment(dot.assignment);
+				this.props.completeTask(dot.assignment);
 			}
 		})
 
@@ -471,7 +471,7 @@ class Radar extends Component {
 				{overDueImage}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeTask} close={this.closeDotViewer}/>
 		</div>
     )
   }

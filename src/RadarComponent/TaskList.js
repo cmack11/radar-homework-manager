@@ -4,7 +4,7 @@ import 'react-table/react-table.css'
 import {subjects1} from '../fakeData.js'
 import moment from 'moment';
 import { connect } from 'react-redux'
-import { completeAssignment } from '../actions/assignmentAction.js'
+import { completeTask } from '../actions/assignmentAction.js'
 
 
 /*
@@ -20,7 +20,7 @@ TaskList props:
 */
 
 const mapDispatchToProps = dispatch => ({
- completeAssignment : (task) => dispatch(completeAssignment(task))
+ completeTask : (task) => dispatch(completeTask(task))
 })
 
 const mapStateToProps = state => {
@@ -55,7 +55,7 @@ class TaskList extends React.Component {
 
   markComplete(assignment) {
     console.log("MARKED COMPLETE: " + assignment.name);
-    this.props.completeAssignment(assignment)
+    this.props.completeTask(assignment)
   }
 
   getTrProps(state, rowInfo, column) {

@@ -4,11 +4,11 @@ import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import image from './images/window_close.svg'
 import { connect } from 'react-redux'
-import { retrieveOverdueAssignments } from './actions/assignmentAction.js'
+import { retrieveOverdueTasks } from './actions/assignmentAction.js'
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveOverdueAssignments: (user_id) => dispatch(retrieveOverdueAssignments(user_id)),
+ retrieveOverdueTasks: (user_id) => dispatch(retrieveOverdueTasks(user_id)),
 })
 
 const mapStateToProps = state => {
@@ -41,7 +41,7 @@ class OverduePage extends Component {
 	componentWillReceiveProps(nextProps){
 		this.resize();
 		if(nextProps.show && nextProps.show != this.props.show)
-			this.props.retrieveOverdueAssignments(this.props.id)
+			this.props.retrieveOverdueTasks(this.props.id)
 	}
 
 	resize() {

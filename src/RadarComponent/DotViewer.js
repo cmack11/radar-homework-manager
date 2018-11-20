@@ -5,13 +5,13 @@ import { MdDelete } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 import { MdCheck } from 'react-icons/md'
 import { IconContext } from 'react-icons'
-import { deleteTask, completeAssignment } from '../actions/assignmentAction.js'
+import { deleteTask, completeTask } from '../actions/assignmentAction.js'
 import moment from 'moment'
 
 
 const mapDispatchToProps = dispatch => ({
  deleteTask: (task) => dispatch(deleteTask(task)),
- completeAssignment : (data) => dispatch(completeAssignment(data))
+ completeTask : (data) => dispatch(completeTask(data))
 })
 
 const mapStateToProps = state => {
@@ -41,7 +41,7 @@ export class DotViewer extends Component {
 			//Replace this with API Call/Redux to update status of assignment to completed
 			//completeAssignment(param,param) //this functions is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
-			this.props.completeAssignment(assignment)
+			this.props.completeTask(assignment)
 			//this.props.complete(assignment)
 			//
 			this.props.close();
