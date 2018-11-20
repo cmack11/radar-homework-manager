@@ -262,6 +262,9 @@ svg text#chk {
   bottom: 10px;
 }
 
+.button-behind {
+  z-index: -1;
+}
 
 @keyframes App-logo-spin {
   from {
