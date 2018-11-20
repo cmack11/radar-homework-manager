@@ -10,6 +10,22 @@ import HistoryPage from './HistoryPage.js'
 import OverduePage from './OverduePage.js'
 import SubjectPage from './SubjectPage.js'
 import TaskForm from './RadarComponent/TaskForm.js'
+import { connect } from 'react-redux'
+import { retrieveCompletedAssignments, retrieveOverdueAssignments } from './actions/assignmentAction.js'
+
+
+
+const mapDispatchToProps = dispatch => ({
+ retrieveCompletedAssignments: (user_id) => dispatch(retrieveCompletedAssignments(user_id)),
+ retrieveOverdueAssignments: (user_id) => dispatch(retrieveOverdueAssignments(user_id)),
+})
+
+const mapStateToProps = state => {
+		console.log(state);
+		return {
+			user_id: state.user.user_id,
+		}
+	}
 
 
 
@@ -135,6 +151,9 @@ class RadarScreen extends Component {
 			state.dates.startDate = moment();
 			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
 			this.setState(state);
+
+			this.props.retreiveOverdueAssignments(this.props.user_id)
+			this.props.retreiveCompletedAssignments(this.props.user_id)
 		},10000)
 	}
 

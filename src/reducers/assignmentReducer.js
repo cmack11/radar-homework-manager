@@ -2,7 +2,9 @@ import * as types from '../actions/action_types.js';
 
 
 let initialState = {
-  subjects : []
+  subjects : [],
+  completedAssignments: [],
+  overdueAssignments: []
 }
 export default (state = initialState, action) => {
   console.log(state);
@@ -79,11 +81,19 @@ export default (state = initialState, action) => {
         return state;
 
     case types.SET_COMPLETED_ASSIGNMENTS:
-      action.payload.assignments = [{name:'Something',subject:'something',dueDate:'2018-12-2',type:'Assignment'}]
-      console.log(state);
+
+      if(!action.payload.assignments) action.payload.assignments = [{name:'Something',subject:'something',dueDate:'2018-12-2',type:'Assignment'}]
       return {
         ...state,
         completedAssignments: action.payload.assignments
+      }
+
+    case types.SET_OVERDUE_ASSIGNMENTS:
+
+      if(!action.payload.assignments) action.payload.assignments = [{name:'Something',subject:'something',dueDate:'2018-12-2',type:'Assignment'}]
+      return {
+        ...state,
+        overdueAssignments: action.payload.assignments
       }
 
     case types.DELETE_TASK: 

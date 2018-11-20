@@ -5,15 +5,6 @@ import {subjects} from '../fakeData.js';
 import {API_URL} from '../config/config';
 import moment from 'moment'
 
-export const initializeAssignments = (data) => {
-  return {
-    type: types.INITIALIZE_ASSIGNMENTS,
-    payload: {
-      subjects : data,
-    }
-  }
-}
-
 export const setCompletedAssignments = (assignments) => {
   return {
     type: types.SET_COMPLETED_ASSIGNMENTS,
@@ -43,7 +34,47 @@ export const retrieveCompletedAssignments = (user_id) => {
   }
 }
 
+export const setOverdueAssignments = (assignments) => {
+  return {
+    type: types.SET_OVERDUE_ASSIGNMENTS,
+    payload: {
+      assignments : assignments,
+    }
+  }
+}
+
+export const retrieveOverdueAssignments = (user_id) => {
+  let params = {user_id:user_id};
+
+  return (dispatch) => {
+    return axios.get(API_URL + '/Tasks/getOverdueTasks/' + params)
+    .then( response => {
+      console.log(response)
+        if (response.data === "failed") {
+          alert("Failed to retrieve overdue assignments")
+        }
+        else {
+          console.log(response)
+          dispatch(setOverdueAssignments(response.data))
+        }
+    })
+    .catch(error => {
+      alert("Failed to retrieve overdue assignments. If this error persists, contact and administrator")
+    })
+  }
+}
+
 /* retrieve assignment should call initialize assignment */
+
+export const initializeAssignments = (data) => {
+  return {
+    type: types.INITIALIZE_ASSIGNMENTS,
+    payload: {
+      subjects : data,
+    }
+  }
+}
+
 
 export const retrieveAssignments = (data) => {
   return (dispatch) => {
@@ -240,7 +271,6 @@ export const editSubject = (newSubject) => {
           newSubject = subject;
       })
       //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
-      console.log(newS)
       dispatch(updateSubject(newS))
     })
     .catch(error => {
@@ -266,7 +296,7 @@ export const deleteTask = (task) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/deleteTask/',params)
     .then( response => {
-      dispatch(removeTask(response.data))
+      dispatch(removeTask(task.task_id))
     })
     .catch(error => {
       alert("Failed to delete task")
@@ -276,15 +306,6 @@ export const deleteTask = (task) => {
 /* DELETE ASSIGNMENT */
 
 /* COMPLETED_ASSIGNMENT */
-export const compAssignment = (id) => {
-  return {
-    type: types.COMPLETE_ASSIGNMENT,
-    payload : {
-      task_id : id,
-    }
-  }
-}
-
 export const completeAssignment = (task)  => {
   
   let params = {
@@ -313,17 +334,4 @@ export const overdueAssignments = (data) => {
     }
   }
 }
-
-export const pastAssignments = () => {
-  return (dispatch) => {
-    return axios.post(API_URL)
-    .then( response => {
-      dispatch(overdueAssignments(response.data))
-    })
-    .catch(error => {
-      alert("Fail to get past assignments");
-    })
-  }
-}
-
 /* OVERDUE ASSIGNMENTS */

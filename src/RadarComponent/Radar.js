@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
+import { connect } from 'react-redux'
 import Dots from './Dots.js'
 import util from './utils.js'
 import SpinLine from './SpinLine.js'
@@ -14,8 +15,19 @@ import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
 import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
+import { completeAssignment } from '../actions/assignmentAction.js'
 
+const mapDispatchToProps = dispatch => ({
+ completeAssignment : (data) => dispatch(completeAssignment(data))
+})
 
+const mapStateToProps = state => {
+		console.log("Map :"+ JSON.stringify(state));
+		return {
+			id: state.user.user_id,
+			overdueAssignments : state.assignment.overdueAssignments,
+		}
+	}
 
 class Radar extends Component {
 
@@ -423,9 +435,9 @@ class Radar extends Component {
 			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
 		
-		let overdueForm = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
-		if(this.state.noOverdue){
-			overdueForm = null;
+		let overDueImage = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
+		if(!this.props.overdueAssignments.length){
+			overDueImage = null;
 		}
 		
     return (
@@ -448,7 +460,7 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				{overdueForm}
+				{overDueImage}
 				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
@@ -465,7 +477,7 @@ Radar.propTypes = {
   	dates: PropTypes.object
 }
 
-export default Radar;  
+export default connect(mapStateToProps, mapDispatchToProps)(Radar);  
 
 /* known issues
 * on single slice circle, dots will not be placed near top because of (.1,.9) boundry
