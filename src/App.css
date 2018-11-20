@@ -247,6 +247,22 @@ svg text#chk {
 .back-align {
   top: 4 !important;
 }
+
+.plus-button {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.history-button {
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
