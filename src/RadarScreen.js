@@ -152,8 +152,8 @@ class RadarScreen extends Component {
 			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
 			this.setState(state);
 
-			this.props.retreiveOverdueAssignments(this.props.user_id)
-			this.props.retreiveCompletedAssignments(this.props.user_id)
+			//this.props.retrieveOverdueAssignments(this.props.user_id)
+			//this.props.retrieveCompletedAssignments(this.props.user_id)
 		},10000)
 	}
 
