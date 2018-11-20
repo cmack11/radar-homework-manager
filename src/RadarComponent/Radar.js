@@ -9,23 +9,26 @@ import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
 //import addButton from '../images/add_button.png'
 //import closeAddButton from '../images/add_button_close.png'
-import editButton from '../images/edit_button.png'
-import completedButton from '../images/completed_button.png'
+//import editButton from '../images/edit_button.png'
+//import completedButton from '../images/completed_button.png'
 //import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
 //import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
 import { Icon } from 'semantic-ui-react'
 import '../App.css';
-import { completeAssignment } from '../actions/assignmentAction.js'
+import { completeTask } from '../actions/assignmentAction.js'
 
 const addButton = 'plus';
 const closeAddButton = 'minus';
+const completedButton = 'checkmark';
+
 const historyButton = 'history';
 const closeHistoryButton = 'close';
+const editButton = 'pencil alternate';
 
 const mapDispatchToProps = dispatch => ({
- completeAssignment : (data) => dispatch(completeAssignment(data))
+ completeTask : (data) => dispatch(completeTask(data))
 })
 
 const mapStateToProps = state => {
@@ -333,22 +336,19 @@ class Radar extends Component {
 	setClickedDot(dot) {this.setState({clickedDot:dot})}
 
 	setDraggedDot(dot) {
-		this.setState({draggedDot:dot})
+		let state = this.state;
+
 		if(dot) {
-			let buttons = this.state.buttons;
-			buttons.left.logo = completedButton;
-			buttons.right.logo = editButton;
-      this._openEditButton = true
-      this._openCompletedButton = true
-			this.setState({buttons:buttons})
+			state.buttons.left.logo = completedButton;
+			state.buttons.right.logo = editButton;
+			state.draggedDot = dot;
 		} else {
-			let buttons = this.state.buttons;
-			buttons.left.logo = historyButton;
-			buttons.right.logo = addButton;
-      this._openEditButton = false
-      this._openCompletedButton = false
-			this.setState({buttons:buttons})
+			state.buttons.left.logo = historyButton;
+			state.buttons.right.logo = addButton;
+			delete state.draggedDot;
 		}
+
+		this.setState(state)
 	}
 
 	addButtonClick() {
@@ -440,7 +440,7 @@ class Radar extends Component {
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{
 				dot.dot.setAttribute('visibility','hidden');
-				this.props.completeAssignment(dot.assignment);
+				this.props.completeTask(dot.assignment);
 			}
 		})
 
@@ -456,8 +456,13 @@ class Radar extends Component {
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
+<<<<<<< HEAD
 			<Icon name={(this._openAddButton) ? 'minus' : ((this._openEditButton) ? 'pencil alternate' : 'plus')} circular size='huge' className={(this._openEditButton ? "plus-button" : "plus-button button-behind" )} style={{background : (this._openEditButton) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
 			<Icon name={(this._openHistoryButton) ? 'close' : ((this._openCompletedButton) ? 'checkmark' : 'history')} circular size='huge' className={(this._openCompletedButton ? "history-button" : "history-button button-behind" )} style={{background : (this._openCompletedButton) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
+=======
+			<Icon name={this.state.buttons.right.logo} circular size='huge' className="plus-button" style={{background : (this.state.draggedDot) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={this.state.buttons.left.logo} circular size='huge' className="history-button" style={{background : (this.state.draggedDot) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
+>>>>>>> cecc941e9e521cb6d56e3876469cb178626ad3fb
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
@@ -479,7 +484,7 @@ class Radar extends Component {
 				{overDueImage}
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeTask} close={this.closeDotViewer}/>
 		</div>
     )
   }

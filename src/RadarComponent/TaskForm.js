@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, newAssignment, editAssignment } from '../actions/assignmentAction.js';
+import { retrieveTasks, newTask, editTask } from '../actions/assignmentAction.js';
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,9 +12,9 @@ import {DATE_FORMAT} from '../config/config.js'
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: () => dispatch(retrieveAssignments()),
- newAssignment: (name,description,type,dueDate, subject_id, user_id) => dispatch(newAssignment(name,description,type,dueDate, subject_id, user_id)),
- editAssignment: (newAssignment) => dispatch(editAssignment(newAssignment)),
+ retrieveTasks: () => dispatch(retrieveTasks()),
+ newTask: (name,description,type,dueDate, subject_id, user_id) => dispatch(newTask(name,description,type,dueDate, subject_id, user_id)),
+ editTask: (updatedTask) => dispatch(editTask(updatedTask)),
 })
 
 const mapStateToProps = state => {
@@ -78,7 +78,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
 
 	if(!this.props.isEditForm){
-    this.props.newAssignment(this.state.taskName,
+    this.props.newTask(this.state.taskName,
                               this.state.taskDesc,
                               this.state.taskType,
                               this.state.taskDueDate.format(DATE_FORMAT),
@@ -106,7 +106,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
     let user_id = this.props.id;
 
-    this.props.editAssignment(assignment,subject_id,user_id);
+    this.props.editTask(assignment,subject_id,user_id);
 
     this.setState(this.getDefaultState());
   }

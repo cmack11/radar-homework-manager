@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import image from './images/window_close.svg'
-import { retrieveCompletedAssignments } from './actions/assignmentAction.js'
+import { retrieveCompletedTasks } from './actions/assignmentAction.js'
 
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveCompletedAssignments: (user_id) => dispatch(retrieveCompletedAssignments(user_id)),
+ retrieveCompletedTasks: (user_id) => dispatch(retrieveCompletedTasks(user_id)),
 })
 
 const mapStateToProps = state => {
@@ -43,7 +43,7 @@ class HistoryPage extends Component {
 	componentWillReceiveProps(nextProps){
 		this.resize();
 		if(nextProps.show && this.props.show !== nextProps.show) {
-			this.props.retrieveCompletedAssignments(this.props.user_id)
+			this.props.retrieveCompletedTasks(this.props.user_id)
 		}
 	}
 

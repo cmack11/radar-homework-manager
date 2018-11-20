@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, newSubject } from '../actions/assignmentAction.js';
+import { newSubject } from '../actions/assignmentAction.js';
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: (id) => dispatch(retrieveAssignments(id)),
  newSubject: (name, color, description, primary_type, user_id) => dispatch(newSubject(name, color, description, primary_type, user_id))
 })
 
