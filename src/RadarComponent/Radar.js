@@ -456,13 +456,8 @@ class Radar extends Component {
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
-<<<<<<< HEAD
 			<Icon name={(this._openAddButton) ? 'minus' : ((this._openEditButton) ? 'pencil alternate' : 'plus')} circular size='huge' className={(this._openEditButton ? "plus-button" : "plus-button button-behind" )} style={{background : (this._openEditButton) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
 			<Icon name={(this._openHistoryButton) ? 'close' : ((this._openCompletedButton) ? 'checkmark' : 'history')} circular size='huge' className={(this._openCompletedButton ? "history-button" : "history-button button-behind" )} style={{background : (this._openCompletedButton) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
-=======
-			<Icon name={this.state.buttons.right.logo} circular size='huge' className="plus-button" style={{background : (this.state.draggedDot) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
-			<Icon name={this.state.buttons.left.logo} circular size='huge' className="history-button" style={{background : (this.state.draggedDot) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
->>>>>>> cecc941e9e521cb6d56e3876469cb178626ad3fb
 	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
