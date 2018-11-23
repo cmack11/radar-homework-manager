@@ -32,12 +32,10 @@ import moment from 'moment'
    return (dispatch) => {
      return axios.get(API_URL + '/Tasks/getOverdueTasks/' + user_id)
      .then( response => {
-       console.log(response)
          if (response.data === "failed") {
            alert("Failed to retrieve overdue assignments")
          }
          else {
-           console.log(response)
            dispatch(setOverdueTasks(response.data))
          }
      })
@@ -51,7 +49,6 @@ import moment from 'moment'
    return (dispatch) => {
      return axios.get(API_URL + '/Tasks/viewCompletedTasks/' + user_id)
      .then( response => {
-       console.log(response)
          if (response.data === "failed") {
            alert("Failed to retrieve completed assignments")
          }
@@ -88,15 +85,20 @@ import moment from 'moment'
        }
        else {
          let newSubject;
-         //Can delete once api only returns a single new subject object
+         //Can modify once api only returns a single new subject object
          let s = response.data;
-         s.map((subject) => {
-           if(subject.name === name)
-             newSubject = subject;
-         })
-         //Can delete once api only returns a single new subject object
-
-         dispatch(addSubject(newSubject))
+         console.log(s);
+         if(typeof s === Array) {
+          s.map((subject) => {
+            if(subject.name === name)
+              newSubject = subject;
+          })
+         } else if(typeof s === Object) {
+          newSubject = s;
+         }
+         //Can modify once api only returns a single new subject object
+         if(newSubject)
+          dispatch(addSubject(newSubject))
        }
      })
      .catch(error => {
@@ -123,7 +125,8 @@ import moment from 'moment'
            newSubject = subject;
        })
        //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
-       dispatch(updateSubject(newS))
+       if(newS)
+        dispatch(updateSubject(newS))
      })
      .catch(error => {
        alert("Fail to create new subject at this time. If the persists, contact administrator")
@@ -136,7 +139,10 @@ import moment from 'moment'
    return (dispatch) => {
      return axios.delete(API_URL+'/Subjects/deleteSubject/'+params.subject_id)
      .then( response => {
+
+      if(response.status === 200 && response.data != 'failed')
        dispatch(removeSubject(subject.subject_id))
+
      })
      .catch(error => {
        alert("Fail to delete subject")
@@ -164,8 +170,6 @@ export const newTask = (name,description,type,dueDate, subject_id, user_id) => {
     return axios.post(API_URL + '/Tasks/addA',params)
     .then( response => {
       let s = response.data;
-      console.log('response')
-      console.log(s)
       //Can delete once api returns new assignment
       let newTask;
       s.map((subject) => {
@@ -176,7 +180,8 @@ export const newTask = (name,description,type,dueDate, subject_id, user_id) => {
           })
       })
       //Can delete once api returns new assignment
-      dispatch(addTask(newTask, subject_id))
+      if(newTask && subject_id)
+        dispatch(addTask(newTask, subject_id))
     })
     .catch(error => {
       alert("Fail to create new assignment")
@@ -197,7 +202,6 @@ export const editTask = (task, subject_id, user_id) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateA',params)
     .then( response => {
-      console.log('editted...')
       console.log(response)
       dispatch(updateTask(response.data))
     })
@@ -213,7 +217,8 @@ export const deleteTask = (task) => {
   return (dispatch) => {
     return axios.delete(API_URL + '/Tasks/deleteTask/'+params.task_id)
     .then( response => {
-      dispatch(removeTask(task.task_id))
+      if(response.status === 200 && response.data != 'failed')
+        dispatch(removeTask(task.task_id))
     })
     .catch(error => {
       alert("Failed to delete task")
@@ -226,12 +231,11 @@ export const completeTask = (task)  => {
   let params = {
     task_id:task.task_id
   }
-  console.log(params)
   return (dispatch) => {
     return axios.post(API_URL+'/Tasks/setCompleted', params)
     .then( response => {
-      console.log(response)
-      dispatch(removeTask(task.task_id))
+      if(response.status === 200 && response.data != 'failed')
+        dispatch(removeTask(task.task_id))
     })
     .catch(error => {
       alert("Failed to complete task");
@@ -290,7 +294,6 @@ export const updateSubject = (subject) => {
 }
 
 export const removeSubject = (subject_id) => {
-  console.log('removing '+subject_id)
   return {
     type: types.DELETE_SUBJECT,
     payload : {

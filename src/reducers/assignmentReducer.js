@@ -7,7 +7,6 @@ let initialState = {
   overdueAssignments: []
 }
 export default (state = initialState, action) => {
-  console.log(state);
   let newSubjects;
  switch (action.type) {
 

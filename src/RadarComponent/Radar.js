@@ -36,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => {
-		console.log("Map :"+ JSON.stringify(state));
 		return {
 			id: state.user.user_id,
 			overdueAssignments : state.assignment.overdueAssignments,

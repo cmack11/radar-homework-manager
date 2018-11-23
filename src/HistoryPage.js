@@ -13,7 +13,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => {
-		console.log(state);
 		return {
 			user_id: state.user.user_id,
 			assignments: state.assignment.completedAssignments,

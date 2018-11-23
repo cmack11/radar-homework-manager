@@ -38,7 +38,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => {
-    console.log("Map :"+ JSON.stringify(state));
     return {
       id : state.user.user_id,
       name : state.user.name,
@@ -84,7 +83,6 @@ class App extends Component {
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
-    console.log(this.state);
   }
 
   onRouteChange = (location) => {
