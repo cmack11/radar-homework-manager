@@ -4,10 +4,11 @@ import * as types from '../actions/action_types.js';
 let initialState = {
   subjects : [],
   completedAssignments: [],
-  overdueAssignments: []
+  overdueAssignments: [], 
+  typesDict:{}
 }
 export default (state = initialState, action) => {
-  let newSubjects;
+  let newSubjects, typesDict;
  switch (action.type) {
 
   case types.INITIALIZE_ASSIGNMENTS:
@@ -120,6 +121,43 @@ export default (state = initialState, action) => {
       return {
         ...state,
         subjects:newSubjects
+      }
+
+    case types.SET_TYPES:
+
+     typesDict = {};
+     let typesArr = action.payload.types;
+     for(let i = 0; i < typesArr.length; i++) {
+      typesDict[typesArr[i].type_id] = typesArr[i];
+     }
+
+     return {
+       ...state,
+       typesDict:typesDict
+     }
+
+    case types.ADD_TYPE:
+      typesDict = Object.assign({}, state.typesDict)
+      typesDict[action.payload.type.type_id] = action.payload.type;
+      return {
+        ...state,
+        typesDict:typesDict
+      }
+
+    case types.UPDATE_TYPE:
+      typesDict = Object.assign({}, state.typesDict)
+      typesDict[action.payload.type.type_id] = action.payload.type;
+      return {
+        ...state,
+        typesDict:typesDict
+      }
+
+    case types.REMOVE_TYPE:
+      typesDict = Object.assign({}, state.typesDict)
+      delete typesDict[action.payload.type_id]
+      return {
+        ...state,
+        typesDict:typesDict
       }
 
   default:

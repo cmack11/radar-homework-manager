@@ -4,29 +4,39 @@ import { connect } from 'react-redux';
 import { GithubPicker, ChromePicker } from 'react-color';
 import {Button, Form} from 'semantic-ui-react';
 import {subjects1} from './fakeData.js';
+import { retrieveTypes, editType, newType, deleteType } from './actions/assignmentAction.js'
 import './App.css';
+
+
+const mapDispatchToProps = dispatch => ({
+ retrieveTypes: (id) => dispatch(retrieveTypes(id)),
+ newType : (user_id, name, color) => dispatch(newType(user_id, name, color)),
+ deleteType: (type_id) => dispatch(deleteType(type_id)),
+ editType : (user_id, type_id, name, color) => dispatch(editType(user_id, type_id, name, color))
+})
+
+const mapStateToProps = state => {
+  return {
+    id: state.user.user_id,
+    types : state.assignment.typesDict,
+  }
+}
 
 class AdvancedSetting extends React.Component {
 
+  componentDidMount() {
+    this.props.retrieveTypes(this.props.id)
+  }
+
   getTaskTypes() {
-    return [
-      {
-          name: "Assignment",
-          id: 0,
-      },
-      {
-        name: "Problem Set",
-        id: 1,
-      },
-      {
-        name: "Exam",
-        id: 2,
-      },
-      {
-        name: "Reading",
-        id: 3,
+
+    let arr = [];
+    if(this.props.types) {
+      for(let key  in this.props.types) {
+        arr.push(this.props.types[key])
       }
-    ];
+    }
+    return arr;
   }
 
 render() {
@@ -86,12 +96,13 @@ class TaskTypeEditor extends React.Component {
 }
 
   addTaskType() {
-    //TODO: Redux Hookup to Add New Type
     if (this.state.taskNameError || this.state.taskType === "")
       return;
     let newTaskTypeList = this.state.taskTypes.slice();
     newTaskTypeList.push({name: this.state.taskType});
     this.setState({taskTypes: newTaskTypeList});
+
+    //this.props.newType(this.props.id, this.state.taskType, this.state.taskColor)
   }
 
   enableTaskTypeDeletion(event) {
@@ -243,4 +254,4 @@ class SingleItemColorSelect extends Component {
   }
 }
 
-export default AdvancedSetting;
+export default connect(mapStateToProps, mapDispatchToProps)(AdvancedSetting);

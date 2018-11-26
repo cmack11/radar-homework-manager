@@ -1,7 +1,7 @@
 import * as types from './action_types.js';
 import { connect } from 'react-redux'
 import axios from 'axios';
-import {subjects} from '../fakeData.js';
+import {subjects, typesExample} from '../fakeData.js';
 import {API_URL} from '../config/config';
 import moment from 'moment'
 
@@ -61,6 +61,20 @@ import moment from 'moment'
      })
    }
  }
+
+ export const retrieveTypes = (user_id) => {
+   return (dispatch) => {
+     return axios.get(API_URL + '/Types/getTypes/' + user_id)
+     .then( response => {
+         dispatch(setTypes(response.data))
+     })
+     .catch(error => {
+        dispatch(setTypes(typesExample))//Remove when working
+       //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+     })
+   }
+ }
+
 
 
  /**
@@ -244,7 +258,64 @@ export const completeTask = (task)  => {
 }
 
 
+/**
+ *  TYPE API CALLS
+ */
 
+ export const newType = (user_id, name, color) => {
+  let params = {
+    user_id:user_id,
+    name:name,
+    color:color
+  }
+   return (dispatch) => {
+     return axios.post(API_URL + '/Types/addType/', params)
+     .then( response => {
+         dispatch(addType(response.data))
+     })
+     .catch(error => {
+        params.type_id = 100;
+        dispatch(addType(params))//Remove when working
+       //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+     })
+   }
+ }
+
+ export const editType = (user_id, type_id, name, color) => {
+  let params = {
+    user_id:user_id,
+    type_id:type_id,
+    name:name,
+    color:color
+  }
+   return (dispatch) => {
+     return axios.post(API_URL + '/Types/updateType/', params)
+     .then( response => {
+         dispatch(updateType(response.data))
+     })
+     .catch(error => {
+        params.type_id = 100;
+        dispatch(updateType(params))//Remove when working
+       //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+     })
+   }
+ }
+
+ export const deleteType = (type_id) => {
+  let params = {
+    type_id:type_id,
+  }
+   return (dispatch) => {
+     return axios.delete(API_URL + '/Types/addType/' + params.type_id)
+     .then( response => {
+         dispatch(deleteType(params.type_id))
+     })
+     .catch(error => {
+        dispatch(deleteType(params.type_id))//Remove when working
+       //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+     })
+   }
+ }
 
 
 
@@ -340,6 +411,44 @@ export const removeTask = (task_id, subject_id) => {
   }
 }
 /*Task actions*/
+
+/*Type actions*/
+export const setTypes = (typesArray) => {
+  return {
+    type: types.SET_TYPES,
+    payload: {
+      types : typesArray,
+    }
+  }
+}
+
+export const addType = (type) => {
+  return {
+    type: types.ADD_TYPE,
+    payload: {
+      type : type,
+    }
+  }
+}
+
+export const updateType = (type) => {
+  return {
+    type: types.UPDATE_TYPE,
+    payload: {
+      type : type,
+    }
+  }
+}
+
+export const removeType = (type_id) => {
+  return {
+    type: types.REMOVE_TYPE,
+    payload: {
+      type_id : type_id,
+    }
+  }
+}
+/*Type actions*/
 
 
 

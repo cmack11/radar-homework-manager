@@ -30,4 +30,9 @@ export const SET_OVERDUE_ASSIGNMENTS = 'SET_OVERDUE_ASSIGNMENTS'
 
 export const DELETE_TASK = 'DELETE_TASK'
 export const DELETE_SUBJECT = 'DELETE_SUBJECT'
+
+export const SET_TYPES = 'SET_TYPES'
+export const ADD_TYPE = 'ADD_TYPE'
+export const REMOVE_TYPE = 'REMOVE_TYPE'
+export const UPDATE_TYPE = 'UPDATE_TYPE'
 /* ASSGINMENT ACTION */
