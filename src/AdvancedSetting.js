@@ -20,6 +20,7 @@ render() {
   return (
     <div style={{display: 'table', position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
       <TaskTypeEditor taskTypes={this.getTaskTypes()}/>
+      <SubjectColorSettings subjects = {subjects1} />
     </div>
   )
 }
@@ -160,11 +161,11 @@ class SubjectColorSettings extends Component {
     const subjects = this.getSubjects();
     let subjectList = [];
     for (var i = 0; i < subjects.length; i++) {
-      subjectList.push(<SingleSubjectColor subjectName = {subjects[i].name} />);
+      subjectList.push(<span style={{display: 'table-cell'}}><SingleSubjectColor subjectName = {subjects[i].name} /></span>);
     }
 
     return (
-      <div>
+      <div style={{display: 'table-row'}}>
         <text><b>Subject Color Selection: </b></text>
         {subjectList}
       </div>
@@ -175,7 +176,11 @@ class SubjectColorSettings extends Component {
 class SingleSubjectColor extends Component {
   constructor(props) {
     super(props);
-    this.state = {showCP: false};
+    this.state = {showCP: false, color: this.getCurrentColor()};
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
   }
 
   handleClick() {
@@ -187,17 +192,32 @@ class SingleSubjectColor extends Component {
     this.setState({ showCP: false })
   };
 
+  getCurrentColor() {
+    //TODO: Redux, get current color
+    return '#000'
+  }
+
   handleChangeColor(color, event) {
       //TODO: Redux change color.
+      this.setState({color: color.hex});
   }
 
   render() {
-
+    const fullscreenCover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    }
     return (
-       <div onClick={() => { alert("hello world")} }>
-        <button onClick={() => { alert("hello world")} }>{this.props.subjectName}</button>
+       <div style={{background: this.state.color}}>
+        <button onClick={ this.handleClick }>{this.props.subjectName}</button>
         { this.state.showCP ?
-          <GithubPicker onChangeComplete={this.handleChangeColor}/>
+          <div style={{position: 'absolute', zIndex: '2'}}>
+            <div style={ fullscreenCover } onClick={ this.handleClose }/>
+            <GithubPicker triangle={'none'} onChangeComplete={this.handleChangeColor}/>
+          </div>
           : null }
       </div>
     )
