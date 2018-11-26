@@ -7,9 +7,6 @@ import {subjects1} from './fakeData.js';
 import './App.css';
 
 class AdvancedSetting extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   getTaskTypes() {
     return [
@@ -34,9 +31,14 @@ class AdvancedSetting extends React.Component {
 
 render() {
   return (
-    <div style={{ display: 'table', position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
-      <ColorSettingsRow items = {subjects1} isSubject={true}/>
-      <ColorSettingsRow items = {this.getTaskTypes()} isTaskType={true}/>
+    <div style={{position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
+      <div style={{display: 'table', width: '100%'}}>
+        <ColorSettingsRow items = {subjects1} isSubject={true}/>
+        <br/>
+        <ColorSettingsRow items = {this.getTaskTypes()} isTaskType={true}/>
+      </div>
+      <br/>
+      <br/>
       <TaskTypeEditor taskTypes={this.getTaskTypes()}/>
     </div>
   )
@@ -130,7 +132,7 @@ class TaskTypeEditor extends React.Component {
       taskTypeWithSpaces += this.state.taskTypes[i].name + " ";
 
     return(
-      <div style={{ display: 'table-row-group', width: '100%', columnSpan:"100%"}}>
+      <div style={{ display: 'block', width: '100%'}}>
       <Form>
       <b>Current Task Types:</b><br/>
         {taskTypeWithSpaces}
@@ -153,9 +155,6 @@ class TaskTypeEditor extends React.Component {
 }
 
 class ColorSettingsRow extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   getItems() {
     if (this.props.isSubject)
@@ -186,7 +185,7 @@ class ColorSettingsRow extends Component {
 
     return (
       <div style={{display: 'table-row'}}>
-        <text><b>{this.props.isSubject ? "Subject" : "Task"} Color Selection: </b></text>
+        <text><b>{this.props.isSubject ? "Subject" : "Task Type"} Color Selection: </b></text>
         {itemsList}
       </div>
     )
@@ -204,7 +203,6 @@ class SingleItemColorSelect extends Component {
   }
 
   handleClick() {
-    console.log("CLICKED!");
     this.setState({ showCP: !this.state.showCP })
   };
 
@@ -232,12 +230,12 @@ class SingleItemColorSelect extends Component {
       left: '0px',
     }
     return (
-       <div style={{display: 'table-cell', background: this.state.color}}>
-        <button onClick={ this.handleClick }>{this.props.name}</button>
+       <div style={{background: this.state.color}}>
+        <rect width="100%" height="100%" rx={15} ry={15} background={this.state.color} onClick={ this.handleClick }><text style={{color: "white"}}>{" " + this.props.name + " "}</text></rect>
         { this.state.showCP ?
           <div style={{position: 'absolute', zIndex: '2'}}>
             <div style={ fullscreenCover } onClick={ this.handleClose }/>
-            <GithubPicker triangle={'none'} onChangeComplete={this.handleChangeColor}/>
+            <GithubPicker triangle={'hide'} onChangeComplete={this.handleChangeColor}/>
           </div>
           : null }
       </div>
