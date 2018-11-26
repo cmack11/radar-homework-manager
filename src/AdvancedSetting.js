@@ -18,7 +18,7 @@ class AdvancedSetting extends React.Component {
 
 render() {
   return (
-    <div>
+    <div style={{display: 'table', position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
       <TaskTypeEditor taskTypes={this.getTaskTypes()}/>
     </div>
   )
@@ -106,10 +106,18 @@ class TaskTypeEditor extends React.Component {
         <Button primary type="button" value="enableDelete" onClick={this.handleSubmit}>Open Task Type Delete Menu</Button>
       );
     }
+
+    let taskTypeWithSpaces = "";
+    for (let i = 0; i < this.state.taskTypes.length; ++i)
+      taskTypeWithSpaces += this.state.taskTypes[i] + " ";
+
     return(
-    <div style={{display: 'grid',  justifyContent:'center', alignItems:'center', width: '320'}}>
+    <div style={{display: 'table-row', position: 'absolute', left: '0', top: '0', height: '75%', width: '75%', margin: '12.5%'}}>
 
       <Form>
+        <b>Current Task Types:</b><br/>
+        {taskTypeWithSpaces}
+        <br/>
         <Form.Field className='task-type-add'>
           <label className="label-text label-center">Add New Task Type:</label>
           <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskType" type="text" onChange={this.handleChange.bind(this)} />
@@ -120,11 +128,6 @@ class TaskTypeEditor extends React.Component {
         <br/>
         <br/>
         {deleteTasksButton}
-        <br/>
-        <br/>
-        Current Valid Task Types:
-        <br/>
-        {this.state.taskTypes}
       </Form>
     </div>
     )
