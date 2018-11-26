@@ -103,7 +103,7 @@ class TaskTypeEditor extends React.Component {
     let newTaskTypeList = [];
     for (let i = 0; i < this.state.taskTypes.length; ++i) {
       const taskType = this.state.taskTypes[i];
-      if (taskType !== typeToDelete)
+      if (taskType.name !== typeToDelete)
         newTaskTypeList.push(taskType);
     }
     this.setState({taskTypes: newTaskTypeList, showDeleteTasks: false});
