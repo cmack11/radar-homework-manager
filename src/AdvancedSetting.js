@@ -88,7 +88,7 @@ class TaskTypeEditor extends React.Component {
       if (taskType !== typeToDelete)
         newTaskTypeList.push(taskType);
     }
-    this.setState({taskTypes: newTaskTypeList});
+    this.setState({taskTypes: newTaskTypeList, showDeleteTasks: false});
   }
 
   render() {
@@ -116,11 +116,16 @@ class TaskTypeEditor extends React.Component {
         </Form.Field>
 
         <Button primary type="button" value="addTaskType" onClick={this.handleSubmit}>Add Type</Button>
+        <br/>
+        <br/>
+        <br/>
+        {deleteTasksButton}
+        <br/>
+        <br/>
+        Current Valid Task Types:
+        <br/>
+        {this.state.taskTypes}
       </Form>
-      <br/>
-      {this.state.taskTypes}
-      <br/>
-      {deleteTasksButton}
     </div>
     )
   }
