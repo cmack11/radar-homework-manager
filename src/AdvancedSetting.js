@@ -113,7 +113,7 @@ class TaskTypeEditor extends React.Component {
     let deleteTasksButton = [];
     if (this.state.showDeleteTasks) {
       for (let i = 0; i < this.state.taskTypes.length; ++i) {
-        const taskType = this.state.taskTypes[i];
+        const taskType = this.state.taskTypes[i].name;
         deleteTasksButton.push(
           <Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete Type: {taskType}</Button>
         );
