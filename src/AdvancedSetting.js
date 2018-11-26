@@ -12,15 +12,32 @@ class AdvancedSetting extends React.Component {
   }
 
   getTaskTypes() {
-    //TODO: Redux Hook
-    return ["Assignment", "Problem Set", "Exam", "Reading"];
+    return [
+      {
+          name: "Assignment",
+          id: 0,
+      },
+      {
+        name: "Problem Set",
+        id: 1,
+      },
+      {
+        name: "Exam",
+        id: 2,
+      },
+      {
+        name: "Reading",
+        id: 3,
+      }
+    ];
   }
 
 render() {
   return (
-    <div style={{display: 'table', position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
+    <div style={{ display: 'table', position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
+      <ColorSettingsRow items = {subjects1} isSubject={true}/>
+      <ColorSettingsRow items = {this.getTaskTypes()} isTaskType={true}/>
       <TaskTypeEditor taskTypes={this.getTaskTypes()}/>
-      <SubjectColorSettings subjects = {subjects1} />
     </div>
   )
 }
@@ -71,7 +88,7 @@ class TaskTypeEditor extends React.Component {
     if (this.state.taskNameError || this.state.taskType === "")
       return;
     let newTaskTypeList = this.state.taskTypes.slice();
-    newTaskTypeList.push(this.state.taskType);
+    newTaskTypeList.push({name: this.state.taskType});
     this.setState({taskTypes: newTaskTypeList});
   }
 
@@ -110,15 +127,15 @@ class TaskTypeEditor extends React.Component {
 
     let taskTypeWithSpaces = "";
     for (let i = 0; i < this.state.taskTypes.length; ++i)
-      taskTypeWithSpaces += this.state.taskTypes[i] + " ";
+      taskTypeWithSpaces += this.state.taskTypes[i].name + " ";
 
     return(
-    <div style={{display: 'table-row', position: 'absolute', left: '0', top: '0', height: '75%', width: '75%', margin: '12.5%'}}>
-
+      <div style={{ display: 'table-row-group', width: '100%', columnSpan:"100%"}}>
       <Form>
-        <b>Current Task Types:</b><br/>
+      <b>Current Task Types:</b><br/>
         {taskTypeWithSpaces}
-        <br/>
+      <br/>
+
         <Form.Field className='task-type-add'>
           <label className="label-text label-center">Add New Task Type:</label>
           <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskType" type="text" onChange={this.handleChange.bind(this)} />
@@ -135,45 +152,48 @@ class TaskTypeEditor extends React.Component {
   }
 }
 
-class SubjectColorSettings extends Component {
+class ColorSettingsRow extends Component {
   constructor(props) {
     super(props);
   }
 
-  getSubjects() {
-    //TODO: Redux Connection
-    return this.props.subjects;
+  getItems() {
+    if (this.props.isSubject)
+      return this.getSubjects();
+    else
+      return this.getTaskTypes();
   }
 
-  updateSubjectColor(subject, color) {
-    //TODO: Redux Connection
-    var subjects = this.getSubjects();
-    for (var i = 0; i < subjects.length; i++) {
-      if (subjects[i].name === subject) {
-        subjects[i].color = color;
-        break;
-      }
-    }
-    this.props.subjects = subjects;
+  getSubjects() {
+    //TODO: Redux Connection. Items won't be used once Redux is hooked in.
+    return this.props.items;
+  }
+
+  getTaskTypes() {
+    //TODO: Redux Connection. Items won't be used once Redux is hooked in.
+    return this.props.items;
   }
 
   render() {
-    const subjects = this.getSubjects();
-    let subjectList = [];
-    for (var i = 0; i < subjects.length; i++) {
-      subjectList.push(<span style={{display: 'table-cell'}}><SingleSubjectColor subjectName = {subjects[i].name} /></span>);
+    const items = this.getSubjects();
+    let itemsList = [];
+    for (var i = 0; i < items.length; i++) {
+      itemsList.push(
+        <span style={{display: 'table-cell'}}>
+          <SingleItemColorSelect name = {items[i].name} isSubject={this.props.isSubject}/>
+        </span>);
     }
 
     return (
       <div style={{display: 'table-row'}}>
-        <text><b>Subject Color Selection: </b></text>
-        {subjectList}
+        <text><b>{this.props.isSubject ? "Subject" : "Task"} Color Selection: </b></text>
+        {itemsList}
       </div>
     )
   }
 }
 
-class SingleSubjectColor extends Component {
+class SingleItemColorSelect extends Component {
   constructor(props) {
     super(props);
     this.state = {showCP: false, color: this.getCurrentColor()};
@@ -193,12 +213,13 @@ class SingleSubjectColor extends Component {
   };
 
   getCurrentColor() {
+    //Just check for this.props.isTaskType or this.props.isSubject to know.
     //TODO: Redux, get current color
     return '#000'
   }
 
   handleChangeColor(color, event) {
-      //TODO: Redux change color.
+      //TODO: Redux change color. Just check for this.props.isTaskType or this.props.isSubject to know.
       this.setState({color: color.hex});
   }
 
@@ -211,8 +232,8 @@ class SingleSubjectColor extends Component {
       left: '0px',
     }
     return (
-       <div style={{background: this.state.color}}>
-        <button onClick={ this.handleClick }>{this.props.subjectName}</button>
+       <div style={{display: 'table-cell', background: this.state.color}}>
+        <button onClick={ this.handleClick }>{this.props.name}</button>
         { this.state.showCP ?
           <div style={{position: 'absolute', zIndex: '2'}}>
             <div style={ fullscreenCover } onClick={ this.handleClose }/>
