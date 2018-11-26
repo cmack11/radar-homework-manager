@@ -67,7 +67,7 @@ class TaskTypeEditor extends React.Component {
 
   addTaskType() {
     //TODO: Redux Hookup to Add New Type
-    if (this.state.taskNameError)
+    if (this.state.taskNameError || this.state.taskType === "")
       return;
     let newTaskTypeList = this.state.taskTypes.slice();
     newTaskTypeList.push(this.state.taskType);
@@ -97,13 +97,13 @@ class TaskTypeEditor extends React.Component {
       for (let i = 0; i < this.state.taskTypes.length; ++i) {
         const taskType = this.state.taskTypes[i];
         deleteTasksButton.push(
-          <Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete {taskType}</Button>
+          <Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete Type: {taskType}</Button>
         );
       }
     }
     else {
       deleteTasksButton.push(
-        <Button primary type="button" value="enableDelete" onClick={this.handleSubmit}>Delete Task Type</Button>
+        <Button primary type="button" value="enableDelete" onClick={this.handleSubmit}>Open Task Type Delete Menu</Button>
       );
     }
     return(
