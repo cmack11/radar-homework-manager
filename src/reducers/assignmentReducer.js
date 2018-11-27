@@ -147,6 +147,7 @@ export default (state = initialState, action) => {
     case types.UPDATE_TYPE:
       typesDict = Object.assign({}, state.typesDict)
       typesDict[action.payload.type.type_id] = action.payload.type;
+      console.log(typesDict)
       return {
         ...state,
         typesDict:typesDict
@@ -155,6 +156,8 @@ export default (state = initialState, action) => {
     case types.REMOVE_TYPE:
       typesDict = Object.assign({}, state.typesDict)
       delete typesDict[action.payload.type_id]
+      console.log(action.payload.type_id);
+      console.log(typesDict);
       return {
         ...state,
         typesDict:typesDict

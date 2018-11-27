@@ -14,7 +14,8 @@ const mapStateToProps = state => {
     console.log("Map :"+ JSON.stringify(state));
     return {
       id: state.user.user_id,
-      assignmentData : state.assignment.subjects
+      assignmentData : state.assignment.subjects,
+      types: state.assignment.typesDict
     }
   }
 
@@ -91,10 +92,10 @@ export class SubjectForm extends React.Component {
   render() {
 
     let taskTypeOptions = [];
-    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    for (let key in this.props.types)
     {
-      const taskType = this.props.taskTypes[i];
-      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+      const taskType = this.props.types[key];
+      taskTypeOptions.push(<option value={taskType}>{taskType.name}</option>);
     }
 
     return (

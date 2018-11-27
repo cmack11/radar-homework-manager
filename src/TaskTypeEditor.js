@@ -1,15 +1,36 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react';
-export class TaskTypeEditor extends React.Component {
+import { connect } from 'react-redux'
+import { newType, deleteType } from './actions/assignmentAction.js'
+
+
+
+
+const mapDispatchToProps = dispatch => ({
+  newType : (user_id, name, color) => dispatch(newType(user_id, name, color)),
+  deleteType : (type_id) => dispatch(deleteType(type_id))
+})
+
+const mapStateToProps = state => {
+    return {
+      id: state.user.user_id,
+      subjects : state.assignment.subjects,
+      types : state.assignment.typesDict,
+    }
+  }
+
+export class TaskTypeEditor extends Component {
   constructor(props) {
     super();
     this.state = {
       taskTypes: props.taskTypes,
       taskType: "",
+      taskColor:"black",
       showDeleteTasks: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
@@ -24,6 +45,7 @@ export class TaskTypeEditor extends React.Component {
       [name]: value
     });
   }
+
   handleSubmit(event) {
     const buttonType = event.target.value;
     if (buttonType === "enableDelete")
@@ -33,33 +55,42 @@ export class TaskTypeEditor extends React.Component {
     else
       this.deleteTaskType(event);
   }
+
   addTaskType() {
     if (this.state.taskNameError || this.state.taskType === "")
       return;
     let newTaskTypeList = this.state.taskTypes.slice();
     newTaskTypeList.push({ name: this.state.taskType });
     this.setState({ taskTypes: newTaskTypeList });
-    //this.props.newType(this.props.id, this.state.taskType, this.state.taskColor)
+
+    this.props.newType(this.props.id, this.state.taskType, this.state.taskColor)
   }
+
   enableTaskTypeDeletion(event) {
     this.setState({ showDeleteTasks: true });
   }
+
   deleteTaskType(event) {
-    //TODO: Redux Hookup
     const typeToDelete = event.target.value;
     let newTaskTypeList = [];
-    for (let i = 0; i < this.state.taskTypes.length; ++i) {
-      const taskType = this.state.taskTypes[i];
-      if (taskType.name !== typeToDelete)
+
+    for (let key in this.props.types) {
+      let taskType = this.props.types[key];
+      if (taskType.name !== typeToDelete) {
         newTaskTypeList.push(taskType);
+      } else {
+        this.props.deleteType(taskType.type_id)
+      }
     }
+
     this.setState({ taskTypes: newTaskTypeList, showDeleteTasks: false });
   }
+
   render() {
     let deleteTasksButton = [];
     if (this.state.showDeleteTasks) {
-      for (let i = 0; i < this.state.taskTypes.length; ++i) {
-        const taskType = this.state.taskTypes[i].name;
+      for (let key in this.props.types) {
+        const taskType = this.props.types[key].name;
         deleteTasksButton.push(<Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete Type: {taskType}</Button>);
       }
     }
@@ -89,3 +120,6 @@ export class TaskTypeEditor extends React.Component {
     </div>);
   }
 }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskTypeEditor)

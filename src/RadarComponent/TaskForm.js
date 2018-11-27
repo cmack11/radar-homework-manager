@@ -20,7 +20,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
     return {
       id: state.user.user_id,
-      subjects: state.assignment.subjects
+      subjects: state.assignment.subjects,
+      types: state.assignment.typesDict
+
     }
   }
 
@@ -132,10 +134,10 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     }
 
     let taskTypeOptions = [];
-    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    for (let key in this.props.types)
     {
-      const taskType = this.props.taskTypes[i];
-      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+      const taskType = this.props.types[key];
+      taskTypeOptions.push(<option value={taskType}>{taskType.name}</option>);
     }
 
     let formName = <b>Add Task</b>;
@@ -187,7 +189,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
               onChangeRaw={(e) => {
                 let d = moment(e.target.value,"M/D/YYYY [at] h:mm A");
                 if(!d.isValid()) return;
-                console.log(d.format())
+
                 this.setState({taskDueDate:d});
               }}
               showTimeSelect

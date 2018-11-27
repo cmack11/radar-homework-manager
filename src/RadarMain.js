@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sampleAction } from './actions/sampleAction';
 import { initializeUser, resetUser } from './actions/userAction.js';
-import { updateTask, retrieveTasks, retrieveOverdueTasks, retrieveCompletedTasks } from './actions/assignmentAction.js';
+import { updateTask, retrieveTasks, retrieveOverdueTasks, retrieveCompletedTasks, retrieveTypes } from './actions/assignmentAction.js';
 import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import './_datepicker.css';
@@ -20,6 +20,7 @@ const mapDispatchToProps = dispatch => ({
  retrieveTasks : (user_id) => dispatch(retrieveTasks(user_id)),
  retrieveOverdueTasks : (user_id) => dispatch(retrieveOverdueTasks(user_id)),
  retrieveCompletedTasks : (user_id) => dispatch(retrieveCompletedTasks(user_id)),
+ retrieveTypes : (user_id) => dispatch(retrieveTypes(user_id)),
 })
 
 const mapStateToProps = state => {
@@ -44,6 +45,7 @@ class App extends Component {
       this.props.retrieveTasks(this.props.id);
       this.props.retrieveOverdueTasks(this.props.id);
       this.props.retrieveCompletedTasks(this.props.id);
+      this.props.retrieveTypes(this.props.id);
     }
   }
 

@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
-import { SingleItemColorSelect } from "./SingleItemColorSelect";
+import SingleItemColorSelect from "./SingleItemColorSelect";
+import { connect } from 'react-redux'
+import { addType } from './actions/assignmentAction.js'
+
+
+
+
+const mapDispatchToProps = dispatch => ({
+})
+
+const mapStateToProps = state => {
+    return {
+      id: state.user.user_id,
+      subjects : state.assignment.subjects,
+      types : state.assignment.typesDict,
+    }
+  }
+
 export class ColorSettingsRow extends Component {
-  getItems() {
-    if (this.props.isSubject)
-      return this.getSubjects();
-    else
-      return this.getTaskTypes();
-  }
-  getSubjects() {
-    //TODO: Redux Connection. Items won't be used once Redux is hooked in.
-    return this.props.items;
-  }
-  getTaskTypes() {
-    //TODO: Redux Connection. Items won't be used once Redux is hooked in.
-    return this.props.items;
-  }
+  
   render() {
-    const items = this.getSubjects();
+    let items;
+    if(this.props.isSubject)
+      items = this.props.subjects;
+    else {
+      items = [];
+      for(let key in this.props.types)
+        items.push(this.props.types[key])
+    }
     let itemsList = [];
     for (var i = 0; i < items.length; i++) {
       itemsList.push(<span style={{ display: 'table-cell' }}>
@@ -29,3 +40,6 @@ export class ColorSettingsRow extends Component {
     </div>);
   }
 }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ColorSettingsRow)

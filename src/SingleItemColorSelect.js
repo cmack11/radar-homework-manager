@@ -1,5 +1,24 @@
 import React, { Component } from 'react';
 import { GithubPicker } from 'react-color';
+import { connect } from 'react-redux'
+import { editType, editSubject } from './actions/assignmentAction.js'
+
+
+
+
+const mapDispatchToProps = dispatch => ({
+  editType : (user_id, type_id, name, color) => dispatch(editType(user_id, type_id, name, color)),
+  editSubject : (newSubject) => dispatch(editSubject(newSubject))
+})
+
+const mapStateToProps = state => {
+    return {
+      id: state.user.user_id,
+      subjects : state.assignment.subjects,
+      types : state.assignment.typesDict,
+    }
+  }
+
 export class SingleItemColorSelect extends Component {
   constructor(props) {
     super(props);
@@ -8,20 +27,54 @@ export class SingleItemColorSelect extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
   }
+
   handleClick() {
     this.setState({ showCP: !this.state.showCP });
   }
-  ;
+
   handleClose = () => {
     this.setState({ showCP: false });
-  };
-  getCurrentColor() {
-    //Just check for this.props.isTaskType or this.props.isSubject to know.
-    //TODO: Redux, get current color
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({color:this.getCurrentColor(nextProps)});
+  }
+
+  getCurrentColor(props) {
+    if(!props) props = this.props;
+
+    if(!props.isSubject) {
+      for(let key in props.types) {
+        if(props.types[key].name === props.name)
+          return props.types[key].color;
+      }
+    } else {
+      for(let i = 0; i < props.subjects.length; i++) {
+        if(props.subjects[i].name === props.name)
+          return props.subjects[i].color;
+      }
+    }
     return '#000';
   }
   handleChangeColor(color, event) {
-    //TODO: Redux change color. Just check for this.props.isTaskType or this.props.isSubject to know.
+    if(!this.props.isSubject) {
+      for(let key in this.props.types) {
+        if(this.props.types[key].name === this.props.name) {
+          let type = this.props.types[key];
+
+          this.props.editType(this.props.id, type.type_id, type.name, color.hex) 
+        }
+      }
+    } else {
+      for(let i = 0; i < this.props.subjects.length; i++) {
+        if(this.props.subjects[i].name === this.props.name) {
+          let subject = this.props.subjects[i];
+          subject.color = color;
+
+          this.props.editSubject(subject);
+        }
+      }
+    }
     this.setState({ color: color.hex });
   }
   render() {
@@ -43,3 +96,5 @@ export class SingleItemColorSelect extends Component {
     </div>);
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleItemColorSelect)

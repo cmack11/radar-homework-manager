@@ -20,6 +20,7 @@ import moment from 'moment'
          }
          else {
            dispatch(initializeTasks(response.data))
+           //dispatch(initializeTasks(subjects))
          }
      })
      .catch(error => {
@@ -90,7 +91,7 @@ import moment from 'moment'
      primary_type:primary_type,
      user_id : user_id,
    }
-   console.log(params)
+
    return (dispatch) => {
      return axios.post(API_URL + '/Subjects/addSubject',params)
      .then( response => {
@@ -143,7 +144,7 @@ import moment from 'moment'
         dispatch(updateSubject(newS))
      })
      .catch(error => {
-       alert("Fail to create new subject at this time. If the persists, contact administrator")
+       alert("Fail to edit subject at this time. If the persists, contact administrator")
      })
    }
  }
@@ -294,7 +295,7 @@ export const completeTask = (task)  => {
          dispatch(updateType(response.data))
      })
      .catch(error => {
-        params.type_id = 100;
+        delete params.user_id
         dispatch(updateType(params))//Remove when working
        //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
      })
@@ -306,12 +307,12 @@ export const completeTask = (task)  => {
     type_id:type_id,
   }
    return (dispatch) => {
-     return axios.delete(API_URL + '/Types/addType/' + params.type_id)
+     return axios.delete(API_URL + '/Types/deleteType/' + params.type_id)
      .then( response => {
-         dispatch(deleteType(params.type_id))
+         dispatch(removeType(params.type_id))
      })
      .catch(error => {
-        dispatch(deleteType(params.type_id))//Remove when working
+        dispatch(removeType(params.type_id))//Remove when working
        //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
      })
    }
