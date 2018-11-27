@@ -68,15 +68,16 @@ export default (state = initialState, action) => {
       };
 
     case types.ADD_SUBJECT :
-
+      /*
       newSubjects = state.subjects.slice(); //copy the current subjects
       console.log("Test")
       console.log(action.payload.subject)
       newSubjects.push(action.payload.subject); //add the new one
+      */
 
       return {
         ...state,
-        subjects : newSubjects
+        subjects : action.payload.subject
       };
 
     case types.COMPLETE_ASSIGNMENT :
