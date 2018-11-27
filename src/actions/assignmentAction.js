@@ -102,8 +102,9 @@ import moment from 'moment'
          let newSubject;
          //Can modify once api only returns a single new subject object
          let s = response.data;
-         console.log(s);
+         console.log(s)
          if(Array.isArray(s)) {
+
           s.map((subject) => {
             console.log(subject)
             if(subject.name === name)
@@ -116,6 +117,8 @@ import moment from 'moment'
          //Can modify once api only returns a single new subject object
          if(newSubject)
           dispatch(addSubject(newSubject))
+          
+          //dispatch(addSubject(response.data))
        }
      })
      .catch(error => {
@@ -244,7 +247,7 @@ export const deleteTask = (task) => {
 }
 
 export const completeTask = (task)  => {
-  
+
   let params = {
     task_id:task.task_id
   }
@@ -452,7 +455,3 @@ export const removeType = (type_id) => {
   }
 }
 /*Type actions*/
-
-
-
-
