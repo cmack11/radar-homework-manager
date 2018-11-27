@@ -116,3 +116,31 @@ export const retrieveTasks = (data) => {
     })
   }
 }
+
+export const changePassword = () => dispatch => {
+ dispatch({
+  type: types.RESET_USER
+ })
+}
+
+export const resetPassword = (email, success) => {
+  return (dispatch) => {
+    return axios.get(API_URL + 'api here')
+    .then( response => {
+        if (response.data === "failed")
+        {
+          success()
+          /*alert("Failed to reset password")*/
+        }
+        else {
+          alert("Password reset success! Please login using the new access")
+          success()
+          dispatch(changePassword(email))
+        }
+    })
+    .catch(error => {
+      success()
+      /*alert("Failed to reset name. If this error persists, contact and administrator")*/
+    })
+  }
+}

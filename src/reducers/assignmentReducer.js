@@ -4,7 +4,7 @@ import * as types from '../actions/action_types.js';
 let initialState = {
   subjects : [],
   completedAssignments: [],
-  overdueAssignments: [], 
+  overdueAssignments: [],
   typesDict:{}
 }
 export default (state = initialState, action) => {
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
            for(let j = 0; j < subject.assignments.length; j++) {
             let assignment = subject.assignments[j];
             if(assignment.task_id !== action.payload.assignment.task_id) continue;//Skip unaltered subjects
-            
+
             subject.assignments.slice(j,1,action.payload.assignment)
             break;
            }
@@ -70,6 +70,8 @@ export default (state = initialState, action) => {
     case types.ADD_SUBJECT :
 
       newSubjects = state.subjects.slice(); //copy the current subjects
+      console.log("Test")
+      console.log(action.payload.subject)
       newSubjects.push(action.payload.subject); //add the new one
 
       return {
@@ -96,7 +98,7 @@ export default (state = initialState, action) => {
         overdueAssignments: action.payload.assignments
       }
 
-    case types.DELETE_TASK: 
+    case types.DELETE_TASK:
       newSubjects = state.subjects.slice(); //copy the current subjects
 
       for(let i = 0; i < newSubjects.length; i++) {
