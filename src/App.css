@@ -268,10 +268,17 @@ svg text#chk {
 
 .overdue-button {
   cursor: pointer;
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  top:3px;
+  right:5px;
 }
+
+.notification-icon {
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top:-45px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
