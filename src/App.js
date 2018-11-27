@@ -29,6 +29,7 @@ import AdvancedSetting from './AdvancedSetting.js';
 import Help from './Help.js';
 import LoginPage from './LoginPage.js';
 import SignupPage from './SignupPage.js';
+import RecoverPassword from './RecoverPassword.js'
 
 import ico from './images/icon_alt.png';
 
@@ -182,6 +183,7 @@ class App extends Component {
             <Route path='/help' exact component={Help} />
             <Route path='/login' exact component={LoginPage} />
             <Route path='/signup' exact component={SignupPage} />
+            <Route path='/forgotpassword' exact component={RecoverPassword} />
           </Switch>
         </div>
       </div>

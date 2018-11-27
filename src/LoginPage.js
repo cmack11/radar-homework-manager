@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 
 class LoginPage extends Component {
   onLoginButtonPress = () => {
-  		
+
     if (this.refs.user.value === "" || this.refs.pw.value === "")
     {
       return false
@@ -39,6 +39,10 @@ class LoginPage extends Component {
 
   gotoSignup = () => {
       this.props.history.push('/signup')
+  }
+
+  gotoForgotPassword = () => {
+      this.props.history.push('/forgotpassword')
   }
 render() {
   /* add required on input later on */
@@ -59,7 +63,7 @@ render() {
             <Button primary className="login-button" type='submit' onClick={()=> {this.onLoginButtonPress()}}>Login</Button>
         </Form>
           <div className="subtext-container">
-            <p className="subtext-login">forgot password ?</p>
+            <p className="subtext-login" onClick={()=> {this.gotoForgotPassword()}}>forgot password ?</p>
             <p className="subtext-divider">|</p>
             <p className="subtext-login"  onClick={()=> {this.gotoSignup()}}>New user? sign up!</p>
           </div>
