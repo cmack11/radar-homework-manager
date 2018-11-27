@@ -103,14 +103,16 @@ import moment from 'moment'
          //Can modify once api only returns a single new subject object
          let s = response.data;
          console.log(s);
-         if(typeof s === Array) {
+         if(Array.isArray(s)) {
           s.map((subject) => {
+            console.log(subject)
             if(subject.name === name)
               newSubject = subject;
           })
          } else if(typeof s === Object) {
           newSubject = s;
          }
+         console.log(newSubject)
          //Can modify once api only returns a single new subject object
          if(newSubject)
           dispatch(addSubject(newSubject))
