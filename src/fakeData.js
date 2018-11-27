@@ -452,15 +452,12 @@ const types1 = [
   {type_id:2, name:'Exam', color:'maroon'},
   {type_id:3, name:'Reading', color:'cyan'},
   {type_id:4, name:'Problem Set', color:'magenta'},
+  {type_id:5, name:'Coding Practice', color:'lightgreen'},
 ]
 
 export const typesExample = types1;
 
 export const colors1 = {
 	typeColors:{
-		"Assignment":'white',
-		"Exam":'maroon',
-		"Reading":'cyan',
-	  "Problem Set":'magenta'
 	}
 }

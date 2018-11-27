@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import {subjects1} from './fakeData.js';
 import { retrieveTypes, editType, newType, deleteType } from './actions/assignmentAction.js'
 import './App.css';
-import { TaskTypeEditor } from './TaskTypeEditor';
-import { ColorSettingsRow } from './ColorSettingsRow';
+import TaskTypeEditor from './TaskTypeEditor';
+import ColorSettingsRow from './ColorSettingsRow';
 
 
 const mapDispatchToProps = dispatch => ({

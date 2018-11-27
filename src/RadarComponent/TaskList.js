@@ -27,6 +27,7 @@ const mapStateToProps = state => {
         return {
             id: state.user.user_id,
             subjects : state.assignment.subjects,
+            types:state.assignment.typesDict
         }
     }
 
@@ -51,6 +52,7 @@ class TaskList extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
   }
 
   markComplete(assignment) {
@@ -124,7 +126,8 @@ class TaskList extends React.Component {
         },
         {
             Header: 'Type',
-            accessor: 'type'
+            accessor: 'type_id',
+            Cell: props => <span className='type_id'>{this.props.types[props.value] ? this.props.types[props.value].name : ''}</span>
         },
         {
             Header: 'Due Date',

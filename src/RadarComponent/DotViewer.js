@@ -18,6 +18,7 @@ const mapStateToProps = state => {
 		return {
 			id: state.user.user_id,
 			subjects : state.assignment.subjects,
+			types : state.assignment.typesDict,
 		}
 	}
 
@@ -110,7 +111,8 @@ export class DotViewer extends Component {
 		if(assignment) {
 			name = assignment.name;
 			date = ' ' + moment(assignment.dueDate).format('MMMM Do YYYY, h:mm a');
-			type = ' ' + assignment.type;
+			if(this.props.types[assignment.type_id])
+				type = ' ' + this.props.types[assignment.type_id].name;
 		}
 
 		return (

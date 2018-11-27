@@ -3,6 +3,18 @@ import moment from 'moment'
 import util from './utils.js'
 import PropTypes from 'prop-types';
 import Dot from './Dot.js';
+import { connect } from 'react-redux';
+
+
+const mapDispatchToProps = dispatch => ({
+})
+
+const mapStateToProps = state => {
+  return {
+    id: state.user.user_id,
+    types : state.assignment.typesDict,
+  }
+}
 
 class Dots extends Component {
 
@@ -74,8 +86,8 @@ class Dots extends Component {
 				if(distanceFromCenter <= -1) continue;
 
 				let color = 'white';
-				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
-					color = this.props.view.colors.typeColors[assignment.type];
+				if(this.props.types && this.props.types[assignment.type_id])
+					color = this.props.types[assignment.type_id].color;
 				this.dotsObjs[i].push({
 					key:(subjects[i].name+'/'+assignment.name+'/'+moment(assignment.dueDate).format('YYYY-MM-DD HH:mm')),
 					distanceFromCenter:distanceFromCenter,
@@ -295,7 +307,7 @@ Dots.propTypes = {
   	getDistanceFromCenter: PropTypes.func.isRequired
 }
 
-export default Dots;
+export default connect(mapStateToProps, mapDispatchToProps)(Dots);
 
 //need to find a way to have the dragged dot be on top of the spinline, but stationary dots be below
 //And also have dotviewer be on top of spinline
