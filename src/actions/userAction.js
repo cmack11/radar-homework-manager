@@ -139,7 +139,8 @@ export const resetPassword = (email, success) => {
         }
     })
     .catch(error => {
-      alert("Failed to reset name. If this error persists, contact and administrator")
+      success()
+      /*alert("Failed to reset name. If this error persists, contact and administrator")*/
     })
   }
 }

@@ -21,6 +21,7 @@ import { completeTask } from '../actions/assignmentAction.js'
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import { MdNotifications } from 'react-icons/md';
+import {setMenuRef} from '../dismissCenter';
 
 
 const addButton = 'plus';
@@ -70,6 +71,7 @@ class Radar extends Component {
     this._openCompletedButton = false
 		this.state = state;
 		this.setDefault();
+    setMenuRef(this);
 	}
 
 	//Need to do the same with subjects and view and do it in a cleaner way
@@ -354,7 +356,8 @@ class Radar extends Component {
 		this.setState(state)
 	}
 
-	addButtonClick() {
+	addButtonClick(e) {
+    e.stopPropagation()
 		let buttons = this.state.buttons;
 		if(buttons.right.logo === addButton) {
 			this.closeHistoryScreen();//order matters
@@ -427,6 +430,7 @@ class Radar extends Component {
 	}
 
 	editButtonClick(assignment) {
+    
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
 

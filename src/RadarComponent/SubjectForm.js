@@ -98,7 +98,7 @@ export class SubjectForm extends React.Component {
     }
 
     return (
-      <div className="subject-task-form">
+      <div className="subject-task-form"  onClick={(e) => {e.stopPropagation()}}>
         <Form >
             <div className="subject-title-container">
               <b>Add Subject</b>
