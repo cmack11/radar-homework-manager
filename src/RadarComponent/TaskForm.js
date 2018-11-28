@@ -87,16 +87,21 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
         user_id : this.state.id
         }
 
-    console.log("New subject is " + JSON.stringify(d))
-
-    this.props.newAssignment(d)
-
+    //console.log("New subject is " + JSON.stringify(d))
+    this.props.newAssignment(d);
     this.setState(this.getDefaultState());
-
-      if(this.props.closeForm)
-        this.props.closeForm();
-  }
+    if(this.props.closeForm)
+    	this.props.closeForm();
+  	}else{
+  		this.props.addAssignment(
+      	{subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
+      	this.state.subject);
+      	this.setState(this.getDefaultState());
+      	if(this.props.closeForm)
+        		this.props.closeForm();
+  	}
 }
+
 
   allValid() {
     if(this.state.taskName == "" || this.state.taskName.length > maxNameLength || this.state.taskName.length < minNameLength) {
