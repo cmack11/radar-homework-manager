@@ -7,7 +7,7 @@ import image from './images/window_close.svg'
 import { retrieveCompletedTasks } from './actions/assignmentAction.js'
 import { MdClose } from 'react-icons/md'
 import { IconContext } from "react-icons"
-
+import { setHistoryFormRef } from './dismissCenter';
 const mapDispatchToProps = dispatch => ({
  retrieveCompletedTasks: (user_id) => dispatch(retrieveCompletedTasks(user_id)),
 })
@@ -33,6 +33,7 @@ class HistoryPage extends Component {
 		}
 
 		this.state = state;
+    setHistoryFormRef(this);
 	}
 
 	componentDidMount() {

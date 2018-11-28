@@ -383,7 +383,8 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 
-	historyButtonClick() {
+	historyButtonClick(e) {
+    e.stopPropagation()
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
@@ -406,7 +407,8 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 
-	overdueButtonClick() {
+	overdueButtonClick(e) {
+    e.stopPropagation()
 		let buttons = this.state.buttons;
 		if(buttons.overdue.logo === overdueButton){
 			this.closeAddForm();//order matters
@@ -480,7 +482,7 @@ class Radar extends Component {
     	<div id='radardiv' style={{position:'absolute'}}>
 			<Icon name={this.state.buttons.right.logo} circular size='huge' className={(this.state.draggedDot ? "plus-button button-behind" : "plus-button" )} style={{background : (this.state.draggedDot) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
 			<Icon name={this.state.buttons.left.logo} circular size='huge' className={(this.state.draggedDot ? "history-button button-behind" :"history-button" )} style={{background : (this.state.draggedDot) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
-{overDueImage}
+      {overDueImage}
       <svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
