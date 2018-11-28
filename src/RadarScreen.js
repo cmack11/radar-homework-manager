@@ -10,6 +10,21 @@ import HistoryPage from './HistoryPage.js'
 import OverduePage from './OverduePage.js'
 import SubjectPage from './SubjectPage.js'
 import TaskForm from './RadarComponent/TaskForm.js'
+import { connect } from 'react-redux'
+import { retrieveCompletedTasks, retrieveOverdueTasks } from './actions/assignmentAction.js'
+
+
+
+const mapDispatchToProps = dispatch => ({
+ retrieveCompletedTasks: (user_id) => dispatch(retrieveCompletedTasks(user_id)),
+ retrieveOverdueTasks: (user_id) => dispatch(retrieveOverdueTasks(user_id)),
+})
+
+const mapStateToProps = state => {
+		return {
+			user_id: state.user.user_id,
+		}
+	}
 
 
 
@@ -135,6 +150,9 @@ class RadarScreen extends Component {
 			state.dates.startDate = moment();
 			state.dates.endDate = moment(state.dates.startDate).add(difference,'ms')
 			this.setState(state);
+
+			this.props.retrieveOverdueTasks(this.props.user_id)
+			this.props.retrieveCompletedTasks(this.props.user_id)
 		},10000)
 	}
 
@@ -355,7 +373,7 @@ class RadarScreen extends Component {
 }
 
 
-export default RadarScreen;  
+export default connect(mapStateToProps, mapDispatchToProps)(RadarScreen);  
 
 /* known issues
 * right now: on variable dividing, the rows get cut off at 20% of radius

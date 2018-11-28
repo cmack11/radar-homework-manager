@@ -1,233 +1,458 @@
 import * as types from './action_types.js';
+import { connect } from 'react-redux'
 import axios from 'axios';
-import {subjects} from '../fakeData.js';
+import {subjects, typesExample} from '../fakeData.js';
 import {API_URL} from '../config/config';
+import moment from 'moment'
+import * as errorMessages from '../ErrorMessages/error_messages.js'
 
-export const initializeAssignments = (data) => {
+
+
+/**
+ *  RETRIEVAL API CALLS
+ */
+ export const retrieveTasks = (data) => {
+   return (dispatch) => {
+     return axios.get(API_URL + '/Subjects/getAll/' + data)
+     .then( response => {
+         if (response.data === "failed")
+         {
+           alert(errorMessages.RETRIEVE_TASK_FAILED)
+         }
+         else {
+           dispatch(initializeTasks(response.data))
+           //dispatch(errorMessages.RETRIEVE_TASK_SERVER_ERROR)
+         }
+     })
+     .catch(error => {
+       alert("Failed to retrieve name. If this error persists, contact and administrator")
+     })
+   }
+ }
+
+ export const retrieveOverdueTasks = (user_id) => {
+   return (dispatch) => {
+     return axios.get(API_URL + '/Tasks/getOverdueTasks/' + user_id)
+     .then( response => {
+         if (response.data === "failed") {
+           alert(errorMessages.RETRIEVE_OVERDUE_FAILED)
+         }
+         else {
+           dispatch(setOverdueTasks(response.data))
+         }
+     })
+     .catch(error => {
+       alert(errorMessages.RETRIEVE_OVERDUE_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const retrieveCompletedTasks = (user_id) => {
+   return (dispatch) => {
+     return axios.post(API_URL + '/Tasks/viewCompletedTasks/', user_id)
+     .then( response => {
+         if (response.data === "failed") {
+           alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
+         }
+         else {
+           dispatch(setCompletedTasks(response.data))
+         }
+     })
+     .catch(error => {
+       alert(errorMessages.RETRIEVE_COMPLETED_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const retrieveTypes = (user_id) => {
+   return (dispatch) => {
+     return axios.get(API_URL + '/Types/getTypes/' + user_id)
+     .then( response => {
+         dispatch(setTypes(response.data))
+     })
+     .catch(error => {
+        dispatch(setTypes(typesExample))//Remove when working
+       //alert(errorMessages.RETRIEVE_TYPES_SERVER_ERROR)
+     })
+   }
+ }
+
+
+
+ /**
+  *  SUBJECT API CALLS
+  */
+
+
+ export const newSubject = (name, color, description, primary_type, user_id) => {
+   let params = {
+     name:name,
+     color:color,
+     description:description,
+     primary_type:primary_type,
+     user_id : user_id,
+   }
+
+   return (dispatch) => {
+     return axios.post(API_URL + '/Subjects/addSubject',params)
+     .then( response => {
+       if (response.data === "failed") {
+         alert(errorMessages.ADD_SUBJECT_FAILED)
+       }
+       else {
+         let newSubject;
+         //Can modify once api only returns a single new subject object
+         let s = response.data;
+         console.log(s)
+         if(Array.isArray(s)) {
+
+          s.map((subject) => {
+            console.log(subject)
+            if(subject.name === name)
+              newSubject = subject;
+          })
+         } else if(typeof s === Object) {
+          newSubject = s;
+         }
+         console.log(newSubject)
+         //Can modify once api only returns a single new subject object
+         if(newSubject)
+          dispatch(addSubject(newSubject))
+
+          //dispatch(addSubject(response.data))
+       }
+     })
+     .catch(error => {
+       alert(errorMessages.ADD_SUBJECT_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const editSubject = (newSubject) => {
+   let params = {
+     subject_id:newSubject.subject_id,
+     name:newSubject.name,
+     color:newSubject.color,
+     default_task_type:newSubject.default_task_type
+   };
+   return (dispatch) => {
+     return axios.post(API_URL+'/Subjects/updateSubjectName/', params)
+     .then( response => {
+       let newS;
+       //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
+       let s = response.data;
+       s.map((subject) => {
+         if(subject.subject_id === newSubject.subject_id)
+           newSubject = subject;
+       })
+       //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
+       if(newS)
+        dispatch(updateSubject(newS))
+     })
+     .catch(error => {
+       alert(errorMessages.EDIT_SUBJECT_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const deleteSubject = (subject) => {
+   let params = {subject_id:subject.subject_id}
+   return (dispatch) => {
+     return axios.delete(API_URL+'/Subjects/deleteSubject/'+params.subject_id)
+     .then( response => {
+
+      if(response.status === 200 && response.data != 'failed')
+       dispatch(removeSubject(subject.subject_id))
+
+     })
+     .catch(error => {
+       alert(errorMessages.DELETE_SUBJECT_SERVER_ERROR)
+     })
+   }
+ }
+
+
+/**
+ *  TASK API CALLS
+ */
+
+
+export const newTask = (name,description,type,dueDate, subject_id, user_id) => {
+  let params = {
+      name:name,
+      description:description,
+      type:type,
+      dueDate:dueDate,
+      subject_id : subject_id,
+      user_id : user_id
+  }
+
+  return (dispatch) => {
+    return axios.post(API_URL + '/Tasks/addA',params)
+    .then( response => {
+      let s = response.data;
+      //Can delete once api returns new assignment
+      let newTask;
+      s.map((subject) => {
+        if(subject.subject_id === subject_id)
+          subject.assignments.map((a) => {
+            if(a.name === name && moment(a.dueDate).isSame(moment(dueDate)))
+              newTask = a;
+          })
+      })
+      //Can delete once api returns new assignment
+      if(newTask && subject_id)
+        dispatch(addTask(newTask, subject_id))
+    })
+    .catch(error => {
+      alert(errorMessages.ADD_TASK_SERVER_ERROR)
+    })
+  }
+}
+
+export const editTask = (task, subject_id, user_id) => {
+  let params = {
+    name:task.name,
+    description:task.description,
+    type:task.type,
+    dueDate:task.dueDate,
+    task_id:task.task_id,
+    subject_id:subject_id,
+    user_id:user_id,
+  }
+  return (dispatch) => {
+    return axios.post(API_URL + '/Tasks/updateA',params)
+    .then( response => {
+      console.log(response)
+      dispatch(updateTask(response.data))
+    })
+    .catch(error => {
+      alert(errorMessages.EDIT_TASK_SERVER_ERROR)
+    })
+  }
+}
+
+export const deleteTask = (task) => {
+  let params = {task_id:task.task_id}
+
+  return (dispatch) => {
+    return axios.delete(API_URL + '/Tasks/deleteTask/'+params.task_id)
+    .then( response => {
+      if(response.status === 200 && response.data != 'failed')
+        dispatch(removeTask(task.task_id))
+    })
+    .catch(error => {
+      alert(errorMessages.DELETE_TASK_SERVER_ERROR)
+    })
+  }
+}
+
+export const completeTask = (task)  => {
+
+  let params = {
+    task_id:task.task_id
+  }
+  return (dispatch) => {
+    return axios.post(API_URL+'/Tasks/setCompleted', params)
+    .then( response => {
+      if(response.status === 200 && response.data != 'failed')
+        dispatch(removeTask(task.task_id))
+    })
+    .catch(error => {
+      alert(errorMessages.COMPLETE_TASK_SERVER_ERROR);
+    })
+  }
+}
+
+
+/**
+ *  TYPE API CALLS
+ */
+
+ export const newType = (user_id, name, color) => {
+  let params = {
+    user_id:user_id,
+    name:name,
+    color:color
+  }
+   return (dispatch) => {
+     return axios.post(API_URL + '/Types/addType/', params)
+     .then( response => {
+         dispatch(addType(response.data))
+     })
+     .catch(error => {
+        params.type_id = 100;
+        dispatch(addType(params))//Remove when working
+       //alert(errorMessages.ADD_TYPE_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const editType = (user_id, type_id, name, color) => {
+  let params = {
+    user_id:user_id,
+    type_id:type_id,
+    name:name,
+    color:color
+  }
+   return (dispatch) => {
+     return axios.post(API_URL + '/Types/updateType/', params)
+     .then( response => {
+         dispatch(updateType(response.data))
+     })
+     .catch(error => {
+        delete params.user_id
+        dispatch(updateType(params))//Remove when working
+        //alert(errorMessages.EDIT_TYPE_SERVER_ERROR)
+     })
+   }
+ }
+
+ export const deleteType = (type_id) => {
+  let params = {
+    type_id:type_id,
+  }
+   return (dispatch) => {
+     return axios.delete(API_URL + '/Types/deleteType/' + params.type_id)
+     .then( response => {
+         dispatch(removeType(params.type_id))
+     })
+     .catch(error => {
+        dispatch(removeType(params.type_id))//Remove when working
+        //alert(errorMessages.DELETE_TYPE_SERVER_ERROR)
+     })
+   }
+ }
+
+
+
+/**
+ *  ACTIONS THAT MODIFY STATE
+ */
+
+
+
+/*Retrival actions*/
+export const initializeTasks = (data) => {
   return {
     type: types.INITIALIZE_ASSIGNMENTS,
     payload: {
       subjects : data,
-      /* needs api here */
     }
   }
 }
 
-/* retrieve assignment should call initialize assignment */
-
-export const retrieveAssignments = (data) => {
-  return (dispatch) => {
-    return axios.get(API_URL + '/Subjects/getAll/' + data)
-    .then( response => {
-        if (response.data === "failed")
-        {
-          alert("Failed to retrieve name")
-        }
-        else {
-          dispatch(initializeAssignments(response.data))
-        }
-    })
-    .catch(error => {
-      alert("Failed to retrieve name. If this error persists, contact and administrator")
-    })
-  }
-}
-
-
-export const updateAssignment = (data) => {
-    return {
-      type : types.UPDATE_ASSIGNMENT,
-      payload: data
-    }
-}
-
-
-export const editAssignment = (assignment, subject, desc, due) => {
-  let dict = {
-    assignment : assignment,
-    subject : subject,
-    desc : desc,
-    dueDate : due
-  }
-  return (dispatch) => {
-    return axios.post(API_URL,dict)
-    .then( response => {
-      dispatch(updateAssignment(response.data))
-    })
-    .catch(error => {
-      alert("Fail to create new assignment")
-    })
-  }
-}
-
-/* ADD ASSIGNMENT */
-export const addAssignment = (data) => {
+export const setOverdueTasks = (assignments) => {
   return {
-    type: types.ADD_ASSIGNMENT,
-    payload : {
-      subjects : data
+    type: types.SET_OVERDUE_ASSIGNMENTS,
+    payload: {
+      assignments : assignments,
     }
   }
 }
 
-export const newAssignment = (data) => {
-  return (dispatch) => {
-    return axios.post(API_URL + '/Tasks/addA',data)
-    .then( response => {
-      console.log("NEW ASSIGNMENT IS " + JSON.stringify(response.data))
-      dispatch(addAssignment(response.data))
-    })
-    .catch(error => {
-      alert("Fail to create new assignment")
-    })
+export const setCompletedTasks = (assignments) => {
+  return {
+    type: types.SET_COMPLETED_ASSIGNMENTS,
+    payload: {
+      assignments : assignments,
+    }
   }
 }
-/* ADD ASSIGNMENT */
+/*Retrival actions*/
 
-/* ADD SUBJECT */
-export const addSubject = (data) => {
+/*Subject actions*/
+export const updateSubject = (subject) => {
+  return {
+    type: types.UPDATE_SUBJECT,
+    payload : {
+      subject : subject,
+    }
+  }
+}
+
+export const removeSubject = (subject_id) => {
+  return {
+    type: types.DELETE_SUBJECT,
+    payload : {
+      subject_id : subject_id,
+    }
+  }
+}
+
+export const addSubject = (subject) => {
   return {
     type: types.ADD_SUBJECT,
     payload : {
-      subjects : data,
+      subject : subject,
     }
   }
 }
+/*Subject actions*/
 
-export const newSubject = (data) => {
-  return (dispatch) => {
-    return axios.post(API_URL + '/Subjects/addSubject',data)
-    .then( response => {
-      if (response.data === "failed") {
-        alert("Adding failed")
-      }
-      else {
-        console.log("new subject" + JSON.stringify(response.data) )
-        dispatch(addSubject(response.data))
-      }
-    })
-    .catch(error => {
-      alert("Server error")
-    })
-  }
-}
-/* ADD SUBJECT */
-
-/* DELETE SUBJECT */
-export const deleteSubject = (data) => {
+/*Task actions*/
+export const addTask = (assignment, subject_id) => {
   return {
-    type: types.DELETE_SUBJECT,
+    type: types.ADD_ASSIGNMENT,
     payload : {
-      subjects : data,
+      assignment : assignment,
+      subject_id: subject_id
     }
   }
 }
 
-export const removeSubject = (subject) => {
-  return (dispatch) => {
-    return axios.post(API_URL, subject)
-    .then( response => {
-      dispatch(deleteSubject(response.data))
-    })
-    .catch(error => {
-      alert("Fail to create new subject")
-    })
-  }
+export const updateTask = (assignment) => {
+    return {
+      type : types.UPDATE_ASSIGNMENT,
+      assignment: assignment
+    }
 }
-/* DELETE SUBJECT */
 
-/* EDIT SUBJECT */
-export const updateSubject = (data) => {
+export const removeTask = (task_id, subject_id) => {
   return {
-    type: types.DELETE_SUBJECT,
+    type: types.DELETE_TASK,
     payload : {
-      subjects : data,
+      task_id:task_id,
+      subject_id:subject_id
     }
   }
 }
+/*Task actions*/
 
-export const editSubject = (data) => {
-  return (dispatch) => {
-    return axios.post(API_URL, data)
-    .then( response => {
-      dispatch(deleteSubject(response.data))
-    })
-    .catch(error => {
-      alert("Fail to create new subject at this time. If the persists, contact administrator")
-    })
-  }
-}
-
-/* DELETE ASSIGNMENT */
-export const deleteAssignment = (data) => {
+/*Type actions*/
+export const setTypes = (typesArray) => {
   return {
-    type: types.DELETE_SUBJECT,
-    payload : {
-      subjects : data,
+    type: types.SET_TYPES,
+    payload: {
+      types : typesArray,
     }
   }
 }
 
-export const removeAssignment = (assignment_id) => {
-  return (dispatch) => {
-    return axios.post(API_URL + '/Tasks/deleteTask/' + assignment_id)
-    .then( response => {
-      dispatch(deleteAssignment(response.data))
-    })
-    .catch(error => {
-      alert("Fail to create new subject")
-    })
-  }
-}
-/* DELETE ASSIGNMENT */
-
-/* COMPLETED_ASSIGNMENT */
-export const completedAssignment = (data) => {
+export const addType = (type) => {
   return {
-    type: types.COMPLETED_ASSIGNMENT,
-    payload : {
-      subjects : data,
+    type: types.ADD_TYPE,
+    payload: {
+      type : type,
     }
   }
 }
 
-export const completeAssignment = (assignment, subject)  => {
-  let d = {
-    assignment : assignment,
-    subject : subject
-  }
-  return (dispatch) => {
-    return axios.post(API_URL, d)
-    .then( response => {
-      dispatch(completedAssignment(response.data))
-    })
-    .catch(error => {
-      alert("Fail to complete assignment");
-    })
-  }
-}
-/* COMPLETED_ASSIGNMENT */
-
-/* OVERDUE ASSIGNMENTS */
-export const overdueAssignments = (data) => {
+export const updateType = (type) => {
   return {
-    type: types.OVERDUE_ASSIGNMENT,
-    payload : {
-      subjects : data,
+    type: types.UPDATE_TYPE,
+    payload: {
+      type : type,
     }
   }
 }
 
-export const pastAssignments = () => {
-  return (dispatch) => {
-    return axios.post(API_URL)
-    .then( response => {
-      dispatch(overdueAssignments(response.data))
-    })
-    .catch(error => {
-      alert("Fail to get past assignments");
-    })
+export const removeType = (type_id) => {
+  return {
+    type: types.REMOVE_TYPE,
+    payload: {
+      type_id : type_id,
+    }
   }
 }
-
-/* OVERDUE ASSIGNMENTS */
+/*Type actions*/

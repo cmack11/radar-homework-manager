@@ -5,19 +5,20 @@ import { MdDelete } from 'react-icons/md'
 import { MdClose } from 'react-icons/md'
 import { MdCheck } from 'react-icons/md'
 import { IconContext } from 'react-icons'
-import { removeSubject, completeAssignment } from '../actions/assignmentAction.js'
+import { deleteTask, completeTask } from '../actions/assignmentAction.js'
 import moment from 'moment'
 
 
 const mapDispatchToProps = dispatch => ({
- removeSubject: (user_id, assignment_id) => dispatch(removeSubject(user_id, assignment_id)),
- completeAssignment : (user_id, assignment_id) => dispatch(completeAssignment(user_id,assignment_id))
+ deleteTask: (task) => dispatch(deleteTask(task)),
+ completeTask : (data) => dispatch(completeTask(data))
 })
 
 const mapStateToProps = state => {
-		console.log("Map :"+ JSON.stringify(state));
 		return {
+			id: state.user.user_id,
 			subjects : state.assignment.subjects,
+			types : state.assignment.typesDict,
 		}
 	}
 
@@ -31,14 +32,18 @@ export class DotViewer extends Component {
 
 	}
 
+	componentWillReceiveProps(nextProps) {
+	}
+
 	completeAssignment() {
 		if(this.props.dot && this.props.dot.id) {
-			let element = document.getElementById(this.props.dot.id)
-			if(element) element.setAttribute('visibility','hidden');
+			//let element = document.getElementById(this.props.dot.id)
+			//if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to update status of assignment to completed
 			//completeAssignment(param,param) //this functions is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
-			this.props.complete(assignment)
+			this.props.completeTask(assignment)
+			//this.props.complete(assignment)
 			//
 			this.props.close();
 		}
@@ -46,13 +51,24 @@ export class DotViewer extends Component {
 
 	deleteAssignment() {
 		if(this.props.dot && this.props.dot.id) {
-			let element = document.getElementById(this.props.dot.id)
-			if(element) element.setAttribute('visibility','hidden');
+			//let element = document.getElementById(this.props.dot.id)
+			//if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to delete assignment from user's account
 			//removeSubject(param,param) //function is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
+			this.props.deleteTask(assignment)
 			//
 			this.props.close();
+		}
+	}
+
+	editAssignment = (e) => {
+    e.stopPropagation()
+		if(this.props.dot && this.props.dot.id) {
+			let assignment = this.props.dot.assignment;
+
+			this.props.close();
+			this.props.edit(assignment)
 		}
 	}
 
@@ -96,9 +112,9 @@ export class DotViewer extends Component {
 		if(assignment) {
 			name = assignment.name;
 			date = ' ' + moment(assignment.dueDate).format('MMMM Do YYYY, h:mm a');
-			type = ' ' + assignment.type;
+			if(this.props.types[assignment.type_id])
+				type = ' ' + this.props.types[assignment.type_id].name;
 		}
-
 
 		return (
 
@@ -117,7 +133,7 @@ export class DotViewer extends Component {
 						</div>
 					</div>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<div style={{cursor:'pointer'}} onClick={this.props.edit} height="100%" width="100%">
+						<div style={{cursor:'pointer'}} onClick={this.editAssignment} height="100%" width="100%">
 							<IconContext.Provider value={{size:25}}>
 								<MdModeEdit />
 							</IconContext.Provider>

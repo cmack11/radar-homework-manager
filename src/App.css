@@ -247,6 +247,59 @@ svg text#chk {
 .back-align {
   top: 4 !important;
 }
+
+.plus-button {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.history-button {
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.button-behind {
+  z-index: -1;
+}
+
+.overdue-button {
+  cursor: pointer;
+  top:3px;
+  right:5px;
+}
+
+.notification-icon {
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top:-45px;
+}
+
+.MuiBadge-colorSecondary-10 {
+  color: #fff;
+  background-color: #f50057;
+  top: 5px !important;
+  right: 3px !important;
+}
+
+.MuiBadge-colorSecondary-4 {
+  color: #fff;
+  background-color: #f50057;
+  top: 5px !important;
+  right: 3px !important;
+}
+
+.overdue-button span {
+  top: 5px !important;
+  right: 3px !important;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

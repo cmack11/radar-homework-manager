@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveAssignments, newSubject } from '../actions/assignmentAction.js';
+import { newSubject } from '../actions/assignmentAction.js';
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
 
 
 const mapDispatchToProps = dispatch => ({
- retrieveAssignments: (id) => dispatch(retrieveAssignments(id)),
- newSubject: (subject) => dispatch(newSubject(subject))
+ newSubject: (name, color, description, primary_type, user_id) => dispatch(newSubject(name, color, description, primary_type, user_id))
 })
 
 const mapStateToProps = state => {
     console.log("Map :"+ JSON.stringify(state));
     return {
       id: state.user.user_id,
-      assignmentData : state.assignment.subjects
+      assignmentData : state.assignment.subjects,
+      types: state.assignment.typesDict
     }
   }
 
@@ -57,22 +57,7 @@ export class SubjectForm extends React.Component {
 
     if(!this.allValid()) return;
 
-    let d = {
-      name:this.state.subjectName,
-      color:color,
-      description:this.state.subjectDesc,
-      primary_type:this.state.defaultTaskType,
-      user_id : this.props.id,
-    }
-
-    console.log("params in subject form " + this.state.subjectName)
-    console.log("params in subject form " + color)
-    console.log("params in subject form " + this.state.subjectDesc)
-    console.log("params in subject form " + this.state.defaultTaskType)
-    console.log("params in subject form " + this.props.id)
-
-    this.props.newSubject(d)
-    console.log("Assignment data after sub form" + JSON.stringify(this.props.assignmentData))
+    this.props.newSubject(this.state.subjectName, color, this.state.subjectDesc, this.state.defaultTaskType, this.props.id)
 
     this.setState(this.getDefaultState())
     if(this.props.closeForm)
@@ -107,14 +92,14 @@ export class SubjectForm extends React.Component {
   render() {
 
     let taskTypeOptions = [];
-    for (let i = 0; i < this.props.taskTypes.length; ++i)
+    for (let key in this.props.types)
     {
-      const taskType = this.props.taskTypes[i];
-      taskTypeOptions.push(<option value={taskType}>{taskType}</option>);
+      const taskType = this.props.types[key];
+      taskTypeOptions.push(<option value={taskType}>{taskType.name}</option>);
     }
 
     return (
-      <div className="subject-task-form">
+      <div className="subject-task-form"  onClick={(e) => {e.stopPropagation()}}>
         <Form >
             <div className="subject-title-container">
               <b>Add Subject</b>

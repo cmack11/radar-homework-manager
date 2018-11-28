@@ -3,6 +3,18 @@ import moment from 'moment'
 import util from './utils.js'
 import PropTypes from 'prop-types';
 import Dot from './Dot.js';
+import { connect } from 'react-redux';
+
+
+const mapDispatchToProps = dispatch => ({
+})
+
+const mapStateToProps = state => {
+  return {
+    id: state.user.user_id,
+    types : state.assignment.typesDict,
+  }
+}
 
 class Dots extends Component {
 
@@ -74,8 +86,8 @@ class Dots extends Component {
 				if(distanceFromCenter <= -1) continue;
 
 				let color = 'white';
-				if(this.props.view && this.props.view.colors && this.props.view.colors.typeColors && this.props.view.colors.typeColors[assignment.type])
-					color = this.props.view.colors.typeColors[assignment.type];
+				if(this.props.types && this.props.types[assignment.type_id])
+					color = this.props.types[assignment.type_id].color;
 				this.dotsObjs[i].push({
 					key:(subjects[i].name+'/'+assignment.name+'/'+moment(assignment.dueDate).format('YYYY-MM-DD HH:mm')),
 					distanceFromCenter:distanceFromCenter,
@@ -93,6 +105,7 @@ class Dots extends Component {
 	getDotRows(dots, fixed, numSteps) {
 		if(!dots || dots.length === 0 || !this.view.radar) return null;
 		dots.sort(this.compareDots);
+
 		if(fixed && !numSteps)
 			numSteps = 10;
 
@@ -123,7 +136,7 @@ class Dots extends Component {
 					//Decrement the next step by a factor of .9 to curb number of rows
 					step *= this.variableRowSizeFactor;
 				}
-				if(innerBoundary < 0) break;
+				if(outerBoundary < 0) break;
 			} else {
 				if(fixed){//Increase the boundry a fixed amount and create new row
 					i--;
@@ -134,7 +147,7 @@ class Dots extends Component {
 				} else {//Set new boundry at next dot, create new row
 					outerBoundary = dots[i].distanceFromCenter
 					innerBoundary = outerBoundary - this.view.dots.radius*2;
-					if(innerBoundary < 0) break;
+					if(outerBoundary < 0) break;
 					currRow++;
 					rows[currRow] = [dots[i]];
 					step = this.view.dots.radius*2;
@@ -271,6 +284,7 @@ class Dots extends Component {
 
 
 		this.fillDotsObjs(subjects);
+
 		this.dotsElems = [];
 		for(let i = 0; this.dotsObjs && i < this.dotsObjs.length; i++) {
 			this.shuffleDots(this.dotsObjs[i]);
@@ -293,7 +307,7 @@ Dots.propTypes = {
   	getDistanceFromCenter: PropTypes.func.isRequired
 }
 
-export default Dots;
+export default connect(mapStateToProps, mapDispatchToProps)(Dots);
 
 //need to find a way to have the dragged dot be on top of the spinline, but stationary dots be below
 //And also have dotviewer be on top of spinline

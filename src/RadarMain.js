@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sampleAction } from './actions/sampleAction';
 import { initializeUser, resetUser } from './actions/userAction.js';
-import { updateAssignment, retrieveAssignments } from './actions/assignmentAction.js';
+import { updateTask, retrieveTasks, retrieveOverdueTasks, retrieveCompletedTasks, retrieveTypes } from './actions/assignmentAction.js';
 import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import './_datepicker.css';
@@ -17,11 +17,13 @@ import './App.css';
 
 const mapDispatchToProps = dispatch => ({
  initializeUser: () => dispatch(initializeUser()),
- retrieveAssignments : (data) => dispatch(retrieveAssignments(data)),
+ retrieveTasks : (user_id) => dispatch(retrieveTasks(user_id)),
+ retrieveOverdueTasks : (user_id) => dispatch(retrieveOverdueTasks(user_id)),
+ retrieveCompletedTasks : (user_id) => dispatch(retrieveCompletedTasks(user_id)),
+ retrieveTypes : (user_id) => dispatch(retrieveTypes(user_id)),
 })
 
 const mapStateToProps = state => {
-    console.log("Map :"+ JSON.stringify(state));
     return {
       counter: state.sample.counter,
       id : state.user.user_id,
@@ -40,7 +42,10 @@ class App extends Component {
     };
     if(this.props.id != -1) {
       console.log("Before init assignment " + this.props.id)
-      this.props.retrieveAssignments(this.props.id);
+      this.props.retrieveTasks(this.props.id);
+      this.props.retrieveOverdueTasks(this.props.id);
+      this.props.retrieveCompletedTasks(this.props.id);
+      this.props.retrieveTypes(this.props.id);
     }
   }
 

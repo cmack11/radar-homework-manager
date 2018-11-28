@@ -3,7 +3,22 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import image from './images/window_close.svg'
+import { connect } from 'react-redux'
+import { retrieveOverdueTasks } from './actions/assignmentAction.js'
+import { MdClose } from 'react-icons/md'
+import { IconContext } from "react-icons"
 
+
+const mapDispatchToProps = dispatch => ({
+ retrieveOverdueTasks: (user_id) => dispatch(retrieveOverdueTasks(user_id)),
+})
+
+const mapStateToProps = state => {
+		return {
+			id: state.user.user_id,
+			overdueAssignments:state.assignment.overdueAssignments
+		}
+	}
 
 
 const padding = 10;
@@ -27,6 +42,8 @@ class OverduePage extends Component {
 
 	componentWillReceiveProps(nextProps){
 		this.resize();
+		if(nextProps.show && nextProps.show != this.props.show)
+			this.props.retrieveOverdueTasks(this.props.id)
 	}
 
 	resize() {
@@ -44,7 +61,7 @@ class OverduePage extends Component {
 	}
 
 
-	
+
 
 	render() {
 
@@ -58,22 +75,27 @@ class OverduePage extends Component {
 	    	        left:this.state.left,
 	    	        padding:padding,
 	    	        width:'75%',
-	    	        background:'#ce2029',
+	    	        background:'#9C0720',
 	    	        border:5,
-	    	        borderColor:'black',
-	    	        borderStyle:'solid'
+	    	        borderColor:'#7a0317',
+	    	        borderStyle:'solid',
+                borderRadius:"5px",
 	    	    }}>
 	    	    <div style={{display:'flex'}}>
-	    	      <img style={{cursor:'pointer'}} onClick={this.props.close} src={image} height="5%" width="5%" />
+	    	      <div style={{cursor:'pointer'}} onClick={this.props.close}>
+                <IconContext.Provider value={{size:30}}>
+                  <MdClose />
+                </IconContext.Provider>
+              </div>
 	    	      <span style={{verticalAlign:'middle',flexGrow:2,fontSize:'28px'}}><b>Overdue</b></span>
 	    	    </div>
-	    		<TaskList 
+	    		<TaskList
 	    			visible={this.props.show}
-	    			useTypeColors={false} 
-	    			title="" 
-	    			noDataText="No Overdue Assignments Found" 
-	    			width={Math.min(window.innerWidth,500)} 
-	    			assignments={this.props.overdueAssignments} 
+	    			useTypeColors={false}
+	    			title=""
+	    			noDataText="No Overdue Assignments Found"
+	    			width={Math.min(window.innerWidth,500)}
+	    			assignments={this.props.overdueAssignments}
 	    			colors={this.props.colors}
 	    			onResize={this.resize.bind(this)}
 					showCompleteButton={true}
@@ -84,5 +106,4 @@ class OverduePage extends Component {
 }
 
 
-export default OverduePage;  
-
+export default  connect(mapStateToProps, mapDispatchToProps)(OverduePage);

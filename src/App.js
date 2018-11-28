@@ -29,6 +29,8 @@ import AdvancedSetting from './AdvancedSetting.js';
 import Help from './Help.js';
 import LoginPage from './LoginPage.js';
 import SignupPage from './SignupPage.js';
+import RecoverPassword from './RecoverPassword.js'
+import {dismissWindow} from './dismissCenter';
 
 import ico from './images/icon_alt.png';
 
@@ -38,7 +40,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => {
-    console.log("Map :"+ JSON.stringify(state));
     return {
       id : state.user.user_id,
       name : state.user.name,
@@ -84,7 +85,6 @@ class App extends Component {
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
-    console.log(this.state);
   }
 
   onRouteChange = (location) => {
@@ -171,19 +171,25 @@ class App extends Component {
     </div>
   );
 
+  outsideClicked = (e) => {
+    console.log("Closed")
+    dismissWindow()
+  }
+
   render() {
 
     return (
       <div className="App">
         {(this.state.sidebarAvailable == true) && (this.props.location.pathname !== '/login') && (this.props.location.pathname !== '/signup') && (this.renderSidebar())}
-        <div className="inner-content">
+        <div className="inner-content" onClick={this.outsideClicked}>
           <Switch onChange={this.onRouteChange}>
-            <Route path='/' exact component={RadarMain} />s
+            <Route path='/' exact render={() => <RadarMain />} />
             <Route path='/adv' exact component={AdvancedSetting} />
             <Route path='/account' exact component={AccountSetting} />
             <Route path='/help' exact component={Help} />
             <Route path='/login' exact component={LoginPage} />
             <Route path='/signup' exact component={SignupPage} />
+            <Route path='/forgotpassword' exact component={RecoverPassword} />
           </Switch>
         </div>
       </div>

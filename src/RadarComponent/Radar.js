@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
+import { connect } from 'react-redux'
 import Dots from './Dots.js'
 import util from './utils.js'
 import SpinLine from './SpinLine.js'
 import DotViewer from './DotViewer.js'
 import DraggedDot from './DraggedDot.js'
-import addButton from '../images/add_button.png'
-import closeAddButton from '../images/add_button_close.png'
-import editButton from '../images/edit_button.png'
-import completedButton from '../images/completed_button.png'
-import historyButton from '../images/history_button.png'
+//import addButton from '../images/add_button.png'
+//import closeAddButton from '../images/add_button_close.png'
+//import editButton from '../images/edit_button.png'
+//import completedButton from '../images/completed_button.png'
+//import historyButton from '../images/history_button.png'
 import overdueButton from '../images/Overdue_button.png'
-import closeHistoryButton from '../images/history_button_close.png'
+//import closeHistoryButton from '../images/history_button_close.png'
 import closeOverdueButton from '../images/overdue_button_close.png'
+import { Icon } from 'semantic-ui-react'
+import '../App.css';
+import { completeTask } from '../actions/assignmentAction.js'
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
+import { MdNotifications } from 'react-icons/md';
+import {setMenuRef} from '../dismissCenter';
+import { IconContext } from "react-icons";
 
 
+const addButton = 'plus';
+const closeAddButton = 'minus';
+const completedButton = 'checkmark';
+
+const historyButton = 'history';
+const closeHistoryButton = 'close';
+const editButton = 'pencil alternate';
+
+const mapDispatchToProps = dispatch => ({
+ completeTask : (data) => dispatch(completeTask(data))
+})
+
+const mapStateToProps = state => {
+		return {
+			id: state.user.user_id,
+			overdueAssignments : state.assignment.overdueAssignments,
+		}
+	}
 
 class Radar extends Component {
 
@@ -39,9 +66,13 @@ class Radar extends Component {
 		this.verifyAndDefaultSubjects(state,props);
 		this.verifyAndDefaultDates(state,props);
 		this.verifyAndDefaultView(state,props)
-
+		this._openAddButton = false
+		this._openHistoryButton = false
+    this._openEditButton = false
+    this._openCompletedButton = false
 		this.state = state;
 		this.setDefault();
+    setMenuRef(this);
 	}
 
 	//Need to do the same with subjects and view and do it in a cleaner way
@@ -52,7 +83,7 @@ class Radar extends Component {
             this.setState(state);
             this.fillDimensions();
             this.fillRings();
-            this.fillComponents();            
+            this.fillComponents();
         }
 
 
@@ -168,11 +199,11 @@ class Radar extends Component {
 
 	    var d = [
 	        "M", x,y,
-	        "L", start.x, start.y, 
+	        "L", start.x, start.y,
 	        "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
 	        "L", x, y
 	    ].join(" ");
-	    return d;  
+	    return d;
 
 	}
 
@@ -188,7 +219,7 @@ class Radar extends Component {
 		let width = subject.name.length*fontSize/2;
 		let height = 0;
 
-	    let angle = startAngle+(endAngle-startAngle)/2; 
+	    let angle = startAngle+(endAngle-startAngle)/2;
 	    var point = util.polarToCartesian(x, y, radius, angle);
 
 	    if(Math.abs(point.x - this.view.dots.center.x) < .01)//On prime meridian
@@ -212,7 +243,7 @@ class Radar extends Component {
 	getDistanceFromCenter(assignment) {
 		if(!assignment) return 0;
 		let date = moment(assignment.dueDate);
-		if(!date) return 0;
+		if(!date || !date.isValid()) return 0;
 
 		let percent = this.scaleTimeToPercent(date);
 		let minPercent = 1.8*this.state.view.dotRadiusPercent;
@@ -293,7 +324,7 @@ class Radar extends Component {
 		let step = this.scaleTimeToPercent(moment(this.state.dates.startDate).add(this.state.view.ringsWidth))
 
 		for(let percent = step; percent < 1; percent+=step) {
-			let radius = percent*this.view.radar.radius; 
+			let radius = percent*this.view.radar.radius;
 			rings.push(<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={radius} fill='none' key={'Ring at '+percent+'of radius'}/>)
 		}
 		let state = this.state;
@@ -311,21 +342,23 @@ class Radar extends Component {
 	setClickedDot(dot) {this.setState({clickedDot:dot})}
 
 	setDraggedDot(dot) {
-		this.setState({draggedDot:dot})
+		let state = this.state;
+
 		if(dot) {
-			let buttons = this.state.buttons;
-			buttons.left.logo = completedButton;
-			buttons.right.logo = editButton;
-			this.setState({buttons:buttons})
+			state.buttons.left.logo = completedButton;
+			state.buttons.right.logo = editButton;
+			state.draggedDot = dot;
 		} else {
-			let buttons = this.state.buttons;
-			buttons.left.logo = historyButton;
-			buttons.right.logo = addButton;
-			this.setState({buttons:buttons})
+			state.buttons.left.logo = historyButton;
+			state.buttons.right.logo = addButton;
+			delete state.draggedDot;
 		}
+
+		this.setState(state)
 	}
 
-	addButtonClick() {
+	addButtonClick(e) {
+    e.stopPropagation()
 		let buttons = this.state.buttons;
 		if(buttons.right.logo === addButton) {
 			this.closeHistoryScreen();//order matters
@@ -350,7 +383,8 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 
-	historyButtonClick() {
+	historyButtonClick(e) {
+    e.stopPropagation()
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
@@ -372,8 +406,9 @@ class Radar extends Component {
 		this.props.runRadarScreenOpenCloseFunction('closeHistoryScreen');
 		this.setState({buttons:buttons})
 	}
-	
-	overdueButtonClick() {
+
+	overdueButtonClick(e) {
+    e.stopPropagation()
 		let buttons = this.state.buttons;
 		if(buttons.overdue.logo === overdueButton){
 			this.closeAddForm();//order matters
@@ -396,48 +431,67 @@ class Radar extends Component {
 		this.props.runRadarScreenOpenCloseFunction('closeOverdueScreen');
 		this.setState({buttons:buttons})
 	}
-	
+
 	editButtonClick(assignment) {
+    console.log("Open edit form clicked")
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
 
 	closeDotViewer() {
-		this.setState({clickedDot:null})
+		let state = this.state;
+		delete state.clickedDot;
+		this.setState(state)
 	}
 
 	render() {
-		
 		let intersectFuncs = [];
 
 		intersectFuncs.push({
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{
 				dot.dot.setAttribute('visibility','hidden');
-				this.props.completeAssignment(dot.assignment);
+				this.props.completeTask(dot.assignment);
 			}
 		})
-		
+
 		intersectFuncs.push({
 			rect:{x:this.props.view.dotsView.width-this.state.buttons.width-10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{this.editButtonClick(dot.assignment)}
 		})
-		
-		let overdueForm = <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
-		if(this.state.noOverdue){
-			overdueForm = null;
+
+    /*  <Badge badgeContent={5} color="secondary" className="overdueButton" onClick={this.overdueButtonClick.bind(this)}>
+        <MdNotifications />
+        </Badge>
+    */
+	   let overDueImage =
+     (
+       <div className="notification-icon">
+         <Badge badgeContent={this.props.overdueAssignments.length} color="secondary" className="overdue-button" onClick={this.overdueButtonClick.bind(this)}>
+          <IconContext.Provider value={{color : "grey", size:60}}>
+            <MdNotifications />
+          </IconContext.Provider>
+        </Badge>
+      </div>
+   )
+	if(!this.props.overdueAssignments.length){
+			overDueImage = null;
 		}
-		
+
+
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
-	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
+			<Icon name={this.state.buttons.right.logo} circular size='huge' className={(this.state.draggedDot ? "plus-button button-behind" : "plus-button" )} style={{background : (this.state.draggedDot) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
+			<Icon name={this.state.buttons.left.logo} circular size='huge' className={(this.state.draggedDot ? "history-button button-behind" :"history-button" )} style={{background : (this.state.draggedDot) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
+      {overDueImage}
+      <svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
 			  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
 			  		{this.state.rings}
 				</svg>
 				{this.state.sliceLabels}
-				<Dots subjects={this.state.subjects} 
-					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)} 
+				<Dots subjects={this.state.subjects}
+					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)}
 					view={this.state.view} dims={this.view} //bad
 					intersectFunctions={intersectFuncs}
 					intersectsLine={this.intersectsLine.bind(this)}
@@ -447,13 +501,10 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				{overdueForm}
-				<image style={{cursor:'pointer'}} onClick={this.addButtonClick.bind(this)}  href={this.state.buttons.right.logo} x={this.props.view.dotsView.width-this.view.buttons.width-10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
-				<image style={{cursor:'pointer'}} onClick={this.historyButtonClick.bind(this)}  href={this.state.buttons.left.logo} x={10} y={this.props.view.dotsView.height-this.view.buttons.width-10} width={this.view.buttons.width} height={this.view.buttons.width}/>
-				{/*<DotViewer width={250} height={200} dot={this.state.clickedDot} closeDotViewer={() => {this.setState({clickedDot:null})}}/>*/}
+
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
-			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={() => {this.editButtonClick(this.state.clickedDot.assignment)}} delete={()=>{}} complete={this.props.completeAssignment} close={this.closeDotViewer}/>
+			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeTask} close={this.closeDotViewer}/>
 		</div>
     )
   }
@@ -465,12 +516,13 @@ Radar.propTypes = {
   	dates: PropTypes.object
 }
 
-export default Radar;  
+export default connect(mapStateToProps, mapDispatchToProps)(Radar);
+
 
 /* known issues
 * on single slice circle, dots will not be placed near top because of (.1,.9) boundry
 * right now: on variable dividing, the rows get cut off at 20% of radius
-* future: 
+* future:
 	* should figure out how many dots are in view
 	* divide all into variable row sizes
 	* figure out if row is "too large"
