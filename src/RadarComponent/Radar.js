@@ -431,7 +431,7 @@ class Radar extends Component {
 	}
 
 	editButtonClick(assignment) {
-
+    console.log("Open edit form clicked")
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
 

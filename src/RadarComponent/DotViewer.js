@@ -62,7 +62,8 @@ export class DotViewer extends Component {
 		}
 	}
 
-	editAssignment() {
+	editAssignment = (e) => {
+    e.stopPropagation()
 		if(this.props.dot && this.props.dot.id) {
 			let assignment = this.props.dot.assignment;
 
@@ -132,7 +133,7 @@ export class DotViewer extends Component {
 						</div>
 					</div>
 					<div style={{width:'15%',display:'inline-block',padding:5}}>
-						<div style={{cursor:'pointer'}} onClick={this.editAssignment.bind(this)} height="100%" width="100%">
+						<div style={{cursor:'pointer'}} onClick={this.editAssignment} height="100%" width="100%">
 							<IconContext.Provider value={{size:25}}>
 								<MdModeEdit />
 							</IconContext.Provider>
