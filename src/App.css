@@ -279,6 +279,12 @@ svg text#chk {
   margin-top:-45px;
 }
 
+.MuiBadge-colorSecondary-10 {
+  color: #fff;
+  background-color: #f50057;
+  top: 5px !important;
+  right: 3px !important;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
