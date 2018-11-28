@@ -49,7 +49,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
 
  export const retrieveCompletedTasks = (user_id) => {
    return (dispatch) => {
-     return axios.get(API_URL + '/Tasks/viewCompletedTasks/' + user_id)
+     return axios.post(API_URL + '/Tasks/viewCompletedTasks/', user_id)
      .then( response => {
          if (response.data === "failed") {
            alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
