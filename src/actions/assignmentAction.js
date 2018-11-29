@@ -11,9 +11,10 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
 /**
  *  RETRIEVAL API CALLS
  */
- export const retrieveTasks = (data) => {
+ export const retrieveTasks = (user_id) => {
+  let params = {user_id:user_id}
    return (dispatch) => {
-     return axios.get(API_URL + '/Subjects/getAll/' + data)
+     return axios.post(API_URL + '/Subjects/getIncomplete/', params)
      .then( response => {
          if (response.data === "failed")
          {
@@ -21,18 +22,19 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
          }
          else {
            dispatch(initializeTasks(response.data))
-           //dispatch(errorMessages.RETRIEVE_TASK_SERVER_ERROR)
          }
      })
      .catch(error => {
-       alert("Failed to retrieve name. If this error persists, contact and administrator")
+       alert(errorMessages.RETRIEVE_TASK_SERVER_ERROR)
      })
    }
  }
 
  export const retrieveOverdueTasks = (user_id) => {
+  let params = {user_id:user_id}
+
    return (dispatch) => {
-     return axios.get(API_URL + '/Tasks/getOverdueTasks/' + user_id)
+     return axios.post(API_URL + '/Tasks/getOverdue/',params)
      .then( response => {
          if (response.data === "failed") {
            alert(errorMessages.RETRIEVE_OVERDUE_FAILED)
@@ -48,8 +50,9 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
  }
 
  export const retrieveCompletedTasks = (user_id) => {
+  let params = {user_id:user_id}
    return (dispatch) => {
-     return axios.post(API_URL + '/Tasks/viewCompletedTasks/', user_id)
+     return axios.post(API_URL + '/Tasks/getComplete/',params)
      .then( response => {
          if (response.data === "failed") {
            alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
@@ -65,14 +68,16 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
  }
 
  export const retrieveTypes = (user_id) => {
+    let params = {user_id:user_id}
    return (dispatch) => {
-     return axios.get(API_URL + '/Types/getTypes/' + user_id)
+     return axios.post(API_URL + '/Types/getTypes/',params)
      .then( response => {
+        console.log(response.data)
          dispatch(setTypes(response.data))
      })
      .catch(error => {
-        dispatch(setTypes(typesExample))//Remove when working
-       //alert(errorMessages.RETRIEVE_TYPES_SERVER_ERROR)
+        console.log(error)
+        alert(errorMessages.RETRIEVE_TYPES_SERVER_ERROR)
      })
    }
  }
@@ -84,12 +89,12 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
   */
 
 
- export const newSubject = (name, color, description, primary_type, user_id) => {
+ export const newSubject = (name, color, description, default_type_id, user_id) => {
    let params = {
      name:name,
      color:color,
      description:description,
-     primary_type:primary_type,
+     default_type_id:default_type_id,
      user_id : user_id,
    }
 
@@ -100,26 +105,10 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
          alert(errorMessages.ADD_SUBJECT_FAILED)
        }
        else {
-         let newSubject;
-         //Can modify once api only returns a single new subject object
-         let s = response.data;
-         console.log(s)
-         if(Array.isArray(s)) {
+         let newSubject = response.data;
 
-          s.map((subject) => {
-            console.log(subject)
-            if(subject.name === name)
-              newSubject = subject;
-          })
-         } else if(typeof s === Object) {
-          newSubject = s;
-         }
-         console.log(newSubject)
-         //Can modify once api only returns a single new subject object
          if(newSubject)
           dispatch(addSubject(newSubject))
-
-          //dispatch(addSubject(response.data))
        }
      })
      .catch(error => {
@@ -128,24 +117,20 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
    }
  }
 
- export const editSubject = (newSubject) => {
+ export const editSubject = (newSubject, user_id) => {
    let params = {
+     user_id:user_id,
      subject_id:newSubject.subject_id,
      name:newSubject.name,
      color:newSubject.color,
-     default_task_type:newSubject.default_task_type
+     description:newSubject.description,
+     default_type_id:newSubject.default_type_id
    };
    return (dispatch) => {
-     return axios.post(API_URL+'/Subjects/updateSubjectName/', params)
+     return axios.post(API_URL+'/Subjects/updateSubject/', params)
      .then( response => {
-       let newS;
-       //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
-       let s = response.data;
-       s.map((subject) => {
-         if(subject.subject_id === newSubject.subject_id)
-           newSubject = subject;
-       })
-       //DELETE AFTER API CALL IS UPDATED TO RETURN ONE SUBJECT
+       let newS = response.data;
+       console.log(response)
        if(newS)
         dispatch(updateSubject(newS))
      })
@@ -155,13 +140,16 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
    }
  }
 
- export const deleteSubject = (subject) => {
-   let params = {subject_id:subject.subject_id}
+ export const deleteSubject = (subject,user_id) => {
+   let params = {
+    user_id:user_id,
+    subject_id:subject.subject_id
+  }
    return (dispatch) => {
-     return axios.delete(API_URL+'/Subjects/deleteSubject/'+params.subject_id)
+     return axios.post(API_URL+'/Subjects/deleteSubject/',params)
      .then( response => {
 
-      if(response.status === 200 && response.data != 'failed')
+      if(response.status === 200 && response.data !== 'failed')
        dispatch(removeSubject(subject.subject_id))
 
      })
@@ -177,30 +165,23 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
  */
 
 
-export const newTask = (name,description,type,dueDate, subject_id, user_id) => {
+export const newTask = (name,description,type_id,dueDate, subject_id, user_id) => {
+  console.log('NEW TASK')
+  type_id = parseInt(type_id);
   let params = {
       name:name,
       description:description,
-      type:type,
+      type_id:type_id,
       dueDate:dueDate,
       subject_id : subject_id,
       user_id : user_id
   }
-
+  console.log(params)
   return (dispatch) => {
-    return axios.post(API_URL + '/Tasks/addA',params)
+    return axios.post(API_URL + '/Tasks/addTask',params)
     .then( response => {
-      let s = response.data;
-      //Can delete once api returns new assignment
-      let newTask;
-      s.map((subject) => {
-        if(subject.subject_id === subject_id)
-          subject.assignments.map((a) => {
-            if(a.name === name && moment(a.dueDate).isSame(moment(dueDate)))
-              newTask = a;
-          })
-      })
-      //Can delete once api returns new assignment
+      let newTask = response.data;
+      
       if(newTask && subject_id)
         dispatch(addTask(newTask, subject_id))
     })
@@ -214,14 +195,14 @@ export const editTask = (task, subject_id, user_id) => {
   let params = {
     name:task.name,
     description:task.description,
-    type:task.type,
+    type_id:task.type_id,
     dueDate:task.dueDate,
     task_id:task.task_id,
     subject_id:subject_id,
     user_id:user_id,
   }
   return (dispatch) => {
-    return axios.post(API_URL + '/Tasks/updateA',params)
+    return axios.post(API_URL + '/Tasks/updateTask',params)
     .then( response => {
       console.log(response)
       dispatch(updateTask(response.data))
@@ -232,13 +213,17 @@ export const editTask = (task, subject_id, user_id) => {
   }
 }
 
-export const deleteTask = (task) => {
-  let params = {task_id:task.task_id}
+export const deleteTask = (task,user_id) => {
+  let params = {
+    user_id:user_id,
+    subject_id:task.subject_id,
+    task_id:task.task_id
+  }
 
   return (dispatch) => {
-    return axios.delete(API_URL + '/Tasks/deleteTask/'+params.task_id)
+    return axios.post(API_URL + '/Tasks/deleteTask/',params)
     .then( response => {
-      if(response.status === 200 && response.data != 'failed')
+      if(response.status === 200 && response.data !== 'failed')
         dispatch(removeTask(task.task_id))
     })
     .catch(error => {
@@ -247,15 +232,17 @@ export const deleteTask = (task) => {
   }
 }
 
-export const completeTask = (task)  => {
+export const completeTask = (task,user_id)  => {
 
   let params = {
-    task_id:task.task_id
+    task_id:task.task_id,
+    subject_id:task.subject_id,
+    user_id:user_id
   }
   return (dispatch) => {
-    return axios.post(API_URL+'/Tasks/setCompleted', params)
+    return axios.post(API_URL+'/Tasks/completeTask', params)
     .then( response => {
-      if(response.status === 200 && response.data != 'failed')
+      if(response.status === 200 && response.data !== 'failed')
         dispatch(removeTask(task.task_id))
     })
     .catch(error => {
@@ -275,9 +262,12 @@ export const completeTask = (task)  => {
     name:name,
     color:color
   }
+  console.log('ADD TYPE')
+  console.log(params)
    return (dispatch) => {
      return axios.post(API_URL + '/Types/addType/', params)
      .then( response => {
+        console.log(response)
          dispatch(addType(response.data))
      })
      .catch(error => {
@@ -298,28 +288,30 @@ export const completeTask = (task)  => {
    return (dispatch) => {
      return axios.post(API_URL + '/Types/updateType/', params)
      .then( response => {
-         dispatch(updateType(response.data))
+        let newType = response.data;
+        console.log(newType)
+        if(newType && response.status === 200)
+         dispatch(updateType(newType))
      })
      .catch(error => {
-        delete params.user_id
-        dispatch(updateType(params))//Remove when working
-        //alert(errorMessages.EDIT_TYPE_SERVER_ERROR)
+        console.log(error)
+        alert(errorMessages.EDIT_TYPE_SERVER_ERROR)
      })
    }
  }
 
- export const deleteType = (type_id) => {
+ export const deleteType = (type_id, user_id) => {
   let params = {
     type_id:type_id,
+    user_id:user_id
   }
    return (dispatch) => {
-     return axios.delete(API_URL + '/Types/deleteType/' + params.type_id)
+     return axios.post(API_URL + '/Types/deleteType/',params)
      .then( response => {
          dispatch(removeType(params.type_id))
      })
      .catch(error => {
-        dispatch(removeType(params.type_id))//Remove when working
-        //alert(errorMessages.DELETE_TYPE_SERVER_ERROR)
+        alert(errorMessages.DELETE_TYPE_SERVER_ERROR)
      })
    }
  }

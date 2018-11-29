@@ -11,8 +11,8 @@ import { deleteSubject, editSubject } from './actions/assignmentAction.js'
 
 
 const mapDispatchToProps = dispatch => ({
- deleteSubject: (subject) => dispatch(deleteSubject(subject)),
- editSubject: (subject) => dispatch(editSubject(subject)),
+ deleteSubject: (subject,user_id) => dispatch(deleteSubject(subject,user_id)),
+ editSubject: (subject,user_id) => dispatch(editSubject(subject,user_id)),
 })
 
 const mapStateToProps = state => {
@@ -80,14 +80,14 @@ class SubjectPage extends Component {
 		//Need api or reducer to make this change faster and more universal
 		let subject = this.props.subject;
 		subject.name = this.state.newSubjectName;
-		this.props.editSubject(subject);
+		this.props.editSubject(subject, this.props.id);
 		this.setState({editMode:false})
 	}
 
 	deleteSubject() {
 		let subject = this.props.subject;
 		if (window.confirm('Are you sure you wish to delete '+subject.name+'? This action will also delete all assignments associated with this subject and can not be undone')) {
-			this.props.deleteSubject(subject);
+			this.props.deleteSubject(subject,this.props.id);
 			this.props.close();
 		}
 	}

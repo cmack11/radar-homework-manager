@@ -10,8 +10,8 @@ import moment from 'moment'
 
 
 const mapDispatchToProps = dispatch => ({
- deleteTask: (task) => dispatch(deleteTask(task)),
- completeTask : (data) => dispatch(completeTask(data))
+ deleteTask: (task,user_id) => dispatch(deleteTask(task,user_id)),
+ completeTask : (data,user_id) => dispatch(completeTask(data,user_id))
 })
 
 const mapStateToProps = state => {
@@ -42,7 +42,7 @@ export class DotViewer extends Component {
 			//Replace this with API Call/Redux to update status of assignment to completed
 			//completeAssignment(param,param) //this functions is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
-			this.props.completeTask(assignment)
+			this.props.completeTask(assignment, this.props.id)
 			//this.props.complete(assignment)
 			//
 			this.props.close();
@@ -56,7 +56,7 @@ export class DotViewer extends Component {
 			//Replace this with API Call/Redux to delete assignment from user's account
 			//removeSubject(param,param) //function is not ready yet, uncomment when ready
 			let assignment = this.props.dot.assignment;
-			this.props.deleteTask(assignment)
+			this.props.deleteTask(assignment,this.props.id)
 			//
 			this.props.close();
 		}
