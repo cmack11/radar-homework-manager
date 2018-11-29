@@ -104,11 +104,11 @@ export class AccountSettingsForm extends React.Component {
     let buttonName = <b>Save Changes</b>;
 	  
     return (
-      <div className="account-settings-form"  onClick={(e) => {e.stopPropagation()}}>
+      <div className="account-settings-form" style={{position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}} onClick={(e) => {e.stopPropagation()}}>
       
       <Form >
         
-        <div className="account-title-container">
+        <div className="account-title-container" >
             {formName}
         </div>
         
