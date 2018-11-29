@@ -10,12 +10,14 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
     return {
       id: state.user.user_id,
+      name: state.user.name,
+      email: state.user.email
     }
   }
 
   const maxNameLength = 20;
   const minNameLength = 1;
-  const maxPassword = 14;
+  const maxPasswordLength = 14;
   const minPasswordLength = 6;
 
 export class AccountSettingsForm extends React.Component {
@@ -28,7 +30,7 @@ export class AccountSettingsForm extends React.Component {
   }
 
   getDefaultState() {
-    let defaultState = {Name: 'PVT_Joe', Email: 'PVT_Joe@mail.mil', Password: 'EatsCrayons', focused:false};
+    let defaultState = {Name: this.props.name, Email: this.props.email, focused:false};
     return defaultState;
   }
 
@@ -51,6 +53,9 @@ export class AccountSettingsForm extends React.Component {
 
   handleSubmit(event) {
     if(!this.allValid()) return;
+    
+    //call redux function to pass new name and password to database
+    
 	/*
     let assignment = this.props.assignment;
     assignment.name = this.state.taskName;
@@ -95,49 +100,55 @@ export class AccountSettingsForm extends React.Component {
       this.setState({NameError:true});
       return false;
     }
+    if(this.state.Password === "" || this.state.Password.length > maxPasswordLength || this.state.Password.length < minPasswordLength) {
+      this.setState({PasswordError:true});
+      return false;
+    }
     return true
   }
 
   render() {
-
-    let formName = <b>Account Information</b>;
-    let buttonName = <b>Save Changes</b>;
 	  
     return (
       <div className="account-settings-form" style={{position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}} onClick={(e) => {e.stopPropagation()}}>
       
       <Form >
         
-        <div className="account-title-container" >
-            {formName}
+        <div className="account-info-container" >
+         	<b>Account Information</b>  
         </div>
+        <br />
         
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Name</label>
-          <input style={{borderColor:(this.state.NameError ? 'red': null)}} name="Name" type="text" value={this.state.Name} onChange={this.handleChange} />
+          <label className="label-text label-center"> Name:  {this.state.Name}</label>
         </Form.Field>
         
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Email</label>
-          <input name="Email" type="text" value={this.state.Email} onChange={this.handleChange} />
+          <label className="label-text label-center">Email:  {this.state.Email}</label>
+        </Form.Field>
+        <br />
+        
+        <div className="account-edit-container">
+        		<b>Edit Account Information</b>
+        </div>
+        <br />
+        
+        <Form.Field className='form-fields'>
+          <label className="label-text label-center">New Name:</label>
+          <input name="Name" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
         
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Password</label>
-          <input name="Password" type="text" value={this.state.Password} onChange={this.handleChange} />
-        </Form.Field>
-        
-        <Form.Field className='form-fields'>
-          <label className="label-text label-center">New Password</label>
+          <label className="label-text label-center">New Password:</label>
           <input name="Password" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
         
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Confirm New Password</label>
+          <label className="label-text label-center">Confirm New Password:</label>
           <input name="Password" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
         
-        <Button primary type="button" value="Save Changes" onClick={this.handleSubmit}>{buttonName}</Button>
+        <Button primary type="button" value="Save Changes" onClick={this.handleSubmit}><b>Save Changes</b></Button>
       </Form>
       </div>
     );

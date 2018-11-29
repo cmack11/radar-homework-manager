@@ -12,7 +12,8 @@ render() {
     	<br />
     	<p> GENERAL OVERVIEW: </p>
     	<br />
-    	<p> Radar Homework Manager is a graphical interface that allows you to ...</p>
+    	<p> Radar Homework Manager is a graphical interface that allows you to organize your school work in a convenient way.  Your rader
+    	will be divided into sectors which represent the subjects you are taking.  Each sector contains the </p>
     	<br />
     	<br />
     	
