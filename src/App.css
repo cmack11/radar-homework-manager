@@ -138,6 +138,12 @@ svg text#chk {
   margin-bottom: 50px !important;
 }
 
+.login-button-adjust {
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  margin-top: 10px !important;
+}
+
 .logo-login {
   width: 20%;
   height: 20%;
@@ -173,11 +179,12 @@ svg text#chk {
 .signup {
   margin: 0 auto;
   width: 40%;
-  margin-top: 2%;
+  margin-top: calc(0.05 * 100vh);
   padding: 20px 20px 20px 20px;
   background-color: white;
   height: auto;
 }
+
 .subtext-login {
   font-size: 12px;
   text-align: left !important;
@@ -185,6 +192,13 @@ svg text#chk {
   margin-right: 20px;
 }
 
+.rhw-title {
+  margin-bottom: 10px !important;
+}
+
+.rhw-icon {
+  margin-bottom: 0px !important;
+}
 .subtext-divider {
   font-size: 12px;
   text-align: left !important;
