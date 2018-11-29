@@ -1,16 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { retrieveTasks, newTask, editTask } from '../actions/assignmentAction.js';
-import moment from 'moment';
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import image from '../images/switch_form.png'
 import {Button, Form} from 'semantic-ui-react';
-import { MdRepeat} from 'react-icons/md';
-import { IconContext } from 'react-icons';
-import {DATE_FORMAT} from '../config/config.js'
-import {setTaskFormRef} from '../dismissCenter';
-
 
 const mapDispatchToProps = dispatch => ({
  //TODO
@@ -34,11 +25,10 @@ export class AccountSettingsForm extends React.Component {
     this.state = this.getDefaultState();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    setTaskFormRef(this)
   }
 
   getDefaultState() {
-    let defaultState = {Name: 'PVT_Joe', Email: 'PVT_Joe@mail.mil' Password: 'EatsCrayons', focused:false};
+    let defaultState = {Name: 'PVT_Joe', Email: 'PVT_Joe@mail.mil', Password: 'EatsCrayons', focused:false};
     return defaultState;
   }
 
@@ -97,10 +87,6 @@ export class AccountSettingsForm extends React.Component {
 
     this.setState(this.getDefaultState());
     */
-  }
-
-  if(this.props.closeForm)
-    this.props.closeForm();
 }
 
 
