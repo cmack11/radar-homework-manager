@@ -47,9 +47,9 @@ class SignupPage extends Component {
 render() {
   return (
     <div className="login-bg ">
-      <div className="signup shadow">
-        <img className= "logo-login" src={ico} alt="RHW" />
-        <p className="login-title">Radar Homework Manager</p>
+      <div className="signup shadow rhw-icon">
+        <img className= "logo-login rhw-icon" src={ico} alt="RHW" />
+        <p className="login-title rhw-title">Radar Homework Manager</p>
         <Form>
             <Form.Field>
               <label className="login-text" tabIndex="2">First Name</label>
@@ -73,7 +73,7 @@ render() {
               <label className="login-text">Re-type Password</label>
               <input required type= "password" placeholder='confirm password' ref="pw2" />
             </Form.Field>
-            <Button primary className="login-button" type='submit' onClick={()=> {this.onSignupButtonPress()}}>Sign up</Button>
+            <Button primary className="login-button-adjust" type='submit' onClick={()=> {this.onSignupButtonPress()}}>Sign up</Button>
             <div className="back-container" onClick={()=> {this.successSignup()}}>
               <div className="back-align">
                 <IconContext.Provider value={{size:22}}>
