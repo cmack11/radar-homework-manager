@@ -268,10 +268,38 @@ svg text#chk {
 
 .overdue-button {
   cursor: pointer;
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  top:3px;
+  right:5px;
 }
+
+.notification-icon {
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top:-45px;
+}
+
+.MuiBadge-colorSecondary-10 {
+  color: #fff;
+  background-color: #f50057;
+  top: 5px !important;
+  right: 3px !important;
+}
+
+.MuiBadge-colorSecondary-4 {
+  color: #fff;
+  background-color: #f50057;
+  top: 5px !important;
+  right: 3px !important;
+}
+
+.overdue-button span {
+  top: 5px !important;
+  right: 3px !important;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

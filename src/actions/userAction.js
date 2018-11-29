@@ -62,14 +62,14 @@ export const retrieveName = (id) => {
     .then( response => {
         if (response.data === "failed")
         {
-          alert("Failed to retrieve name")
+          alert(errorMessages.RETRIEVE_NAME_FAILED)
         }
         else {
           dispatch(initializeName(response.data))
         }
     })
     .catch(error => {
-      alert("Failed to retrieve name. If this error persists, contact and administrator")
+      alert(errorMessages.RETRIEVE_NAME_SERVER_ERROR)
     })
   }
 }
@@ -85,16 +85,16 @@ export const newUser = (data, success) => {
     .then( response => {
         if (response.data === "failed")
         {
-          alert("Failed to register new user")
+          alert(errorMessages.SIGNUP_FAILED)
         }
         else {
-          dispatch(registerUser())
           success()
-          alert("You are signed up!")
+          alert(errorMessages.SIGNUP_SUCCESS)
+          dispatch(registerUser())
         }
     })
     .catch(error => {
-      alert("Can't register new user at this time. If the error persists, contact administrator")
+      alert(errorMessages.SIGNUP_SERVER_ERROR)
     })
   }
 }
@@ -105,14 +105,14 @@ export const retrieveTasks = (data) => {
     .then( response => {
         if (response.data === "failed")
         {
-          alert("Failed to retrieve name")
+          alert(errorMessages.RETRIEVE_TASK_FAILED)
         }
         else {
           console.log(response.data)
         }
     })
     .catch(error => {
-      alert("Failed to retrieve name. If this error persists, contact and administrator")
+      alert(errorMessages.RETRIEVE_TASK_SERVER_ERROR)
     })
   }
 }
@@ -130,17 +130,17 @@ export const resetPassword = (email, success) => {
         if (response.data === "failed")
         {
           success()
-          /*alert("Failed to reset password")*/
+          /*alert(errorMessages.RESET_PASSWORD_FAILED)*/
         }
         else {
-          alert("Password reset success! Please login using the new access")
+          alert(errorMessages.RESET_PASSWORD_SUCCESS)
           success()
           dispatch(changePassword(email))
         }
     })
     .catch(error => {
       success()
-      /*alert("Failed to reset name. If this error persists, contact and administrator")*/
+      /*alert(errorMessages.RESET_PASSWORD_SERVER_ERROR)*/
     })
   }
 }

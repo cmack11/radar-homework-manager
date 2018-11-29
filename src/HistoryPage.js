@@ -5,9 +5,9 @@ import moment from 'moment'
 import TaskList from './RadarComponent/TaskList.js'
 import image from './images/window_close.svg'
 import { retrieveCompletedTasks } from './actions/assignmentAction.js'
-
-
-
+import { MdClose } from 'react-icons/md'
+import { IconContext } from "react-icons"
+import { setHistoryFormRef } from './dismissCenter';
 const mapDispatchToProps = dispatch => ({
  retrieveCompletedTasks: (user_id) => dispatch(retrieveCompletedTasks(user_id)),
 })
@@ -33,6 +33,7 @@ class HistoryPage extends Component {
 		}
 
 		this.state = state;
+    setHistoryFormRef(this);
 	}
 
 	componentDidMount() {
@@ -61,7 +62,7 @@ class HistoryPage extends Component {
 	}
 
 
-	
+
 
 	render() {
 
@@ -75,22 +76,27 @@ class HistoryPage extends Component {
 	    	        left:this.state.left,
 	    	        padding:padding,
 	    	        width:'75%',
-	    	        background:'#8B4513',
+	    	        background:'#F79F1F',
 	    	        border:5,
-	    	        borderColor:'black',
-	    	        borderStyle:'solid'
+	    	        borderColor:'#DE8F1C',
+	    	        borderStyle:'solid',
+                borderRadius: "5px",
 	    	    }}>
 	    	    <div style={{display:'flex'}}>
-	    	      <img style={{cursor:'pointer'}} onClick={this.props.close} src={image} height="5%" width="5%" />
+	    	      <div style={{cursor:'pointer'}} onClick={this.props.close}>
+                <IconContext.Provider value={{size:30}}>
+                  <MdClose />
+                </IconContext.Provider>
+              </div>
 	    	      <span style={{verticalAlign:'middle',flexGrow:2,fontSize:'28px'}}><b>History</b></span>
 	    	    </div>
-	    		<TaskList 
+	    		<TaskList
 	    			visible={this.props.show}
-	    			useTypeColors={false} 
-	    			title="" 
-	    			noDataText="No Completed Assignments Found" 
-	    			width={Math.min(window.innerWidth,500)} 
-	    			assignments={this.props.assignments} 
+	    			useTypeColors={false}
+	    			title=""
+	    			noDataText="No Completed Assignments Found"
+	    			width={Math.min(window.innerWidth,500)}
+	    			assignments={this.props.assignments}
 	    			colors={this.props.colors}
 	    			onResize={this.resize.bind(this)} />
 			</div>
@@ -99,5 +105,4 @@ class HistoryPage extends Component {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HistoryPage);  
-
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryPage);

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {subjects, typesExample} from '../fakeData.js';
 import {API_URL} from '../config/config';
 import moment from 'moment'
+import * as errorMessages from '../ErrorMessages/error_messages.js'
 
 
 
@@ -17,14 +18,14 @@ import moment from 'moment'
      .then( response => {
          if (response.data === "failed")
          {
-           alert("Failed to retrieve name")
+           alert(errorMessages.RETRIEVE_TASK_FAILED)
          }
          else {
            dispatch(initializeTasks(response.data))
          }
      })
      .catch(error => {
-       alert("Failed to retrieve name. If this error persists, contact and administrator")
+       alert(errorMessages.RETRIEVE_TASK_SERVER_ERROR)
      })
    }
  }
@@ -36,14 +37,14 @@ import moment from 'moment'
      return axios.post(API_URL + '/Tasks/getOverdue/',params)
      .then( response => {
          if (response.data === "failed") {
-           alert("Failed to retrieve overdue assignments")
+           alert(errorMessages.RETRIEVE_OVERDUE_FAILED)
          }
          else {
            dispatch(setOverdueTasks(response.data))
          }
      })
      .catch(error => {
-       alert("Failed to retrieve overdue assignments. If this error persists, contact and administrator")
+       alert(errorMessages.RETRIEVE_OVERDUE_SERVER_ERROR)
      })
    }
  }
@@ -54,14 +55,14 @@ import moment from 'moment'
      return axios.post(API_URL + '/Tasks/getComplete/',params)
      .then( response => {
          if (response.data === "failed") {
-           alert("Failed to retrieve completed assignments")
+           alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
          }
          else {
            dispatch(setCompletedTasks(response.data))
          }
      })
      .catch(error => {
-       alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+       alert(errorMessages.RETRIEVE_COMPLETED_SERVER_ERROR)
      })
    }
  }
@@ -75,8 +76,8 @@ import moment from 'moment'
          dispatch(setTypes(response.data))
      })
      .catch(error => {
-      console.log(error)
-       alert("Failed to retrieve types")
+        console.log(error)
+        alert(errorMessages.RETRIEVE_TYPES_SERVER_ERROR)
      })
    }
  }
@@ -101,7 +102,7 @@ import moment from 'moment'
      return axios.post(API_URL + '/Subjects/addSubject',params)
      .then( response => {
        if (response.data === "failed") {
-         alert("Adding failed")
+         alert(errorMessages.ADD_SUBJECT_FAILED)
        }
        else {
          let newSubject = response.data;
@@ -111,7 +112,7 @@ import moment from 'moment'
        }
      })
      .catch(error => {
-       alert("Server error")
+       alert(errorMessages.ADD_SUBJECT_SERVER_ERROR)
      })
    }
  }
@@ -134,7 +135,7 @@ import moment from 'moment'
         dispatch(updateSubject(newS))
      })
      .catch(error => {
-       alert("Fail to edit subject at this time. If the persists, contact administrator")
+       alert(errorMessages.EDIT_SUBJECT_SERVER_ERROR)
      })
    }
  }
@@ -153,7 +154,7 @@ import moment from 'moment'
 
      })
      .catch(error => {
-       alert("Fail to delete subject")
+       alert(errorMessages.DELETE_SUBJECT_SERVER_ERROR)
      })
    }
  }
@@ -185,8 +186,7 @@ export const newTask = (name,description,type_id,dueDate, subject_id, user_id) =
         dispatch(addTask(newTask, subject_id))
     })
     .catch(error => {
-      console.log(error)
-      alert("Fail to create new assignment")
+      alert(errorMessages.ADD_TASK_SERVER_ERROR)
     })
   }
 }
@@ -208,7 +208,7 @@ export const editTask = (task, subject_id, user_id) => {
       dispatch(updateTask(response.data))
     })
     .catch(error => {
-      alert("Failed to edit assignment")
+      alert(errorMessages.EDIT_TASK_SERVER_ERROR)
     })
   }
 }
@@ -227,7 +227,7 @@ export const deleteTask = (task,user_id) => {
         dispatch(removeTask(task.task_id))
     })
     .catch(error => {
-      alert("Failed to delete task")
+      alert(errorMessages.DELETE_TASK_SERVER_ERROR)
     })
   }
 }
@@ -246,7 +246,7 @@ export const completeTask = (task,user_id)  => {
         dispatch(removeTask(task.task_id))
     })
     .catch(error => {
-      alert("Failed to complete task");
+      alert(errorMessages.COMPLETE_TASK_SERVER_ERROR);
     })
   }
 }
@@ -273,7 +273,7 @@ export const completeTask = (task,user_id)  => {
      .catch(error => {
         params.type_id = 100;
         dispatch(addType(params))//Remove when working
-       //alert("Failed to retrieve completed assignments. If this error persists, contact and administrator")
+       //alert(errorMessages.ADD_TYPE_SERVER_ERROR)
      })
    }
  }
@@ -295,7 +295,7 @@ export const completeTask = (task,user_id)  => {
      })
      .catch(error => {
         console.log(error)
-        alert("Failed to update Type")
+        alert(errorMessages.EDIT_TYPE_SERVER_ERROR)
      })
    }
  }
@@ -311,7 +311,7 @@ export const completeTask = (task,user_id)  => {
          dispatch(removeType(params.type_id))
      })
      .catch(error => {
-       alert("Failed to delete Type")
+        alert(errorMessages.DELETE_TYPE_SERVER_ERROR)
      })
    }
  }

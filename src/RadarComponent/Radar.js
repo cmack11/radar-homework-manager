@@ -22,6 +22,7 @@ import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import { MdNotifications } from 'react-icons/md';
 import {setMenuRef} from '../dismissCenter';
+import { IconContext } from "react-icons";
 
 
 const addButton = 'plus';
@@ -382,7 +383,8 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 
-	historyButtonClick() {
+	historyButtonClick(e) {
+    e.stopPropagation()
 		if(this.state.buttons.left.logo === historyButton) {
 			this.closeAddForm();//order matters
 			this.openHistoryScreen();
@@ -405,7 +407,8 @@ class Radar extends Component {
 		this.setState({buttons:buttons})
 	}
 
-	overdueButtonClick() {
+	overdueButtonClick(e) {
+    e.stopPropagation()
 		let buttons = this.state.buttons;
 		if(buttons.overdue.logo === overdueButton){
 			this.closeAddForm();//order matters
@@ -430,7 +433,7 @@ class Radar extends Component {
 	}
 
 	editButtonClick(assignment) {
-    
+    console.log("Open edit form clicked")
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
 
@@ -460,17 +463,27 @@ class Radar extends Component {
         <MdNotifications />
         </Badge>
     */
-		let overDueImage =
-    <image style={{cursor:'pointer'}} onClick={this.overdueButtonClick.bind(this)} href={this.state.buttons.overdue.logo} x={10} y={10} width={this.view.buttons.width} height={this.view.buttons.width}/>;
-		if(!this.props.overdueAssignments.length){
+	   let overDueImage =
+     (
+       <div className="notification-icon">
+         <Badge badgeContent={this.props.overdueAssignments.length} color="secondary" className="overdue-button" onClick={this.overdueButtonClick.bind(this)}>
+          <IconContext.Provider value={{color : "grey", size:60}}>
+            <MdNotifications />
+          </IconContext.Provider>
+        </Badge>
+      </div>
+   )
+	if(!this.props.overdueAssignments.length){
 			overDueImage = null;
 		}
+
 
     return (
     	<div id='radardiv' style={{position:'absolute'}}>
 			<Icon name={this.state.buttons.right.logo} circular size='huge' className={(this.state.draggedDot ? "plus-button button-behind" : "plus-button" )} style={{background : (this.state.draggedDot) ? "#12CBC4" : "#ED4C67"}} onClick={this.addButtonClick.bind(this)}/>
 			<Icon name={this.state.buttons.left.logo} circular size='huge' className={(this.state.draggedDot ? "history-button button-behind" :"history-button" )} style={{background : (this.state.draggedDot) ? "#A3CB38" : "#F79F1F"}}  onClick={this.historyButtonClick.bind(this)}/>
-	    	<svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
+      {overDueImage}
+      <svg id='radar' width={this.props.view.dotsView.width} height={this.props.view.dotsView.height}  strokeWidth='2' stroke='black'>
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 			  		{this.state.sliceComponents}
 			  		<circle cx={this.view.radar.center.x} cy={this.view.radar.center.y} r={this.view.dots.radius} fill={this.view.style.strokeColor}/>
@@ -488,7 +501,7 @@ class Radar extends Component {
 		      	<svg x={this.view.radar.x} y={this.view.radar.y} width={this.state.view.width} height={this.state.view.height} strokeWidth={this.view.style.strokeWidth} stroke={this.view.style.strokeColor}>
 					<SpinLine center={this.view.radar.center} radius={this.view.radar.radius} lineColor={this.view.style.strokeColor} rpm={6} show={true} setLineAngle={this.setLineAngle.bind(this)}/>
 				</svg>
-				{overDueImage}
+
 				<DraggedDot dot={this.state.draggedDot} radius={this.view.dots.radius*1.5} intersectFunctions={intersectFuncs}/>
 			</svg>
 			<DotViewer width={250} height={200} dot={this.state.clickedDot} edit={this.editButtonClick.bind(this)} delete={()=>{}} complete={this.props.completeTask} close={this.closeDotViewer}/>
