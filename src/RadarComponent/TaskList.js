@@ -113,7 +113,15 @@ class TaskList extends React.Component {
         columns.push(
         {
             Header: 'Subject',
-            accessor: 'subject'
+            accessor: 'subject_id',
+            Cell: props => {
+                let name = '';
+                for(let i = 0; i < this.props.subjects.length; i++)
+                    if(this.props.subjects[i].subject_id === props.value)
+                        name = this.props.subjects[i].name
+                return <span className='type_id'>{name}</span>
+            }
+
         });
     }
     columns.push.apply(columns,
@@ -124,13 +132,13 @@ class TaskList extends React.Component {
         },
         {
             Header: 'Type',
-            accessor: 'type_id',
+            accessor: 'type',//change to type_id when fixed
             Cell: props => <span className='type_id'>{this.props.types[props.value] ? this.props.types[props.value].name : ''}</span>
         },
         {
             Header: 'Due Date',
             accessor: 'dueDate',
-            Cell: props => <span className='dueDate'>{moment(props.value).format("MM/DD/YYYY")}</span>
+            Cell: props => <span className='dueDate'>{moment(props.value).format("MMMM Do YYYY, h:mm a")}</span>
         },
     ]);
     if (this.props.showCompleteButton)

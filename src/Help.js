@@ -57,7 +57,7 @@ render() {
     	<br />
     	<br />
     	
-      <p> For further help or issues regarding bugs, contact us at "insert Clay's email"</p>
+      <p> For further help or issues regarding bugs, contact us at "radarhelp@radar.com"</p>
       <br />
     	<br />
     </div>

@@ -8,7 +8,7 @@ let initialState = {
   typesDict:{}
 }
 export default (state = initialState, action) => {
-  let newSubjects, typesDict;
+  let newSubjects, typesDict, newOverdue, newCompleted;
  switch (action.type) {
 
   case types.INITIALIZE_ASSIGNMENTS:
@@ -99,21 +99,37 @@ export default (state = initialState, action) => {
       }
 
     case types.DELETE_TASK:
-      newSubjects = state.subjects.slice(); //copy the current subjects
-      console.log(state.subjects.slice())
-      for(let i = 0; i < newSubjects.length; i++) {
-        let subject = newSubjects[i];
-        if(action.payload.subject_id && subject.subject_id !== action.payload.subject_id) continue;//Skip unaltered subjects
+      newSubjects = state.subjects;
+      newOverdue = state.overdueAssignments;
+      newCompleted = state.completedAssignments;
 
-        subject.assignments = subject.assignments.filter((value, index, arr) => {
-          return value.task_id !== action.payload.task_id
-        })
-        console.log('DELETE_TASK')
-        console.log(newSubjects)
+      if(action.payload.collection === 'SUBJECTS') {
+        newSubjects = state.subjects.slice(); //copy the current subjects
+        for(let i = 0; i < newSubjects.length; i++) {
+          let subject = newSubjects[i];
+          if(action.payload.subject_id && subject.subject_id !== action.payload.subject_id) continue;//Skip unaltered subjects
+
+          subject.assignments = subject.assignments.filter((value, index, arr) => {
+            return value.task_id !== action.payload.task_id
+          })
+        }
+      } else if(action.payload.collection === 'COMPLETED') {
+        newCompleted = state.completedAssignments.slice(); //copy the current subjects
+          newCompleted = newCompleted.filter((assignment, index, arr) => {
+            return assignment.task_id !== action.payload.task_id
+          })
+      } else if(action.payload.collection === 'OVERDUE') {
+        newOverdue = state.overdueAssignments.slice(); //copy the current subjects
+          newOverdue = newOverdue.filter((assignment, index, arr) => {
+            return assignment.task_id !== action.payload.task_id
+          })
       }
+      
       return {
         ...state,
         subjects:newSubjects,
+        completedAssignments:newCompleted,
+        overdueAssignments:newOverdue
       };
 
     case types.DELETE_SUBJECT:

@@ -47,7 +47,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
            alert(errorMessages.RETRIEVE_OVERDUE_FAILED)
          }
          else {
-           console.log(response.data)
+           //console.log(response.data)
            dispatch(setOverdueTasks(response.data))
          }
      })
@@ -66,7 +66,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
            alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
          }
          else {
-           console.log(response.data)
+           //console.log(response.data)
            dispatch(setCompletedTasks(response.data))
          }
      })
@@ -81,11 +81,11 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
    return (dispatch) => {
      return axios.post(API_URL + '/Types/getTypes/',params)
      .then( response => {
-         console.log(response.data)
+         //console.log(response.data)
          dispatch(setTypes(response.data))
      })
      .catch(error => {
-        console.log(error)
+        //console.log(error)
         alert(errorMessages.RETRIEVE_TYPES_SERVER_ERROR)
      })
    }
@@ -115,8 +115,8 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
        }
        else {
          let newSubject = response.data;
-         console.log('NEW SUBJECT')
-         console.log(newSubject)
+         //console.log('NEW SUBJECT')
+         //console.log(newSubject)
          if(newSubject)
           dispatch(addSubject(newSubject))
        }
@@ -141,7 +141,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
      return axios.post(API_URL+'/Subjects/updateSubject/', params)
      .then( response => {
        let newS = response.data;
-       console.log(response)
+       //console.log(response)
        if(newS)
         dispatch(updateSubject(newS))
      })
@@ -177,8 +177,8 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
 
 
 export const newTask = (name,description,type_id,dueDate, subject_id, user_id) => {
-  console.log('NEW TASK')
-  console.log(type_id)
+  //console.log('NEW TASK')
+  //console.log(type_id)
   type_id = parseInt(type_id);
   let params = {
       name:name,
@@ -188,13 +188,13 @@ export const newTask = (name,description,type_id,dueDate, subject_id, user_id) =
       subject_id : subject_id,
       user_id : user_id
   }
-  console.log(params)
+  //console.log(params)
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/addTask',params)
     .then( response => {
       let newTask = response.data;
-      console.log('RESPONSE')
-      console.log(newTask)
+      //console.log('RESPONSE')
+      //console.log(newTask)
       if(newTask && subject_id)
         dispatch(addTask(newTask, subject_id))
     })
@@ -217,7 +217,7 @@ export const editTask = (task, subject_id, user_id) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateTask',params)
     .then( response => {
-      console.log(response)
+      //console.log(response)
       dispatch(updateTask(response.data))
     })
     .catch(error => {
@@ -237,7 +237,7 @@ export const deleteTask = (task,user_id) => {
     return axios.post(API_URL + '/Tasks/deleteTask/',params)
     .then( response => {
       if(response.status === 200 && response.data !== 'failed')
-        dispatch(removeTask(task.task_id))
+        dispatch(removeTask(task.task_id,null,'SUBJECTS'))
     })
     .catch(error => {
       alert(errorMessages.DELETE_TASK_SERVER_ERROR)
@@ -246,7 +246,7 @@ export const deleteTask = (task,user_id) => {
 }
 
 export const completeTask = (task,user_id)  => {
-  console.log('COMPLETE');
+  //console.log('COMPLETE');
   let params = {
     task_id:task.task_id,
     subject_id:task.subject_id,
@@ -255,9 +255,10 @@ export const completeTask = (task,user_id)  => {
   return (dispatch) => {
     return axios.post(API_URL+'/Tasks/completeTask', params)
     .then( response => {
-      console.log(response)
-      if(response.status === 200 && response.data !== 'failed')
-        dispatch(removeTask(task.task_id))
+      //console.log(response)
+      if(response.status === 200 && response.data !== 'failed') {
+        dispatch(removeTask(task.task_id,null,'OVERDUE'))//remove from overdue collection
+      }
     })
     .catch(error => {
       alert(errorMessages.COMPLETE_TASK_SERVER_ERROR);
@@ -276,12 +277,12 @@ export const completeTask = (task,user_id)  => {
     name:name,
     color:color
   }
-  console.log('ADD TYPE')
-  console.log(params)
+  //console.log('ADD TYPE')
+  //console.log(params)
    return (dispatch) => {
      return axios.post(API_URL + '/Types/addType/', params)
      .then( response => {
-        console.log(response)
+        //console.log(response)
          dispatch(addType(response.data))
      })
      .catch(error => {
@@ -303,12 +304,12 @@ export const completeTask = (task,user_id)  => {
      return axios.post(API_URL + '/Types/updateType/', params)
      .then( response => {
         let newType = response.data;
-        console.log(newType)
+        //console.log(newType)
         if(newType && response.status === 200)
          dispatch(updateType(newType))
      })
      .catch(error => {
-        console.log(error)
+        //console.log(error)
         alert(errorMessages.EDIT_TYPE_SERVER_ERROR)
      })
    }
@@ -414,12 +415,13 @@ export const updateTask = (assignment) => {
     }
 }
 
-export const removeTask = (task_id, subject_id) => {
+export const removeTask = (task_id, subject_id,collection) => {
   return {
     type: types.DELETE_TASK,
     payload : {
       task_id:task_id,
-      subject_id:subject_id
+      subject_id:subject_id,
+      collection:collection
     }
   }
 }

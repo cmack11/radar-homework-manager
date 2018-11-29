@@ -114,6 +114,8 @@ export class DotViewer extends Component {
 			date = ' ' + moment(assignment.dueDate).format('MMMM Do YYYY, h:mm a');
 			if(this.props.types[assignment.type_id])
 				type = ' ' + this.props.types[assignment.type_id].name;
+			else
+				type = ' Other'
 		}
 
 		return (
