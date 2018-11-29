@@ -52,11 +52,9 @@ class TaskList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
   }
 
   markComplete(assignment) {
-    console.log("MARKED COMPLETE: " + assignment.name);
     this.props.completeTask(assignment)
   }
 

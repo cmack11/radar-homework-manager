@@ -11,7 +11,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => {
-    console.log("Map :"+ JSON.stringify(state));
     return {
       id: state.user.user_id,
       assignmentData : state.assignment.subjects,
@@ -92,7 +91,7 @@ export class SubjectForm extends React.Component {
   }
 
   getDefaultState() {
-    return {subjectName:'', subjectDesc:'', defaultTaskType: 'Assignment'};
+    return {subjectName:'', subjectDesc:'', defaultTaskType: ''};
   }
 
   render() {

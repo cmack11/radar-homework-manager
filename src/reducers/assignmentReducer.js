@@ -100,14 +100,16 @@ export default (state = initialState, action) => {
 
     case types.DELETE_TASK:
       newSubjects = state.subjects.slice(); //copy the current subjects
-
+      console.log(state.subjects.slice())
       for(let i = 0; i < newSubjects.length; i++) {
         let subject = newSubjects[i];
         if(action.payload.subject_id && subject.subject_id !== action.payload.subject_id) continue;//Skip unaltered subjects
 
         subject.assignments = subject.assignments.filter((value, index, arr) => {
           return value.task_id !== action.payload.task_id
-        })//Add the new assignment
+        })
+        console.log('DELETE_TASK')
+        console.log(newSubjects)
       }
       return {
         ...state,

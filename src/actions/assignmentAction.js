@@ -2,7 +2,7 @@ import * as types from './action_types.js';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import {subjects, typesExample} from '../fakeData.js';
-import {API_URL} from '../config/config';
+import {API_URL, DATE_FORMAT} from '../config/config';
 import moment from 'moment'
 import * as errorMessages from '../ErrorMessages/error_messages.js'
 
@@ -12,15 +12,19 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
  *  RETRIEVAL API CALLS
  */
  export const retrieveTasks = (user_id) => {
-  let params = {user_id:user_id}
+  let params = {
+    user_id:user_id,
+    current_time:moment().format(DATE_FORMAT)
+  }
    return (dispatch) => {
-     return axios.post(API_URL + '/Subjects/getIncomplete/', params)
+     return axios.post(API_URL + '/Tasks/getIncomplete/', params)
      .then( response => {
          if (response.data === "failed")
          {
            alert(errorMessages.RETRIEVE_TASK_FAILED)
          }
          else {
+           console.log(response.data)
            dispatch(initializeTasks(response.data))
          }
      })
@@ -31,7 +35,10 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
  }
 
  export const retrieveOverdueTasks = (user_id) => {
-  let params = {user_id:user_id}
+  let params = {
+    user_id:user_id,
+    current_time:moment().format(DATE_FORMAT)
+  }
 
    return (dispatch) => {
      return axios.post(API_URL + '/Tasks/getOverdue/',params)
@@ -40,6 +47,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
            alert(errorMessages.RETRIEVE_OVERDUE_FAILED)
          }
          else {
+           console.log(response.data)
            dispatch(setOverdueTasks(response.data))
          }
      })
@@ -58,6 +66,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
            alert(errorMessages.RETRIEVE_COMPLETED_FAILED)
          }
          else {
+           console.log(response.data)
            dispatch(setCompletedTasks(response.data))
          }
      })
@@ -72,7 +81,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
    return (dispatch) => {
      return axios.post(API_URL + '/Types/getTypes/',params)
      .then( response => {
-        console.log(response.data)
+         console.log(response.data)
          dispatch(setTypes(response.data))
      })
      .catch(error => {
@@ -94,7 +103,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
      name:name,
      color:color,
      description:description,
-     default_type_id:default_type_id,
+     primary_type:default_type_id,
      user_id : user_id,
    }
 
@@ -106,12 +115,14 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
        }
        else {
          let newSubject = response.data;
-
+         console.log('NEW SUBJECT')
+         console.log(newSubject)
          if(newSubject)
           dispatch(addSubject(newSubject))
        }
      })
      .catch(error => {
+
        alert(errorMessages.ADD_SUBJECT_SERVER_ERROR)
      })
    }
@@ -167,6 +178,7 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
 
 export const newTask = (name,description,type_id,dueDate, subject_id, user_id) => {
   console.log('NEW TASK')
+  console.log(type_id)
   type_id = parseInt(type_id);
   let params = {
       name:name,
@@ -181,7 +193,8 @@ export const newTask = (name,description,type_id,dueDate, subject_id, user_id) =
     return axios.post(API_URL + '/Tasks/addTask',params)
     .then( response => {
       let newTask = response.data;
-      
+      console.log('RESPONSE')
+      console.log(newTask)
       if(newTask && subject_id)
         dispatch(addTask(newTask, subject_id))
     })
@@ -233,7 +246,7 @@ export const deleteTask = (task,user_id) => {
 }
 
 export const completeTask = (task,user_id)  => {
-
+  console.log('COMPLETE');
   let params = {
     task_id:task.task_id,
     subject_id:task.subject_id,
@@ -242,6 +255,7 @@ export const completeTask = (task,user_id)  => {
   return (dispatch) => {
     return axios.post(API_URL+'/Tasks/completeTask', params)
     .then( response => {
+      console.log(response)
       if(response.status === 200 && response.data !== 'failed')
         dispatch(removeTask(task.task_id))
     })

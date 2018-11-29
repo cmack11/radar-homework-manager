@@ -46,7 +46,14 @@ export class TaskForm extends React.Component {
   }
 
   getDefaultState() {
-    let defaultState = {taskName: '', taskDesc: '', taskType:'Assignment', taskDueDate:moment().add(1,'hours').minutes(0).seconds(0), subject: '', focused:false};
+    let name = '';
+    console.log(this.props.types)
+    for(let key in this.props.types) {
+      name = this.props.types[key].type_id;
+      break;
+    }
+    console.log(name)
+    let defaultState = {taskName: '', taskDesc: '', taskType:name, taskDueDate:moment().add(1,'hours').minutes(0).seconds(0), subject: '', focused:false};
     return defaultState;
   }
 
@@ -67,11 +74,12 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       else
         this.setState({taskNameError:true});
     }
+    console.log("SET")
+    console.log(name)
     console.log(value)
     this.setState({
       [name]: value
     });
-    console.log(this.state.taskType)
   }
 
   handleSubmit(event) {
@@ -84,7 +92,10 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
     let type_id = 0;
     for(let key in this.props.types) {
+      console.log(this.props.types[key])
+      console.log(this.state.taskType)
       if(this.props.types[key].name === this.state.taskType)
+
         type_id = this.props.types[key].type_id
     }
 
@@ -92,7 +103,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
     this.props.newTask(this.state.taskName,
                               this.state.taskDesc,
-                              type_id,
+                              this.state.taskType,
                               this.state.taskDueDate.format(DATE_FORMAT),
                               this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
                               this.props.id)
@@ -161,7 +172,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     for (let key in this.props.types)
     {
       const taskType = this.props.types[key];
-      taskTypeOptions.push(<option value={taskType.name}>{taskType.name}</option>);
+      taskTypeOptions.push(<option value={taskType.type_id}>{taskType.name}</option>);
     }
 
     let formName = <b>Add Task</b>;
