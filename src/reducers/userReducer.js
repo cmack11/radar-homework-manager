@@ -33,6 +33,11 @@ export default (state = initialState, action) => {
        ...state,
        name: action.payload[0].name,
      }
+   case types.INITIALIZE_EMAIL:
+      return {
+        ...state,
+        email : action.payload.email,
+      }
    case types.REGISTER_USER:
     return initialState
    case types.RESET_USER:

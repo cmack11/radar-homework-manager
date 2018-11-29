@@ -62,7 +62,7 @@ export class SingleItemColorSelect extends Component {
         if(this.props.types[key].name === this.props.name) {
           let type = this.props.types[key];
 
-          this.props.editType(this.props.id, type.type_id, type.name, color.hex) 
+          this.props.editType(this.props.id, type.type_id, type.name, color.hex)
         }
       }
     } else {
@@ -86,7 +86,7 @@ export class SingleItemColorSelect extends Component {
       left: '0px',
     };
     return (<div style={{ background: this.state.color }}>
-      <rect width="100%" height="100%" rx={15} ry={15} background={this.state.color} onClick={this.handleClick}><text style={{ color: "white" }}>{" " + this.props.name + " "}</text></rect>
+      <rect width="100%" height="100%" rx={15} ry={15} className={(this.state.color === "white" ? "type-border" : "" )}background={this.state.color} onClick={this.handleClick}><text style={{ color: "white" }}>{" " + this.props.name + " "}</text></rect>
       {this.state.showCP ?
         <div style={{ position: 'absolute', zIndex: '2' }}>
           <div style={fullscreenCover} onClick={this.handleClose} />
