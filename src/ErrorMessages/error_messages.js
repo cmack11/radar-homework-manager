@@ -21,6 +21,8 @@ export const RETRIEVE_TASK_SERVER_ERROR = "Failed to retrieve tasks. If this err
 export const RESET_PASSWORD_SUCCESS = "Password reset success! Please login using the new access code"
 export const RESET_PASSWORD_FAILED = "Failed to reset password"
 export const RESET_PASSWORD_SERVER_ERROR = "Failed to reset password. If this error persists, contact and administrator"
+export const RETRIEVE_EMAIL_FAILED = "Failed to retrieve email"
+export const RETRIEVE_EMAIL_SERVER_ERROR = "Failed to retrieve email. If this error persists, contact and administrator"
 
 /* ASSIGNMENT ACTIONS */
 /* src/actions/assignmentAction.js */

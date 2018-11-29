@@ -73,6 +73,7 @@ export const retrieveName = (id) => {
     })
   }
 }
+
 export const registerUser = () => dispatch => {
  dispatch({
   type: types.REGISTER_USER
@@ -141,6 +142,31 @@ export const resetPassword = (email, success) => {
     .catch(error => {
       success()
       /*alert(errorMessages.RESET_PASSWORD_SERVER_ERROR)*/
+    })
+  }
+}
+
+export const initializeEmail = (data) =>  {
+  return {
+    type: types.INITIALIZE_EMAIL,
+    payload: data
+  }
+}
+
+export const retrieveEmail = (user_id) => {
+  return (dispatch) => {
+    return axios.get(API_URL + '/RadarUsers/getUserEmail/' + user_id)
+    .then( response => {
+        if (response.data === "failed")
+        {
+          alert(errorMessages.RETRIEVE_EMAIL_FAILED)
+        }
+        else {
+          dispatch(initializeEmail(response.data))
+        }
+    })
+    .catch(error => {
+      alert(errorMessages.RETRIEVE_EMAIL_SERVER_ERROR)
     })
   }
 }
