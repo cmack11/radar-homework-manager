@@ -290,7 +290,7 @@ svg text#chk {
   cursor: pointer;
   float: right;
   margin-right: 50px;
-  margin-top:-45px;
+  margin-top:-60px;
 }
 
 .MuiBadge-colorSecondary-10 {
@@ -312,7 +312,12 @@ svg text#chk {
   right: 3px !important;
 }
 
-
+.type-border {
+  border: 1px !important;
+  border-color: black !important;
+  border-style: solid !important;
+  color: black !important;
+}
 
 @keyframes App-logo-spin {
   from {
