@@ -8,7 +8,7 @@ import { newType, deleteType } from './actions/assignmentAction.js'
 
 const mapDispatchToProps = dispatch => ({
   newType : (user_id, name, color) => dispatch(newType(user_id, name, color)),
-  deleteType : (type_id) => dispatch(deleteType(type_id))
+  deleteType: (type_id, user_id) => dispatch(deleteType(type_id, user_id)),
 })
 
 const mapStateToProps = state => {
@@ -79,7 +79,7 @@ export class TaskTypeEditor extends Component {
       if (taskType.name !== typeToDelete) {
         newTaskTypeList.push(taskType);
       } else {
-        this.props.deleteType(taskType.type_id)
+        this.props.deleteType(taskType.type_id, this.props.id)
       }
     }
 

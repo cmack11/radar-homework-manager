@@ -67,24 +67,32 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       else
         this.setState({taskNameError:true});
     }
-
+    console.log(value)
     this.setState({
       [name]: value
     });
+    console.log(this.state.taskType)
   }
 
   handleSubmit(event) {
+    console.log('SUBMITTED');
     if(!this.allValid()) return;
 
     let subject = this.state.subject;
     if (!subject || subject === '')
       subject = this.props.subjectNames[0];
 
+    let type_id = 0;
+    for(let key in this.props.types) {
+      if(this.props.types[key].name === this.state.taskType)
+        type_id = this.props.types[key].type_id
+    }
 
 	if(!this.props.isEditForm){
+
     this.props.newTask(this.state.taskName,
                               this.state.taskDesc,
-                              this.state.taskType,
+                              type_id,
                               this.state.taskDueDate.format(DATE_FORMAT),
                               this.props.subjects.filter(sub => sub.name.toLowerCase() === subject.toLowerCase())[0].subject_id,
                               this.props.id)
@@ -139,7 +147,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     for (let key in this.props.types)
     {
       const taskType = this.props.types[key];
-      taskTypeOptions.push(<option value={taskType}>{taskType.name}</option>);
+      taskTypeOptions.push(<option value={taskType.name}>{taskType.name}</option>);
     }
 
     let formName = <b>Add Task</b>;

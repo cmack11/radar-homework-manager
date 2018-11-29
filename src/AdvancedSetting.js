@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import {subjects1} from './fakeData.js';
-import { retrieveTypes, editType, newType, deleteType } from './actions/assignmentAction.js'
+import { retrieveTypes, editType, newType } from './actions/assignmentAction.js'
 import './App.css';
 import TaskTypeEditor from './TaskTypeEditor';
 import ColorSettingsRow from './ColorSettingsRow';
@@ -11,7 +11,6 @@ import ColorSettingsRow from './ColorSettingsRow';
 const mapDispatchToProps = dispatch => ({
  retrieveTypes: (id) => dispatch(retrieveTypes(id)),
  newType : (user_id, name, color) => dispatch(newType(user_id, name, color)),
- deleteType: (type_id) => dispatch(deleteType(type_id)),
  editType : (user_id, type_id, name, color) => dispatch(editType(user_id, type_id, name, color))
 })
 
