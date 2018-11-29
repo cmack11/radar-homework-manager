@@ -3,7 +3,11 @@ import { Router, Route, Switch } from 'react-router';
 import { connect } from 'react-redux';
 import './App.css';
 
+const mapDispatchToProps = dispatch => ({
+})
+
 class AccountSetting extends Component {
+
 render() {
   console.log("Acc rendered")
   return (
