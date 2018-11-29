@@ -144,17 +144,17 @@ export class DotViewer extends Component {
 				</div>
 				<div style={{display:'flex',justifyContent:'center'}}>
 					<div style={{display:'inline-block',padding:5}}>
-						<b style={{fontSize:'2.5vw'}}>{name}</b>
+						<b style={{fontSize:'150%'}}>{name}</b>
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
 					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
-						<p style={{fontSize:'2.5vw'}}><b>Due Date:</b>{date}</p>
+						<p style={{fontSize:'150%'}}><b>Due Date:</b>{date}</p>
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
 					<div style={{display:'inline-block',flexGrow:'2',padding:5}}>
-						<p style={{fontSize:'2.5vw'}}><b>Type:</b>{type}</p>
+						<p style={{fontSize:'150%'}}><b>Type:</b>{type}</p>
 					</div>
 				</div>
 				<div style={{display:'flex',justifyContent:'space-between'}}>
