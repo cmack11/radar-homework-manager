@@ -173,11 +173,12 @@ svg text#chk {
 .signup {
   margin: 0 auto;
   width: 40%;
-  margin-top: 2%;
+  margin-top: calc(0.025 * 100vh);
   padding: 20px 20px 20px 20px;
   background-color: white;
   height: auto;
 }
+
 .subtext-login {
   font-size: 12px;
   text-align: left !important;
