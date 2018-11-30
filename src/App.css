@@ -319,6 +319,37 @@ svg text#chk {
   color: black !important;
 }
 
+.help-container {
+  width : 70%;
+  margin: auto;
+  margin-top: 1%;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.help-title {
+  text-align: center !important;
+  margin-bottom: 50px !important;
+}
+
+.help-text {
+  font-size: 30px;
+}
+
+.ui.styled.accordion .active.title {
+  background: #1678C2;
+  color: white;
+}
+
+.adv-title {
+  font-size: 30px;
+  margin-bottom: 100px !important;
+}
+
+.acc-title {
+  font-size: 30px;
+  margin-top: 1%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

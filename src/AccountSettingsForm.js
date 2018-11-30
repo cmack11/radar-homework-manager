@@ -53,9 +53,9 @@ export class AccountSettingsForm extends React.Component {
 
   handleSubmit(event) {
     if(!this.allValid()) return;
-    
+
     //call redux function to pass new name and password to database
-    
+
 	/*
     let assignment = this.props.assignment;
     assignment.name = this.state.taskName;
@@ -108,46 +108,48 @@ export class AccountSettingsForm extends React.Component {
   }
 
   render() {
-	  
+
     return (
-      <div className="account-settings-form" style={{position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}} onClick={(e) => {e.stopPropagation()}}>
-      
+      <div style={{position: 'absolute', left: "15%", top: 0, width: '50%', height: '80%', margin: '10%', fontSize:16}} onClick={(e) => {e.stopPropagation()}}>
+
       <Form >
-        
+
         <div className="account-info-container" >
-         	<b>Account Information</b>  
+         	<b>Account Information</b>
         </div>
         <br />
-        
+
         <Form.Field className='form-fields'>
-          <label className="label-text label-center"> Name:  {this.state.Name}</label>
+          <label className="label-text label-center"> Name:  </label>
+          <label> {this.state.Name} </label>
         </Form.Field>
-        
+
         <Form.Field className='form-fields'>
-          <label className="label-text label-center">Email:  {this.state.Email}</label>
+          <label className="label-text label-center">Email:</label>
+          <label>  {this.state.Email} </label>
         </Form.Field>
         <br />
-        
+
         <div className="account-edit-container">
         		<b>Edit Account Information</b>
         </div>
         <br />
-        
+
         <Form.Field className='form-fields'>
           <label className="label-text label-center">New Name:</label>
           <input name="Name" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
-        
+
         <Form.Field className='form-fields'>
           <label className="label-text label-center">New Password:</label>
           <input name="Password" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
-        
+
         <Form.Field className='form-fields'>
           <label className="label-text label-center">Confirm New Password:</label>
           <input name="Password" type="text" value="" onChange={this.handleChange} />
         </Form.Field>
-        
+
         <Button primary type="button" value="Save Changes" onClick={this.handleSubmit}><b>Save Changes</b></Button>
       </Form>
       </div>
