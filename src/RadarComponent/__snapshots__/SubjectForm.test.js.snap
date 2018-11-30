@@ -100,19 +100,8 @@ ShallowWrapper {
           <select
             name="defaultTaskType"
             onChange={[Function]}
-            value="Assignment"
-          >
-            <option
-              value="assignment"
-            >
-              assignment
-            </option>
-            <option
-              value="exam"
-            >
-              exam
-            </option>
-          </select>
+            value=""
+          />
         </FormField>
         <Button
           as="button"
@@ -126,6 +115,7 @@ ShallowWrapper {
         </Button>
       </Form>,
       "className": "subject-task-form",
+      "onClick": [Function],
     },
     "ref": null,
     "rendered": Object {
@@ -201,19 +191,8 @@ ShallowWrapper {
             <select
               name="defaultTaskType"
               onChange={[Function]}
-              value="Assignment"
-            >
-              <option
-                value="assignment"
-              >
-                assignment
-              </option>
-              <option
-                value="exam"
-              >
-                exam
-              </option>
-            </select>
+              value=""
+            />
           </FormField>,
           <Button
             as="button"
@@ -461,19 +440,8 @@ ShallowWrapper {
               <select
                 name="defaultTaskType"
                 onChange={[Function]}
-                value="Assignment"
-              >
-                <option
-                  value="assignment"
-                >
-                  assignment
-                </option>
-                <option
-                  value="exam"
-                >
-                  exam
-                </option>
-              </select>,
+                value=""
+              />,
             ],
             "className": "form-fields",
           },
@@ -496,49 +464,13 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  <option
-                    value="assignment"
-                  >
-                    assignment
-                  </option>,
-                  <option
-                    value="exam"
-                  >
-                    exam
-                  </option>,
-                ],
+                "children": Array [],
                 "name": "defaultTaskType",
                 "onChange": [Function],
-                "value": "Assignment",
+                "value": "",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "assignment",
-                    "value": "assignment",
-                  },
-                  "ref": null,
-                  "rendered": "assignment",
-                  "type": "option",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "exam",
-                    "value": "exam",
-                  },
-                  "ref": null,
-                  "rendered": "exam",
-                  "type": "option",
-                },
-              ],
+              "rendered": Array [],
               "type": "select",
             },
           ],
@@ -641,19 +573,8 @@ ShallowWrapper {
             <select
               name="defaultTaskType"
               onChange={[Function]}
-              value="Assignment"
-            >
-              <option
-                value="assignment"
-              >
-                assignment
-              </option>
-              <option
-                value="exam"
-              >
-                exam
-              </option>
-            </select>
+              value=""
+            />
           </FormField>
           <Button
             as="button"
@@ -667,6 +588,7 @@ ShallowWrapper {
           </Button>
         </Form>,
         "className": "subject-task-form",
+        "onClick": [Function],
       },
       "ref": null,
       "rendered": Object {
@@ -742,19 +664,8 @@ ShallowWrapper {
               <select
                 name="defaultTaskType"
                 onChange={[Function]}
-                value="Assignment"
-              >
-                <option
-                  value="assignment"
-                >
-                  assignment
-                </option>
-                <option
-                  value="exam"
-                >
-                  exam
-                </option>
-              </select>
+                value=""
+              />
             </FormField>,
             <Button
               as="button"
@@ -1002,19 +913,8 @@ ShallowWrapper {
                 <select
                   name="defaultTaskType"
                   onChange={[Function]}
-                  value="Assignment"
-                >
-                  <option
-                    value="assignment"
-                  >
-                    assignment
-                  </option>
-                  <option
-                    value="exam"
-                  >
-                    exam
-                  </option>
-                </select>,
+                  value=""
+                />,
               ],
               "className": "form-fields",
             },
@@ -1037,49 +937,13 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": Array [
-                    <option
-                      value="assignment"
-                    >
-                      assignment
-                    </option>,
-                    <option
-                      value="exam"
-                    >
-                      exam
-                    </option>,
-                  ],
+                  "children": Array [],
                   "name": "defaultTaskType",
                   "onChange": [Function],
-                  "value": "Assignment",
+                  "value": "",
                 },
                 "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "assignment",
-                      "value": "assignment",
-                    },
-                    "ref": null,
-                    "rendered": "assignment",
-                    "type": "option",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "exam",
-                      "value": "exam",
-                    },
-                    "ref": null,
-                    "rendered": "exam",
-                    "type": "option",
-                  },
-                ],
+                "rendered": Array [],
                 "type": "select",
               },
             ],

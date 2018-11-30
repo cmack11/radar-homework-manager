@@ -1,5 +1,5 @@
 import React from 'react';
-import Radar from './Radar.js';
+import {Radar} from './Radar.js';
 import { shallow, mount, render } from 'enzyme';
 import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

@@ -25,6 +25,12 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
          }
          else {
            console.log(response.data)
+           response.data.map((subj) =>{
+            subj.assignments.map((task)=> {
+              console.log(task)
+             if(!task.type_id) task.type_id = task.type;
+            })
+           })
            dispatch(initializeTasks(response.data))
          }
      })
@@ -135,13 +141,14 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
      name:newSubject.name,
      color:newSubject.color,
      description:newSubject.description,
-     default_type_id:newSubject.default_type_id
+     primary_type:parseInt(newSubject.primary_type)
    };
+   console.log(params)
    return (dispatch) => {
      return axios.post(API_URL+'/Subjects/updateSubject/', params)
      .then( response => {
        let newS = response.data;
-       //console.log(response)
+       console.log(response)
        if(newS)
         dispatch(updateSubject(newS))
      })
@@ -217,7 +224,7 @@ export const editTask = (task, subject_id, user_id) => {
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateTask',params)
     .then( response => {
-      //console.log(response)
+      console.log(response)
       dispatch(updateTask(response.data))
     })
     .catch(error => {

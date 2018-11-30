@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TaskList from './TaskList.js'
+import {TaskList} from './TaskList.js'
 import moment from 'moment'
 
 const fakeDataTasks = [

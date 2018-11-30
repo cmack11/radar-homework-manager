@@ -16,7 +16,7 @@ const mapStateToProps = state => {
   }
 }
 
-class Dots extends Component {
+export class Dots extends Component {
 
 
 	constructor(props) {

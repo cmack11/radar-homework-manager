@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 		}
 	}
 
-class Radar extends Component {
+export class Radar extends Component {
 
 	constructor(props) {
 		super();
@@ -466,14 +466,14 @@ class Radar extends Component {
 	   let overDueImage =
      (
        <div className="notification-icon">
-         <Badge badgeContent={this.props.overdueAssignments.length} color="secondary" className="overdue-button" onClick={this.overdueButtonClick.bind(this)}>
+         <Badge badgeContent={this.props.overdueAssignments ? this.props.overdueAssignments.length : 0} color="secondary" className="overdue-button" onClick={this.overdueButtonClick.bind(this)}>
           <IconContext.Provider value={{color : "grey", size:60}}>
             <MdNotifications />
           </IconContext.Provider>
         </Badge>
       </div>
    )
-	if(!this.props.overdueAssignments.length){
+	if(!this.props.overdueAssignments || !this.props.overdueAssignments.length){
 			overDueImage = null;
 		}
 

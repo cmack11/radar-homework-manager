@@ -37,12 +37,12 @@ const dateCompare = function(a,b) {
     return moment(a.dueDate).valueOf() - moment(b.dueDate).valueOf();
 }
 
-class TaskList extends React.Component {
+export class TaskList extends React.Component {
 
 
   constructor(props) {
-    super(props);
-    this.state = {visible: this.props.visible, top:307, left:200};
+    super();
+    this.state = {visible: props.visible, top:307, left:200};
   }
 
   componentWillReceiveProps(nextProps){
@@ -55,7 +55,8 @@ class TaskList extends React.Component {
   }
 
   markComplete(assignment) {
-    this.props.completeTask(assignment)
+    if(this.props.completeTask)
+        this.props.completeTask(assignment)
   }
 
   getTrProps(state, rowInfo, column) {
@@ -101,7 +102,6 @@ class TaskList extends React.Component {
 
   getColumns() {
     let hideSubjectCol = this.props.hideSubjectCol !== undefined && this.props.hideSubjectCol;
-
     let columns = [];
     columns.push(
         {
@@ -116,7 +116,7 @@ class TaskList extends React.Component {
             accessor: 'subject_id',
             Cell: props => {
                 let name = '';
-                for(let i = 0; i < this.props.subjects.length; i++)
+                for(let i = 0; this.props.subjects && i < this.props.subjects.length; i++)
                     if(this.props.subjects[i].subject_id === props.value)
                         name = this.props.subjects[i].name
                 return <span className='type_id'>{name}</span>
@@ -133,7 +133,7 @@ class TaskList extends React.Component {
         {
             Header: 'Type',
             accessor: 'type',//change to type_id when fixed
-            Cell: props => <span className='type_id'>{this.props.types[props.value] ? this.props.types[props.value].name : ''}</span>
+            Cell: props => <span className='type_id'>{(this.props.types && this.props.types[props.value]) ? this.props.types[props.value].name : ''}</span>
         },
         {
             Header: 'Due Date',

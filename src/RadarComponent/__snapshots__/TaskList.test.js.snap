@@ -134,14 +134,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -354,14 +356,16 @@ ShallowWrapper {
               "accessor": "name",
             },
             Object {
+              "Cell": [Function],
               "Header": "Subject",
-              "accessor": "subject",
+              "accessor": "subject_id",
             },
             Object {
               "Header": "Description",
               "accessor": "description",
             },
             Object {
+              "Cell": [Function],
               "Header": "Type",
               "accessor": "type",
             },
@@ -574,14 +578,16 @@ ShallowWrapper {
                   "accessor": "name",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Subject",
-                  "accessor": "subject",
+                  "accessor": "subject_id",
                 },
                 Object {
                   "Header": "Description",
                   "accessor": "description",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Type",
                   "accessor": "type",
                 },
@@ -794,14 +800,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -1105,6 +1113,7 @@ ShallowWrapper {
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -1321,6 +1330,7 @@ ShallowWrapper {
               "accessor": "description",
             },
             Object {
+              "Cell": [Function],
               "Header": "Type",
               "accessor": "type",
             },
@@ -1537,6 +1547,7 @@ ShallowWrapper {
                   "accessor": "description",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Type",
                   "accessor": "type",
                 },
@@ -1753,6 +1764,7 @@ ShallowWrapper {
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -2052,14 +2064,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -2272,14 +2286,16 @@ ShallowWrapper {
               "accessor": "name",
             },
             Object {
+              "Cell": [Function],
               "Header": "Subject",
-              "accessor": "subject",
+              "accessor": "subject_id",
             },
             Object {
               "Header": "Description",
               "accessor": "description",
             },
             Object {
+              "Cell": [Function],
               "Header": "Type",
               "accessor": "type",
             },
@@ -2492,14 +2508,16 @@ ShallowWrapper {
                   "accessor": "name",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Subject",
-                  "accessor": "subject",
+                  "accessor": "subject_id",
                 },
                 Object {
                   "Header": "Description",
                   "accessor": "description",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Type",
                   "accessor": "type",
                 },
@@ -2712,14 +2730,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -2964,14 +2984,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -3133,14 +3155,16 @@ ShallowWrapper {
               "accessor": "name",
             },
             Object {
+              "Cell": [Function],
               "Header": "Subject",
-              "accessor": "subject",
+              "accessor": "subject_id",
             },
             Object {
               "Header": "Description",
               "accessor": "description",
             },
             Object {
+              "Cell": [Function],
               "Header": "Type",
               "accessor": "type",
             },
@@ -3304,14 +3328,16 @@ ShallowWrapper {
                   "accessor": "name",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Subject",
-                  "accessor": "subject",
+                  "accessor": "subject_id",
                 },
                 Object {
                   "Header": "Description",
                   "accessor": "description",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Type",
                   "accessor": "type",
                 },
@@ -3473,14 +3499,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -3730,14 +3758,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },
@@ -3950,14 +3980,16 @@ ShallowWrapper {
               "accessor": "name",
             },
             Object {
+              "Cell": [Function],
               "Header": "Subject",
-              "accessor": "subject",
+              "accessor": "subject_id",
             },
             Object {
               "Header": "Description",
               "accessor": "description",
             },
             Object {
+              "Cell": [Function],
               "Header": "Type",
               "accessor": "type",
             },
@@ -4170,14 +4202,16 @@ ShallowWrapper {
                   "accessor": "name",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Subject",
-                  "accessor": "subject",
+                  "accessor": "subject_id",
                 },
                 Object {
                   "Header": "Description",
                   "accessor": "description",
                 },
                 Object {
+                  "Cell": [Function],
                   "Header": "Type",
                   "accessor": "type",
                 },
@@ -4390,14 +4424,16 @@ ShallowWrapper {
                 "accessor": "name",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Subject",
-                "accessor": "subject",
+                "accessor": "subject_id",
               },
               Object {
                 "Header": "Description",
                 "accessor": "description",
               },
               Object {
+                "Cell": [Function],
                 "Header": "Type",
                 "accessor": "type",
               },

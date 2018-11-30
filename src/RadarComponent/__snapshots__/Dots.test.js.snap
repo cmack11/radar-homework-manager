@@ -26,7 +26,7 @@ Array [
         "subject": "Subject #1",
         "type": "Assignment",
       },
-      "color": "blue",
+      "color": "white",
       "distanceFromCenter": 1,
       "key": "Subject #1/Assignment #2/2018-09-13 14:00",
       "maxAngle": 180,

@@ -39,6 +39,33 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <Icon
+          as="i"
+          circular={true}
+          className="plus-button"
+          name="plus"
+          onClick={[Function]}
+          size="huge"
+          style={
+            Object {
+              "background": "#ED4C67",
+            }
+          }
+        />,
+        <Icon
+          as="i"
+          circular={true}
+          className="history-button"
+          name="history"
+          onClick={[Function]}
+          size="huge"
+          style={
+            Object {
+              "background": "#F79F1F",
+            }
+          }
+        />,
+        null,
         <svg
           height={100}
           id="radar"
@@ -67,7 +94,7 @@ ShallowWrapper {
               r={8.540000000000001}
             />
           </svg>
-          <Dots
+          <Connect(Dots)
             dims={
               Object {
                 "buttons": Object {
@@ -170,45 +197,6 @@ ShallowWrapper {
               show={true}
             />
           </svg>
-          <image
-            height={50}
-            href="Overdue_button.png"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-            width={50}
-            x={10}
-            y={10}
-          />
-          <image
-            height={50}
-            href="add_button.png"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-            width={50}
-            x={40}
-            y={40}
-          />
-          <image
-            height={50}
-            href="history_button.png"
-            onClick={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-            width={50}
-            x={10}
-            y={40}
-          />
           <DraggedDot
             intersectFunctions={
               Array [
@@ -253,6 +241,45 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": "i",
+          "circular": true,
+          "className": "plus-button",
+          "name": "plus",
+          "onClick": [Function],
+          "size": "huge",
+          "style": Object {
+            "background": "#ED4C67",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "as": "i",
+          "circular": true,
+          "className": "history-button",
+          "name": "history",
+          "onClick": [Function],
+          "size": "huge",
+          "style": Object {
+            "background": "#F79F1F",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -278,7 +305,7 @@ ShallowWrapper {
               />
             </svg>,
             Array [],
-            <Dots
+            <Connect(Dots)
               dims={
                 Object {
                   "buttons": Object {
@@ -381,45 +408,6 @@ ShallowWrapper {
                 show={true}
               />
             </svg>,
-            <image
-              height={50}
-              href="Overdue_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={10}
-              y={10}
-            />,
-            <image
-              height={50}
-              href="add_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={40}
-              y={40}
-            />,
-            <image
-              height={50}
-              href="history_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={10}
-              y={40}
-            />,
             <DraggedDot
               intersectFunctions={
                 Array [
@@ -647,63 +635,6 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "height": 50,
-              "href": "Overdue_button.png",
-              "onClick": [Function],
-              "style": Object {
-                "cursor": "pointer",
-              },
-              "width": 50,
-              "x": 10,
-              "y": 10,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "image",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "height": 50,
-              "href": "add_button.png",
-              "onClick": [Function],
-              "style": Object {
-                "cursor": "pointer",
-              },
-              "width": 50,
-              "x": 40,
-              "y": 40,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "image",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "height": 50,
-              "href": "history_button.png",
-              "onClick": [Function],
-              "style": Object {
-                "cursor": "pointer",
-              },
-              "width": 50,
-              "x": 10,
-              "y": 40,
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "image",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
             "nodeType": "class",
             "props": Object {
               "dot": undefined,
@@ -763,6 +694,33 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <Icon
+            as="i"
+            circular={true}
+            className="plus-button"
+            name="plus"
+            onClick={[Function]}
+            size="huge"
+            style={
+              Object {
+                "background": "#ED4C67",
+              }
+            }
+          />,
+          <Icon
+            as="i"
+            circular={true}
+            className="history-button"
+            name="history"
+            onClick={[Function]}
+            size="huge"
+            style={
+              Object {
+                "background": "#F79F1F",
+              }
+            }
+          />,
+          null,
           <svg
             height={100}
             id="radar"
@@ -791,7 +749,7 @@ ShallowWrapper {
                 r={8.540000000000001}
               />
             </svg>
-            <Dots
+            <Connect(Dots)
               dims={
                 Object {
                   "buttons": Object {
@@ -894,45 +852,6 @@ ShallowWrapper {
                 show={true}
               />
             </svg>
-            <image
-              height={50}
-              href="Overdue_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={10}
-              y={10}
-            />
-            <image
-              height={50}
-              href="add_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={40}
-              y={40}
-            />
-            <image
-              height={50}
-              href="history_button.png"
-              onClick={[Function]}
-              style={
-                Object {
-                  "cursor": "pointer",
-                }
-              }
-              width={50}
-              x={10}
-              y={40}
-            />
             <DraggedDot
               intersectFunctions={
                 Array [
@@ -977,6 +896,45 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": "i",
+            "circular": true,
+            "className": "plus-button",
+            "name": "plus",
+            "onClick": [Function],
+            "size": "huge",
+            "style": Object {
+              "background": "#ED4C67",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "as": "i",
+            "circular": true,
+            "className": "history-button",
+            "name": "history",
+            "onClick": [Function],
+            "size": "huge",
+            "style": Object {
+              "background": "#F79F1F",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -1002,7 +960,7 @@ ShallowWrapper {
                 />
               </svg>,
               Array [],
-              <Dots
+              <Connect(Dots)
                 dims={
                   Object {
                     "buttons": Object {
@@ -1105,45 +1063,6 @@ ShallowWrapper {
                   show={true}
                 />
               </svg>,
-              <image
-                height={50}
-                href="Overdue_button.png"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "cursor": "pointer",
-                  }
-                }
-                width={50}
-                x={10}
-                y={10}
-              />,
-              <image
-                height={50}
-                href="add_button.png"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "cursor": "pointer",
-                  }
-                }
-                width={50}
-                x={40}
-                y={40}
-              />,
-              <image
-                height={50}
-                href="history_button.png"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "cursor": "pointer",
-                  }
-                }
-                width={50}
-                x={10}
-                y={40}
-              />,
               <DraggedDot
                 intersectFunctions={
                   Array [
@@ -1367,63 +1286,6 @@ ShallowWrapper {
                 "type": [Function],
               },
               "type": "svg",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "height": 50,
-                "href": "Overdue_button.png",
-                "onClick": [Function],
-                "style": Object {
-                  "cursor": "pointer",
-                },
-                "width": 50,
-                "x": 10,
-                "y": 10,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "image",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "height": 50,
-                "href": "add_button.png",
-                "onClick": [Function],
-                "style": Object {
-                  "cursor": "pointer",
-                },
-                "width": 50,
-                "x": 40,
-                "y": 40,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "image",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "height": 50,
-                "href": "history_button.png",
-                "onClick": [Function],
-                "style": Object {
-                  "cursor": "pointer",
-                },
-                "width": 50,
-                "x": 10,
-                "y": 40,
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "image",
             },
             Object {
               "instance": null,

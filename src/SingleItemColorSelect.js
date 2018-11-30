@@ -8,7 +8,7 @@ import { editType, editSubject } from './actions/assignmentAction.js'
 
 const mapDispatchToProps = dispatch => ({
   editType : (user_id, type_id, name, color) => dispatch(editType(user_id, type_id, name, color)),
-  editSubject : (newSubject) => dispatch(editSubject(newSubject))
+  editSubject : (newSubject, user_id) => dispatch(editSubject(newSubject, user_id))
 })
 
 const mapStateToProps = state => {
@@ -69,9 +69,9 @@ export class SingleItemColorSelect extends Component {
       for(let i = 0; i < this.props.subjects.length; i++) {
         if(this.props.subjects[i].name === this.props.name) {
           let subject = this.props.subjects[i];
-          subject.color = color;
+          subject.color = color.hex;
 
-          this.props.editSubject(subject);
+          this.props.editSubject(subject, this.props.id);
         }
       }
     }

@@ -56,13 +56,8 @@ export class SubjectForm extends React.Component {
 
     if(!this.allValid()) return;
 
-    let default_type_id = 0;
-    for(let key in this.props.types) {
-      if(this.props.types[key].name === this.state.defaultTaskType)
-        default_type_id = this.props.types[key].type_id
-    }
-
-    this.props.newSubject(this.state.subjectName, color, this.state.subjectDesc, default_type_id, this.props.id)
+    if(this.props.newSubject)
+      this.props.newSubject(this.state.subjectName, color, this.state.subjectDesc, this.state.defaultTaskType, this.props.id)
 
     this.setState(this.getDefaultState())
     if(this.props.closeForm)
@@ -100,7 +95,7 @@ export class SubjectForm extends React.Component {
     for (let key in this.props.types)
     {
       const taskType = this.props.types[key];
-      taskTypeOptions.push(<option value={taskType.name}>{taskType.name}</option>);
+      taskTypeOptions.push(<option value={taskType.type_id}>{taskType.name}</option>);
     }
 
     return (

@@ -36,7 +36,7 @@ export class DotViewer extends Component {
 	}
 
 	completeAssignment() {
-		if(this.props.dot && this.props.dot.id) {
+		if(this.props.dot && this.props.dot.id && this.props.completeTask) {
 			//let element = document.getElementById(this.props.dot.id)
 			//if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to update status of assignment to completed
@@ -50,7 +50,7 @@ export class DotViewer extends Component {
 	}
 
 	deleteAssignment() {
-		if(this.props.dot && this.props.dot.id) {
+		if(this.props.dot && this.props.dot.id && this.props.deleteTask) {
 			//let element = document.getElementById(this.props.dot.id)
 			//if(element) element.setAttribute('visibility','hidden');
 			//Replace this with API Call/Redux to delete assignment from user's account
@@ -112,7 +112,7 @@ export class DotViewer extends Component {
 		if(assignment) {
 			name = assignment.name;
 			date = ' ' + moment(assignment.dueDate).format('MMMM Do YYYY, h:mm a');
-			if(this.props.types[assignment.type_id])
+			if(this.props.types && this.props.types[assignment.type_id])
 				type = ' ' + this.props.types[assignment.type_id].name;
 			else
 				type = ' Other'
