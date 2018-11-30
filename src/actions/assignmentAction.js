@@ -24,12 +24,17 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
            alert(errorMessages.RETRIEVE_TASK_FAILED)
          }
          else {
+           console.log('getIncomplete:')
            console.log(response.data)
            response.data.map((subj) =>{
-            subj.assignments.map((task)=> {
+            subj.assignments = subj.assignments.filter((task, index, arr) => {
+              if(!task.type_id) task.type_id = task.type;
+              return task.dueDate !== null;
+            })
+            /*subj.assignments.map((task)=> {
               console.log(task)
              if(!task.type_id) task.type_id = task.type;
-            })
+            })*/
            })
            dispatch(initializeTasks(response.data))
          }
@@ -121,8 +126,8 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
        }
        else {
          let newSubject = response.data;
-         //console.log('NEW SUBJECT')
-         //console.log(newSubject)
+         console.log('NEW SUBJECT')
+         console.log(newSubject)
          if(newSubject)
           dispatch(addSubject(newSubject))
        }
