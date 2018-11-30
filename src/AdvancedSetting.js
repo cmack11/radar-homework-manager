@@ -40,7 +40,10 @@ class AdvancedSetting extends React.Component {
 
 render() {
   return (
-    <div style={{position: 'absolute', left: 0, top: 0, width: '80%', height: '80%', margin: '10%'}}>
+    <div style={{position: 'absolute', left: '25%', top: 0, width: '50%', height: '80%', marginTop: '1%'}}>
+      <div>
+        <p className="adv-title">Advanced Setting</p>
+      </div>
       <div style={{display: 'table', width: '100%'}}>
         <ColorSettingsRow items = {subjects1} isSubject={true}/>
         <br/>

@@ -13,8 +13,8 @@ render() {
   console.log("Acc rendered")
   return (
     <div>
-      <p> Account settings </p>
-      <AccountSettingsForm />
+      <p className="acc-title"> Account settings </p>
+      <AccountSettingsForm className="acc-container" />
     </div>
   )
 }

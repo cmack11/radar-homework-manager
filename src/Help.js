@@ -83,6 +83,9 @@ render() {
         <br/>
         <p>
           1. Click on the task dot and this will open the Task Viewer. Select the checkmark icon on the bottom left
+        </p>
+        <br/>
+        <p>
           2. Drag the task dot and drop it to green checkmark button
         </p>
         <p>

@@ -322,7 +322,7 @@ svg text#chk {
 .help-container {
   width : 70%;
   margin: auto;
-  margin-top: 3%;
+  margin-top: 1%;
   text-align: left;
   margin-bottom: 50px;
 }
@@ -339,6 +339,16 @@ svg text#chk {
 .ui.styled.accordion .active.title {
   background: #1678C2;
   color: white;
+}
+
+.adv-title {
+  font-size: 30px;
+  margin-bottom: 100px !important;
+}
+
+.acc-title {
+  font-size: 30px;
+  margin-top: 1%;
 }
 @keyframes App-logo-spin {
   from {
