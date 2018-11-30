@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
    }
 
    case types.UPDATE_ASSIGNMENT :
+          console.log(action.payload)
          newSubjects = state.subjects.slice();
          for(let i = 0; i < newSubjects.length; i++) {
            let subject = newSubjects[i];

@@ -91,7 +91,8 @@ export class TaskTypeEditor extends Component {
     if (this.state.showDeleteTasks) {
       for (let key in this.props.types) {
         const taskType = this.props.types[key].name;
-        deleteTasksButton.push(<Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete Type: {taskType}</Button>);
+        if(taskType !== 'Others')
+          deleteTasksButton.push(<Button primary type="button" value={taskType} onClick={this.handleSubmit}>Delete Type: {taskType}</Button>);
       }
     }
     else {

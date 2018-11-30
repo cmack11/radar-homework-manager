@@ -90,7 +90,8 @@ class App extends Component {
   onRouteChange = (location) => {
     console.log("Route changed la mtfk " + location )
     if (location.pathname === '/login') {
-      console.log("Hmm")
+      this.props.resetUser();
+      this._nameUpdated = false;
       this.setState({sidebarAvailable: false})
     } else {
       this.setState({sidebarAvailable: true})
@@ -101,7 +102,7 @@ class App extends Component {
     <div className="top-display">
       <Sidebar
         sidebar={
-          <div className="menu-container" onClick={() => this.onSetSidebarOpen(false)}>
+          <div className="menu-container" onClick={() => {this.onSetSidebarOpen(false)}}>
             <img className= "logo" src={ico} alt="RHW" />
             <h2 className="menu-header">{`${this.props.name}'s`}</h2>
             <p className="title">Radar Homework Manager</p>
@@ -147,7 +148,7 @@ class App extends Component {
               </div>
             </Link>
             <Link to='/login'>
-              <div className="menu-item" onClick={() => this.props.resetUser()}>
+              <div className="menu-item">
                 <div className="icon">
                   <IconContext.Provider value={{size:25}}>
                     <MdExitToApp />

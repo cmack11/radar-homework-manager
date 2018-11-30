@@ -15,7 +15,7 @@ import {setTaskFormRef} from '../dismissCenter';
 const mapDispatchToProps = dispatch => ({
  retrieveTasks: () => dispatch(retrieveTasks()),
  newTask: (name,description,type,dueDate, subject_id, user_id) => dispatch(newTask(name,description,type,dueDate, subject_id, user_id)),
- editTask: (updatedTask) => dispatch(editTask(updatedTask)),
+ editTask: (updatedTask,subject_id,user_id) => dispatch(editTask(updatedTask,subject_id,user_id)),
 })
 
 const mapStateToProps = state => {

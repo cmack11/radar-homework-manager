@@ -31,10 +31,6 @@ import * as errorMessages from '../ErrorMessages/error_messages.js'
               if(!task.type_id) task.type_id = task.type;
               return task.dueDate !== null;
             })
-            /*subj.assignments.map((task)=> {
-              console.log(task)
-             if(!task.type_id) task.type_id = task.type;
-            })*/
            })
            dispatch(initializeTasks(response.data))
          }
@@ -222,17 +218,25 @@ export const editTask = (task, subject_id, user_id) => {
     description:task.description,
     type_id:task.type_id,
     dueDate:task.dueDate,
-    task_id:task.task_id,
+    task_id:task.type,
+    type:task.type,
     subject_id:subject_id,
     user_id:user_id,
   }
+  console.log(task)
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateTask',params)
     .then( response => {
       console.log(response)
-      dispatch(updateTask(response.data))
+      let newTask = response.data;
+      newTask.subject_id = subject_id;
+      newTask.user_id = user_id;
+      newTask.type_id = task.type_id;
+      console.log(newTask)
+      dispatch(updateTask(newTask,subject_id,user_id))
     })
     .catch(error => {
+      console.log(error)
       alert(errorMessages.EDIT_TASK_SERVER_ERROR)
     })
   }
@@ -420,10 +424,14 @@ export const addTask = (assignment, subject_id) => {
   }
 }
 
-export const updateTask = (assignment) => {
+export const updateTask = (assignment,subject_id,user_id) => {
     return {
       type : types.UPDATE_ASSIGNMENT,
-      assignment: assignment
+      payload:{
+        assignment: assignment,
+        subject_id:subject_id,
+        user_id:user_id
+      }
     }
 }
 

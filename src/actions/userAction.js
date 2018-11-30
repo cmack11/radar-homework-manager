@@ -23,6 +23,7 @@ export const initializeUser = () => dispatch => {
  }
 
 export const resetUser = () => dispatch => {
+  console.log('RESET USER')
  dispatch({
   type: types.RESET_USER
  })
@@ -65,6 +66,8 @@ export const retrieveName = (id) => {
           alert(errorMessages.RETRIEVE_NAME_FAILED)
         }
         else {
+          console.log('GETNAME')
+          console.log(response.data)
           dispatch(initializeName(response.data))
         }
     })

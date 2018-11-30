@@ -24,6 +24,7 @@ export default (state = initialState, action) => {
    **/
    case types.LOGIN_USER:
     console.log("Before retreived login " + JSON.stringify(action.payload[0]))
+    console.log(action.payload)
      return {
       ...state,
       user_id: action.payload[0].user_id,
