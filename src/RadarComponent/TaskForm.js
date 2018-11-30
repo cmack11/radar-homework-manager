@@ -47,12 +47,12 @@ export class TaskForm extends React.Component {
 
   getDefaultState() {
     let name = '';
-    console.log(this.props.types)
+    //console.log(this.props.types)
     for(let key in this.props.types) {
       name = this.props.types[key].type_id;
       break;
     }
-    console.log(name)
+    //console.log(name)
     let defaultState = {taskName: '', taskDesc: '', taskType:name, taskDueDate:moment().add(1,'hours').minutes(0).seconds(0), subject: '', focused:false};
     return defaultState;
   }
@@ -74,16 +74,16 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       else
         this.setState({taskNameError:true});
     }
-    console.log("SET")
-    console.log(name)
-    console.log(value)
+    //console.log("SET")
+    //console.log(name)
+    //console.log(value)
     this.setState({
       [name]: value
     });
   }
 
   handleSubmit(event) {
-    console.log('SUBMITTED');
+    //console.log('SUBMITTED');
     if(!this.allValid()) return;
 
     let subject = this.state.subject;
@@ -92,8 +92,8 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
 
     let type_id = 0;
     for(let key in this.props.types) {
-      console.log(this.props.types[key])
-      console.log(this.state.taskType)
+      //console.log(this.props.types[key])
+      //console.log(this.state.taskType)
       if(this.props.types[key].name === this.state.taskType)
 
         type_id = this.props.types[key].type_id
@@ -116,7 +116,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     assignment.description = this.state.taskDesc;
     assignment.type = this.state.taskType;
     assignment.dueDate = this.state.taskDueDate.format(DATE_FORMAT)
-    console.log(this.state)
+    //console.log(this.state)
     let subject_id;
     for(let i = 0; i < this.props.subjects.length && !subject_id; i++) {
       let s = this.props.subjects[i];
@@ -127,7 +127,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       }
     }
 
-    //console.log("New subject is " + JSON.stringify(d))
+    ////console.log("New subject is " + JSON.stringify(d))
     /*this.props.newAssignment(d);
     this.setState(this.getDefaultState());
     if(this.props.closeForm)

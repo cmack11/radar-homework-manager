@@ -72,7 +72,7 @@ class App extends Component {
 
   componentDidUpdate() {
     if(this.props.id != -1 && !this._nameUpdated) {
-      console.log("Before retrieved" + this.props.id)
+      //console.log("Before retrieved" + this.props.id)
       this.props.retrieveName(this.props.id);
       this._nameUpdated = true
     }
@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   onRouteChange = (location) => {
-    console.log("Route changed la mtfk " + location )
+    //console.log("Route changed la mtfk " + location )
     if (location.pathname === '/login') {
       this.props.resetUser();
       this._nameUpdated = false;
@@ -173,7 +173,7 @@ class App extends Component {
   );
 
   outsideClicked = (e) => {
-    console.log("Closed")
+    //console.log("Closed")
     dismissWindow()
   }
 
