@@ -7,7 +7,7 @@ import image from './images/window_close.svg'
 import { retrieveCompletedTasks } from './actions/assignmentAction.js'
 import { MdClose } from 'react-icons/md'
 import { IconContext } from "react-icons"
-import { setHistoryFormRef } from './dismissCenter';
+import { setHistoryFormRef, setHistoryDivRef } from './dismissCenter';
 const mapDispatchToProps = dispatch => ({
  retrieveCompletedTasks: (user_id) => dispatch(retrieveCompletedTasks(user_id)),
 })
@@ -69,7 +69,7 @@ class HistoryPage extends Component {
 		let visible = this.props.show ? 'visible' : 'hidden';
 
 	    return (
-	    	<div id="historyScreen" style={{
+	    	<div id="historyScreen" ref={node => setHistoryDivRef(node)} style={{
 	    			visibility:visible,
 	    	        position:'absolute',
 	    	        top:this.state.top,

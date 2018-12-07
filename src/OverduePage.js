@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { retrieveOverdueTasks } from './actions/assignmentAction.js'
 import { MdClose } from 'react-icons/md'
 import { IconContext } from "react-icons"
-
+import { setOverdueDivRef} from './dismissCenter'
 
 const mapDispatchToProps = dispatch => ({
  retrieveOverdueTasks: (user_id) => dispatch(retrieveOverdueTasks(user_id)),
@@ -80,7 +80,9 @@ class OverduePage extends Component {
 	    	        borderColor:'#7a0317',
 	    	        borderStyle:'solid',
                 borderRadius:"5px",
-	    	    }}>
+	    	    }}
+          ref={node => setOverdueDivRef(node)}
+        >
 	    	    <div style={{display:'flex'}}>
 	    	      <div style={{cursor:'pointer'}} onClick={this.props.close}>
                 <IconContext.Provider value={{size:30}}>

@@ -9,7 +9,7 @@ import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import {DATE_FORMAT} from '../config/config.js'
-import {setTaskFormRef} from '../dismissCenter';
+import {setTaskDivRef, setTaskFormRef} from '../dismissCenter';
 
 
 const mapDispatchToProps = dispatch => ({
@@ -190,7 +190,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
     }
 
     return (
-      <div className="subject-task-form"  onClick={(e) => {e.stopPropagation()}}>
+      <div className="subject-task-form" ref={node => setTaskDivRef(node)}  onClick={(e) => {e.stopPropagation()}}>
       <Form >
         <div className="subject-title-container">
             {formName}

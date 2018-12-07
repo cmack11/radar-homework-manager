@@ -174,7 +174,7 @@ class App extends Component {
 
   outsideClicked = (e) => {
     //console.log("Closed")
-    dismissWindow()
+    dismissWindow(e)
   }
 
   render() {

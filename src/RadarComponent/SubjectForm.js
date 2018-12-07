@@ -4,7 +4,7 @@ import { newSubject } from '../actions/assignmentAction.js';
 import {Button, Form} from 'semantic-ui-react';
 import { MdRepeat} from 'react-icons/md';
 import { IconContext } from 'react-icons';
-
+import {setSubjectDivRef} from '../dismissCenter';
 
 const mapDispatchToProps = dispatch => ({
  newSubject: (name, color, description, default_type_id, user_id) => dispatch(newSubject(name, color, description, default_type_id, user_id))
@@ -99,7 +99,7 @@ export class SubjectForm extends React.Component {
     }
 
     return (
-      <div className="subject-task-form"  onClick={(e) => {e.stopPropagation()}}>
+      <div className="subject-task-form" ref={node => setSubjectDivRef(node)} onClick={(e) => {e.stopPropagation()}}>
         <Form >
             <div className="subject-title-container">
               <b>Add Subject</b>

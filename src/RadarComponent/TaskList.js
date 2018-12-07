@@ -5,7 +5,7 @@ import {subjects1} from '../fakeData.js'
 import moment from 'moment';
 import { connect } from 'react-redux'
 import { completeTask } from '../actions/assignmentAction.js'
-
+import { setTaskDivRef } from '../dismissCenter';
 
 /*
 TaskList props:
@@ -16,7 +16,7 @@ TaskList props:
     hideSubjectCol = true/false - defaults to false
     assignments = array of assignments to display.
         assignments should have a .name, .subject, .description, .type, and .dueDate (moment)
-    showCompleteButton = true/false 
+    showCompleteButton = true/false
 */
 
 const mapDispatchToProps = dispatch => ({
@@ -82,7 +82,7 @@ export class TaskList extends React.Component {
 
   getTdProps(state, rowInfo, column, instance) {
     if( !rowInfo || (column && column.id !== 'type')) return {};
-    
+
     let color = "none";
     let type = rowInfo.original.type;
 
@@ -95,7 +95,7 @@ export class TaskList extends React.Component {
             }
         };
     }
-    
+
 
     return {}
   }
@@ -163,7 +163,9 @@ export class TaskList extends React.Component {
     <div id="tasklist" style={{
             visibility:visible,
             padding:padding
-        }}>
+        }}
+         ref={node => setTaskDivRef(node)}
+        >
         {this.props.title}
         <ReactTable
             getProps={()=>{return {style:{background:'lightgrey'}}}}
@@ -171,12 +173,12 @@ export class TaskList extends React.Component {
             getTdProps={this.getTdProps.bind(this)}
             noDataText={this.props.noDataText}
             data={data}
-            columns={columns} 
+            columns={columns}
             defaultPageSize={5}
             pageSizeOptions = {[5, 10, 15]}
             onPageSizeChange={(pageIndex) => {this.props.onResize()}}
         />
-    </div>  
+    </div>
     );
   }
 }

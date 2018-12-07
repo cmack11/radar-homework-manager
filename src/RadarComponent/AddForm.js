@@ -31,10 +31,10 @@ export class AddForm extends React.Component {
     if(!this.props.show) return null;
     let form;
 
-     if(this.state.form === TASK_FORM) 
+     if(this.state.form === TASK_FORM)
       form = <TaskForm show width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} closeForm={this.props.closeForm}/>
     else if(this.state.form === SUBJECT_FORM)
-      form = <SubjectForm show width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} closeForm={this.props.closeForm}/> 
+      form = <SubjectForm show width={320} taskTypes={this.props.taskTypes} subjectNames={this.props.subjectNames} switchForm={this.switchForm.bind(this)} closeForm={this.props.closeForm}/>
     else
       form = null;
     return (
