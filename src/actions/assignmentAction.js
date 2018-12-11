@@ -218,12 +218,12 @@ export const editTask = (task, subject_id, user_id) => {
     description:task.description,
     type_id:task.type_id,
     dueDate:task.dueDate,
-    task_id:task.type,
+    task_id:task.task_id,
     type:task.type,
     subject_id:subject_id,
     user_id:user_id,
   }
-  console.log(task)
+  console.log(params)
   return (dispatch) => {
     return axios.post(API_URL + '/Tasks/updateTask',params)
     .then( response => {
@@ -262,7 +262,7 @@ export const deleteTask = (task,user_id) => {
 }
 
 export const completeTask = (task,user_id)  => {
-  //console.log('COMPLETE');
+  console.log('COMPLETE');
   let params = {
     task_id:task.task_id,
     subject_id:task.subject_id,
@@ -271,9 +271,9 @@ export const completeTask = (task,user_id)  => {
   return (dispatch) => {
     return axios.post(API_URL+'/Tasks/completeTask', params)
     .then( response => {
-      //console.log(response)
+      console.log(response)
       if(response.status === 200 && response.data !== 'failed') {
-        dispatch(removeTask(task.task_id,null,'OVERDUE'))//remove from overdue collection
+        dispatch(removeTask(task.task_id,null,'ALL'))//remove from overdue collection
       }
     })
     .catch(error => {

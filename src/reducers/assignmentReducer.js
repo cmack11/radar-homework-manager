@@ -104,7 +104,7 @@ export default (state = initialState, action) => {
       newOverdue = state.overdueAssignments;
       newCompleted = state.completedAssignments;
 
-      if(action.payload.collection === 'SUBJECTS') {
+      if(action.payload.collection === 'SUBJECTS' || action.payload.collection === 'ALL') {
         newSubjects = state.subjects.slice(); //copy the current subjects
         for(let i = 0; i < newSubjects.length; i++) {
           let subject = newSubjects[i];
@@ -119,7 +119,7 @@ export default (state = initialState, action) => {
           newCompleted = newCompleted.filter((assignment, index, arr) => {
             return assignment.task_id !== action.payload.task_id
           })
-      } else if(action.payload.collection === 'OVERDUE') {
+      } else if(action.payload.collection === 'OVERDUE' || action.payload.collection === 'ALL') {
         newOverdue = state.overdueAssignments.slice(); //copy the current subjects
           newOverdue = newOverdue.filter((assignment, index, arr) => {
             return assignment.task_id !== action.payload.task_id
