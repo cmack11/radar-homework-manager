@@ -25,7 +25,7 @@ export class TaskTypeEditor extends Component {
     this.state = {
       taskTypes: props.taskTypes,
       taskType: "",
-      taskColor:"black",
+      taskColor:"lightblue",
       showDeleteTasks: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
