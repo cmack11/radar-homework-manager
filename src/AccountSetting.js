@@ -10,7 +10,6 @@ const mapDispatchToProps = dispatch => ({
 class AccountSetting extends Component {
 
 render() {
-  console.log("Acc rendered")
   return (
     <div>
       <p className="acc-title"> Account settings </p>
