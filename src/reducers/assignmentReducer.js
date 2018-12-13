@@ -114,12 +114,16 @@ export default (state = initialState, action) => {
             return value.task_id !== action.payload.task_id
           })
         }
-      } else if(action.payload.collection === 'COMPLETED') {
+      }
+      
+      if(action.payload.collection === 'COMPLETED') {
         newCompleted = state.completedAssignments.slice(); //copy the current subjects
           newCompleted = newCompleted.filter((assignment, index, arr) => {
             return assignment.task_id !== action.payload.task_id
           })
-      } else if(action.payload.collection === 'OVERDUE' || action.payload.collection === 'ALL') {
+      }
+
+      if(action.payload.collection === 'OVERDUE' || action.payload.collection === 'ALL') {
         newOverdue = state.overdueAssignments.slice(); //copy the current subjects
           newOverdue = newOverdue.filter((assignment, index, arr) => {
             return assignment.task_id !== action.payload.task_id
