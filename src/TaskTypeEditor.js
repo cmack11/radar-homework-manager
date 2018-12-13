@@ -98,13 +98,9 @@ export class TaskTypeEditor extends Component {
     else {
       deleteTasksButton.push(<Button primary type="button" value="enableDelete" onClick={this.handleSubmit}>Open Task Type Delete Menu</Button>);
     }
-    let taskTypeWithSpaces = "";
-    for (let i = 0; i < this.state.taskTypes.length; ++i)
-      taskTypeWithSpaces += this.state.taskTypes[i].name + " ";
+
     return (<div style={{ display: 'block', width: '100%' }}>
       <Form>
-        <b>Current Task Types:</b><br />
-        {taskTypeWithSpaces}
         <br />
 
         <Form.Field className='task-type-add'>
