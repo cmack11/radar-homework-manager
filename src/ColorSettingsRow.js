@@ -30,7 +30,7 @@ export class ColorSettingsRow extends Component {
     }
     let itemsList = [];
     for (var i = 0; i < items.length; i++) {
-      itemsList.push(<span style={{ display: 'table-cell' }}>
+      itemsList.push(<span style={{ cursor: 'pointer', display: 'table-cell' }}>
         <SingleItemColorSelect name={items[i].name} isSubject={this.props.isSubject} />
       </span>);
     }

@@ -127,19 +127,6 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       }
     }
 
-    ////console.log("New subject is " + JSON.stringify(d))
-    /*this.props.newAssignment(d);
-    this.setState(this.getDefaultState());
-    if(this.props.closeForm)
-    	this.props.closeForm();
-  	}else{
-  		this.props.addAssignment(
-      	{subject:this.state.subject, name:this.state.taskName, description:this.state.taskDesc, type:this.state.taskType, dueDate:this.state.taskDueDate},
-      	this.state.subject);
-      	this.setState(this.getDefaultState());
-      	if(this.props.closeForm)
-        		this.props.closeForm();
-  	}*/
     let user_id = this.props.id;
 
     this.props.editTask(assignment,subject_id,user_id);
@@ -183,10 +170,18 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
                         </IconContext.Provider>
                       </div>;
 
+    let subjectFormField = <Form.Field className='form-fields'>
+                            <label className="label-text label-center">Subject</label>
+                            <select name="subject" value={this.state.subject} onChange={this.handleChange}>
+                              {subjectOptions}
+                            </select>
+                          </Form.Field>;
+
      if(this.props.isEditForm) {
       formName = <b>Edit Task</b>;
       buttonName = <b>Save Changes</b>;
       switchForm = null;
+      subjectFormField = <null/>;
     }
 
     return (
@@ -200,12 +195,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
           <label className="label-text label-center">Name</label>
           <input style={{borderColor:(this.state.taskNameError ? 'red': null)}} name="taskName" type="text" value={this.state.taskName} onChange={this.handleChange} />
         </Form.Field>
-        <Form.Field className='form-fields'>
-          <label className="label-text label-center">Subject</label>
-          <select name="subject" value={this.state.subject} onChange={this.handleChange}>
-            {subjectOptions}
-          </select>
-        </Form.Field>
+        {subjectFormField}
         <Form.Field className='form-fields'>
           <label className="label-text label-center">Description</label>
           <input name="taskDesc" type="text" value={this.state.taskDesc} onChange={this.handleChange} />
