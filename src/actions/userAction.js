@@ -173,3 +173,10 @@ export const retrieveEmail = (user_id) => {
     })
   }
 }
+
+export const changeName = (data) =>  {
+  return {
+    type: types.UPDATE_NAME,
+    payload: data
+  }
+}

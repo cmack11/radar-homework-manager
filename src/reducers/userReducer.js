@@ -43,6 +43,11 @@ export default (state = initialState, action) => {
     return initialState
    case types.RESET_USER:
     return initialState
+   case types.UPDATE_NAME:
+    return {
+      ...state,
+      name : action.payload,
+    }
   default:
    return state
  }

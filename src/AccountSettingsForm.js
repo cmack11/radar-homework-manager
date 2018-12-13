@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import DatePicker from "react-datepicker";
 import {Button, Form} from 'semantic-ui-react';
 import './App.css';
+import { changeName } from './actions/userAction.js';
 
 const mapDispatchToProps = dispatch => ({
- //TODO
+  changeName: (data) => dispatch(changeName(data)),
 })
 
 const mapStateToProps = state => {
@@ -39,6 +40,7 @@ export class AccountSettingsForm extends React.Component {
     if (this.refs.newName.value == this.props.name)
       return
 
+    this.props.changeName(this.refs.newName.value)
     //call redux function to pass new name and password to database
 }
 
@@ -73,12 +75,12 @@ export class AccountSettingsForm extends React.Component {
 
         <Form.Field className='form-fields'>
           <label className="label-text label-center">New Password:</label>
-          <input ref="newPass"/>
+          <input type="password" ref="newPass"/>
         </Form.Field>
 
         <Form.Field className='form-fields'>
           <label className="label-text label-center">Confirm New Password:</label>
-          <input ref="confirmPass"/>
+          <input type= "password" ref="confirmPass"/>
         </Form.Field>
 
         <Button primary type="button" value="Save Changes" onClick={this.handleSubmit}><b>Save Changes</b></Button>
