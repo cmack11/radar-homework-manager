@@ -433,7 +433,6 @@ export class Radar extends Component {
 	}
 
 	editButtonClick(assignment) {
-    console.log("Open edit form clicked")
 		this.props.runRadarScreenOpenCloseFunction('openEditForm', assignment);
 	}
 
@@ -490,7 +489,7 @@ export class Radar extends Component {
 			  		{this.state.rings}
 				</svg>
 				{this.state.sliceLabels}
-				<Dots subjects={this.state.subjects}
+				<Dots
 					getDistanceFromCenter={this.getDistanceFromCenter.bind(this)}
 					view={this.state.view} dims={this.view} //bad
 					intersectFunctions={intersectFuncs}

@@ -216,7 +216,7 @@ export const editTask = (task, subject_id, user_id) => {
   let params = {
     name:task.name,
     description:task.description,
-    type_id:task.type_id,
+    type_id:task.type,
     dueDate:task.dueDate,
     task_id:task.task_id,
     type:task.type,
@@ -229,9 +229,9 @@ export const editTask = (task, subject_id, user_id) => {
     .then( response => {
       console.log(response)
       let newTask = response.data;
-      newTask.subject_id = subject_id;
-      newTask.user_id = user_id;
-      newTask.type_id = task.type_id;
+      //newTask.subject_id = subject_id;
+      //newTask.user_id = user_id;
+      //newTask.type_id = task.type_id;
       console.log(newTask)
       dispatch(updateTask(newTask,subject_id,user_id))
     })

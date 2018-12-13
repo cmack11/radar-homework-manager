@@ -27,8 +27,7 @@ export default (state = initialState, action) => {
            for(let j = 0; j < subject.assignments.length; j++) {
             let assignment = subject.assignments[j];
             if(assignment.task_id !== action.payload.assignment.task_id) continue;//Skip unaltered subjects
-
-            subject.assignments.slice(j,1,action.payload.assignment)
+              subject.assignments.splice(j,1,action.payload.assignment)
             break;
            }
            break;

@@ -13,6 +13,7 @@ const mapStateToProps = state => {
   return {
     id: state.user.user_id,
     types : state.assignment.typesDict,
+    subjects:state.assignment.subjects
   }
 }
 
@@ -281,7 +282,6 @@ export class Dots extends Component {
 	render() {
 		this.view = this.props.dims;
 		var subjects = this.props.subjects;
-
 
 		this.fillDotsObjs(subjects);
 

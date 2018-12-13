@@ -58,9 +58,9 @@ export class TaskForm extends React.Component {
   }
 
   getEditState() {
-      let defaultState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
+      let editState = {taskName: this.props.assignment.name, taskDesc: this.props.assignment.description,
 taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.dueDate), subject: this.props.assignment.subject, focused:false};
-      return defaultState;
+      return editState;
   }
 
   handleChange(event) {
@@ -144,7 +144,7 @@ taskType: this.props.assignment.type, taskDueDate: moment(this.props.assignment.
       this.setState({taskNameError:true});
       return false;
     }
-    return true
+    return true;
   }
 
   render() {
