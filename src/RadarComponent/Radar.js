@@ -449,7 +449,7 @@ export class Radar extends Component {
 		intersectFuncs.push({
 			rect:{x:10, y:this.props.view.dotsView.height-125-10, width:125, height:125},
 			func:(dot)=>{
-				dot.dot.setAttribute('visibility','hidden');
+				//dot.dot.setAttribute('visibility','hidden');
 				this.props.completeTask(dot.assignment);
 			}
 		})

@@ -100,6 +100,7 @@ export default (state = initialState, action) => {
       }
 
     case types.DELETE_TASK:
+      console.log(action.payload)
       newSubjects = state.subjects;
       newOverdue = state.overdueAssignments;
       newCompleted = state.completedAssignments;
@@ -111,11 +112,13 @@ export default (state = initialState, action) => {
           if(action.payload.subject_id && subject.subject_id !== action.payload.subject_id) continue;//Skip unaltered subjects
 
           subject.assignments = subject.assignments.filter((value, index, arr) => {
+            console.log(value.task_id+' '+action.payload.task_id);
             return value.task_id !== action.payload.task_id
           })
+          console.log(subject.assignments)
         }
       }
-      
+
       if(action.payload.collection === 'COMPLETED') {
         newCompleted = state.completedAssignments.slice(); //copy the current subjects
           newCompleted = newCompleted.filter((assignment, index, arr) => {
